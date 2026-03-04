@@ -1,0 +1,34 @@
+# RunAgents Project Memory
+
+## Project Overview
+RunAgents — AI agent management platform. Deploy Telegram-connected AI agents (OpenRouter), manage in E2B sandbox, billing via Dodo Payments. Invite-only with waitlist.
+
+## Key Files & Architecture
+- See `AGENTS.md` at project root for full conventions
+- See `docs/prd-resend-email.md` for email integration PRD
+
+## Email System (Resend + React Email)
+→ Detailed notes: [email-system.md](./email-system.md)
+
+## Better Auth Configuration
+→ Detailed notes: [better-auth.md](./better-auth.md)
+
+## Installed Skills
+- `better-auth-best-practices` / `better-auth-security-best-practices`
+- `e2b-sandbox`, `email-best-practices`, `react-email`, `resend`
+- `ai-sdk`, `next-best-practices`, `vercel-react-best-practices`, `web-design-guidelines`
+- Skills lock: `skills-lock.json` at project root
+
+## PR Review Bots
+- CodeRabbit (free tier, summaries only)
+- Gemini Code Assist (line-by-line reviews)
+- GitHub Copilot (line-by-line reviews)
+- Always check PR feedback after pushing: `gh api repos/FounderFeedAdmin/runagents/pulls/{N}/comments`
+
+## Commands
+- `pnpm dev` — dev server
+- `pnpm build` — production build (use to verify changes)
+- `pnpm email:dev -d src/emails -p 3001` — email template preview
+- `pnpm lint` / `pnpm format` — Biome
+- `pnpm db:generate` / `pnpm db:push` — Drizzle migrations
+- `pnpm auth:generate` — regenerate auth model after config changes

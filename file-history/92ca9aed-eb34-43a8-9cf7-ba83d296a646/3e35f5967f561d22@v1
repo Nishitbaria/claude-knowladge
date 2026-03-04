@@ -1,0 +1,30 @@
+# Database
+DATABASE_URL=
+
+# Auth
+BETTER_AUTH_SECRET=
+RESEND_API_KEY=
+EMAIL_DOMAIN=mail.runagents.co
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# E2B
+E2B_API_KEY=
+
+# AI
+OPENROUTER_API_KEY=
+
+# Payments
+DODO_PAYMENTS_API_KEY=
+DODO_PAYMENTS_WEBHOOK_SECRET=
+DODO_PAYMENTS_MODE=test_mode
+
+# Dev gate — set this on your dev Vercel project to restrict access via ?token=<value>
+# Leave unset in production and locally (gate is inactive when this var is absent)
+DEV_ACCESS_TOKEN=
+
+# Public
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+
+# Feature Flags
+ENABLE_SIGNUPS=true

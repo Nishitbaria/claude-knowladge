@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Verify build passes with changes",
+  "description": "Run pnpm build to verify no type errors or issues with the changes.",
+  "activeForm": "Verifying build",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

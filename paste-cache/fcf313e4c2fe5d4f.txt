@@ -1,0 +1,290 @@
+Let me also grab the main Skills page and Skills Config for a fuller picture.Here's the full breakdown of Skills in OpenClaw — what they are, how to create them, where they live, all the important commands, and how to integrate them into runAgents.co.
+
+---
+
+## What Is a Skill?
+
+Skills are textbooks — they teach OpenClaw how to combine Tools to accomplish tasks. More concretely, a skill is a directory containing a `SKILL.md` file (which provides instructions and tool definitions to the LLM) and optionally some scripts or resources.
+
+That file has YAML frontmatter describing the skill's name, version, and requirements, followed by a body with step-by-step instructions that load into the agent's context when the skill is active. When you send a message that matches a skill's use case, the agent reads the instructions from SKILL.md and follows them to complete the task.
+
+### Skills vs Tools — Key Distinction
+
+Tools are organs — they determine whether OpenClaw *can* do something. Skills are manualsdetermine whether OpenClaw *knows how* to do something.
+
+For example: You install the Obsidian skill. OpenClaw now knows how to organize notes — but without the `write` Tool enabled, it can't write files at all.
+
+For OpenClaw to actually do something via a Skill, three conditions must be met: Configuration (did you allow the tool?), Installation (is the bridge/binary installed?), and Authorization (did you grant API access?).
+
+---
+
+## Where Skills Live (Directory Structure)
+
+Skills are loaded from three places: Bundled skills (shipped with the install), Managed/local skills (`~/.openclaw/skills`), and Workspace skills (`<workspace>/skills`).
+
+**Precedence order** (highest wins):
+
+1. `<workspace>/skills` — per-project or per-agent overrides
+2. `~/.openclaw/skills` — your personal/managed skills
+3. Bundled skills — shipped with OpenClaw
+
+If a skill name conflicts, precedence is: `<workspace>/skills` (highest) → `~/.openclaw/skills` → bundled skills (lowest). Additionally, you can configure extra s (lowest precedence) via `skills.load.extraDirs` in `~/.openclaw/openclaw.json`.
+
+**In multi-agent setups:** Per-agent skills live in `<workspace>/skills` for that agent only. Shared skills live in `~/.openclaw/skills` and are visible to all agents on the same machine.
+
+---
+
+## How to Create a Custom Skill — Step by Step
+
+### 1. Create the Directory
+
+```bash
+mkdir -p ~/.openclaw/workspace/skills/my-skill-name
+```
+
+### 2. Define `SKILL.md`
+
+This file uses YAML frontmatter for metadata and Markdown for instructions.
+
+Here's a basic example:
+
+```markdown
+---
+name: hello_world
+description: A simple skill that says hello.
+---
+
+# Hello World Skill
+
+When the user asks for a greeting, use the `echo` tool 
+to say "Hello from your custom skill!".
+```
+
+### A more complete `SKILL.md` with metadata:
+
+```markdown
+---
+name: seo_audit
+description: Run an SEO audit on a given URL, extract meta tags, check headings, and report issues.
+requires:
+  bins:
+    - curl
+    - node
+  env:
+    - SEMRUSH_API_KEY
+  config:
+    - targ_domain
+install: |
+  npm install cheerio
+---
+
+# SEO Audit Skill
+
+When the user asks to audit a website for SEO:
+
+1. Fetch the page using `curl` or `web_fetch`
+2. Parse the HTML for meta tags, heading structure, and image alt attributes
+3. Check for common SEO issues
+4. Return a structured report with recommendations
+
+## Edge Cases
+- If the URL returns a redirect, follow it and note the chain
+- If the page is JavaScript-rendered, use the browser tool instead
+```
+
+**Key frontmatter fields:**
+
+| Field | Purpose |
+|---|---|
+| `name` | Unique identifier for the skill |
+| `description` | Trigger phrase — determines when the agent picks this skill |
+| `requires.bins` | System binaries that must be present |
+| `requires.env` | Environment variables needed |
+| `requires.config` | Config keys the user must provide |
+| `install` | Shell commands run during skill setup |
+
+The description section matters more than most engineers realize. Because OpenClaw loads skill metadata to decide which capabilities to offer, a we-written description determines whether your skill gets selected for relevant tasks.
+
+### 3. Add Supporting Files (Optional)
+
+Your skill folder can include scripts, templates, reference docs — anything the instructions reference:
+
+```
+~/.openclaw/workspace/skills/seo-audit/
+├── SKILL.md
+├── scripts/
+│   └── parse-meta.js
+└── templates/
+    └── report-template.md
+```
+
+### 4. Refresh/Reload OpenClaw
+
+Ask your agent to "refresh skills" or restart the gateway. OpenClaw will discover the new directory and index the `SKILL.md`.
+
+By default, OpenClaw watches skill folders and bumps the skills snapshot when SKILL.md files change. You can configure this:
+
+```json
+{
+  "skills": {
+    "load": {
+      "watch": true,
+      "watchDebounceMs": 250
+    }
+  }
+}
+```
+
+---
+
+## Skills Configuration in `openclaw.json`
+
+All skill config lives under `skills` in your `~/.openclaw/openclaw.json`:
+
+```json
+{
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    },
+    "entries": {
+      "seo-
+        "env": {
+          "SEMRUSH_API_KEY": "your-key-here"
+        }
+      },
+      "email-drip": {
+        "enabled": true,
+        "apiKey": "LLM_PROVIDER_API_KEY",
+        "env": {
+          "RESEND_API_KEY": "your-resend-key"
+        }
+      },
+      "competitor-watch": {
+        "enabled": false
+      }
+    }
+  }
+}
+```
+
+Keys under entries map to the skill name by default. If a skill defines `metadata.openclaw.skillKey`, use that key instead. Changes to skills are picked up on the next agent turn when the watcher is enabled.
+
+---
+
+## Important CLI Commands
+
+```bash
+# List all installed skills
+openclaw skills list
+
+# List only skills that are actually runnable in current environment
+openclaw skills list --eligible
+
+# Get detailed info about a specific skill
+openclaw skills info <skill-name>
+
+# Check skill health/eligibility
+openclaw skills check
+
+# Install from ClawHub
+clawhub install <skill-slug>
+
+# List ClawHub-installed skills
+clawhub list
+
+# Uninstall a skill
+clawhub uninstall <slug>
+
+# Update all skills
+clawhub update --all
+
+# Test a skill via Agent Send
+openclaw agent --message "use my new skill to do X"
+```
+
+`--eligible` is the key command for troubleshooting because it filters to skills that are actually runnable in the current environment.
+
+---
+
+## Best Practices
+
+- **Be Concise**: Instruct the model on *what* to do, not how to be an AI.
+- **Safety First**: If your skill uses `bash`, ensure the prompts don't allow arbitrary command injection from untrusted user input.
+- **Test Locally**: Use `openclaw agent --message "use my new skill"` to test.
+- Write descriptions like you're describing the task to a coworker in chat — simple words, include the nouns users actually type.
+- Include usage examples showing typical commands the user might give. Provide implementation details covering the actual tools, scripts, or APIs the skill invokes.
+
+---
+
+## ClawHub — The Skill Registry
+
+The community-maintained registry ClawHub contains over 5,700 skills as of early 2026, covering almost every automatioe case imaginable.
+
+You can browse and install skills from [clawhub.com](https://clawhub.com), and also contribute your own.
+
+---
+
+## How to Integrate Skills into runAgents.co
+
+This is where skills become incredibly powerful for your SaaS platform. Here's the strategy:
+
+### 1. **Pre-Built Marketing Skill Packs**
+
+Create custom skills tailored to your target audience (marketing managers at mid-sized companies) and bundle them with the platform:
+
+```
+runagents-skills/
+├── seo-audit/
+│   └── SKILL.md          # Automated SEO auditing
+├── content-calendar/
+│   └── SKILL.md          # Content planning and scheduling
+├── competitor-watch/
+│   └── SKILL.md          # Monitor competitor activity
+├── ad-copy-generator/
+│   └── SKILL.md          # Generate ad variations
+└── campaign-reporter/
+    └── SKILL.md          # Weekly campaign performance reports
+```
+
+These ship as **workspace skills** inside each customer's E2B sandbox, so they're per-tenanose the `skills.entries` config as a UI in your Mission Control dashboard. Users can:
+
+- Toggle skills on/off (maps to `"enabled": true/false`)
+- Enter API keys for third-party integrations (SEMrush, HubSpot, etc.)
+- See which skills are eligible vs. missing dependencies
+
+This aligns perfectly with your **"10-minute promise"** — new users pick their marketing stack, the platform enables the right skills automatically.
+
+### 3. **Dynamic Skill Loading per Customer Tier**
+
+Use `skills.load.extraDirs` to load different skill packs based on subscription tier:
+
+```json
+{
+  "skills": {
+    "load": {
+      "extraDirs": ["/opt/runagents/skills/pro-tier"]
+    }
+  }
+}
+```
+
+Free tier gets basic skills, Pro gets advanced automation skills, Enterprise gets custom ones.
+
+### 4. **Skill + Sub-Agent Orchestration**
+
+Combine skills with sub-agents for powerful workflows. A main "Campaign Manager" agent equipped with an orchestration skill can spawn sub-agents, each loaded with a specific skill:
+
+- Sub-agent 1 runs the `seoudit` skill
+- Sub-agent 2 runs the `competitor-watch` skill  
+- Sub-agent 3 runs the `ad-copy-generator` skill
+
+Results flow back up through the announce chain to Mission Control's metrics dashboard.
+
+### 5. **Backup Skills with Your S3 System**
+
+Since skills are just folders with files, they fit neatly into your existing E2B backup architecture. When you snapshot a customer's sandbox to S3, the workspace skills directory gets backed up too — so customers never lose their custom skill configurations.
+
+### 6. **ClawHub Integration**
+
+You could add a "Skill Marketplace" section in Mission Control that wraps ClawHub's `clawhub install` / `clawhub list` commands, letting non-technical marketing managers browse and install community skills through a friendly UI rather than the CLI. Just be sure to vet/allowlist skills for security, since when installing a skill you're adding instructions that can lead to file reads, shell commands, browser automation, and network requests, depending on what your agent is allow to do.

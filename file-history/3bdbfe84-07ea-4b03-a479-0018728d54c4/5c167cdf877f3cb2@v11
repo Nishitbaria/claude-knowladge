@@ -1,0 +1,256 @@
+"use server";
+
+import type { Sandbox } from "e2b";
+import { z } from "zod";
+import { esc, getSandboxRuntime, runOrThrow } from "@/lib/e2b";
+import { orgAction } from "@/server/action-utils";
+
+// ── Create a named agent + send first message ───────────────────────────────
+
+export const createAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+    name: z.string().min(1),
+    emoji: z.string().min(1),
+    systemPrompt: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+
+    const exists = await agentExists(runtime, input.agentId);
+
+    if (!exists) {
+      // Use $HOME so shell resolves the path (~ doesn't expand inside single quotes)
+      const workspace = `$HOME/.openclaw/workspace-${input.agentId}`;
+
+      // 1. Create workspace directory
+      await runOrThrow(
+        runtime,
+        `mkdir -p "${workspace}"`,
+        "create workspace",
+      );
+
+      // 2. Write AGENTS.md with system prompt
+      await runOrThrow(
+        runtime,
+        `cat > "${workspace}/AGENTS.md" << 'AGENTEOF'\n${input.systemPrompt}\nAGENTEOF`,
+        "write AGENTS.md",
+      );
+
+      // 3. Register agent via CLI (ignore "already exists" error)
+      const addResult = await runtime.commands.run(
+        `openclaw agents add ${esc(input.agentId)} --workspace "${workspace}"`,
+      );
+      const addStderr = addResult.stderr?.trim() ?? "";
+      if (addResult.exitCode !== 0 && !addStderr.includes("already exists")) {
+        throw new Error(addStderr || `agents add failed (exit ${addResult.exitCode})`);
+      }
+      console.log("[agents] register:", addResult.exitCode === 0 ? "created" : "already exists");
+
+      // 4. Set identity (name + emoji)
+      await runOrThrow(
+        runtime,
+        `openclaw agents set-identity --agent ${esc(input.agentId)} --name ${esc(input.name)} --emoji ${esc(input.emoji)}`,
+        "set identity",
+      );
+
+      // 5. Enable delegation so main agent can route tasks to named agents
+      await runOrThrow(
+        runtime,
+        `jq '.agents.defaults.subagents.maxSpawnDepth = 2' ~/.openclaw/openclaw.json > /tmp/openclaw.json && mv /tmp/openclaw.json ~/.openclaw/openclaw.json`,
+        "enable delegation",
+      );
+    }
+
+    return { status: "created" };
+  },
+);
+
+// ── List named agents ────────────────────────────────────────────────────────
+
+export const listAgents = orgAction(
+  z.object({ sandboxId: z.string().min(1) }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+
+    // Try JSON first
+    const result = await runtime.commands.run(`openclaw agents list --json`);
+    const raw = result.stdout?.trim() ?? "";
+    console.log("[agents] list --json raw:", raw);
+
+    const json = extractJson(raw);
+    if (json) {
+      const agents = parseAgentsJson(json);
+      if (agents.length > 0) return { agents };
+    }
+
+    // Fallback: parse plain text output
+    // Format: "- <id> (default?)\n  Workspace: ..."
+    const plain = await runtime.commands.run(`openclaw agents list`);
+    const plainOut = plain.stdout ?? "";
+    console.log("[agents] list plain:", plainOut);
+
+    const agents: AgentInfo[] = [];
+    const lines = plainOut.split("\n");
+    for (const line of lines) {
+      const match = line.match(/^-\s+(\S+)/);
+      if (match) {
+        agents.push({
+          id: match[1],
+          name: match[1],
+          emoji: null,
+          workspace: null,
+        });
+      }
+    }
+
+    return { agents };
+  },
+);
+
+// ── Delete a named agent ─────────────────────────────────────────────────────
+
+export const deleteAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    await runOrThrow(
+      runtime,
+      `openclaw agents delete ${esc(input.agentId)}`,
+      "delete agent",
+    );
+
+    // Restart gateway so it drops the agent
+    await runOrThrow(
+      runtime,
+      `nohup openclaw gateway restart > /tmp/gateway-restart.log 2>&1 &`,
+      "gateway restart",
+    );
+
+    return { ok: true as const };
+  },
+);
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+/**
+ * Try to extract agent list from various JSON shapes:
+ * - { agents: [{ id, identity, workspace }] }
+ * - [{ id, ... }]
+ * - { "agent-id": { ... }, ... }  (object keyed by agent ID)
+ */
+function parseAgentsJson(json: unknown): AgentInfo[] {
+  if (!json || typeof json !== "object") return [];
+
+  // Shape 1: { agents: [...] }
+  const withAgents = json as { agents?: unknown[] };
+  if (Array.isArray(withAgents.agents)) {
+    return withAgents.agents.map(agentRecordToInfo).filter((a) => a.id);
+  }
+
+  // Shape 2: top-level array
+  if (Array.isArray(json)) {
+    return json.map(agentRecordToInfo).filter((a) => a.id);
+  }
+
+  // Shape 3: object keyed by agent ID
+  const entries = Object.entries(json as Record<string, unknown>);
+  if (entries.length > 0 && typeof entries[0][1] === "object") {
+    return entries.map(([key, val]) => {
+      const rec = (val ?? {}) as Record<string, unknown>;
+      return {
+        id: (rec.id as string) ?? key,
+        name: (rec.name as string | undefined) ?? key,
+        emoji: (rec.emoji as string | undefined) ?? null,
+        workspace: (rec.workspace as string | undefined) ?? null,
+      };
+    });
+  }
+
+  return [];
+}
+
+function agentRecordToInfo(raw: unknown): AgentInfo {
+  const a = (raw ?? {}) as Record<string, unknown>;
+  const identity = (a.identity ?? {}) as Record<string, unknown>;
+  return {
+    id: (a.id as string) ?? "",
+    name: (identity.name as string | undefined) ?? (a.name as string | undefined) ?? (a.id as string) ?? "",
+    emoji: (identity.emoji as string | undefined) ?? (a.emoji as string | undefined) ?? null,
+    workspace: (a.workspace as string | undefined) ?? (a.agentDir as string | undefined) ?? null,
+  };
+}
+
+interface AgentInfo {
+  id: string;
+  name: string;
+  emoji: string | null;
+  workspace: string | null;
+}
+
+async function agentExists(
+  runtime: Sandbox,
+  agentId: string,
+): Promise<boolean> {
+  try {
+    // Try JSON first
+    const result = await runtime.commands.run(`openclaw agents list --json`);
+    if (result.exitCode === 0) {
+      const json = extractJson(result.stdout?.trim() ?? "");
+      if (json) {
+        const parsed = json as { agents?: { id: string }[] };
+        const agents = Array.isArray(parsed.agents) ? parsed.agents : [];
+        if (agents.some((a) => a.id === agentId)) return true;
+      }
+    }
+
+    // Fallback: plain text — check if agent ID appears in output
+    const plain = await runtime.commands.run(`openclaw agents list`);
+    if (plain.exitCode === 0 && plain.stdout) {
+      return plain.stdout.includes(agentId);
+    }
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+function extractJson(raw: string): unknown | null {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    // noop
+  }
+  const objStart = raw.indexOf("{");
+  const arrStart = raw.indexOf("[");
+  const start =
+    objStart === -1
+      ? arrStart
+      : arrStart === -1
+        ? objStart
+        : Math.min(objStart, arrStart);
+  if (start === -1) return null;
+  const candidate = raw.slice(start);
+  try {
+    return JSON.parse(candidate);
+  } catch {
+    const lines = raw.split("\n");
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const line = lines[i].trim();
+      if (line.startsWith("{") || line.startsWith("[")) {
+        try {
+          return JSON.parse(line);
+        } catch {
+          continue;
+        }
+      }
+    }
+  }
+  return null;
+}
+

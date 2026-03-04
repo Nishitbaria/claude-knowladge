@@ -1,0 +1,116 @@
+import { BaseHubImage } from "basehub/next-image";
+import { RichText } from "basehub/react-rich-text";
+
+interface PostBodyProps {
+  content: React.ComponentProps<typeof RichText>["children"];
+}
+
+export function PostBody({ content }: PostBodyProps) {
+  return (
+    <div className="prose prose-neutral mx-auto max-w-3xl">
+      <RichText
+        components={{
+          img: (props) => (
+            <BaseHubImage
+              src={props.src ?? ""}
+              alt={props.alt ?? ""}
+              width={800}
+              height={450}
+              className="my-6 w-full rounded-lg"
+            />
+          ),
+          h1: ({ children, ...props }) => (
+            <h1
+              className="mt-10 mb-4 font-display text-3xl font-bold text-black"
+              {...props}
+            >
+              {children}
+            </h1>
+          ),
+          h2: ({ children, ...props }) => (
+            <h2
+              className="mt-8 mb-3 font-display text-2xl font-semibold text-black"
+              {...props}
+            >
+              {children}
+            </h2>
+          ),
+          h3: ({ children, ...props }) => (
+            <h3
+              className="mt-6 mb-2 font-display text-xl font-semibold text-black"
+              {...props}
+            >
+              {children}
+            </h3>
+          ),
+          p: ({ children, ...props }) => (
+            <p className="my-4 leading-relaxed text-neutral-700" {...props}>
+              {children}
+            </p>
+          ),
+          ul: ({ children, ...props }) => (
+            <ul
+              className="my-4 list-disc space-y-2 pl-6 text-neutral-700"
+              {...props}
+            >
+              {children}
+            </ul>
+          ),
+          ol: ({ children, ...props }) => (
+            <ol
+              className="my-4 list-decimal space-y-2 pl-6 text-neutral-700"
+              {...props}
+            >
+              {children}
+            </ol>
+          ),
+          li: ({ children, ...props }) => (
+            <li className="leading-relaxed" {...props}>
+              {children}
+            </li>
+          ),
+          blockquote: ({ children, ...props }) => (
+            <blockquote
+              className="my-6 border-l-4 border-neutral-300 pl-4 italic text-neutral-600"
+              {...props}
+            >
+              {children}
+            </blockquote>
+          ),
+          a: ({ children, ...props }) => (
+            <a
+              className="text-black underline underline-offset-2 hover:text-neutral-600 transition-colors"
+              target={props.href?.startsWith("http") ? "_blank" : undefined}
+              rel={
+                props.href?.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              {...props}
+            >
+              {children}
+            </a>
+          ),
+          pre: ({ children, ...props }) => (
+            <pre
+              className="my-6 overflow-x-auto rounded-lg bg-neutral-900 p-4 text-sm text-neutral-100"
+              {...props}
+            >
+              {children}
+            </pre>
+          ),
+          code: ({ children, ...props }) => (
+            <code
+              className="rounded bg-neutral-100 px-1.5 py-0.5 text-sm text-neutral-800"
+              {...props}
+            >
+              {children}
+            </code>
+          ),
+        }}
+      >
+        {content}
+      </RichText>
+    </div>
+  );
+}

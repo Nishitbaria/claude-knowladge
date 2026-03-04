@@ -1,0 +1,995 @@
+"use client";
+
+import { useChat } from "@ai-sdk/react";
+import {
+  skipToken,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import {
+  DefaultChatTransport,
+  lastAssistantMessageIsCompleteWithToolCalls,
+} from "ai";
+import Image from "next/image";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Context,
+  ContextContent,
+  ContextContentBody,
+  ContextContentHeader,
+  ContextInputUsage,
+  ContextOutputUsage,
+  ContextTrigger,
+} from "@/components/ai-elements/context";
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from "@/components/ai-elements/conversation";
+import { Message, MessageContent } from "@/components/ai-elements/message";
+import type {
+  ImageModelId,
+  VideoModelId,
+} from "@/components/product/editor/agent/AgentModelSelector";
+import { AssetsSidebar } from "@/components/product/editor/agent/AssetsSidebar";
+import ChatActionsMenu from "@/components/product/editor/agent/ChatActionsMenu";
+import { ChatHistorySidebar } from "@/components/product/editor/agent/ChatHistorySidebar";
+import {
+  extractImagePollingData,
+  extractMediaUrls,
+  extractVideoPollingData,
+} from "@/components/product/editor/agent/components/utils";
+import InputBar from "@/components/product/editor/agent/InputBar";
+import MessagePartRenderer from "@/components/product/editor/agent/MessagePartRenderer";
+import SystemInstructionsDialog from "@/components/product/editor/agent/SystemInstructionsDialog";
+import {
+  getGlobalSystemInstructions,
+  saveGlobalSystemInstructions,
+} from "@/components/product/editor/agent/utils";
+import ProfileDialog from "@/components/shared/dialogs/ProfileDialog";
+import ProfileDropdown from "@/components/shared/dropdown/ProfileDropdown";
+import { Icons } from "@/components/shared/helper/Icons";
+import { ToolTipWrapper } from "@/components/shared/uiWrappers/ToolTipWrapper";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Spinner } from "@/components/ui/spinner";
+import { useCredits } from "@/context/CreditProvider";
+import { useSidebar } from "@/context/SidebarContext";
+import { authClient } from "@/lib/auth-client";
+import {
+  generateCloudFrontUrl,
+  generateS3KeyFromPredictionId,
+} from "@/lib/utils/s3-common";
+import { useAgentChatStore } from "@/state/stores/agentChatStore";
+import { useCanvasAgentBridge } from "@/state/stores/canvasAgentBridge";
+import { useTRPC } from "@/trpc/client";
+
+// Type for locally-created chats (not yet on server)
+type LocalChat = {
+  id: string;
+  title: string;
+  createdAt: Date;
+  lastUsedAt: Date;
+};
+
+export const ChatClient = ({
+  projectId,
+  isOpen,
+  setIsOpen,
+}: {
+  projectId: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) => {
+  const { refreshCredits } = useCredits();
+  const { userDetails, loading } = useCredits();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const { toggleSidebar } = useSidebar();
+  const userId = user?.id;
+  const executeCommand = useCanvasAgentBridge((store) => store.executeCommand);
+  const clearCanvasSelection = useCanvasAgentBridge(
+    (store) => store.clearSelection,
+  );
+  const registerSendMessage = useAgentChatStore(
+    (store) => store.registerSendMessage,
+  );
+  const [activeChatId, setActiveChatId] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem(`active-chat-${projectId}`);
+  });
+
+  // Local new chats (created with UUID, not yet on server)
+  // These get merged with server chats for display
+  const [localNewChats, setLocalNewChats] = useState<LocalChat[]>([]);
+
+  // Ref to hold the current chatId - prevents stale closures in useChat transport
+  const activeChatIdRef = useRef<string | null>(null);
+  activeChatIdRef.current = activeChatId;
+
+  const [currenttab, setCurrenttab] = useState<"chat" | "assets" | "history">(
+    "chat",
+  );
+
+  const [isSystemDialogOpen, setIsSystemDialogOpen] = useState(false);
+  const [globalSystemInstructions, setGlobalSystemInstructions] = useState("");
+
+  // Model selection state for Auto/Manual mode
+  const [isAutoMode, setIsAutoMode] = useState(true);
+  const [selectedImageModel, setSelectedImageModel] =
+    useState<ImageModelId>("seedream-4.5");
+  const [selectedVideoModel, setSelectedVideoModel] =
+    useState<VideoModelId>("veo3.1");
+
+  // Refs to hold model selection - prevents stale closures in useChat transport
+  const modelSelectionRef = useRef({
+    isAutoMode: true,
+    imageModel: "seedream-4.5" as ImageModelId,
+    videoModel: "veo3.1" as VideoModelId,
+  });
+  // Keep refs in sync with state
+  modelSelectionRef.current = {
+    isAutoMode,
+    imageModel: selectedImageModel,
+    videoModel: selectedVideoModel,
+  };
+
+  // tRPC for loading chats and messages
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+
+  // Fetch all chats for the project (sorted by lastUsedAt desc from backend)
+  const { data: chatsData, isPending: isLoadingChats } = useQuery({
+    ...trpc.chat.getChats.queryOptions({ projectId }),
+    enabled: Boolean(projectId),
+  });
+
+  // Merge server chats with local new chats (local chats appear first as they're newest)
+  const allChats = useMemo(() => {
+    const serverChats = chatsData?.chats ?? [];
+    const serverChatIds = new Set(serverChats.map((c) => c.id));
+
+    // Filter out local chats that now exist on server (they've been created)
+    const pendingLocalChats = localNewChats.filter(
+      (c) => !serverChatIds.has(c.id),
+    );
+
+    // Local new chats first (newest), then server chats
+    return [...pendingLocalChats, ...serverChats];
+  }, [chatsData?.chats, localNewChats]);
+
+  // Show empty state when no chats exist after loading completes
+  const showEmptyState = !isLoadingChats && allChats.length === 0;
+
+  // Clean up local chats that now exist on server
+  useEffect(() => {
+    if (!chatsData?.chats) return;
+    const serverChatIds = new Set(chatsData.chats.map((c) => c.id));
+    setLocalNewChats((prev) => prev.filter((c) => !serverChatIds.has(c.id)));
+  }, [chatsData?.chats]);
+
+  // Auto-select first chat when data loads and no chat is selected (and none in storage)
+  useEffect(() => {
+    if (!activeChatId && allChats[0]) {
+      const firstChatId = allChats[0].id;
+      setActiveChatId(firstChatId);
+      localStorage.setItem(`active-chat-${projectId}`, firstChatId);
+    }
+  }, [activeChatId, allChats, projectId]);
+
+  // If active chat was deleted, fall back to first available
+  useEffect(() => {
+    if (!activeChatId || allChats.length === 0) return;
+    const stillExists = allChats.some((c) => c.id === activeChatId);
+    if (!stillExists) {
+      setActiveChatId(allChats[0]?.id ?? null);
+    }
+  }, [activeChatId, allChats]);
+
+  // Check if this is an optimistically added chat (not yet on server)
+  const isOptimisticChat = useMemo(() => {
+    if (!activeChatId) return true;
+    const serverChats = chatsData?.chats ?? [];
+    return !serverChats.some((c) => c.id === activeChatId);
+  }, [activeChatId, chatsData?.chats]);
+
+  // Fetch messages for the selected chat (skip for optimistic chats)
+  const {
+    data: chatData,
+    isPending: isLoadingMessages,
+    isSuccess: hasLoadedMessages,
+  } = useQuery({
+    ...trpc.chat.getMessages.queryOptions(
+      activeChatId && !isOptimisticChat ? { chatId: activeChatId } : skipToken,
+    ),
+    enabled: Boolean(activeChatId) && !isOptimisticChat,
+  });
+
+  // Track processed tool calls to avoid duplicate canvas additions
+  const processedToolCallsRef = useRef<Set<string>>(new Set());
+
+  // Track which chats have been synced to server (to avoid redundant invalidations)
+  const syncedChatsRef = useRef<Set<string>>(new Set());
+
+  // Get current selection from bridge
+  // Note: We use a selector to avoid re-rendering ChatClient on every selection change
+  // The ref will hold the latest value for the transport callback
+  const selectionRef = useRef<any[]>([]);
+  useCanvasAgentBridge(
+    useCallback((state) => {
+      selectionRef.current = state.selection;
+      return state.selection;
+    }, []),
+  );
+
+  const { messages, sendMessage, status, setMessages, stop, usage } = useChat({
+    id: projectId, // Use chatId for requests (existing or pre-generated)
+    transport: useMemo(
+      () =>
+        new DefaultChatTransport({
+          api: "/api/agents/v1",
+          body: () => {
+            const sel = modelSelectionRef.current;
+            const modelSelection = {
+              isAutoMode: sel.isAutoMode,
+              imageModel: sel.isAutoMode ? null : sel.imageModel,
+              videoModel: sel.isAutoMode ? null : sel.videoModel,
+            };
+
+            return {
+              globalSystemInstructions,
+              chatId: activeChatIdRef.current,
+              modelSelection,
+              selection: selectionRef.current, // Inject selection context
+            };
+          },
+          prepareSendMessagesRequest({
+            messages: requestMessages,
+            id: requestId,
+          }) {
+            const sel = modelSelectionRef.current;
+            const modelSelection = {
+              isAutoMode: sel.isAutoMode,
+              imageModel: sel.isAutoMode ? null : sel.imageModel,
+              videoModel: sel.isAutoMode ? null : sel.videoModel,
+            };
+
+            return {
+              body: {
+                message: requestMessages.at(-1),
+                id: requestId, // projectId
+                chatId: activeChatIdRef.current,
+                globalSystemInstructions,
+                modelSelection,
+                selection: selectionRef.current, // Inject selection context
+              },
+            };
+          },
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+        }),
+      [],
+    ), // Stable transport, refs provide fresh values
+    sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+    onToolCall({ toolCall }) {
+      if (toolCall.dynamic) {
+        return;
+      }
+    },
+    onFinish({ message }) {
+      refreshCredits();
+
+      // Invalidate chat list if this chat hasn't been synced yet
+      // This ensures isOptimisticChat becomes false after first message
+      const currentChatId = activeChatIdRef.current;
+      if (currentChatId && !syncedChatsRef.current.has(currentChatId)) {
+        syncedChatsRef.current.add(currentChatId);
+        queryClient.invalidateQueries({
+          queryKey: trpc.chat.getChats.queryKey({ projectId }),
+        });
+      }
+
+      // Add media from completed tool calls to canvas
+      if (message.role === "assistant" && message.parts) {
+        for (const part of message.parts) {
+          // Type guard: check if part is a tool part with output
+          const isToolPart =
+            typeof part === "object" &&
+            part !== null &&
+            "type" in part &&
+            typeof part.type === "string" &&
+            part.type.startsWith("tool-") &&
+            "state" in part &&
+            part.state === "output-available" &&
+            "output" in part &&
+            part.output !== undefined &&
+            "toolCallId" in part &&
+            typeof part.toolCallId === "string";
+
+          if (!isToolPart) continue;
+
+          const toolCallId = part.toolCallId;
+          const output = part.output;
+
+          // Skip if we've already processed this tool call
+          if (processedToolCallsRef.current.has(toolCallId)) {
+            continue;
+          }
+
+          // Mark as processed before attempting to add (prevents duplicates on retry)
+          processedToolCallsRef.current.add(toolCallId);
+
+          // Extract video polling data (videos that need polling)
+          const videoPollingData = extractVideoPollingData(output);
+          if (videoPollingData) {
+            // Generate S3 key/URL upfront using predictionId
+            const s3Key = generateS3KeyFromPredictionId(
+              videoPollingData.predictionId,
+              "video-generation",
+              0, // index for single video
+              ".mp4", // Video extension
+            );
+            const s3Url = generateCloudFrontUrl(s3Key);
+
+            // Extend polling data with S3 URL
+            const extendedVideoPollingData = {
+              ...videoPollingData,
+              s3Url,
+            };
+
+            const baseMetadata: Record<string, unknown> = {
+              source: "agent-chat",
+              mediaType: "video",
+              toolCallId,
+              chatId: activeChatIdRef.current,
+              projectId,
+              createdAt: new Date().toISOString(),
+              model: modelSelectionRef.current.isAutoMode
+                ? "auto"
+                : modelSelectionRef.current.videoModel,
+            };
+
+            executeCommand({
+              type: "add",
+              mediaType: "video",
+              objectId: `${toolCallId}-0`, // Generate stable ID (videos with polling are typically single)
+              pollingData: extendedVideoPollingData,
+              metadata: baseMetadata,
+            }).catch((error: unknown) => {
+              console.error("Failed to add video with polling:", error);
+              // Remove from processed set on error so it can be retried
+              processedToolCallsRef.current.delete(toolCallId);
+            });
+            continue;
+          }
+
+          // Extract image polling data (images that need polling)
+          const imagePollingData = extractImagePollingData(output);
+          if (imagePollingData) {
+            // Generate S3 key/URL upfront using predictionId
+            const s3Key = generateS3KeyFromPredictionId(
+              imagePollingData.predictionId,
+              "image-generation", // Default toolName, can be enhanced later
+              0, // index for single image
+              ".webp", // Default extension
+            );
+            const s3Url = generateCloudFrontUrl(s3Key);
+
+            // Extend polling data with S3 URL (s3Key not needed for persistence)
+            const extendedPollingData = {
+              ...imagePollingData,
+              s3Url,
+            };
+
+            const baseMetadata: Record<string, unknown> = {
+              source: "agent-chat",
+              mediaType: "image",
+              toolCallId,
+              chatId: activeChatIdRef.current,
+              projectId,
+              createdAt: new Date().toISOString(),
+              model: modelSelectionRef.current.isAutoMode
+                ? "auto"
+                : modelSelectionRef.current.imageModel,
+            };
+
+            executeCommand({
+              type: "add",
+              mediaType: "image",
+              objectId: `${toolCallId}-0`, // Generate stable ID (images with polling are typically single)
+              pollingData: extendedPollingData,
+              metadata: baseMetadata,
+            }).catch((error: unknown) => {
+              console.error("Failed to add image with polling:", error);
+              // Remove from processed set on error so it can be retried
+              processedToolCallsRef.current.delete(toolCallId);
+            });
+            continue;
+          }
+
+          // Extract regular media URLs (images and direct video URLs)
+          const media = extractMediaUrls(output);
+          if (media && media.type !== "audio") {
+            // Audio doesn't go to canvas, skip it
+            const mediaType = media.type as "image" | "video";
+
+            // Generate stable IDs: toolCallId + index (simple and reliable)
+            // CustomToolOutput generates the same IDs deterministically, no store needed
+            const stableIds = media.urls.map(
+              (_, index) => `${toolCallId}-${index}`,
+            );
+
+            // Add to canvas with stable IDs
+            const addPromises = media.urls.map((url: string, index: number) =>
+              executeCommand({
+                type: "add",
+                url,
+                mediaType,
+                objectId: stableIds[index], // Pass stable ID to canvas
+                metadata: {
+                  source: "agent-chat",
+                  mediaType,
+                  toolCallId,
+                  mediaIndex: index,
+                  chatId: activeChatIdRef.current,
+                  projectId,
+                  createdAt: new Date().toISOString(),
+                },
+              }),
+            );
+
+            Promise.all(addPromises).catch((error: unknown) => {
+              console.error("Failed to add media to canvas:", error);
+              // Remove from processed set on error so it can be retried
+              processedToolCallsRef.current.delete(toolCallId);
+            });
+          }
+        }
+      }
+    },
+    onError(error) {
+      console.error("Chat error:", error);
+      // Error will be displayed in the messages stream from server
+    },
+  });
+
+  // Register sendMessage for external components (e.g., MediaNodeToolbar)
+  useEffect(() => {
+    type MessagePart =
+      | { type: "text"; text: string }
+      | { type: "file"; url: string; mediaType: string; filename?: string };
+
+    const wrappedSendMessage = async (parts: MessagePart[]) => {
+      await sendMessage({ role: "user", parts });
+    };
+    registerSendMessage(wrappedSendMessage);
+    return () => registerSendMessage(null);
+  }, [sendMessage, registerSendMessage]);
+
+  // Load from localStorage when user changes
+  useEffect(() => {
+    setGlobalSystemInstructions(getGlobalSystemInstructions(userId));
+  }, [userId]);
+
+  // Track if we've already set messages to avoid duplicate initialization
+  const hasSetMessagesRef = useRef(false);
+  const lastChatIdRef = useRef<string | null>(null);
+
+  // Track if chat was optimistic to detect transition to server chat
+  const wasOptimisticRef = useRef(isOptimisticChat);
+
+  // Set messages when tRPC query completes (or reset when chat changes)
+  useEffect(() => {
+    // Reset if chat changed
+    if (activeChatId !== lastChatIdRef.current) {
+      hasSetMessagesRef.current = false;
+      lastChatIdRef.current = activeChatId;
+      // Clear canvas selection when switching chats
+      clearCanvasSelection();
+    }
+
+    // Reset if chat transitioned from optimistic to server (messages now available from DB)
+    if (wasOptimisticRef.current && !isOptimisticChat) {
+      hasSetMessagesRef.current = false;
+    }
+    wasOptimisticRef.current = isOptimisticChat;
+
+    if (hasLoadedMessages && chatData?.messages && !hasSetMessagesRef.current) {
+      if (chatData.messages.length > 0) {
+        // Pre-populate processedToolCallsRef with tool calls from loaded messages
+        // to prevent re-processing when onFinish fires with accumulated parts
+        for (const msg of chatData.messages) {
+          if (msg.role === "assistant" && msg.parts) {
+            for (const part of msg.parts) {
+              if (
+                typeof part === "object" &&
+                part !== null &&
+                "toolCallId" in part &&
+                typeof part.toolCallId === "string"
+              ) {
+                processedToolCallsRef.current.add(part.toolCallId);
+              }
+            }
+          }
+        }
+        setMessages(chatData.messages);
+      }
+      hasSetMessagesRef.current = true;
+    }
+  }, [
+    hasLoadedMessages,
+    chatData?.messages,
+    setMessages,
+    activeChatId,
+    isOptimisticChat,
+    clearCanvasSelection,
+  ]);
+
+  // Dedupe messages by ID - ensures latest version wins during streaming updates with tool calls
+  // TODO: Uncomment this if we want to deduplicate messages
+  // const processedMessages = useMemo(() => {
+  //   const messageMap = new Map<string, UIMessage>();
+  //   for (const msg of messages) {
+  //     messageMap.set(msg.id, msg);
+  //   }
+  //   return Array.from(messageMap.values());
+  // }, [messages]);
+
+  const handleNewChat = useCallback(() => {
+    // Generate a new chat ID - it will be created on server when first message is sent
+    const newChatId = crypto.randomUUID();
+    const now = new Date();
+
+    // Add to local chats array (will be synced with server after first message)
+    const newLocalChat: LocalChat = {
+      id: newChatId,
+      title: "New Chat",
+      createdAt: now,
+      lastUsedAt: now,
+    };
+    setLocalNewChats((prev) => [newLocalChat, ...prev]);
+
+    // Reset all refs for the new chat
+    hasSetMessagesRef.current = false;
+    lastChatIdRef.current = newChatId;
+    processedToolCallsRef.current.clear();
+    syncedChatsRef.current.delete(newChatId); // Not needed but explicit cleanup
+
+    // Clear canvas selection when creating new chat
+    clearCanvasSelection();
+
+    // Update state
+    setActiveChatId(newChatId);
+    setMessages([]);
+    setCurrenttab("chat");
+  }, [setMessages, clearCanvasSelection]);
+
+  const handleSelectChat = (chatId: string) => {
+    // Skip if re-selecting the same chat (prevents clearing messages)
+    if (chatId === activeChatId) {
+      return;
+    }
+
+    // Reset refs for the selected chat
+    hasSetMessagesRef.current = false;
+    lastChatIdRef.current = chatId;
+    processedToolCallsRef.current.clear();
+
+    // Clear canvas selection when switching chats
+    clearCanvasSelection();
+
+    setActiveChatId(chatId);
+    localStorage.setItem(`active-chat-${projectId}`, chatId);
+    setMessages([]);
+  };
+
+  // Mutation for deleting chats
+  const deleteChatMutation = useMutation(
+    trpc.chat.deleteChat.mutationOptions({
+      onError: (error) => {
+        console.error("Failed to delete chat:", error);
+        // Refetch to restore state on error
+        queryClient.invalidateQueries({
+          queryKey: trpc.chat.getChats.queryKey({ projectId }),
+        });
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.chat.getChats.queryKey({ projectId }),
+        });
+      },
+    }),
+  );
+
+  // Mutation for renaming chats
+  const renameChatMutation = useMutation(
+    trpc.chat.updateTitle.mutationOptions({
+      onError: (error) => {
+        console.error("Failed to rename chat:", error);
+        // Refetch to restore state on error
+        queryClient.invalidateQueries({
+          queryKey: trpc.chat.getChats.queryKey({ projectId }),
+        });
+      },
+    }),
+  );
+
+  const handleDeleteChat = async (chatId: string) => {
+    // Check if this is the last chat (only 1 chat remaining and we're deleting it)
+    const isLastChat = allChats.length === 1 && allChats[0].id === chatId;
+
+    // Remove from local chats if it's an optimistic chat
+    setLocalNewChats((prev) => prev.filter((c) => c.id !== chatId));
+
+    // If deleting the active chat, clear selection
+    if (activeChatId === chatId) {
+      setActiveChatId(null);
+      setMessages([]);
+
+      // Reset refs
+      hasSetMessagesRef.current = false;
+      lastChatIdRef.current = null;
+      processedToolCallsRef.current.clear();
+    }
+
+    // Only call server delete if it's a server-synced chat (not a local-only optimistic chat)
+    const isServerChat = chatsData?.chats?.some((c) => c.id === chatId);
+    if (isServerChat) {
+      await deleteChatMutation.mutateAsync({ chatId });
+    }
+
+    // If this was the last chat, automatically create a new one
+    if (isLastChat) {
+      handleNewChat();
+    }
+  };
+
+  const handleRenameChat = async (chatId: string, title: string) => {
+    await renameChatMutation.mutateAsync({ chatId, title });
+    // Refetch to show updated title
+    queryClient.invalidateQueries({
+      queryKey: trpc.chat.getChats.queryKey({ projectId }),
+    });
+  };
+
+  // Seed chat with an initial prompt from the editor (if provided via localStorage).
+  // This is a one-time seed: the key is cleared immediately after use.
+  useEffect(() => {
+    // Don't send if messages already exist
+    if (messages.length > 0) return;
+
+    // Don't send if chats are still loading (wait for chat to be available)
+    if (isLoadingChats) return;
+
+    // Don't send if chatId is not ready yet
+    // If no chat exists after loading, create one first
+    if (!activeChatId) {
+      // If chats finished loading but no chat exists, create one
+      // The effect will run again when activeChatId is set
+      if (allChats.length === 0) {
+        handleNewChat();
+      }
+      return;
+    }
+
+    if (typeof window === "undefined") return;
+
+    try {
+      const stored = window.localStorage.getItem("image-editor-initial-prompt");
+      const trimmed = stored?.trim();
+      if (!trimmed) return;
+
+      // fire-and-forget; we don't need to await here
+      sendMessage({
+        role: "user",
+        parts: [
+          {
+            type: "text",
+            text: trimmed,
+          },
+        ],
+      });
+
+      window.localStorage.removeItem("image-editor-initial-prompt");
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, [
+    messages.length,
+    activeChatId,
+    isLoadingChats,
+    allChats.length,
+    sendMessage,
+    handleNewChat,
+  ]);
+
+  return (
+    <div
+      aria-label="Chat"
+      className="flex min-h-0 w-full flex-1 flex-col overflow-hidden"
+      role="main"
+    >
+      {currenttab === "chat" && (
+        <>
+          {/* Top actions/header */}
+          <div className="sticky top-0 z-40 w-full flex-between border-border-500 border-b pb-3">
+            <div className="flex-center gap-2">
+              <Button
+                className="size-8 flex-center cursor-pointer rounded-full text-white hover:bg-background-400 disabled:cursor-not-allowed disabled:opacity-50 md:hidden md:size-7"
+                onClick={toggleSidebar}
+                size="none"
+                variant="none"
+              >
+                <Icons.menu className="size-4" />
+              </Button>
+              <ToolTipWrapper label="New chat">
+                <Button
+                  aria-label="New chat"
+                  className="size-8 flex-center cursor-pointer rounded-full text-white hover:bg-background-400 disabled:cursor-not-allowed disabled:opacity-50 md:size-7"
+                  disabled={messages.length === 0}
+                  onClick={handleNewChat}
+                  size="none"
+                  variant="none"
+                >
+                  <Icons.newChat className="size-4" />
+                </Button>
+              </ToolTipWrapper>
+
+              <ToolTipWrapper label="History">
+                <Button
+                  aria-label="Chat history"
+                  className="size-8 flex-center cursor-pointer rounded-full text-white hover:bg-background-400 disabled:cursor-not-allowed disabled:opacity-50 md:size-7"
+                  onClick={() => setCurrenttab("history")}
+                  size="none"
+                  variant="none"
+                >
+                  <Icons.dashboardHistory className="size-4" />
+                </Button>
+              </ToolTipWrapper>
+
+              <ToolTipWrapper label="Assets">
+                <Button
+                  aria-label="Assets"
+                  className="size-8 flex-center cursor-pointer rounded-full text-white hover:bg-background-400 disabled:cursor-not-allowed disabled:opacity-50 md:size-7"
+                  onClick={() => setCurrenttab("assets")}
+                  size="none"
+                  variant="none"
+                >
+                  <Icons.assetsHistory className="size-4" />
+                </Button>
+              </ToolTipWrapper>
+              <ChatActionsMenu
+                onEditSystemInstructions={() => setIsSystemDialogOpen(true)}
+              />
+              <div className="max-md:hidden">
+                {isOpen && (
+                  <ToolTipWrapper label="Close chat">
+                    <Button
+                      className="size-8 flex-center cursor-pointer rounded-full text-white hover:bg-background-400 disabled:cursor-not-allowed disabled:opacity-50 md:size-7"
+                      onClick={() => setIsOpen(false)}
+                      size="none"
+                      variant="none"
+                    >
+                      <Icons.collapse className="size-4" />
+                    </Button>
+                  </ToolTipWrapper>
+                )}
+              </div>
+            </div>
+            <div className="flex-center gap-2 md:gap-2.5">
+              {/* Token Usage Context */}
+              {usage && (
+                <Context
+                  maxTokens={200_000}
+                  modelId="anthropic/claude-haiku-4-5"
+                  usage={usage}
+                  usedTokens={usage.totalTokens ?? 0}
+                >
+                  <ContextTrigger />
+                  <ContextContent>
+                    <ContextContentHeader />
+                    <ContextContentBody>
+                      <ContextInputUsage />
+                      <ContextOutputUsage />
+                    </ContextContentBody>
+                  </ContextContent>
+                </Context>
+              )}
+
+              <Dialog>
+                <DialogTrigger className="w-full">
+                  <div className="flex-center gap-0.5">
+                    <Icons.credits className="size-4 text-white" />
+                    {!userDetails || loading ? (
+                      <div className="flex-center text-[#808080]">
+                        <div className="h-[21px] w-10 animate-shimmer rounded bg-linear-to-r from-[#292929] via-[#363636] to-[#292929]" />
+                      </div>
+                    ) : (
+                      <div className="text-sm text-white">
+                        {userDetails?.creditBalance.toFixed(0)}
+                      </div>
+                    )}{" "}
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="custom-scrollbar max-h-[80vh] w-full max-w-[80vw] overflow-y-scroll rounded-xl border-none bg-neutral-800 p-0 px-0 font-inter focus:outline-none">
+                  <ProfileDialog />
+                </DialogContent>
+              </Dialog>
+
+              <ProfileDropdown>
+                {user?.image ? (
+                  <Image
+                    alt="Profile"
+                    className="size-9 rounded-full bg-white/10 object-cover md:size-7"
+                    height={40}
+                    loading="eager"
+                    src={user?.image}
+                    width={40}
+                  />
+                ) : (
+                  <Image
+                    alt="Profile"
+                    className="size-9 rounded-full bg-white/10 object-cover md:size-7"
+                    height={40}
+                    loading="eager"
+                    src="https://d2weamipq0hk4d.cloudfront.net/assets/asset_1753857552700.webp"
+                    unoptimized={true}
+                    width={40}
+                  />
+                )}
+              </ProfileDropdown>
+            </div>
+          </div>
+
+          {/* Empty state when no chats exist */}
+          {showEmptyState ? (
+            <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-4 text-center">
+              <div className="flex flex-col items-center gap-3">
+                <div className="flex size-16 items-center justify-center rounded-full bg-background-400">
+                  <Icons.newChat className="size-8 text-gray-400" />
+                </div>
+                <h2 className="font-medium text-lg text-white">
+                  No conversations yet
+                </h2>
+                <p className="max-w-sm text-gray-400 text-sm">
+                  Start a new chat to begin creating images, videos, and more
+                  with AI
+                </p>
+              </div>
+              <Button
+                className="mt-2 gap-2"
+                onClick={handleNewChat}
+                variant="default"
+              >
+                <Icons.newChat className="size-4" />
+                Start New Chat
+              </Button>
+            </div>
+          ) : (
+            <>
+              {/* Scrollable conversation area */}
+              <div className="flex min-h-0 flex-1 gap-3 overflow-hidden">
+                <Conversation className="mx-auto w-full flex-1 overflow-y-auto">
+                  <ConversationContent className="space-y-6 py-3">
+                    {isLoadingChats ||
+                    (activeChatId &&
+                      !isOptimisticChat &&
+                      isLoadingMessages &&
+                      messages.length === 0) ? (
+                      <div className="flex-center py-8">
+                        <Spinner size={24} />
+                        <span className="ml-3 text-gray-400 text-sm">
+                          Loading messages...
+                        </span>
+                      </div>
+                    ) : (
+                      messages
+                        ?.filter(
+                          (message) =>
+                            message.parts && message.parts.length > 0,
+                        )
+                        .map((message) => (
+                          <div className="space-y-3" key={message.id}>
+                            <Message from={message.role}>
+                              <MessageContent>
+                                <MessagePartRenderer
+                                  debugToolUi={false}
+                                  onAddImageToCanvas={(url) => {
+                                    executeCommand({
+                                      type: "add",
+                                      url,
+                                      mediaType: "image",
+                                    });
+                                  }}
+                                  parts={message.parts}
+                                />
+                              </MessageContent>
+                            </Message>
+                          </div>
+                        ))
+                    )}
+
+                    {/* Inline Loader - appears as assistant message when status is 'submitted' */}
+                    {status === "submitted" && (
+                      <div className="space-y-3">
+                        <Message from="assistant">
+                          <MessageContent className="rounded-[8px] bg-neutral-700sss p-2 shadow-sm backdrop-blur-sm">
+                            <div className="flex items-center space-x-2">
+                              <Spinner size={20} />
+                              <span className="text-gray-300 text-sm">
+                                Thinking...
+                              </span>
+                            </div>
+                          </MessageContent>
+                        </Message>
+                      </div>
+                    )}
+                  </ConversationContent>
+
+                  <ConversationScrollButton />
+                </Conversation>
+              </div>
+
+              {/* Sticky input */}
+              <div className="sticky bottom-0 z-40 w-full">
+                <InputBar
+                  className="w-full"
+                  disabled={isLoadingChats || !activeChatId}
+                  isAutoMode={isAutoMode}
+                  onAutoModeChange={setIsAutoMode}
+                  onImageModelChange={setSelectedImageModel}
+                  onVideoModelChange={setSelectedVideoModel}
+                  selectedImageModel={selectedImageModel}
+                  selectedVideoModel={selectedVideoModel}
+                  sendMessage={(message: Parameters<typeof sendMessage>[0]) =>
+                    sendMessage(message, {
+                      body: { globalSystemInstructions },
+                    })
+                  }
+                  status={status}
+                  stop={stop}
+                />
+              </div>
+            </>
+          )}
+
+          <SystemInstructionsDialog
+            globalSystemInstructions={globalSystemInstructions}
+            isSystemDialogOpen={isSystemDialogOpen}
+            onSubmit={(values) => {
+              saveGlobalSystemInstructions(
+                values.globalSystemInstructions,
+                userId,
+              );
+              setGlobalSystemInstructions(values.globalSystemInstructions);
+            }}
+            setIsSystemDialogOpen={setIsSystemDialogOpen}
+          />
+        </>
+      )}
+      {currenttab === "assets" && (
+        <AssetsSidebar
+          isOpen={currenttab === "assets"}
+          messages={messages}
+          onClose={() => setCurrenttab("chat")}
+        />
+      )}
+      {currenttab === "history" && (
+        <ChatHistorySidebar
+          activeChatId={activeChatId}
+          chats={allChats}
+          isOpen={currenttab === "history"}
+          onClose={() => setCurrenttab("chat")}
+          onDeleteChat={handleDeleteChat}
+          onRenameChat={handleRenameChat}
+          onSelectChat={(chatId) => {
+            handleSelectChat(chatId);
+            setCurrenttab("chat");
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+export default ChatClient;

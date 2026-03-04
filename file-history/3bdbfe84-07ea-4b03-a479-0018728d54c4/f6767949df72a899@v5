@@ -1,0 +1,95 @@
+"use client";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import {
+  createAgent,
+  deleteAgent,
+  listAgents,
+} from "@/server/actions/subagent.actions";
+import type { AgentInfo } from "../_components/types";
+
+// ── Query keys ───────────────────────────────────────────────────────────────
+
+function agentsKey(sandboxId: string) {
+  return ["agents", sandboxId] as const;
+}
+
+// ── Registered agents query ──────────────────────────────────────────────────
+
+export function useAgentsList(sandboxId: string | null) {
+  return useQuery({
+    queryKey: agentsKey(sandboxId ?? ""),
+    queryFn: async () => {
+      const result = await listAgents({ sandboxId: sandboxId! });
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    enabled: !!sandboxId,
+    select: (d) => {
+      const raw = d as { agents: AgentInfo[] };
+      return { agents: raw.agents ?? [] };
+    },
+  });
+}
+
+// ── Mutations ────────────────────────────────────────────────────────────────
+
+export function useAgentMutations(sandboxId: string | null) {
+  const qc = useQueryClient();
+
+  function invalidate() {
+    if (!sandboxId) return;
+    void qc.invalidateQueries({ queryKey: agentsKey(sandboxId) });
+  }
+
+  const create = useMutation({
+    mutationFn: async (data: {
+      sandboxId: string;
+      agentId: string;
+      name: string;
+      emoji: string;
+      systemPrompt: string;
+    }) => {
+      const result = await createAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Agent deployed");
+    },
+    onError: (e) =>
+      toast.error(e instanceof Error ? e.message : "Failed to deploy agent"),
+  });
+
+  const remove = useMutation({
+    mutationFn: async (data: { sandboxId: string; agentId: string }) => {
+      const result = await deleteAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Agent removed");
+    },
+    onError: (e) =>
+      toast.error(e instanceof Error ? e.message : "Failed to remove agent"),
+  });
+
+  const busy = create.isPending || remove.isPending;
+
+  return { create, remove, busy };
+}

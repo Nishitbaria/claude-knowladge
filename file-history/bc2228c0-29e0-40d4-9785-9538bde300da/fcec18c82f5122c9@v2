@@ -1,0 +1,274 @@
+# Ultracite Code Standards
+
+This project uses **Ultracite**, a zero-config Biome preset that enforces strict code quality standards through automated formatting and linting.
+
+## Quick Reference
+
+- **Format code**: `npx ultracite fix`
+- **Check for issues**: `npx ultracite check`
+- **Diagnose setup**: `npx ultracite doctor`
+
+Biome (the underlying engine) provides extremely fast Rust-based linting and formatting. Most issues are automatically fixable.
+
+---
+
+## Core Principles
+
+Write code that is **accessible, performant, type-safe, and maintainable**. Focus on clarity and explicit intent over brevity.
+
+### Type Safety & Explicitness
+
+- Use explicit types for function parameters and return values when they enhance clarity
+- Prefer `unknown` over `any` when the type is genuinely unknown
+- Use const assertions (`as const`) for immutable values and literal types
+- Leverage TypeScript's type narrowing instead of type assertions
+- Use meaningful variable names instead of magic numbers - extract constants with descriptive names
+
+### Modern JavaScript/TypeScript
+
+- Use arrow functions for callbacks and short functions
+- Prefer `for...of` loops over `.forEach()` and indexed `for` loops
+- Use optional chaining (`?.`) and nullish coalescing (`??`) for safer property access
+- Prefer template literals over string concatenation
+- Use destructuring for object and array assignments
+- Use `const` by default, `let` only when reassignment is needed, never `var`
+
+### Async & Promises
+
+- Always `await` promises in async functions - don't forget to use the return value
+- Use `async/await` syntax instead of promise chains for better readability
+- Handle errors appropriately in async code with try-catch blocks
+- Don't use async functions as Promise executors
+
+### React & JSX
+
+- Use function components over class components
+- Call hooks at the top level only, never conditionally
+- Specify all dependencies in hook dependency arrays correctly
+- Use the `key` prop for elements in iterables (prefer unique IDs over array indices)
+- Nest children between opening and closing tags instead of passing as props
+- Don't define components inside other components
+- Use semantic HTML and ARIA attributes for accessibility:
+  - Provide meaningful alt text for images
+  - Use proper heading hierarchy
+  - Add labels for form inputs
+  - Include keyboard event handlers alongside mouse events
+  - Use semantic elements (`<button>`, `<nav>`, etc.) instead of divs with roles
+
+### Error Handling & Debugging
+
+- Remove `console.log`, `debugger`, and `alert` statements from production code
+- Throw `Error` objects with descriptive messages, not strings or other values
+- Use `try-catch` blocks meaningfully - don't catch errors just to rethrow them
+- Prefer early returns over nested conditionals for error cases
+
+### Code Organization
+
+- Keep functions focused and under reasonable cognitive complexity limits
+- Extract complex conditions into well-named boolean variables
+- Use early returns to reduce nesting
+- Prefer simple conditionals over nested ternary operators
+- Group related code together and separate concerns
+
+### Security
+
+- Add `rel="noopener"` when using `target="_blank"` on links
+- Avoid `dangerouslySetInnerHTML` unless absolutely necessary
+- Don't use `eval()` or assign directly to `document.cookie`
+- Validate and sanitize user input
+
+### Performance
+
+- Avoid spread syntax in accumulators within loops
+- Use top-level regex literals instead of creating them in loops
+- Prefer specific imports over namespace imports
+- Avoid barrel files (index files that re-export everything)
+- Use proper image components (e.g., Next.js `<Image>`) over `<img>` tags
+
+### Framework-Specific Guidance
+
+**Next.js:**
+- Use Next.js `<Image>` component for images
+- Use `next/head` or App Router metadata API for head elements
+- Use Server Components for async data fetching instead of async Client Components
+
+**React 19+:**
+- Use ref as a prop instead of `React.forwardRef`
+
+**Solid/Svelte/Vue/Qwik:**
+- Use `class` and `for` attributes (not `className` or `htmlFor`)
+
+---
+
+## Testing
+
+- Write assertions inside `it()` or `test()` blocks
+- Avoid done callbacks in async tests - use async/await instead
+- Don't use `.only` or `.skip` in committed code
+- Keep test suites reasonably flat - avoid excessive `describe` nesting
+
+## When Biome Can't Help
+
+Biome's linter will catch most issues automatically. Focus your attention on:
+
+1. **Business logic correctness** - Biome can't validate your algorithms
+2. **Meaningful naming** - Use descriptive names for functions, variables, and types
+3. **Architecture decisions** - Component structure, data flow, and API design
+4. **Edge cases** - Handle boundary conditions and error states
+5. **User experience** - Accessibility, performance, and usability considerations
+6. **Documentation** - Add comments for complex logic, but prefer self-documenting code
+
+---
+
+Most formatting and common issues are automatically fixed by Biome. Run `npx ultracite fix` before committing to ensure compliance.
+
+---
+
+# AI Agent Architecture
+
+## Overview
+
+This project includes a **Media Agent** - an AI-powered creative assistant for image generation, video creation, audio production, and media editing. It's built using the **Vercel AI SDK v6+** with the `ToolLoopAgent` pattern.
+
+## Tech Stack
+
+- **AI SDK**: `ai` (v6.0.1), `@ai-sdk/anthropic`, `@ai-sdk/openai`, `@ai-sdk/react`
+- **Model**: Claude Haiku 4.5 (`claude-haiku-4-5`) via Anthropic
+- **Observability**: Langfuse for tracing and prompt management
+- **Database**: PostgreSQL with Drizzle ORM for chat persistence
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `src/app/api/agents/v1/route.ts` | Main agent API endpoint using `createAgentUIStreamResponse` |
+| `src/lib/agents/media-agent/index.ts` | Agent definition with `ToolLoopAgent` |
+| `src/lib/agents/media-agent/types.ts` | Agent call options schema (auto/manual mode) |
+| `src/lib/agents/model-suggester/tools.ts` | Tool definitions (image gen, video gen, etc.) |
+| `src/lib/agents/model-suggester/prompts.ts` | System prompts (auto mode, manual mode) |
+| `src/components/product/editor/agent/ChatClient.tsx` | Client-side `useChat` hook integration |
+| `src/components/product/editor/agent/MessagePartRenderer.tsx` | Renders message parts (text, tools, media) |
+| `src/components/product/editor/agent/CustomToolOutput.tsx` | Renders tool outputs with polling |
+| `src/server/database/repo/postgress-repo-functions/chatMessage.repo.ts` | Chat message persistence |
+
+## Architecture Flow
+
+```
+User Input → ChatClient (useChat) → API Route (/api/agents/v1)
+                                           ↓
+                                   createAgentUIStreamResponse
+                                           ↓
+                                   ToolLoopAgent (mediaAgent)
+                                           ↓
+                              Tool Execution (generateImage, etc.)
+                                           ↓
+                              Stream Response → Client Rendering
+                                           ↓
+                              onFinish → Save to PostgreSQL
+```
+
+## Agent Configuration
+
+The `mediaAgent` uses:
+- **Model**: `anthropic("claude-haiku-4-5")`
+- **Max Output Tokens**: 10,000
+- **Stop Condition**: `stepCountIs(20)` - max 20 tool loop iterations
+- **Dynamic Prompts**: `prepareCall` hook injects system prompt based on auto/manual mode
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `generateImageWithPolling` | Generate images with client-side polling |
+| `generateVideoWithPolling` | Generate videos with polling |
+| `GenerateEditImage` | Edit images using AI (uses nano_banana_pro) |
+| `generateAudio` | Text-to-speech generation |
+| `bgRemover` | AI background removal |
+| `imageResizer` | AI-powered image resizing |
+| `imageUpscaler` | Image upscaling (x2, x4) |
+
+## Client-Side Integration
+
+The `ChatClient.tsx` uses:
+- `useChat` hook from `@ai-sdk/react`
+- `DefaultChatTransport` for API communication
+- `sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls` for multi-step tool execution
+- `onFinish` callback for canvas integration (adding generated media)
+
+## Message Part Types
+
+Tool parts use the AI SDK v6+ typed format:
+- `type: "tool-{toolName}"` (e.g., `"tool-generateImageWithPolling"`)
+- `state`: `"input-streaming"` | `"input-available"` | `"output-available"` | `"output-error"`
+- `input`: Tool input parameters
+- `output`: Tool execution result
+- `toolCallId`: Unique identifier for the tool call
+
+---
+
+# Known Issues & Fixes
+
+## Issue: Tool Parts Lost After Page Refresh (Fixed Feb 2026)
+
+### Problem
+When using `createAgentUIStreamResponse` with `ToolLoopAgent`, multi-step tool executions caused tool parts to be overwritten in the database.
+
+**Symptom**: Images and credit info showed during streaming but disappeared after page refresh.
+
+### Root Cause
+The agent executes in multiple steps:
+1. **Step 1**: Tool execution (e.g., `tool-generateImageWithPolling`) - saved to DB
+2. **Step 2**: Text response (continuation) - **OVERWROTE** step 1 data
+
+Both steps used the same `continuationMessageId`, and the upsert in `saveChatMessage` was **replacing** parts instead of **merging** them.
+
+### Solution
+Modified `chatMessage.repo.ts` to **merge parts** instead of replacing:
+
+```typescript
+// Before: Parts were replaced
+const metadata = { parts: message.parts };
+
+// After: Parts are merged with existing
+const existingMessage = await db.select()...;
+if (existingMessage.length > 0) {
+  finalParts = mergeParts(existingParts, newParts);
+}
+```
+
+The `mergeParts` function:
+- Uses `toolCallId` to identify unique tool parts (no duplicates)
+- Keeps only one `step-start` part
+- Keeps the final `text` response with `state: "done"`
+- Sorts: step-start → tool parts → text parts
+
+### Files Changed
+- `src/server/database/repo/postgress-repo-functions/chatMessage.repo.ts` - Added `mergeParts` function
+
+### Testing
+After the fix, generate an image/use a tool, then refresh the page. The tool output (credits, image placeholder) should persist.
+
+---
+
+## Debugging Agent Issues
+
+### Enable Debug Logs
+
+Add these to see message flow:
+
+```typescript
+// In MessagePartRenderer.tsx
+console.log("[DEBUG] parts:", JSON.stringify(parts, null, 2));
+
+// In chatMessage.repo.ts (saveChatMessage)
+console.log("[DEBUG] saving parts:", JSON.stringify(message.parts, null, 2));
+
+// In route.ts (onFinish)
+console.log("[DEBUG] responseMessage:", JSON.stringify(responseMessage, null, 2));
+```
+
+### Common Issues
+
+1. **Tool not rendering**: Check if `part.type` matches switch cases in `MessagePartRenderer.tsx`
+2. **Parts missing after refresh**: Check if parts are being merged correctly in `saveChatMessage`
+3. **Credits not showing**: Verify `part.output.totalCredits` exists and `state === "output-available"`

@@ -1,0 +1,51 @@
+import { type InferAgentUIMessage, ToolLoopAgent, stepCountIs } from "ai";
+import { anthropic } from "@ai-sdk/anthropic";
+import { mediaSubagentTool } from "@/lib/agents/media-agent";
+import { researchSubagentTool } from "@/lib/agents/research-agents";
+import { plannerSubagentTool } from "@/lib/agents/planner-agent";
+
+/**
+ * Tools available to the super agent (orchestrator).
+ * Each tool wraps a specialized subagent.
+ * Exported for message validation in the route handler.
+ */
+export const superAgentTools = {
+	mediaGeneration: mediaSubagentTool,
+	research: researchSubagentTool, // Streams nested webSearch tool calls to UI
+	planning: plannerSubagentTool, // Creates and executes multi-step plans
+};
+
+/**
+ * Super Agent (Orchestrator) — routes user requests to specialized subagents.
+ *
+ * - mediaGeneration → mediaAgent (images, videos, audio, editing)
+ * - research → researchAgent (web search, topic investigation)
+ *
+ * For simple questions, responds directly without delegation.
+ * Uses Sonnet for better routing/reasoning decisions.
+ */
+export const superAgent = new ToolLoopAgent({
+	id: "super-agent",
+	model: anthropic("claude-sonnet-4-5"),
+	tools: superAgentTools,
+	maxOutputTokens: 10_000,
+	stopWhen: stepCountIs(15),
+	instructions: `You are an intelligent orchestrator. and Your Name is ShowCart AI. You delegate tasks to specialized agents:
+
+- mediaGeneration: For creating/editing images, videos, audio, background removal, upscaling, and all media tasks.
+- research: For researching topics, finding current information via web search, and investigating questions.
+- planning: For complex multi-step requests that need coordination (e.g., "research X, generate Y based on findings, then edit Z"). Creates a plan and executes tasks sequentially with progress tracking.
+
+Rules:
+- Analyze the user's request and delegate to the right specialist.
+- For simple conversational questions, respond directly without delegation.
+- For complex multi-step workflows, use the planning agent to coordinate.
+- For single-step tasks, call the appropriate agent directly.
+- Always provide a final response summarizing what was accomplished.`,
+});
+
+/**
+ * Type-safe UIMessage type for the super agent.
+ * Use this with useChat<SuperAgentUIMessage>() for type-safe tool results.
+ */
+export type SuperAgentUIMessage = InferAgentUIMessage<typeof superAgent>;

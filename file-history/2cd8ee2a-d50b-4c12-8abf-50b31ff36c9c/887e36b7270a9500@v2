@@ -1,0 +1,39 @@
+import type { Post } from "@/lib/basehub.fragment";
+import { Avatar } from "./avatar";
+import { CoverImage } from "./cover-image";
+
+interface PostHeaderProps {
+  post: Post;
+}
+
+export function PostHeader({ post }: PostHeaderProps) {
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <header className="flex flex-col gap-6">
+      <h1 className="font-display text-3xl font-bold text-black sm:text-4xl md:text-5xl leading-tight">
+        {post._title}
+      </h1>
+      <div className="flex items-center gap-4">
+        <Avatar
+          name={post.author._title}
+          avatarUrl={post.author.avatar.url}
+          avatarAlt={post.author.avatar.alt ?? post.author._title}
+        />
+        <span className="text-sm text-neutral-500">{formattedDate}</span>
+        <span className="text-sm text-neutral-400">
+          {post.body.readingTime} min read
+        </span>
+      </div>
+      <CoverImage
+        url={post.coverImage.url}
+        alt={post.coverImage.alt ?? post._title}
+        priority
+      />
+    </header>
+  );
+}

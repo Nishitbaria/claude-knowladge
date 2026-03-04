@@ -1,0 +1,98 @@
+"use client";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import {
+  killSubAgent,
+  listSubAgents,
+  spawnSubAgent,
+} from "@/server/actions/subagent.actions";
+import type { SubAgentSession } from "../_components/types";
+
+// ── Query keys ───────────────────────────────────────────────────────────────
+
+function sessionsKey(sandboxId: string) {
+  return ["subagent-sessions", sandboxId] as const;
+}
+
+// ── Sessions query ───────────────────────────────────────────────────────────
+
+export function useSubAgentSessions(sandboxId: string | null) {
+  return useQuery({
+    queryKey: sessionsKey(sandboxId ?? ""),
+    queryFn: async () => {
+      const result = await listSubAgents({ sandboxId: sandboxId! });
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    enabled: !!sandboxId,
+    select: (d) => {
+      const raw = d as {
+        sessions: SubAgentSession[];
+        total: number;
+      };
+      return { sessions: raw.sessions ?? [], total: raw.total ?? 0 };
+    },
+  });
+}
+
+// ── Mutations ────────────────────────────────────────────────────────────────
+
+export function useSubAgentMutations(sandboxId: string | null) {
+  const qc = useQueryClient();
+
+  function invalidate() {
+    if (!sandboxId) return;
+    void qc.invalidateQueries({ queryKey: sessionsKey(sandboxId) });
+  }
+
+  const spawn = useMutation({
+    mutationFn: async (data: {
+      sandboxId: string;
+      agentId: string;
+      message: string;
+    }) => {
+      const result = await spawnSubAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Sub-agent spawned");
+    },
+    onError: (e) =>
+      toast.error(e instanceof Error ? e.message : "Failed to spawn sub-agent"),
+  });
+
+  const kill = useMutation({
+    mutationFn: async (data: { sandboxId: string; sessionKey: string }) => {
+      const result = await killSubAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Sub-agent stopped");
+    },
+    onError: (e) =>
+      toast.error(
+        e instanceof Error ? e.message : "Failed to stop sub-agent",
+      ),
+  });
+
+  const busy = spawn.isPending || kill.isPending;
+
+  return { spawn, kill, busy };
+}

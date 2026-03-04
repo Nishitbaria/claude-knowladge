@@ -1,0 +1,41 @@
+import { Megaphone, PenTool, Search, TrendingUp } from "lucide-react";
+import type { SubAgentTemplate } from "../_components/types";
+
+export const SUBAGENT_TEMPLATES: SubAgentTemplate[] = [
+  {
+    id: "marketing",
+    name: "Marketing Agent",
+    description:
+      "Competitor research, campaign ideas, and market analysis",
+    icon: Megaphone,
+    agentId: "marketing",
+    defaultMessage: "You are now active. Await further instructions via Telegram.",
+  },
+  {
+    id: "seo-auditor",
+    name: "SEO Auditor",
+    description:
+      "Website SEO auditing, meta tag analysis, and recommendations",
+    icon: Search,
+    agentId: "seo-auditor",
+    defaultMessage: "You are now active. Await further instructions via Telegram.",
+  },
+  {
+    id: "content-writer",
+    name: "Content Writer",
+    description:
+      "Blog posts, social media copy, and email drafts",
+    icon: PenTool,
+    agentId: "content-writer",
+    defaultMessage: "You are now active. Await further instructions via Telegram.",
+  },
+  {
+    id: "analytics",
+    name: "Analytics Reporter",
+    description:
+      "Performance reports, data insights, and trend analysis",
+    icon: TrendingUp,
+    agentId: "analytics",
+    defaultMessage: "You are now active. Await further instructions via Telegram.",
+  },
+];

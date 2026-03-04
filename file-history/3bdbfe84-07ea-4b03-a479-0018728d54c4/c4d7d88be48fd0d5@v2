@@ -1,0 +1,120 @@
+# Sub-Agents / Named Agents Feature
+
+## What We Built
+
+A dashboard page at `/sandboxes/[id]/subagents` that lets users deploy **named OpenClaw agents** — each with its own workspace, skills, system prompt, and identity. Users chat with all agents through a single Telegram bot — the main agent delegates tasks to named agents via sub-agent spawning.
+
+## Key Concept: Named Agents (NOT ephemeral sub-agents)
+
+We initially confused two OpenClaw concepts:
+- **Sub-agents** (`sessions_spawn`) = ephemeral one-shot background tasks, no persistence
+- **Named agents** (`openclaw agents add`) = persistent isolated workspaces with own identity, skills, sessions
+
+We use **named agents** — they persist, have their own AGENTS.md, and the main Telegram agent delegates to them.
+
+## OpenClaw CLI Commands Used
+
+```bash
+# Register a named agent
+openclaw agents add <id> --workspace <path>
+
+# Set identity
+openclaw agents set-identity --agent <id> --name "Name" --emoji "📣"
+
+# List all agents
+openclaw agents list
+openclaw agents list --json
+
+# Delete an agent
+openclaw agents delete <id>
+
+# Send a message to a named agent
+openclaw agent --agent <id> --message "hi" --json
+
+# Enable main agent to delegate to named agents (jq patch openclaw.json)
+.agents.defaults.subagents.maxSpawnDepth = 2
+.agents.defaults.subagents.allowAgents = ["*"]
+```
+
+## OpenClaw Docs (Important Links)
+
+- Skills creation: https://docs.openclaw.ai/tools/creating-skills
+- Sub-agents: https://docs.openclaw.ai/tools/subagents
+- Agent Send (CLI): https://docs.openclaw.ai/cli/agent
+- Agents management (CLI): https://docs.openclaw.ai/cli/agents
+
+## Files Created/Modified
+
+### Server Actions
+- `src/server/actions/subagent.actions.ts` — `createAgent`, `listAgents`, `deleteAgent`
+
+### Page & Components
+- `src/app/(app)/sandboxes/[id]/subagents/page.tsx` — thin wrapper
+- `src/app/(app)/sandboxes/[id]/subagents/_components/subagents-view.tsx` — main view
+- `src/app/(app)/sandboxes/[id]/subagents/_components/types.ts` — `AgentTemplate`, `AgentInfo`
+- `src/app/(app)/sandboxes/[id]/subagents/_constants/templates.ts` — 4 placeholder templates
+- `src/app/(app)/sandboxes/[id]/subagents/_hooks/use-subagents.ts` — `useAgentsList`, `useAgentMutations`
+
+### Sidebar
+- `src/components/sidebar.tsx` — added "Sub-Agents" nav item with `Bot` icon below "Channels"
+
+## createAgent Flow (what happens when user clicks "Deploy Agent")
+
+```
+1. agentExists() check (plain text fallback if --json fails)
+2. mkdir $HOME/.openclaw/workspace-<agentId>/
+3. Write AGENTS.md with system prompt (heredoc)
+4. openclaw agents add <id> --workspace <path>  (tolerates "already exists")
+5. openclaw agents set-identity --agent <id> --name <name> --emoji <emoji>
+6. jq patch: enable delegation (maxSpawnDepth: 2, allowAgents: ["*"])
+7. openclaw gateway restart
+8. sleep 3 (wait for gateway)
+9. openclaw agent --agent <id> --message 'hi' --json
+```
+
+Steps 2-8 only run on first deploy (when agent doesn't exist yet).
+
+## UI Structure
+
+- **Agent Templates** (top) — 4 cards, always show "Deploy Agent" button, purely for deploying
+- **Active Agents** (bottom) — list from `openclaw agents list`, shows name + workspace + "Active" badge + "Remove" button
+- **No sessions section** — sessions have their own page already
+
+## Telegram Integration (Option 3: Main agent delegates)
+
+Users chat with ONE Telegram bot. The main agent sees deployed named agents and can delegate:
+```
+User: "Use the marketing agent to analyze competitors"
+Main agent → spawns marketing sub-agent → result announced back → shown in Telegram
+```
+
+Enabled by the jq patch setting `maxSpawnDepth: 2` and `allowAgents: ["*"]`.
+
+## Known Issues / Gotchas
+
+1. **`~` doesn't expand in single quotes** — use `$HOME` with double quotes for paths
+2. **`openclaw agents list --json` format unknown** — we have JSON + plain text fallback parsing
+3. **`agents add` may say "already exists"** — we catch this and continue gracefully
+4. **`openclaw agent --json` output may not be pure JSON** — `extractJson()` helper tries multiple parsing strategies
+5. **E2B sandbox user is NOT root** — `/root` path fails, must use `$HOME`
+6. **Gateway restart is async** — need `sleep 3` after restart before sending messages
+
+## 4 Placeholder Templates (customizable in _constants/templates.ts)
+
+| Template | agentId | Emoji | Description |
+|----------|---------|-------|-------------|
+| Marketing Agent | `marketing` | 📣 | Competitor research, campaigns, market analysis |
+| SEO Auditor | `seo-auditor` | 🔍 | Website SEO auditing and recommendations |
+| Content Writer | `content-writer` | ✏️ | Blog posts, social copy, email drafts |
+| Analytics Reporter | `analytics` | 📈 | Performance reports, data insights, trends |
+
+## Current Status (March 2026)
+
+- ✅ Sidebar nav item added
+- ✅ Page renders with template cards
+- ✅ Deploy creates workspace + registers agent + sets identity
+- ✅ Delegation config patched into openclaw.json
+- ✅ Active agents list with remove functionality
+- ⬜ Need to verify `listAgents` actually shows deployed agents (JSON vs plain text parsing)
+- ⬜ Need to test full Telegram delegation flow end-to-end
+- ⬜ Need to run `pnpm build` to verify latest changes compile

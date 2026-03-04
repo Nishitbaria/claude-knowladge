@@ -1,0 +1,56 @@
+[e2b] Sessions list cmd: openclaw sessions  --json
+[e2b] list subagent sessions cmd: openclaw sessions --json
+[e2b] Sessions list OK
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac/sessions 200 in 4.6s (compile: 61ms, proxy.ts: 8ms, render: 4.6s)
+[e2b] list subagent sessions OK
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac/subagents 200 in 3.2s (compile: 11ms, proxy.ts: 3ms, render: 3.2s)
+ GET /dashboard 200 in 37ms (compile: 16ms, proxy.ts: 3ms, render: 18ms)
+ GET /dashboard 200 in 38ms (compile: 20ms, proxy.ts: 4ms, render: 15ms)
+ POST /dashboard 200 in 964ms (compile: 26ms, proxy.ts: 4ms, render: 935ms)
+ GET /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 913ms (compile: 25ms, proxy.ts: 5ms, render: 883ms)
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 1039ms (compile: 18ms, proxy.ts: 4ms, render: 1016ms)
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 829ms (compile: 21ms, proxy.ts: 6ms, render: 802ms)
+ GET /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 407ms (compile: 14ms, proxy.ts: 2ms, render: 391ms)
+ GET /api/auth/get-session 200 in 30ms (compile: 9ms, proxy.ts: 4ms, render: 17ms)
+ GET /api/auth/organization/list 200 in 1758ms (compile: 3ms, proxy.ts: 5ms, render: 1750ms)
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 1769ms (compile: 19ms, proxy.ts: 4ms, render: 1745ms)
+ GET /api/auth/organization/get-full-organization 200 in 1973ms (compile: 15ms, proxy.ts: 4ms, render: 1954ms)
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 852ms (compile: 15ms, proxy.ts: 3ms, render: 834ms)
+ GET /api/auth/organization/get-full-organization 200 in 1386ms (compile: 5ms, proxy.ts: 2ms, render: 1379ms)
+ GET /api/auth/organization/get-full-organization 200 in 1487ms (compile: 8ms, proxy.ts: 6ms, render: 1473ms)
+ GET /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac/subagents 200 in 45ms (compile: 23ms, proxy.ts: 4ms, render: 18ms)
+[e2b] list subagent sessions cmd: openclaw sessions --json
+[e2b] list subagent sessions OK
+ POST /sandboxes/6bb0265f-b494-4533-bb6a-206f5e1f47ac/subagents 200 in 5.1s (compile: 10ms, proxy.ts: 2ms, render: 5.1s)
+[telegram-relay] sandbox=ivrn90g83fdnpr35n3slu connect=398ms
+ POST /api/telegram/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 60s (compile: 21ms, proxy.ts: 12ms, render: 60s)
+[telegram-relay] sandbox=ivrn90g83fdnpr35n3slu connect=396ms
+[telegram-relay] sandbox=ivrn90g83fdnpr35n3slu fetch=1306ms total=1703ms
+ POST /api/telegram/6bb0265f-b494-4533-bb6a-206f5e1f47ac 200 in 2.6s (compile: 18ms, proxy.ts: 3ms, render: 2.6s)
+[e2b] create agent dir cmd: mkdir -p '~/.openclaw/workspace/agents/content-writer'
+[e2b] create agent dir OK
+[e2b] write AGENTS.md cmd: cat > '~/.openclaw/workspace/agents/content-writer/AGENTS.md' << 'AGENTEOF'
+You are a Content Writer Agent. Your role is to help with:
+- Blog post writing and editing
+- Social media copy for various platforms
+- Email marketing drafts and sequences
+- Product descriptions and landing page copy
+- Content calendar planning
+
+Adapt your tone and style to the target audience. Always consider SEO best practices when writing long-form content.
+AGENTEOF
+[e2b] write AGENTS.md OK
+[e2b] register agent cmd: jq --arg agentId 'content-writer' --arg agentDir '~/.openclaw/workspace/agents/content-writer' '
+        .agents.list = ((.agents.list // []) + [{
+          "id": $agentId,
+          "agentDir": $agentDir
+        }] | unique_by(.id))
+      ' ~/.openclaw/openclaw.json > /tmp/openclaw.json && mv /tmp/openclaw.json ~/.openclaw/openclaw.json
+[e2b] register agent OK
+[e2b] gateway restart cmd: nohup openclaw gateway restart > /tmp/gateway-restart.log 2>&1 &
+[e2b] gateway restart OK
+[e2b] wait for gateway cmd: sleep 3
+[telegram-relay] sandbox=ivrn90g83fdnpr35n3slu fetch=105312ms total=105711ms
+[e2b] wait for gateway OK
+[e2b] spawn subagent cmd: openclaw agent --agent 'content-writer' --message 'hi' --json
+[e2b] spawn subagent OK

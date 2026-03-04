@@ -1,0 +1,535 @@
+# AI Elements Components - Usage Analysis & Recommendations
+
+## Current Usage
+
+### ✅ Currently Using
+These components are installed and actively used in your chat interface:
+
+| Component | Location | Usage |
+|-----------|----------|-------|
+| `Agent` | MessagePartRenderer.tsx | Renders subagent indicators (Media Agent, Research Agent) |
+| `Conversation` | ChatMessagesPanel.tsx | Main chat container with scroll handling |
+| `Message` | ChatMessagesPanel.tsx | Individual message wrapper |
+| `MessageContent` | MessagePartRenderer.tsx | Message content container |
+| `Response` | MessagePartRenderer.tsx | Text responses from assistant |
+| `Tool` | MessagePartRenderer.tsx | Tool call UI (debug mode) |
+| `PromptInput` | InputBar.tsx | User input with submit button |
+| `media-details-dialog` | MediaDetailsDialog.tsx | Custom dialog for media details |
+| `media-preview-dialog` | MediaPreviewDialog.tsx | Custom dialog for media preview |
+
+---
+
+## 🔥 High Priority - Should Use Now
+
+### 1. **Suggestion Component** ✨
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Displays clickable suggestion pills that users can tap to quickly send common prompts.
+
+**Why you need it**:
+- Improve UX for new users who don't know what to ask
+- Reduce typing friction
+- Guide users to discover agent capabilities
+- Perfect for empty state in new chats
+
+**Implementation Example**:
+```tsx
+// In ChatMessagesPanel.tsx (empty state section)
+import { Suggestions, Suggestion } from "@/components/ai-elements/suggestion";
+
+const mediaSuggestions = [
+  "Create a sunset beach image",
+  "Generate a product demo video",
+  "Remove background from my logo",
+  "Upscale this image to 4K",
+];
+
+// In empty state:
+{showEmptyState && (
+  <div className="flex-center flex-col gap-4">
+    <h2>No conversations yet</h2>
+    <Suggestions>
+      {mediaSuggestions.map((suggestion) => (
+        <Suggestion
+          key={suggestion}
+          suggestion={suggestion}
+          onClick={(text) => sendMessage({ role: "user", parts: [{ type: "text", text }] })}
+        />
+      ))}
+    </Suggestions>
+  </div>
+)}
+```
+
+**Files to modify**:
+- `src/components/product/editor/agent/ChatMessagesPanel.tsx`
+
+**Benefits**:
+- ✅ Zero-friction onboarding
+- ✅ Discoverability of features
+- ✅ Reduced empty state friction
+
+---
+
+### 2. **Reasoning Component** 🧠
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Displays AI reasoning/thinking process in a collapsible panel, auto-opens while streaming.
+
+**Why you need it**:
+- Show transparency when super agent is routing decisions
+- Display subagent thinking process (if using extended thinking)
+- Build trust by showing reasoning
+- Improves perception of "intelligence"
+
+**Implementation Example**:
+```tsx
+// In MessagePartRenderer.tsx
+import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-elements/reasoning";
+
+// Add to switch statement in renderSinglePart:
+case "reasoning": {
+  return (
+    <Reasoning key={index} isStreaming={part.streaming}>
+      <ReasoningTrigger />
+      <ReasoningContent>{part.text}</ReasoningContent>
+    </Reasoning>
+  );
+}
+```
+
+**Backend changes needed**:
+```typescript
+// In route.ts
+return result.toUIMessageStreamResponse({
+  sendReasoning: true, // Enable reasoning parts
+});
+```
+
+**Use cases**:
+- When super agent decides which subagent to call
+- When using Claude with extended thinking
+- When debugging complex tool chains
+
+**Files to modify**:
+- `src/components/product/editor/agent/MessagePartRenderer.tsx`
+- `src/app/api/agents/v1/route.ts` (add sendReasoning: true)
+
+**Benefits**:
+- ✅ Transparency in decision-making
+- ✅ Educational for users
+- ✅ Builds trust in AI
+
+---
+
+### 3. **Audio Player Component** 🎵
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Full-featured audio player with controls for AI-generated audio.
+
+**Why you need it**:
+- You have `generateAudio` tool
+- Currently no way to play audio in chat
+- Professional playback controls
+- Better than default `<audio>` tag
+
+**Implementation Example**:
+```tsx
+// In CustomToolOutput.tsx (add audio rendering)
+import {
+  AudioPlayer,
+  AudioPlayerElement,
+  AudioPlayerControlBar,
+  AudioPlayerPlayButton,
+  AudioPlayerTimeDisplay,
+  AudioPlayerTimeRange,
+  AudioPlayerDurationDisplay,
+} from "@/components/ai-elements/audio-player";
+
+// In renderToolOutput function:
+if (toolType === "tool-generateAudio" && output?.audioUrl) {
+  return (
+    <AudioPlayer>
+      <AudioPlayerElement src={output.audioUrl} />
+      <AudioPlayerControlBar>
+        <AudioPlayerPlayButton />
+        <AudioPlayerTimeDisplay />
+        <AudioPlayerTimeRange />
+        <AudioPlayerDurationDisplay />
+      </AudioPlayerControlBar>
+    </AudioPlayer>
+  );
+}
+```
+
+**Files to modify**:
+- `src/components/product/editor/agent/CustomToolOutput.tsx`
+
+**Benefits**:
+- ✅ Professional audio playback
+- ✅ Matches your media generation theme
+- ✅ Better UX than default controls
+
+---
+
+### 4. **Confirmation Component** ⚠️
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Approval workflow for dangerous tool operations (delete, publish, spend credits).
+
+**Why you need it**:
+- Prevent accidental high-cost operations
+- Add guardrails for expensive tools (e.g., 4K upscaling)
+- Compliance for destructive actions
+- User control over agent autonomy
+
+**Implementation Example**:
+```tsx
+// In MessagePartRenderer.tsx
+import {
+  Confirmation,
+  ConfirmationRequest,
+  ConfirmationAccepted,
+  ConfirmationRejected,
+  ConfirmationActions,
+  ConfirmationAction,
+} from "@/components/ai-elements/confirmation";
+
+// For expensive tools:
+case "tool-upscaleImage": {
+  if (part.approval) {
+    return (
+      <Confirmation approval={part.approval} state={part.state}>
+        <ConfirmationRequest>
+          This will use 50 credits to upscale to 4K. Continue?
+        </ConfirmationRequest>
+        <ConfirmationAccepted>✅ Approved upscaling</ConfirmationAccepted>
+        <ConfirmationRejected>❌ Cancelled upscaling</ConfirmationRejected>
+        <ConfirmationActions>
+          <ConfirmationAction
+            onClick={() => addToolApprovalResponse({ id: part.approval.id, approved: false })}
+          >
+            Cancel
+          </ConfirmationAction>
+          <ConfirmationAction
+            onClick={() => addToolApprovalResponse({ id: part.approval.id, approved: true })}
+          >
+            Use 50 Credits
+          </ConfirmationAction>
+        </ConfirmationActions>
+      </Confirmation>
+    );
+  }
+}
+```
+
+**Backend changes needed**:
+```typescript
+// In upscaleImage tool definition
+export const upscaleImage = tool({
+  description: "Upscale image to 4K (50 credits)",
+  inputSchema: z.object({ imageUrl: z.string() }),
+  requireApproval: true, // ← Add this
+  execute: async ({ imageUrl }) => {
+    // ... upscaling logic
+  },
+});
+```
+
+**Files to modify**:
+- `src/components/product/editor/agent/MessagePartRenderer.tsx`
+- `src/lib/agents/tools/upscale-image.ts`
+- `src/components/product/editor/agent/ChatClient.tsx` (import addToolApprovalResponse)
+
+**Benefits**:
+- ✅ Prevents accidental high-cost operations
+- ✅ User control over spending
+- ✅ Better trust and transparency
+
+---
+
+## 📦 Medium Priority - Install When Needed
+
+### 5. **Attachments Component**
+**Status**: ❌ Not installed
+
+**What it does**: Display file attachments in messages (images, PDFs, videos).
+
+**Why you might need it**:
+- If you add file upload to prompt input
+- Show user-uploaded images before processing
+- Display reference materials
+
+**Install command**:
+```bash
+npx ai-elements@latest add attachments
+```
+
+**Use case**:
+```tsx
+// For user messages with attachments
+import { Attachments, Attachment, AttachmentPreview } from "@/components/ai-elements/attachments";
+
+{message.parts.map(part => {
+  if (part.type === "file") {
+    return (
+      <Attachments variant="grid">
+        <Attachment data={part}>
+          <AttachmentPreview />
+        </Attachment>
+      </Attachments>
+    );
+  }
+})}
+```
+
+**Benefits**:
+- ✅ Professional file display
+- ✅ Grid/inline/list variants
+- ✅ Type-safe with AI SDK
+
+---
+
+### 6. **Inline Citation Component**
+**Status**: ❌ Not installed
+
+**What it does**: Displays citations inline with text (like academic papers).
+
+**Why you might need it**:
+- If research agent provides sources
+- Show references for generated content
+- Build credibility
+
+**Install command**:
+```bash
+npx ai-elements@latest add inline-citation
+```
+
+**Use case**:
+```tsx
+// For research results with sources
+import { InlineCitation, InlineCitationCard } from "@/components/ai-elements/inline-citation";
+
+// In text: "AI will transform media[1]"
+<InlineCitation>
+  <InlineCitationCard>
+    <InlineCitationCardTrigger sources={["https://example.com"]} />
+    <InlineCitationCardBody>
+      <InlineCitationSource title="Study" url="..." />
+    </InlineCitationCardBody>
+  </InlineCitationCard>
+</InlineCitation>
+```
+
+**Benefits**:
+- ✅ Academic-style citations
+- ✅ Hover to see sources
+- ✅ Builds trust
+
+---
+
+### 7. **Chain of Thought Component**
+**Status**: ❌ Not installed
+
+**What it does**: Displays step-by-step reasoning process.
+
+**Why you might need it**:
+- Show multi-step tool execution flow
+- Display subagent progress visually
+- Better than plain text for complex workflows
+
+**Install command**:
+```bash
+npx ai-elements@latest add chain-of-thought
+```
+
+**Use case**:
+```tsx
+// For multi-step workflows
+import { ChainOfThought, ChainOfThoughtStep } from "@/components/ai-elements/chain-of-thought";
+
+<ChainOfThought>
+  <ChainOfThoughtStep status="completed">Routing to media agent</ChainOfThoughtStep>
+  <ChainOfThoughtStep status="in-progress">Generating image</ChainOfThoughtStep>
+  <ChainOfThoughtStep status="pending">Upscaling result</ChainOfThoughtStep>
+</ChainOfThought>
+```
+
+**Benefits**:
+- ✅ Visual step progress
+- ✅ Better than text logs
+- ✅ Professional appearance
+
+---
+
+### 8. **Task Component**
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Displays task lists with checkboxes and progress tracking.
+
+**Why you might need it**:
+- Show multi-step media generation progress
+- Display batch operations (e.g., "generate 10 images")
+- Task-based workflows
+
+**Use case**:
+```tsx
+import { Task, TaskList, TaskItem } from "@/components/ai-elements/task";
+
+<TaskList>
+  <TaskItem checked={true}>Generate base image</TaskItem>
+  <TaskItem checked={false}>Remove background</TaskItem>
+  <TaskItem checked={false}>Upscale to 4K</TaskItem>
+</TaskList>
+```
+
+**Benefits**:
+- ✅ Task progress visualization
+- ✅ Clear workflow status
+- ✅ Interactive checkboxes
+
+---
+
+## 🔧 Low Priority - Specialized Use Cases
+
+### 9. **Code Block Component**
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Syntax-highlighted code with copy button.
+
+**Why you might need it**: If you add a "generate prompt" or "export config" feature.
+
+---
+
+### 10. **Context Component**
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Displays context/environment info in chat.
+
+**Why you might need it**: Show selected canvas objects context.
+
+---
+
+### 11. **Source Component**
+**Status**: ✅ Already installed, not used yet
+
+**What it does**: Displays source documents in retrieval-augmented generation (RAG).
+
+**Why you might need it**: If you add document search or knowledge base.
+
+---
+
+## 🎯 Recommended Implementation Order
+
+### Phase 1: Immediate Wins (This Week)
+1. **Suggestions** - Add to empty state (2 hours)
+2. **Audio Player** - Add for generateAudio tool (2 hours)
+
+### Phase 2: Enhanced UX (Next Week)
+3. **Reasoning** - Show thinking process (3 hours)
+4. **Confirmation** - Add for expensive tools (4 hours)
+
+### Phase 3: Advanced Features (Future)
+5. **Attachments** - If adding file upload
+6. **Inline Citation** - For research results
+7. **Chain of Thought** - For complex workflows
+
+---
+
+## Quick Implementation: Suggestions (Highest ROI)
+
+**Time**: 30 minutes
+**Impact**: High
+**Difficulty**: Easy
+
+```tsx
+// src/components/product/editor/agent/ChatMessagesPanel.tsx
+
+import { Suggestions, Suggestion } from "@/components/ai-elements/suggestion";
+
+const MEDIA_SUGGESTIONS = [
+  "Create a sunset beach landscape image",
+  "Generate a 10-second product showcase video",
+  "Remove background from my product photo",
+  "Upscale this image to 4K resolution",
+  "Create a voiceover for my script",
+];
+
+// Replace your empty state with:
+{showEmptyState && (
+  <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-6 text-center px-4">
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex size-16 items-center justify-center rounded-full bg-background-400">
+        <Icons.newChat className="size-8 text-gray-400" />
+      </div>
+      <h2 className="font-medium text-lg text-white">
+        No conversations yet
+      </h2>
+      <p className="max-w-sm text-gray-400 text-sm">
+        Start a new chat or try one of these suggestions
+      </p>
+    </div>
+
+    {/* NEW: Suggestion pills */}
+    <Suggestions className="max-w-2xl">
+      {MEDIA_SUGGESTIONS.map((suggestion) => (
+        <Suggestion
+          key={suggestion}
+          suggestion={suggestion}
+          onClick={(text) => {
+            sendMessage({
+              role: "user",
+              parts: [{ type: "text", text }],
+            });
+          }}
+        />
+      ))}
+    </Suggestions>
+
+    <Button
+      className="mt-2 gap-2"
+      onClick={handleNewChat}
+      variant="default"
+    >
+      <Icons.newChat className="size-4" />
+      Start New Chat
+    </Button>
+  </div>
+)}
+```
+
+**Result**: Users can instantly try agent capabilities without typing.
+
+---
+
+## Summary
+
+### Already Using (9 components)
+✅ Agent, Conversation, Message, Response, Tool, PromptInput, media dialogs
+
+### Quick Wins (4 components - already installed)
+🔥 Suggestion, Reasoning, AudioPlayer, Confirmation
+
+### Future Additions (3 components - need install)
+📦 Attachments, InlineCitation, ChainOfThought
+
+### Total Available Components: 47+
+See `references/` folder for complete list.
+
+---
+
+## Next Steps
+
+1. **This week**: Add Suggestions to empty state (30 min)
+2. **This week**: Add AudioPlayer for audio generation (1 hour)
+3. **Next week**: Add Confirmation for expensive tools (3 hours)
+4. **Next week**: Add Reasoning for transparency (2 hours)
+5. **Future**: Evaluate Attachments if adding file upload
+
+**Estimated total time**: 6.5 hours for all high-priority components.
+
+**Expected impact**:
+- 🚀 Better UX (suggestions + audio)
+- 💰 Cost control (confirmations)
+- 🧠 Transparency (reasoning)
+- ⭐ More professional feel

@@ -1,0 +1,93 @@
+"use client";
+
+import { Mail } from "lucide-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { authClient } from "@/lib/auth-client";
+
+const COOLDOWN_SECONDS = 60;
+
+export default function EmailVerificationPage() {
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
+  const [cooldown, setCooldown] = useState(COOLDOWN_SECONDS);
+  const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+
+    const timer = setInterval(() => {
+      setCooldown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [cooldown]);
+
+  const handleResend = useCallback(async () => {
+    if (!email || sending || cooldown > 0) return;
+    setSending(true);
+    try {
+      await authClient.sendVerificationEmail({
+        email,
+        callbackURL: "/dashboard",
+      });
+      setCooldown(COOLDOWN_SECONDS);
+    } finally {
+      setSending(false);
+    }
+  }, [email, sending, cooldown]);
+
+  return (
+    <div className="flex flex-col items-center gap-6 text-center">
+      <div className="flex size-16 items-center justify-center rounded-full bg-muted">
+        <Mail className="size-8 text-muted-foreground" />
+      </div>
+
+      <div className="space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">
+          Verify your email
+        </h1>
+        <p className="text-sm text-muted-foreground max-w-sm">
+          {email ? (
+            <>
+              We sent a verification link to <strong>{email}</strong>. Please
+              check your inbox and click the link to verify your account.
+            </>
+          ) : (
+            <>
+              We sent a verification link to your email. Please check your
+              inbox and click the link to verify your account.
+            </>
+          )}
+        </p>
+      </div>
+
+      {email && (
+        <button
+          type="button"
+          onClick={handleResend}
+          disabled={sending || cooldown > 0}
+          className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
+        >
+          {sending
+            ? "Sending..."
+            : cooldown > 0
+              ? `Resend email in ${cooldown}s`
+              : "Resend verification email"}
+        </button>
+      )}
+
+      <p className="text-xs text-muted-foreground">
+        Check your spam folder if you don't see it within a few minutes.
+      </p>
+
+      <Link
+        href="/sign-in"
+        className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
+      >
+        Back to sign in
+      </Link>
+    </div>
+  );
+}

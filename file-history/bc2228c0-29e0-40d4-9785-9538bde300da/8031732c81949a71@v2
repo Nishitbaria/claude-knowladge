@@ -1,0 +1,451 @@
+"use client";
+
+import { FileText, Plus } from "lucide-react";
+import Image from "next/image";
+import { MessageContent } from "@/components/ai-elements/message";
+import { Response } from "@/components/ai-elements/response";
+import {
+  Tool,
+  ToolContent,
+  ToolHeader,
+  ToolInput,
+} from "@/components/ai-elements/tool";
+import CustomToolOutput from "./CustomToolOutput";
+import { parseError } from "./components/utils";
+import {
+  getSimpleToolMessage,
+  isSupportedTool,
+  type ToolState,
+  URL_TEXT_PART_REGEX,
+} from "./constants";
+
+type MessagePart = {
+  type: string;
+  text?: string;
+  // media parts
+  image?: string;
+  url?: string;
+  filename?: string;
+  mediaType?: string;
+  toolCallId?: string;
+  toolName?: string;
+  state?: string;
+  input?: unknown;
+  output?: unknown;
+  errorText?: string;
+};
+
+type MessagePartRendererProps = {
+  parts: MessagePart[];
+  debugToolUi?: boolean;
+  onAddImageToCanvas?: (url: string) => void;
+};
+
+const renderTool = (part: MessagePart, index: number, debugToolUi: boolean) => {
+  const toolType = isSupportedTool(part.type)
+    ? part.type
+    : `tool-${part.toolName}`;
+
+  if (!debugToolUi) {
+    const labels = {
+      "input-streaming": "Preparing",
+      "input-available": "Processing",
+      "output-available": "Completed",
+      "output-error": "Error",
+    } as const;
+
+    const dotClass = {
+      "input-streaming": "bg-blue-400/60",
+      "input-available": "bg-amber-400/60",
+      "output-available": "bg-green-400/60",
+      "output-error": "bg-red-400/60",
+    } as const;
+
+    const message = getSimpleToolMessage(
+      toolType,
+      (part.state || "input-available") as
+        | "input-streaming"
+        | "input-available"
+        | "output-available"
+        | "output-error",
+      {
+        toolName: part.toolName,
+      },
+    );
+
+    // Determine the state - if output exists, treat as output-available even if state is missing
+    // This handles cases where state is lost during database serialization
+    const state =
+      (
+        [
+          "input-streaming",
+          "input-available",
+          "output-available",
+          "output-error",
+        ] as const
+      ).find((s) => s === part.state) ??
+      (part.output !== undefined ? "output-available" : "input-available");
+
+    // Extract credit information from output (for image and video generation tools)
+    const output = part.output as
+      | { credits?: number; totalCredits?: number; [key: string]: unknown }
+      | undefined;
+    const totalCredits = output?.totalCredits;
+    const showCredits =
+      (toolType === "tool-generateImageWithPolling" ||
+        toolType === "tool-generateVideoWithPolling" ||
+        toolType === "tool-bgRemover" ||
+        toolType === "tool-imageResizer" ||
+        toolType === "tool-imageUpscaler") &&
+      totalCredits !== undefined &&
+      (state === "input-available" || state === "output-available");
+
+    return (
+      <>
+        <MessageContent key={`${part.toolCallId || index}-header`}>
+          <div className="flex items-center justify-between gap-4">
+            <span>{message}</span>
+            <span className="text-white/60 text-xs">
+              {labels[state] || "Working"}
+            </span>
+          </div>
+        </MessageContent>
+        {/* Credit info badge */}
+        {showCredits && (
+          <MessageContent key={`${part.toolCallId || index}-credits`}>
+            {state === "input-available"
+              ? `Deducting ${totalCredits} credit${totalCredits !== 1 ? "s" : ""}`
+              : `Deducted ${totalCredits} credit${totalCredits !== 1 ? "s" : ""}`}
+          </MessageContent>
+        )}
+        {/* Always render CustomToolOutput for canvas integration */}
+        {part.output !== undefined && (
+          <MessageContent key={`${part.toolCallId || index}-output`}>
+            <CustomToolOutput
+              errorText={part.errorText}
+              output={part.output}
+              state={part.state as ToolState}
+              toolCallId={part.toolCallId}
+            />
+          </MessageContent>
+        )}
+      </>
+    );
+  }
+
+  return (
+    <>
+      <MessageContent key={`${part.toolCallId || index}-tool-header`}>
+        <Tool>
+          <ToolHeader
+            state={
+              (part.state || "input-available") as
+                | "input-streaming"
+                | "input-available"
+                | "output-available"
+                | "output-error"
+            }
+            type={toolType as `tool-${string}`}
+          />
+          <ToolContent>
+            {part.input !== undefined && <ToolInput input={part.input} />}
+          </ToolContent>
+        </Tool>
+      </MessageContent>
+      {part.output !== undefined && (
+        <MessageContent key={`${part.toolCallId || index}-tool-output`}>
+          <CustomToolOutput
+            errorText={part.errorText}
+            output={part.output}
+            state={part.state as ToolState}
+            toolCallId={part.toolCallId}
+          />
+        </MessageContent>
+      )}
+    </>
+  );
+};
+
+const renderSinglePart = (
+  part: MessagePart,
+  index: number,
+  debugToolUi: boolean,
+) => {
+  switch (part.type) {
+    case "text": {
+      // Skip rendering URL text parts (used only for LLM to extract URLs for tool calls)
+      if (part.text && URL_TEXT_PART_REGEX.test(part.text)) {
+        return null;
+      }
+      return <Response key={index}>{part.text}</Response>;
+    }
+
+    case "error": {
+      const parsedError = parseError(part.errorText || part.text);
+
+      const errorConfig = {
+        insufficient_credits: {
+          icon: "💳",
+          title: "Insufficient Credits",
+          bgColor: "bg-yellow-500/10",
+          borderColor: "border-yellow-500/20",
+          textColor: "text-yellow-400",
+        },
+        nsfw: {
+          icon: "🚫",
+          title: "Content Policy",
+          bgColor: "bg-orange-500/10",
+          borderColor: "border-orange-500/20",
+          textColor: "text-orange-400",
+        },
+        unexpected_error: {
+          icon: "⚠",
+          title: "Error",
+          bgColor: "bg-red-500/10",
+          borderColor: "border-red-500/20",
+          textColor: "text-red-400",
+        },
+      }[parsedError.type];
+
+      return (
+        <div
+          className={`rounded-xl border ${errorConfig.borderColor} ${errorConfig.bgColor} p-4`}
+          key={index}
+        >
+          <div className="flex items-start gap-3">
+            <div
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${errorConfig.bgColor}`}
+            >
+              <span className={errorConfig.textColor}>{errorConfig.icon}</span>
+            </div>
+            <div className="flex-1">
+              <p className={`font-medium ${errorConfig.textColor} text-sm`}>
+                {errorConfig.title}
+              </p>
+              <p className="mt-1 text-sm text-white/70">
+                {parsedError.message}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // case "image": {
+    //   if (!part.image) return null;
+    //   return (
+    //     <div key={index} className="overflow-hidden rounded-xl">
+    //       <Image
+    //         src={part.image}
+    //         alt={part.filename || "Image"}
+    //         width={1280}
+    //         height={720}
+    //         sizes="(max-width: 768px) 100vw, 672px"
+    //         className="h-auto w-full rounded-xl object-contain"
+    //       />
+    //     </div>
+    //   );
+    // }
+
+    case "file": {
+      const isPdf = part.mediaType === "application/pdf";
+      return (
+        <div
+          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3"
+          key={index}
+        >
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/5">
+            <FileText className="h-5 w-5 text-red-400" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm text-white/90">
+              {part.filename || (isPdf ? "PDF" : "File")}
+            </div>
+            <div className="text-white/50 text-xs">
+              {part.mediaType || "attachment"}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    case "tool-autoModelSuggest":
+    case "tool-autoVideoModelSuggest":
+    case "tool-GenerateImage":
+    case "tool-GenerateVideo":
+    case "tool-GenerateEditImage":
+    case "tool-generateImageWithPolling":
+    case "tool-generateVideoWithPolling":
+    case "tool-generateAudio":
+    case "tool-bgRemover":
+    case "tool-imageResizer":
+    case "tool-imageUpscaler":
+    case "dynamic-tool":
+      return renderTool(part, index, debugToolUi);
+
+    default:
+      return null;
+  }
+};
+
+/**
+ * Groups consecutive image parts and renders them together in a grid
+ */
+const renderImageGrid = (
+  images: string[],
+  startIndex: number,
+  onAddImageToCanvas?: (url: string) => void,
+) => {
+  if (images.length === 0) return null;
+
+  // Single image: large display
+  if (images.length === 1) {
+    return (
+      <div
+        className="group relative overflow-hidden rounded-xl"
+        key={`image-grid-${startIndex}`}
+      >
+        <Image
+          alt="Image"
+          className="h-auto w-full rounded-xl object-contain"
+          height={720}
+          sizes="(max-width: 768px) 100vw, 672px"
+          src={images[0]}
+          width={1280}
+        />
+        {onAddImageToCanvas && (
+          <button
+            className="absolute top-2 right-2 flex size-8 items-center justify-center rounded-lg bg-black/50 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+            onClick={() => onAddImageToCanvas(images[0])}
+            title="Add to Canvas"
+            type="button"
+          >
+            <Plus className="size-4" />
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  // Multiple images: responsive grid
+  return (
+    <div
+      className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-3"
+      key={`image-grid-${startIndex}`}
+    >
+      {images.map((url, i) => (
+        <div
+          className="group relative aspect-square overflow-hidden rounded-xl"
+          key={url}
+        >
+          <Image
+            alt={`Image ${i + 1}`}
+            className="h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
+            height={800}
+            sizes="(max-width: 768px) 50vw, 33vw"
+            src={url}
+            width={800}
+          />
+          {onAddImageToCanvas && (
+            <button
+              className="absolute top-2 right-2 flex size-8 items-center justify-center rounded-lg bg-black/50 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+              onClick={() => onAddImageToCanvas(url)}
+              title="Add to Canvas"
+              type="button"
+            >
+              <Plus className="size-4" />
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+/**
+ * Renders message parts with intelligent grouping
+ * - Groups consecutive images into grids
+ * - Renders other parts individually
+ */
+export default function MessagePartRenderer({
+  parts,
+  debugToolUi = true,
+  onAddImageToCanvas,
+}: MessagePartRendererProps) {
+  if (!parts || parts.length === 0) {
+    return null;
+  }
+
+  const renderedElements: React.ReactNode[] = [];
+  let i = 0;
+
+  while (i < parts.length) {
+    const part = parts[i];
+
+    // Check if this is the start of an image sequence
+    // Handle both type: "image" (old) and type: "file" with image mediaType (new)
+    const isImage =
+      (part.type === "image" && part.image) ||
+      (part.type === "file" &&
+        part.mediaType?.startsWith("image/") &&
+        part.url);
+
+    if (isImage) {
+      const imageUrls: string[] = [];
+      const startIndex = i;
+
+      // Collect consecutive images
+      while (i < parts.length) {
+        const currentPart = parts[i];
+        const isCurrentImage =
+          (currentPart.type === "image" && currentPart.image) ||
+          (currentPart.type === "file" &&
+            currentPart.mediaType?.startsWith("image/") &&
+            currentPart.url);
+
+        if (!isCurrentImage) break;
+
+        const imageUrl =
+          currentPart.type === "image" ? currentPart.image : currentPart.url;
+        if (imageUrl) imageUrls.push(imageUrl);
+        i += 1;
+      }
+
+      // Render grouped images
+      renderedElements.push(
+        renderImageGrid(imageUrls, startIndex, onAddImageToCanvas),
+      );
+    } else {
+      // Render non-image parts individually
+      const singlePart = renderSinglePart(part, i, debugToolUi);
+      if (singlePart) {
+        // Tools are already wrapped in MessageContent, so don't wrap again
+        const isTool = [
+          "tool-autoModelSuggest",
+          "tool-autoVideoModelSuggest",
+          "tool-GenerateImage",
+          "tool-GenerateVideo",
+          "tool-GenerateEditImage",
+          "tool-generateImageWithPolling",
+          "tool-generateVideoWithPolling",
+          "tool-generateAudio",
+          "tool-bgRemover",
+          "tool-imageResizer",
+          "tool-imageUpscaler",
+          "dynamic-tool",
+        ].includes(part.type);
+
+        if (isTool) {
+          renderedElements.push(singlePart);
+        } else {
+          renderedElements.push(
+            <MessageContent key={i}>{singlePart}</MessageContent>,
+          );
+        }
+      }
+      i += 1;
+    }
+  }
+
+  return <div className="space-y-2">{renderedElements}</div>;
+}

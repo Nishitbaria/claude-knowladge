@@ -1,0 +1,1667 @@
+2026-02-10T08:57:21.257Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-10T08:57:21.257Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-10T08:57:21.257Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-10T08:57:21.257Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-10T08:57:21.259Z [DEBUG] Applying permission update: Adding 16 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)","Bash(gh pr view:*)","Bash(gh pr diff:*)","Bash(tree:*)","Bash(pnpm tsc:*)","Bash(gh pr create --title \"Refactor: AI Agent Architecture & Media Agent Consolidation\" --body \"$\\(cat <<''EOF''\n## Summary\n\n- **Consolidated media agent functionality** - Merged media-agent module into the main agents library for better organization and maintainability\n- **Fixed tool parts persistence issue** - Implemented `mergeParts` function to prevent tool parts from being overwritten during multi-step tool executions \\(images/credits now persist after page refresh\\)\n- **Updated media agent tools** - Streamlined naming conventions and improved consistency across the codebase\n- **Enhanced folder structure** - Improved organization and fixed import paths across components\n\n## Changes\n\n### Agent Architecture\n- Removed standalone `media-agent` module and integrated into main agents library\n- Updated API route to use new methods for agent observation and tracing\n- Refactored imports and function calls for new structure\n\n### Bug Fix: Tool Parts Persistence\n- Added `mergeParts` function in `chatMessage.repo.ts` to merge parts instead of replacing\n- Prevents duplicate messages when tool calls trigger multiple saves\n- Tool outputs \\(credits, image placeholders\\) now persist correctly after page refresh\n\n### Code Quality\n- Removed deprecated tools and adjusted related components\n- Fixed import paths across various components\n- Removed framer-motion animations from some components to simplify structure\n- Updated documentation to reflect changes\n\n## Test plan\n\n- [ ] Generate an image using the media agent\n- [ ] Verify credits and image placeholder appear during streaming\n- [ ] Refresh page and verify tool outputs persist\n- [ ] Test multi-step tool executions \\(image → edit → resize\\)\n\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\" --base master)","Bash(git push:*)","WebFetch(domain:elements.ai-sdk.dev)","WebSearch","WebFetch(domain:www.npmjs.com)","Bash(npx ai-elements@latest add context)","Bash(npx shadcn@latest add:*)","Bash(yes:*)","Bash(npx tsc:*)"]
+2026-02-10T08:57:21.259Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-10T08:57:21.261Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-10T08:57:21.261Z [DEBUG] [STARTUP] Running setup()...
+2026-02-10T08:57:21.261Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-10T08:57:21.262Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-10T08:57:21.263Z [DEBUG] Error log sink initialized
+2026-02-10T08:57:21.266Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-10T08:57:21.266Z [DEBUG] Total plugin skills loaded: 0
+2026-02-10T08:57:21.266Z [DEBUG] Total plugin commands loaded: 0
+2026-02-10T08:57:21.266Z [DEBUG] [STARTUP] setup() completed in 5ms
+2026-02-10T08:57:21.266Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-10T08:57:21.267Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-10T08:57:21.267Z [DEBUG] Total plugin agents loaded: 0
+2026-02-10T08:57:21.267Z [DEBUG] Loaded 7 unique skills (7 unconditional, 0 conditional, managed: 0, user: 5, project: 2, additional: 0, legacy commands: 0)
+2026-02-10T08:57:21.268Z [DEBUG] getSkills returning: 7 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-10T08:57:21.268Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-02-10T08:57:21.268Z [DEBUG] Layout engine: yoga
+2026-02-10T08:57:21.270Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-10T08:57:21.270Z [DEBUG] Acquired PID lock for 2.1.38 (PID 14211)
+2026-02-10T08:57:21.270Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.38
+2026-02-10T08:57:21.272Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-10T08:57:21.275Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-10T08:57:21.277Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-10T08:57:21.287Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-10T08:57:21.302Z [DEBUG] Grove: Using fresh cached config
+2026-02-10T08:57:21.307Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-10T08:57:21.309Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T08:57:21.309Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T08:57:21.309Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T08:57:21.309Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-10T08:57:21.729Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713841729
+2026-02-10T08:57:21.730Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:21.730Z [DEBUG] Temp file written successfully, size: 28256 bytes
+2026-02-10T08:57:21.730Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:21.730Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713841729 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:21.730Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.090Z [DEBUG] [STARTUP] showSetupScreens() completed in 818ms
+2026-02-10T08:57:22.090Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-10T08:57:22.091Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-10T08:57:22.091Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-10T08:57:22.091Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:22.091Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:22.094Z [DEBUG] Total LSP servers loaded: 0
+2026-02-10T08:57:22.094Z [DEBUG] [STARTUP] MCP configs loaded in 835ms
+2026-02-10T08:57:22.099Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-10T08:57:22.102Z [DEBUG] MCP server "Neon": Initializing HTTP transport to https://mcp.neon.tech/mcp
+2026-02-10T08:57:22.102Z [DEBUG] MCP server "Neon": Node version: v24.3.0, Platform: darwin
+2026-02-10T08:57:22.102Z [DEBUG] MCP server "Neon": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+2026-02-10T08:57:22.121Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-10T08:57:22.122Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842122
+2026-02-10T08:57:22.122Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.123Z [DEBUG] Temp file written successfully, size: 28256 bytes
+2026-02-10T08:57:22.123Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.123Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842122 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.123Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.123Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-10T08:57:22.123Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-10T08:57:22.123Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:22.124Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-10T08:57:22.124Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:57:22.124Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-10T08:57:22.124Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-10T08:57:22.124Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-10T08:57:22.129Z [DEBUG] LSP server manager initialized successfully
+2026-02-10T08:57:22.129Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-10T08:57:22.130Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842130
+2026-02-10T08:57:22.130Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.130Z [DEBUG] Temp file written successfully, size: 28292 bytes
+2026-02-10T08:57:22.130Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.130Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842130 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.131Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": Proxy options: default
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": HTTP transport options: {"url":"https://mcp.neon.tech/mcp","headers":{"User-Agent":"claude-code/2.1.38","Authorization":"[REDACTED]"},"hasAuthProvider":true,"timeoutMs":60000}
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": HTTP transport created successfully
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": Client created, setting up request handler
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": Starting connection with timeout of 30000ms
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": Testing basic HTTP connectivity to https://mcp.neon.tech/mcp
+2026-02-10T08:57:22.131Z [DEBUG] MCP server "Neon": Parsed URL: host=mcp.neon.tech, port=default, protocol=https:
+2026-02-10T08:57:22.132Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:22.136Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-10T08:57:22.150Z [DEBUG] High write ratio: blit=0, write=1042 (100.0% writes), screen=17x176
+2026-02-10T08:57:22.153Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842153
+2026-02-10T08:57:22.153Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.153Z [DEBUG] Temp file written successfully, size: 28292 bytes
+2026-02-10T08:57:22.153Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.153Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842153 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.153Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.154Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842154
+2026-02-10T08:57:22.154Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.154Z [DEBUG] Temp file written successfully, size: 28292 bytes
+2026-02-10T08:57:22.154Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.154Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842154 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.154Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.155Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842155
+2026-02-10T08:57:22.155Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.156Z [DEBUG] Temp file written successfully, size: 28291 bytes
+2026-02-10T08:57:22.156Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.156Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842155 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.156Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.157Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-10T08:57:22.157Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-10T08:57:22.157Z [DEBUG] performStartupChecks called
+2026-02-10T08:57:22.157Z [DEBUG] Starting background plugin installations
+2026-02-10T08:57:22.158Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-10T08:57:22.180Z [DEBUG] Loaded 1 CLAUDE.md/rules files:
+  [Project] /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/CLAUDE.md (12756 chars)
+2026-02-10T08:57:22.191Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842191
+2026-02-10T08:57:22.191Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.191Z [DEBUG] Temp file written successfully, size: 28291 bytes
+2026-02-10T08:57:22.191Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.191Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842191 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.191Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.197Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-10T08:57:22.424Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-10T08:57:22.424Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-10T08:57:22.424Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-10T08:57:22.425Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-10T08:57:22.425Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-10T08:57:22.425Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T08:57:22.429Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842429
+2026-02-10T08:57:22.429Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.430Z [DEBUG] Temp file written successfully, size: 28291 bytes
+2026-02-10T08:57:22.430Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.430Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842429 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.430Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.430Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-10T08:57:22.445Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713842445
+2026-02-10T08:57:22.445Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:22.445Z [DEBUG] Temp file written successfully, size: 28291 bytes
+2026-02-10T08:57:22.445Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:22.445Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713842445 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:22.446Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:22.461Z [DEBUG] Org penguin mode: disabled (extra_usage_disabled)
+2026-02-10T08:57:22.773Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-10T08:57:22.773Z [DEBUG] MCP server "claude.ai Notion": Initializing claude.ai proxy transport for server mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-10T08:57:22.773Z [DEBUG] MCP server "claude.ai Notion": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-10T08:57:22.773Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy transport created successfully
+2026-02-10T08:57:22.773Z [DEBUG] MCP server "claude.ai Notion": Starting connection with timeout of 30000ms
+2026-02-10T08:57:22.774Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T08:57:22.774Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T08:57:22.774Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-10T08:57:22.774Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-10T08:57:22.861Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:22.870Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.38)
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": Successfully connected to http server in 1047ms
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"mcp-server-neon","version":"0.6.4"}}
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:23.149Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T08:57:23.352Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy connection failed after 579ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXz7PYu2cnDYZii939gZF"}
+2026-02-10T08:57:23.352Z [ERROR] MCP server "claude.ai Notion" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXz7PYu2cnDYZii939gZF"}
+2026-02-10T08:57:23.352Z [DEBUG] MCP server "claude.ai Notion": Authentication required for claude.ai proxy server
+2026-02-10T08:57:23.828Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:23.967Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 1193ms
+2026-02-10T08:57:23.967Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}
+2026-02-10T08:57:24.158Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T08:57:24.158Z [DEBUG] Found 2.1.38 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-10T08:57:24.219Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-65X3S4HB.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:713:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:730:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:52)
+    at #resolve (node:internal/modules/esm/loader:695:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:615:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.6.0
+2026-02-10T08:57:24.219Z [DEBUG] MCP server "posthog": Connection failed after 2124ms: MCP error -32000: Connection closed
+2026-02-10T08:57:24.219Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:24.225Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:25.002Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:25.039Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:25.039Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:25.040Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:25.513Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: analyzeMcp]
+2026-02-10T08:57:25.523Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:57:25.523Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:57:25.523Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:57:25.938Z [DEBUG] High write ratio: blit=880, write=1198 (57.7% writes), screen=15x176
+2026-02-10T08:57:27.419Z [DEBUG] High write ratio: blit=880, write=1198 (57.7% writes), screen=15x176
+2026-02-10T08:57:31.275Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:31.294Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json'
+    at openSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:947)
+    at AC (/$bunfs/root/claude:11:49917)
+    at readSync (/$bunfs/root/claude:12:875)
+    at BC (/$bunfs/root/claude:6131:113)
+    at J5 (/$bunfs/root/claude:6133:226)
+    at bd9 (/$bunfs/root/claude:179:2233)
+    at <anonymous> (/$bunfs/root/claude:7215:4212)
+2026-02-10T08:57:31.294Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json
+2026-02-10T08:57:31.296Z [DEBUG] Stats cache is up to date
+2026-02-10T08:57:31.296Z [DEBUG] Cleaned up old image cache: /Users/nishitbariya/.claude/image-cache/7eb146ff-dbac-495d-9fa5-a83c507638c6
+2026-02-10T08:57:31.858Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:32.317Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-10T08:57:32.317Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-10T08:57:33.507Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-10T08:57:33.511Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:33.527Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T08:57:33.531Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T08:57:33.539Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-10T08:57:33.541Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:33.543Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T08:57:33.546Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:33.553Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713853553
+2026-02-10T08:57:33.553Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:33.553Z [DEBUG] Temp file written successfully, size: 28324 bytes
+2026-02-10T08:57:33.553Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:33.553Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713853553 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:33.553Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:33.653Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:33.654Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713853654
+2026-02-10T08:57:33.654Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:57:33.654Z [DEBUG] Temp file written successfully, size: 28324 bytes
+2026-02-10T08:57:33.654Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:57:33.654Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713853654 to /Users/nishitbariya/.claude.json
+2026-02-10T08:57:33.654Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:57:34.942Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T08:57:34.943Z [DEBUG] Found 2.1.38 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-10T08:58:28.517Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T08:58:30.032Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T08:58:30.033Z [DEBUG] Found 2.1.38 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-10T08:58:30.115Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T08:58:31.325Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-10T08:58:31.329Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-10T08:58:31.335Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:31.345Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T08:58:31.348Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T08:58:31.354Z [DEBUG] Getting matching hook commands for PreCompact with query: manual
+2026-02-10T08:58:31.354Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:58:31.354Z [DEBUG] Matched 0 unique hooks for query "manual" (0 before deduplication)
+2026-02-10T08:58:31.356Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:58:31.356Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:58:31.356Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:58:31.482Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T08:58:31.482Z [DEBUG] Found 2.1.38 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-10T08:58:32.025Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:58:32.032Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:58:32.032Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:32.035Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:58:32.035Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:58:32.036Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:58:32.036Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:32.036Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:36.487Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:58:36.488Z [DEBUG] Forked agent [compact] received message: type=assistant
+2026-02-10T08:58:38.475Z [DEBUG] Forked agent [compact] received message: type=assistant
+2026-02-10T08:58:51.589Z [DEBUG] Forked agent [compact] received message: type=assistant
+2026-02-10T08:58:51.620Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-10T08:58:51.620Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:58:51.620Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T08:58:51.620Z [DEBUG] Forked agent [compact] finished: 3 messages, types=[assistant, assistant, assistant], totalUsage: input=3 output=685 cacheRead=10429 cacheCreate=29725
+2026-02-10T08:58:51.622Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:58:51.622Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:58:51.622Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:58:52.157Z [DEBUG] Getting matching hook commands for SessionStart with query: compact
+2026-02-10T08:58:52.157Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:58:52.157Z [DEBUG] Matched 0 unique hooks for query "compact" (0 before deduplication)
+2026-02-10T08:58:52.159Z [DEBUG] FileHistory: Added snapshot for eb39dcbb-3fb4-4341-8979-cce7ffdb9a47, tracking 0 files
+2026-02-10T08:58:52.159Z [DEBUG] FileHistory: Making snapshot for message b20bb77f-8013-4e76-881f-2c8c23af7a56
+2026-02-10T08:58:52.159Z [DEBUG] FileHistory: Added snapshot for b20bb77f-8013-4e76-881f-2c8c23af7a56, tracking 0 files
+2026-02-10T08:58:52.161Z [DEBUG] [useDeferredValue] Messages deferred by 6 (2→8)
+2026-02-10T08:58:52.177Z [DEBUG] [useDeferredValue] Messages deferred by 6 (2→8)
+2026-02-10T08:58:52.180Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:52.197Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T08:58:52.198Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713932198
+2026-02-10T08:58:52.198Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:58:52.198Z [DEBUG] Temp file written successfully, size: 28324 bytes
+2026-02-10T08:58:52.198Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:58:52.198Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713932198 to /Users/nishitbariya/.claude.json
+2026-02-10T08:58:52.198Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:58:52.199Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713932199
+2026-02-10T08:58:52.199Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:58:52.200Z [DEBUG] Temp file written successfully, size: 28325 bytes
+2026-02-10T08:58:52.200Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:58:52.200Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713932199 to /Users/nishitbariya/.claude.json
+2026-02-10T08:58:52.200Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:58:52.202Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:58:52.203Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.372Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T08:59:05.372Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T08:59:05.372Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T08:59:05.372Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T08:59:05.373Z [DEBUG] Sending 8 skills via attachment (initial, 6 total sent)
+2026-02-10T08:59:05.375Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-10T08:59:05.375Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:05.375Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T08:59:05.375Z [DEBUG] FileHistory: Making snapshot for message d23c6de2-622d-4ac1-a1f5-45d3a0f961c6
+2026-02-10T08:59:05.375Z [DEBUG] FileHistory: Added snapshot for d23c6de2-622d-4ac1-a1f5-45d3a0f961c6, tracking 0 files
+2026-02-10T08:59:05.376Z [DEBUG] [useDeferredValue] Messages deferred by 2 (8→10)
+2026-02-10T08:59:05.380Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.387Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T08:59:05.387Z [DEBUG] [useDeferredValue] Messages deferred by 2 (8→10)
+2026-02-10T08:59:05.390Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-10T08:59:05.390Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-10T08:59:05.390Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.94c; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:05.390Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.391Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:05.391Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:05.391Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.391Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:05.391Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.393Z [DEBUG] autocompact: tokens=6303 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:05.393Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:05.397Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.f80; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:05.397Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.398Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:05.398Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:05.398Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.398Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:05.398Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.400Z [DEBUG] Stored paste c1d9eeeb655aa810 to /Users/nishitbariya/.claude/paste-cache/c1d9eeeb655aa810.txt
+2026-02-10T08:59:05.404Z [DEBUG] [useDeferredValue] Messages deferred by 2 (8→10)
+2026-02-10T08:59:05.407Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:05.429Z [DEBUG] High write ratio: blit=0, write=20459 (100.0% writes), screen=135x176
+2026-02-10T08:59:06.181Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:10.174Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:10.794Z [DEBUG] [useDeferredValue] Messages deferred by 1 (10→11)
+2026-02-10T08:59:10.804Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:10.837Z [DEBUG] High write ratio: blit=0, write=20459 (100.0% writes), screen=135x176
+2026-02-10T08:59:12.231Z [DEBUG] [useDeferredValue] Messages deferred by 1 (11→12)
+2026-02-10T08:59:12.241Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.249Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.262Z [DEBUG] High write ratio: blit=0, write=20469 (100.0% writes), screen=135x176
+2026-02-10T08:59:12.420Z [DEBUG] executePreToolHooks called for tool: Skill
+2026-02-10T08:59:12.421Z [DEBUG] Getting matching hook commands for PreToolUse with query: Skill
+2026-02-10T08:59:12.421Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:12.421Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-10T08:59:12.423Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14211.1770713952423
+2026-02-10T08:59:12.423Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T08:59:12.423Z [DEBUG] Temp file written successfully, size: 28325 bytes
+2026-02-10T08:59:12.423Z [DEBUG] Applied original permissions to temp file
+2026-02-10T08:59:12.423Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14211.1770713952423 to /Users/nishitbariya/.claude.json
+2026-02-10T08:59:12.424Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T08:59:12.424Z [DEBUG] Metadata string for ai-sdk:
+2026-02-10T08:59:12.424Z [DEBUG] <command-message>ai-sdk</command-message>
+<command-name>/ai-sdk</command-name>
+2026-02-10T08:59:12.424Z [DEBUG] command-message tags in metadata: 1
+2026-02-10T08:59:12.425Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T08:59:12.425Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T08:59:12.425Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T08:59:12.425Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T08:59:12.425Z [DEBUG] processPromptSlashCommand creating 3 messages for ai-sdk
+2026-02-10T08:59:12.425Z [DEBUG] Message 1: <command-message>ai-sdk</command-message>
+<command-name>/ai-sdk</command-name>
+2026-02-10T08:59:12.425Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: /Users/nishitbariya/.claude/skills/ai-sdk\n\n## Prerequisites\n\nBefore searching docs, check if `node_modules/ai/docs/` exists. If not, install
+2026-02-10T08:59:12.425Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-10T08:59:12.425Z [DEBUG] SkillTool returning 2 newMessages for skill ai-sdk
+2026-02-10T08:59:12.425Z [DEBUG] newMessage 1: [{"type":"text","text":"Base directory for this skill: /Users/nishitbariya/.claude/skills/ai-sdk\n\n## Prerequisites\n\nBefore searching docs, check i...
+2026-02-10T08:59:12.425Z [DEBUG] Getting matching hook commands for PostToolUse with query: Skill
+2026-02-10T08:59:12.425Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:12.425Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-10T08:59:12.426Z [DEBUG] [useDeferredValue] Messages deferred by 1 (12→13)
+2026-02-10T08:59:12.428Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.440Z [DEBUG] High write ratio: blit=0, write=20469 (100.0% writes), screen=135x176
+2026-02-10T08:59:12.445Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.474Z [DEBUG] High write ratio: blit=0, write=20501 (100.0% writes), screen=138x176
+2026-02-10T08:59:12.540Z [DEBUG] [useDeferredValue] Messages deferred by 3 (13→16)
+2026-02-10T08:59:12.542Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.553Z [DEBUG] High write ratio: blit=0, write=20483 (100.0% writes), screen=137x176
+2026-02-10T08:59:12.556Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T08:59:12.556Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T08:59:12.557Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T08:59:12.557Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T08:59:12.557Z [DEBUG] autocompact: tokens=47949 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:12.557Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:12.559Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.f80; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:12.559Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.559Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:12.559Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:12.559Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.560Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:12.560Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.561Z [DEBUG] [useDeferredValue] Messages deferred by 3 (13→16)
+2026-02-10T08:59:12.563Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.565Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:12.594Z [DEBUG] High write ratio: blit=0, write=20513 (100.0% writes), screen=138x176
+2026-02-10T08:59:15.915Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:15.922Z [DEBUG] [useDeferredValue] Messages deferred by 1 (16→17)
+2026-02-10T08:59:15.928Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:15.962Z [DEBUG] High write ratio: blit=0, write=20513 (100.0% writes), screen=138x176
+2026-02-10T08:59:17.240Z [DEBUG] [useDeferredValue] Messages deferred by 1 (17→18)
+2026-02-10T08:59:17.244Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.260Z [DEBUG] High write ratio: blit=0, write=20513 (100.0% writes), screen=138x176
+2026-02-10T08:59:17.263Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.291Z [DEBUG] High write ratio: blit=0, write=20513 (100.0% writes), screen=138x176
+2026-02-10T08:59:17.291Z [DEBUG] executePreToolHooks called for tool: EnterPlanMode
+2026-02-10T08:59:17.291Z [DEBUG] Getting matching hook commands for PreToolUse with query: EnterPlanMode
+2026-02-10T08:59:17.291Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:17.291Z [DEBUG] Matched 0 unique hooks for query "EnterPlanMode" (0 before deduplication)
+2026-02-10T08:59:17.292Z [DEBUG] Applying permission update: Setting mode to 'plan'
+2026-02-10T08:59:17.292Z [DEBUG] Getting matching hook commands for PostToolUse with query: EnterPlanMode
+2026-02-10T08:59:17.292Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:17.292Z [DEBUG] Matched 0 unique hooks for query "EnterPlanMode" (0 before deduplication)
+2026-02-10T08:59:17.293Z [DEBUG] [useDeferredValue] Messages deferred by 1 (18→19)
+2026-02-10T08:59:17.294Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.304Z [DEBUG] High write ratio: blit=0, write=20551 (100.0% writes), screen=138x176
+2026-02-10T08:59:17.309Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.310Z [DEBUG] [useDeferredValue] Messages deferred by 1 (19→20)
+2026-02-10T08:59:17.311Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.313Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.315Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T08:59:17.315Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T08:59:17.315Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T08:59:17.315Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T08:59:17.316Z [DEBUG] autocompact: tokens=48329 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:17.316Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:17.317Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.f80; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:17.317Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.318Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:17.318Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:17.318Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.318Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:17.318Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.320Z [DEBUG] [useDeferredValue] Messages deferred by 1 (20→21)
+2026-02-10T08:59:17.321Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.324Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:17.351Z [DEBUG] High write ratio: blit=0, write=20635 (100.0% writes), screen=141x176
+2026-02-10T08:59:20.111Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:20.976Z [DEBUG] [useDeferredValue] Messages deferred by 1 (21→22)
+2026-02-10T08:59:20.981Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:21.002Z [DEBUG] High write ratio: blit=0, write=20635 (100.0% writes), screen=141x176
+2026-02-10T08:59:21.007Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:21.040Z [DEBUG] High write ratio: blit=0, write=20756 (100.0% writes), screen=143x176
+2026-02-10T08:59:26.186Z [DEBUG] executePreToolHooks called for tool: Task
+2026-02-10T08:59:26.187Z [DEBUG] Getting matching hook commands for PreToolUse with query: Task
+2026-02-10T08:59:26.187Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:26.187Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T08:59:26.193Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-02-10T08:59:26.193Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:26.193Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T08:59:26.194Z [DEBUG] autocompact: tokens=177 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:26.195Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:26.199Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:26.199Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:26.200Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:26.200Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:26.201Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:26.201Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:26.201Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:26.203Z [DEBUG] [useDeferredValue] Messages deferred by 2 (22→24)
+2026-02-10T08:59:26.206Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:26.221Z [DEBUG] High write ratio: blit=0, write=20756 (100.0% writes), screen=143x176
+2026-02-10T08:59:26.228Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:26.262Z [DEBUG] High write ratio: blit=0, write=20986 (100.0% writes), screen=147x176
+2026-02-10T08:59:28.525Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:29.421Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:29.461Z [DEBUG] High write ratio: blit=0, write=21013 (100.0% writes), screen=148x176
+2026-02-10T08:59:29.940Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:29.940Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:29.940Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:29.940Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:30.074Z [DEBUG] [useDeferredValue] Messages deferred by 1 (24→25)
+2026-02-10T08:59:30.081Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.111Z [DEBUG] High write ratio: blit=0, write=21054 (100.0% writes), screen=148x176
+2026-02-10T08:59:30.239Z [DEBUG] executePreToolHooks called for tool: Task
+2026-02-10T08:59:30.240Z [DEBUG] Getting matching hook commands for PreToolUse with query: Task
+2026-02-10T08:59:30.240Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:30.240Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T08:59:30.241Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-02-10T08:59:30.241Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:30.241Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T08:59:30.241Z [DEBUG] autocompact: tokens=153 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:30.242Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:30.243Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:30.243Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.244Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:30.244Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:30.244Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:30.244Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.244Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.245Z [DEBUG] [useDeferredValue] Messages deferred by 2 (25→27)
+2026-02-10T08:59:30.247Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.259Z [DEBUG] High write ratio: blit=0, write=21054 (100.0% writes), screen=148x176
+2026-02-10T08:59:30.262Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.295Z [DEBUG] High write ratio: blit=0, write=20985 (100.0% writes), screen=150x176
+2026-02-10T08:59:30.296Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:30.296Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:30.297Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:30.297Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:30.739Z [DEBUG] [useDeferredValue] Messages deferred by 1 (27→28)
+2026-02-10T08:59:30.744Z [DEBUG] [useDeferredValue] Messages deferred by 1 (27→28)
+2026-02-10T08:59:30.749Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:30.788Z [DEBUG] High write ratio: blit=0, write=20985 (100.0% writes), screen=150x176
+2026-02-10T08:59:31.423Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:31.424Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:31.424Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:31.424Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:31.426Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:31.426Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:31.426Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:31.689Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:31.689Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:31.689Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:31.690Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:31.690Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:31.690Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:32.193Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:32.257Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:32.258Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:32.258Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:32.258Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:32.262Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:32.262Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:32.262Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:32.496Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:32.497Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:32.497Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:32.497Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:32.500Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:32.500Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:32.500Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:32.510Z [DEBUG] autocompact: tokens=37200 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:32.510Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:32.512Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:32.512Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:32.513Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:32.513Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:32.513Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:32.513Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:32.513Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:33.171Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:33.204Z [DEBUG] High write ratio: blit=0, write=20985 (100.0% writes), screen=150x176
+2026-02-10T08:59:33.885Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:33.886Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:33.886Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:33.886Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:34.725Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:34.725Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:34.725Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:34.956Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:34.957Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:34.957Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:34.957Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:34.957Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:34.960Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:34.960Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:34.960Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:34.961Z [DEBUG] autocompact: tokens=33261 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:34.961Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:34.962Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:34.963Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:34.963Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:34.963Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:34.963Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:34.963Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:34.963Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.309Z [DEBUG] [useDeferredValue] Messages deferred by 12 (28→40)
+2026-02-10T08:59:35.312Z [DEBUG] [useDeferredValue] Messages deferred by 12 (28→40)
+2026-02-10T08:59:35.316Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.340Z [DEBUG] High write ratio: blit=0, write=21056 (100.0% writes), screen=150x176
+2026-02-10T08:59:35.469Z [DEBUG] executePreToolHooks called for tool: Task
+2026-02-10T08:59:35.470Z [DEBUG] Getting matching hook commands for PreToolUse with query: Task
+2026-02-10T08:59:35.470Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:35.470Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T08:59:35.472Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-02-10T08:59:35.472Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:35.472Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T08:59:35.472Z [DEBUG] autocompact: tokens=155 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:35.472Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:35.473Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:35.473Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.473Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:35.473Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:35.473Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:35.473Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.474Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.475Z [DEBUG] [useDeferredValue] Messages deferred by 1 (40→41)
+2026-02-10T08:59:35.476Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.485Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.498Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:35.505Z [DEBUG] [useDeferredValue] Messages deferred by 1 (41→42)
+2026-02-10T08:59:35.507Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.511Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:35.541Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:36.881Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:37.041Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:37.042Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:37.042Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:37.042Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:37.046Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:37.046Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:37.046Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:37.047Z [DEBUG] [useDeferredValue] Messages deferred by 1 (42→43)
+2026-02-10T08:59:37.059Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:37.091Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:37.587Z [DEBUG] [useDeferredValue] Messages deferred by 1 (43→44)
+2026-02-10T08:59:37.594Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:37.603Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:37.603Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:37.603Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:37.603Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:37.605Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:37.605Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:37.605Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:37.606Z [DEBUG] [useDeferredValue] Messages deferred by 1 (44→45)
+2026-02-10T08:59:37.610Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:37.644Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.006Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:38.098Z [DEBUG] [useDeferredValue] Messages deferred by 1 (45→46)
+2026-02-10T08:59:38.101Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.109Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:38.109Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:38.109Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:38.109Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:38.112Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:38.112Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:38.112Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:38.112Z [DEBUG] [useDeferredValue] Messages deferred by 1 (46→47)
+2026-02-10T08:59:38.115Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.126Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.474Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.514Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.625Z [DEBUG] [useDeferredValue] Messages deferred by 1 (47→48)
+2026-02-10T08:59:38.631Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.639Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:38.639Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:38.639Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:38.639Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:38.642Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:38.642Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:38.642Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:38.643Z [DEBUG] [useDeferredValue] Messages deferred by 1 (48→49)
+2026-02-10T08:59:38.656Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.662Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.684Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.721Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:38.722Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:38.722Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:38.722Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:38.725Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:38.725Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:38.725Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:38.725Z [DEBUG] [useDeferredValue] Messages deferred by 1 (49→50)
+2026-02-10T08:59:38.735Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.755Z [DEBUG] High write ratio: blit=0, write=21153 (100.0% writes), screen=152x176
+2026-02-10T08:59:38.897Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:38.898Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:38.898Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:38.898Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:38.900Z [DEBUG] [useDeferredValue] Messages deferred by 1 (50→51)
+2026-02-10T08:59:38.904Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:38.917Z [DEBUG] High write ratio: blit=0, write=21168 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.145Z [DEBUG] [useDeferredValue] Messages deferred by 1 (51→52)
+2026-02-10T08:59:39.151Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.159Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:39.159Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:39.159Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:39.159Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:39.163Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:39.163Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:39.163Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:39.164Z [DEBUG] [useDeferredValue] Messages deferred by 1 (52→53)
+2026-02-10T08:59:39.178Z [DEBUG] High write ratio: blit=0, write=21168 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.186Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.221Z [DEBUG] High write ratio: blit=0, write=21168 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.384Z [DEBUG] [useDeferredValue] Messages deferred by 1 (53→54)
+2026-02-10T08:59:39.393Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.396Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:39.396Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:39.396Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:39.396Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:39.399Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:39.399Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:39.399Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:39.399Z [DEBUG] [useDeferredValue] Messages deferred by 1 (54→55)
+2026-02-10T08:59:39.403Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.435Z [DEBUG] High write ratio: blit=0, write=21169 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.599Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:39.599Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:39.599Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:39.599Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:39.602Z [DEBUG] [useDeferredValue] Messages deferred by 1 (55→56)
+2026-02-10T08:59:39.609Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.633Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:39.633Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:39.633Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:39.647Z [DEBUG] High write ratio: blit=0, write=21169 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.730Z [DEBUG] [useDeferredValue] Messages deferred by 1 (56→57)
+2026-02-10T08:59:39.734Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.745Z [DEBUG] High write ratio: blit=0, write=21170 (100.0% writes), screen=152x176
+2026-02-10T08:59:39.749Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:39.750Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:39.750Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:39.750Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:39.751Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:39.751Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:39.751Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:39.752Z [DEBUG] [useDeferredValue] Messages deferred by 1 (57→58)
+2026-02-10T08:59:39.756Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:39.788Z [DEBUG] High write ratio: blit=0, write=21170 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.075Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:40.075Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:40.075Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:40.075Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:40.078Z [DEBUG] [useDeferredValue] Messages deferred by 2 (58→60)
+2026-02-10T08:59:40.084Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.123Z [DEBUG] High write ratio: blit=0, write=21192 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.179Z [DEBUG] [useDeferredValue] Messages deferred by 1 (60→61)
+2026-02-10T08:59:40.183Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.196Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:40.196Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:40.196Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:40.196Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:40.198Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:40.198Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:40.198Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:40.199Z [DEBUG] [useDeferredValue] Messages deferred by 1 (61→62)
+2026-02-10T08:59:40.213Z [DEBUG] High write ratio: blit=0, write=21192 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.218Z [DEBUG] [useDeferredValue] Messages deferred by 2 (61→63)
+2026-02-10T08:59:40.223Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.240Z [DEBUG] High write ratio: blit=0, write=21192 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.259Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:40.259Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:40.259Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:40.259Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:40.262Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:40.262Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:40.262Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:40.263Z [DEBUG] [useDeferredValue] Messages deferred by 1 (63→64)
+2026-02-10T08:59:40.272Z [DEBUG] autocompact: tokens=46717 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:40.272Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:40.274Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:40.274Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.275Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:40.275Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:40.275Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:40.275Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.275Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.277Z [DEBUG] [useDeferredValue] Messages deferred by 2 (63→65)
+2026-02-10T08:59:40.281Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.301Z [DEBUG] High write ratio: blit=0, write=21193 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.378Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:40.378Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:40.378Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:40.380Z [DEBUG] [useDeferredValue] Messages deferred by 1 (65→66)
+2026-02-10T08:59:40.387Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.417Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:40.817Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:40.817Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:40.817Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:40.818Z [DEBUG] autocompact: tokens=30963 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:40.818Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:40.820Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:40.820Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.821Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:40.821Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:40.821Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:40.821Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.821Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.822Z [DEBUG] [useDeferredValue] Messages deferred by 1 (66→67)
+2026-02-10T08:59:40.827Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:40.860Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:41.203Z [DEBUG] [useDeferredValue] Messages deferred by 1 (67→68)
+2026-02-10T08:59:41.215Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:41.221Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:41.221Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:41.221Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:41.221Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:41.223Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:41.223Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:41.223Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:41.224Z [DEBUG] [useDeferredValue] Messages deferred by 1 (68→69)
+2026-02-10T08:59:41.230Z [DEBUG] [useDeferredValue] Messages deferred by 2 (68→70)
+2026-02-10T08:59:41.233Z [DEBUG] autocompact: tokens=55730 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:41.233Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:41.234Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:41.235Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:41.235Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:41.235Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:41.235Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:41.235Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:41.235Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:41.237Z [DEBUG] [useDeferredValue] Messages deferred by 2 (68→70)
+2026-02-10T08:59:41.248Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:41.254Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:41.283Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:42.369Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:42.727Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:44.073Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:44.073Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:44.073Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:44.073Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:44.078Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:44.078Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:44.078Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:44.079Z [DEBUG] [useDeferredValue] Messages deferred by 1 (70→71)
+2026-02-10T08:59:44.084Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:44.117Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:44.145Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:44.300Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:44.301Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:44.301Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:44.301Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:44.304Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:44.304Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:44.304Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:44.305Z [DEBUG] [useDeferredValue] Messages deferred by 1 (71→72)
+2026-02-10T08:59:44.312Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:44.345Z [DEBUG] High write ratio: blit=0, write=21183 (100.0% writes), screen=152x176
+2026-02-10T08:59:44.584Z [DEBUG] [useDeferredValue] Messages deferred by 1 (72→73)
+2026-02-10T08:59:44.590Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:44.594Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:44.594Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:44.594Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:44.594Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:44.597Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:44.597Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:44.597Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:44.598Z [DEBUG] [useDeferredValue] Messages deferred by 1 (73→74)
+2026-02-10T08:59:44.605Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:44.634Z [DEBUG] High write ratio: blit=0, write=21199 (100.0% writes), screen=152x176
+2026-02-10T08:59:44.890Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:44.891Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:44.891Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:44.891Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:44.894Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:44.894Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:44.894Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:44.895Z [DEBUG] [useDeferredValue] Messages deferred by 2 (74→76)
+2026-02-10T08:59:44.901Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:44.934Z [DEBUG] High write ratio: blit=0, write=21199 (100.0% writes), screen=152x176
+2026-02-10T08:59:45.298Z [DEBUG] [useDeferredValue] Messages deferred by 1 (76→77)
+2026-02-10T08:59:45.307Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:45.346Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:45.347Z [DEBUG] [useDeferredValue] Messages deferred by 1 (77→78)
+2026-02-10T08:59:45.353Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:45.354Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:45.354Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:45.354Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:45.356Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:45.356Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:45.356Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:45.357Z [DEBUG] [useDeferredValue] Messages deferred by 2 (77→79)
+2026-02-10T08:59:45.360Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:45.393Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:45.409Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:45.409Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:45.409Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:45.409Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:45.411Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:45.411Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:45.411Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:45.412Z [DEBUG] [useDeferredValue] Messages deferred by 1 (79→80)
+2026-02-10T08:59:45.419Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:45.422Z [DEBUG] [useDeferredValue] Messages deferred by 1 (80→81)
+2026-02-10T08:59:45.424Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:45.449Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.016Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.017Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.017Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.017Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.019Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.019Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.019Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:46.020Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.021Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.021Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.021Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.023Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.023Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.023Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:46.024Z [DEBUG] [useDeferredValue] Messages deferred by 3 (81→84)
+2026-02-10T08:59:46.030Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.055Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.191Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.192Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.192Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.192Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.195Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.195Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.195Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:46.196Z [DEBUG] [useDeferredValue] Messages deferred by 1 (84→85)
+2026-02-10T08:59:46.208Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.210Z [DEBUG] autocompact: tokens=36930 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:46.210Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:46.211Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:46.211Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.212Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:46.212Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:46.212Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:46.212Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.212Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.213Z [DEBUG] [useDeferredValue] Messages deferred by 1 (85→86)
+2026-02-10T08:59:46.215Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.247Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.379Z [DEBUG] [useDeferredValue] Messages deferred by 1 (86→87)
+2026-02-10T08:59:46.387Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.389Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.389Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.389Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.389Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.393Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.393Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.393Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:46.394Z [DEBUG] [useDeferredValue] Messages deferred by 2 (86→88)
+2026-02-10T08:59:46.400Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.434Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.593Z [DEBUG] [useDeferredValue] Messages deferred by 1 (88→89)
+2026-02-10T08:59:46.599Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.604Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.605Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.605Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.605Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.606Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:46.606Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:46.606Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:46.607Z [DEBUG] [useDeferredValue] Messages deferred by 1 (89→90)
+2026-02-10T08:59:46.610Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.632Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.939Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:46.940Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:46.940Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:46.940Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:46.943Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.943Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.943Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:46.946Z [DEBUG] autocompact: tokens=51981 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:46.946Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:46.948Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:46.948Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.949Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:46.949Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:46.949Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:46.949Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.950Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.951Z [DEBUG] [useDeferredValue] Messages deferred by 3 (90→93)
+2026-02-10T08:59:46.963Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:46.995Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:46.997Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:46.997Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:46.997Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:47.348Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:47.348Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:47.348Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:47.348Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:47.352Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:47.352Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:47.352Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:47.353Z [DEBUG] [useDeferredValue] Messages deferred by 2 (93→95)
+2026-02-10T08:59:47.359Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:47.393Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:47.889Z [DEBUG] [useDeferredValue] Messages deferred by 1 (95→96)
+2026-02-10T08:59:47.894Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:47.901Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:47.925Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:48.274Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:48.274Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:48.274Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:48.274Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:48.277Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:48.277Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:48.277Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:48.278Z [DEBUG] [useDeferredValue] Messages deferred by 1 (96→97)
+2026-02-10T08:59:48.283Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.318Z [DEBUG] High write ratio: blit=0, write=21200 (100.0% writes), screen=152x176
+2026-02-10T08:59:48.518Z [DEBUG] [useDeferredValue] Messages deferred by 1 (97→98)
+2026-02-10T08:59:48.524Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.533Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:48.533Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:48.533Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:48.533Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:48.535Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:48.535Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:48.535Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:48.536Z [DEBUG] [useDeferredValue] Messages deferred by 1 (98→99)
+2026-02-10T08:59:48.548Z [DEBUG] High write ratio: blit=0, write=21201 (100.0% writes), screen=152x176
+2026-02-10T08:59:48.554Z [DEBUG] autocompact: tokens=80255 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:48.555Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:48.557Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:48.557Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.557Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:48.557Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:48.558Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:48.558Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.558Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.559Z [DEBUG] [useDeferredValue] Messages deferred by 2 (98→100)
+2026-02-10T08:59:48.563Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:48.595Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:49.113Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:51.034Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:51.036Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:51.036Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:51.036Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:51.036Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:51.039Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:51.039Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:51.039Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:51.041Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T08:59:51.041Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T08:59:51.041Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:51.041Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T08:59:51.044Z [DEBUG] [useDeferredValue] Messages deferred by 2 (100→102)
+2026-02-10T08:59:51.055Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:51.089Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:51.396Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T08:59:51.396Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:51.396Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T08:59:51.547Z [DEBUG] [useDeferredValue] Messages deferred by 1 (102→103)
+2026-02-10T08:59:51.553Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:51.574Z [DEBUG] [useDeferredValue] Messages deferred by 1 (103→104)
+2026-02-10T08:59:51.589Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:51.592Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:51.593Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:51.593Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:51.593Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:51.595Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:51.595Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:51.595Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:51.596Z [DEBUG] [useDeferredValue] Messages deferred by 2 (103→105)
+2026-02-10T08:59:51.600Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:51.633Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:52.070Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T08:59:52.071Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T08:59:52.071Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:52.071Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T08:59:52.074Z [DEBUG] [useDeferredValue] Messages deferred by 1 (105→106)
+2026-02-10T08:59:52.086Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.127Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:52.158Z [DEBUG] [useDeferredValue] Messages deferred by 1 (106→107)
+2026-02-10T08:59:52.162Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.165Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:52.165Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:52.165Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:52.165Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:52.166Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:52.166Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:52.166Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:52.167Z [DEBUG] [useDeferredValue] Messages deferred by 1 (107→108)
+2026-02-10T08:59:52.170Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.199Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:52.414Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T08:59:52.414Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:52.414Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T08:59:52.568Z [DEBUG] [useDeferredValue] Messages deferred by 1 (108→109)
+2026-02-10T08:59:52.573Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:52.573Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:52.573Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:52.573Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:52.576Z [DEBUG] [useDeferredValue] Messages deferred by 2 (108→110)
+2026-02-10T08:59:52.581Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.618Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:52.746Z [DEBUG] [useDeferredValue] Messages deferred by 1 (110→111)
+2026-02-10T08:59:52.750Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.757Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:52.757Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:52.757Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:52.757Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:52.759Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:52.759Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:52.759Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:52.760Z [DEBUG] [useDeferredValue] Messages deferred by 1 (111→112)
+2026-02-10T08:59:52.767Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.781Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:52.788Z [DEBUG] autocompact: tokens=54773 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:52.789Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:52.791Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:52.791Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.792Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:52.792Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:52.792Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:52.793Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.793Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.795Z [DEBUG] [useDeferredValue] Messages deferred by 1 (112→113)
+2026-02-10T08:59:52.803Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:52.836Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:53.039Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:53.040Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:53.040Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:53.040Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:53.042Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:53.042Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:53.042Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:53.043Z [DEBUG] [useDeferredValue] Messages deferred by 1 (113→114)
+2026-02-10T08:59:53.055Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:53.089Z [DEBUG] High write ratio: blit=0, write=21202 (100.0% writes), screen=152x176
+2026-02-10T08:59:53.323Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:53.323Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:53.323Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:53.324Z [DEBUG] autocompact: tokens=40288 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:53.324Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:53.326Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:53.326Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:53.326Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:53.326Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:53.326Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:53.327Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:53.327Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:53.328Z [DEBUG] [useDeferredValue] Messages deferred by 1 (114→115)
+2026-02-10T08:59:53.336Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:53.372Z [DEBUG] High write ratio: blit=0, write=21203 (100.0% writes), screen=152x176
+2026-02-10T08:59:54.076Z [DEBUG] [useDeferredValue] Messages deferred by 1 (115→116)
+2026-02-10T08:59:54.084Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.122Z [DEBUG] High write ratio: blit=0, write=21203 (100.0% writes), screen=152x176
+2026-02-10T08:59:54.123Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T08:59:54.123Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T08:59:54.123Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:54.123Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T08:59:54.125Z [DEBUG] [useDeferredValue] Messages deferred by 1 (116→117)
+2026-02-10T08:59:54.136Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.176Z [DEBUG] High write ratio: blit=0, write=21203 (100.0% writes), screen=152x176
+2026-02-10T08:59:54.824Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:54.885Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T08:59:54.885Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:54.885Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T08:59:54.886Z [DEBUG] autocompact: tokens=89892 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:54.886Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:54.887Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:54.887Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.888Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:54.888Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:54.888Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:54.888Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.888Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.889Z [DEBUG] [useDeferredValue] Messages deferred by 1 (117→118)
+2026-02-10T08:59:54.897Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:54.940Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:55.024Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:56.623Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:56.623Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:56.623Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:56.623Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:56.625Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:56.625Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:56.625Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:56.626Z [DEBUG] [useDeferredValue] Messages deferred by 1 (118→119)
+2026-02-10T08:59:56.632Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:56.670Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:57.057Z [DEBUG] Stream started - received first chunk
+2026-02-10T08:59:57.360Z [DEBUG] [useDeferredValue] Messages deferred by 1 (119→120)
+2026-02-10T08:59:57.374Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:57.390Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T08:59:57.391Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T08:59:57.391Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:57.391Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T08:59:57.392Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T08:59:57.392Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:57.392Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T08:59:57.393Z [DEBUG] [useDeferredValue] Messages deferred by 1 (120→121)
+2026-02-10T08:59:57.405Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:57.411Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:57.442Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:57.946Z [DEBUG] [useDeferredValue] Messages deferred by 1 (121→122)
+2026-02-10T08:59:57.952Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:57.987Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:58.782Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T08:59:58.782Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T08:59:58.782Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:59:58.782Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T08:59:58.786Z [DEBUG] [useDeferredValue] Messages deferred by 1 (122→123)
+2026-02-10T08:59:58.797Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:58.841Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T08:59:59.144Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T08:59:59.144Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T08:59:59.144Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T08:59:59.146Z [DEBUG] autocompact: tokens=42910 threshold=167000 effectiveWindow=180000
+2026-02-10T08:59:59.146Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T08:59:59.147Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T08:59:59.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:59.148Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T08:59:59.148Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T08:59:59.148Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T08:59:59.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:59.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:59.150Z [DEBUG] [useDeferredValue] Messages deferred by 1 (123→124)
+2026-02-10T08:59:59.157Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:59:59.202Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T09:00:01.287Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:03.177Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T09:00:03.178Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T09:00:03.178Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:03.178Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T09:00:03.180Z [DEBUG] [useDeferredValue] Messages deferred by 1 (124→125)
+2026-02-10T09:00:03.186Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:03.215Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T09:00:03.955Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T09:00:03.955Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:03.955Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T09:00:04.074Z [DEBUG] [useDeferredValue] Messages deferred by 1 (125→126)
+2026-02-10T09:00:04.078Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:04.113Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T09:00:04.725Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T09:00:04.726Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T09:00:04.726Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:04.726Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T09:00:04.729Z [DEBUG] [useDeferredValue] Messages deferred by 1 (126→127)
+2026-02-10T09:00:04.741Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:04.777Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T09:00:05.083Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T09:00:05.083Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:05.083Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T09:00:05.085Z [DEBUG] autocompact: tokens=44261 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:05.085Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:05.088Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:05.088Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:05.089Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:05.089Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:05.089Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:05.089Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:05.089Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:05.091Z [DEBUG] [useDeferredValue] Messages deferred by 1 (127→128)
+2026-02-10T09:00:05.099Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:05.127Z [DEBUG] High write ratio: blit=0, write=21204 (100.0% writes), screen=152x176
+2026-02-10T09:00:07.750Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:08.646Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:08.646Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:08.646Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:08.646Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:08.649Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:08.649Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:08.649Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:08.649Z [DEBUG] [useDeferredValue] Messages deferred by 1 (128→129)
+2026-02-10T09:00:08.654Z [DEBUG] [useDeferredValue] Messages deferred by 2 (128→130)
+2026-02-10T09:00:08.658Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:08.688Z [DEBUG] High write ratio: blit=0, write=21206 (100.0% writes), screen=152x176
+2026-02-10T09:00:09.327Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:09.327Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:09.327Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:09.327Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:09.330Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:09.330Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:09.330Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:09.331Z [DEBUG] [useDeferredValue] Messages deferred by 1 (130→131)
+2026-02-10T09:00:09.338Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:09.370Z [DEBUG] High write ratio: blit=0, write=21206 (100.0% writes), screen=152x176
+2026-02-10T09:00:09.378Z [DEBUG] autocompact: tokens=48246 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:09.378Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:09.380Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:09.380Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:09.381Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:09.381Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:09.381Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:09.381Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:09.381Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:09.383Z [DEBUG] [useDeferredValue] Messages deferred by 1 (131→132)
+2026-02-10T09:00:09.398Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:09.434Z [DEBUG] High write ratio: blit=0, write=21206 (100.0% writes), screen=152x176
+2026-02-10T09:00:12.904Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:16.097Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T09:00:16.098Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T09:00:16.098Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:16.098Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T09:00:16.102Z [DEBUG] [useDeferredValue] Messages deferred by 1 (132→133)
+2026-02-10T09:00:16.115Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:16.148Z [DEBUG] High write ratio: blit=0, write=21207 (100.0% writes), screen=152x176
+2026-02-10T09:00:16.454Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T09:00:16.454Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:16.454Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T09:00:16.880Z [DEBUG] [useDeferredValue] Messages deferred by 1 (133→134)
+2026-02-10T09:00:16.891Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:16.924Z [DEBUG] High write ratio: blit=0, write=21208 (100.0% writes), screen=152x176
+2026-02-10T09:00:17.438Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-10T09:00:17.438Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-10T09:00:17.438Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:17.438Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-10T09:00:17.450Z [DEBUG] [useDeferredValue] Messages deferred by 1 (134→135)
+2026-02-10T09:00:17.456Z [DEBUG] tree-sitter: loaded from embedded
+2026-02-10T09:00:17.467Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-02-10T09:00:17.467Z [DEBUG] Looking for shell config file: /Users/nishitbariya/.zshrc
+2026-02-10T09:00:17.467Z [DEBUG] Snapshots directory: /Users/nishitbariya/.claude/shell-snapshots
+2026-02-10T09:00:17.468Z [DEBUG] Creating snapshot at: /Users/nishitbariya/.claude/shell-snapshots/snapshot-zsh-1770714017467-ea4j5q.sh
+2026-02-10T09:00:17.468Z [DEBUG] Shell binary exists: true
+2026-02-10T09:00:17.468Z [DEBUG] Execution timeout: 10000ms
+2026-02-10T09:00:17.470Z [DEBUG] [useDeferredValue] Messages deferred by 1 (134→135)
+2026-02-10T09:00:17.478Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.521Z [DEBUG] High write ratio: blit=0, write=21208 (100.0% writes), screen=152x176
+2026-02-10T09:00:17.552Z [DEBUG] Shell snapshot created successfully (5326 bytes)
+2026-02-10T09:00:17.553Z [DEBUG] No session environment scripts found
+2026-02-10T09:00:17.594Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-10T09:00:17.595Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.bb7; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:17.595Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.595Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:17.595Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:17.596Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.596Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:17.596Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.597Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-10T09:00:17.597Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:17.597Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-10T09:00:17.599Z [DEBUG] autocompact: tokens=50232 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:17.600Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:17.601Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:17.602Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.602Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:17.602Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:17.602Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:17.602Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.602Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.604Z [DEBUG] [useDeferredValue] Messages deferred by 1 (135→136)
+2026-02-10T09:00:17.613Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:17.644Z [DEBUG] High write ratio: blit=0, write=21208 (100.0% writes), screen=152x176
+2026-02-10T09:00:18.389Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:19.543Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:21.077Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:21.077Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:21.077Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:21.077Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:21.080Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:21.080Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:21.080Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:21.081Z [DEBUG] [useDeferredValue] Messages deferred by 1 (136→137)
+2026-02-10T09:00:21.089Z [DEBUG] [useDeferredValue] Messages deferred by 2 (136→138)
+2026-02-10T09:00:21.094Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:21.126Z [DEBUG] High write ratio: blit=0, write=21208 (100.0% writes), screen=152x176
+2026-02-10T09:00:21.645Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:21.646Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:21.646Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:21.646Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:21.648Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:21.648Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:21.648Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:21.649Z [DEBUG] [useDeferredValue] Messages deferred by 1 (138→139)
+2026-02-10T09:00:21.656Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:21.663Z [DEBUG] [useDeferredValue] Messages deferred by 1 (139→140)
+2026-02-10T09:00:21.667Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:21.698Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:22.179Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:22.180Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:22.180Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:22.180Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:22.183Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:22.183Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:22.183Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:22.184Z [DEBUG] [useDeferredValue] Messages deferred by 1 (140→141)
+2026-02-10T09:00:22.194Z [DEBUG] autocompact: tokens=59641 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:22.194Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:22.197Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:22.197Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:22.198Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:22.198Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:22.198Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:22.198Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:22.198Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:22.200Z [DEBUG] [useDeferredValue] Messages deferred by 2 (140→142)
+2026-02-10T09:00:22.204Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:22.235Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:24.919Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:26.537Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T09:00:26.537Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T09:00:26.537Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:26.537Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T09:00:26.543Z [DEBUG] [useDeferredValue] Messages deferred by 1 (142→143)
+2026-02-10T09:00:26.553Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:26.603Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:27.323Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:27.323Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:27.323Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:27.323Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:27.326Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:27.326Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:27.326Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:27.327Z [DEBUG] [useDeferredValue] Messages deferred by 1 (143→144)
+2026-02-10T09:00:27.334Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.343Z [DEBUG] [useDeferredValue] Messages deferred by 2 (143→145)
+2026-02-10T09:00:27.349Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.383Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:27.444Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T09:00:27.444Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:27.444Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T09:00:27.446Z [DEBUG] autocompact: tokens=65096 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:27.446Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:27.449Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:27.449Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.449Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:27.449Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:27.450Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:27.450Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.450Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.451Z [DEBUG] [useDeferredValue] Messages deferred by 1 (145→146)
+2026-02-10T09:00:27.456Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:27.487Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:30.250Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:32.865Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:32.866Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:32.866Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:32.866Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:32.869Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:32.869Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:32.869Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:32.870Z [DEBUG] [useDeferredValue] Messages deferred by 1 (146→147)
+2026-02-10T09:00:32.878Z [DEBUG] [useDeferredValue] Messages deferred by 2 (146→148)
+2026-02-10T09:00:32.883Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:32.911Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:32.932Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-02-10T09:00:32.933Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-02-10T09:00:32.933Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:32.933Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-02-10T09:00:32.934Z [DEBUG] [useDeferredValue] Messages deferred by 1 (148→149)
+2026-02-10T09:00:32.937Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:32.966Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:33.616Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-02-10T09:00:33.616Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:33.616Z [DEBUG] Matched 1 unique hooks for query "Glob" (1 before deduplication)
+2026-02-10T09:00:33.617Z [DEBUG] autocompact: tokens=67947 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:33.618Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:33.619Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:33.619Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:33.619Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:33.619Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:33.619Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:33.619Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:33.620Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:33.621Z [DEBUG] [useDeferredValue] Messages deferred by 1 (149→150)
+2026-02-10T09:00:33.623Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:33.648Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:35.823Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:37.281Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T09:00:37.281Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T09:00:37.281Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:37.282Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T09:00:37.285Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T09:00:37.285Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:37.285Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T09:00:37.287Z [DEBUG] [useDeferredValue] Messages deferred by 1 (150→151)
+2026-02-10T09:00:37.299Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:37.326Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:37.329Z [DEBUG] [useDeferredValue] Messages deferred by 1 (151→152)
+2026-02-10T09:00:37.332Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:37.342Z [DEBUG] autocompact: tokens=69410 threshold=167000 effectiveWindow=180000
+2026-02-10T09:00:37.342Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:00:37.343Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.713; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:00:37.343Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:37.344Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:00:37.344Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:00:37.344Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:00:37.344Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:37.344Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:37.354Z [DEBUG] High write ratio: blit=0, write=21209 (100.0% writes), screen=152x176
+2026-02-10T09:00:39.929Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:00:50.871Z [DEBUG] Getting matching hook commands for SubagentStop with query: Explore
+2026-02-10T09:00:50.871Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:00:50.871Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T09:00:50.872Z [DEBUG] Getting matching hook commands for PostToolUse with query: Task
+2026-02-10T09:00:50.872Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:00:50.872Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T09:00:50.873Z [DEBUG] [useDeferredValue] Messages deferred by 1 (152→153)
+2026-02-10T09:00:50.874Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:50.884Z [DEBUG] High write ratio: blit=0, write=21182 (100.0% writes), screen=151x176
+2026-02-10T09:00:50.889Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:00:50.917Z [DEBUG] High write ratio: blit=0, write=21143 (100.0% writes), screen=151x176
+2026-02-10T09:01:22.059Z [DEBUG] Getting matching hook commands for SubagentStop with query: Explore
+2026-02-10T09:01:22.059Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:01:22.059Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T09:01:22.060Z [DEBUG] Getting matching hook commands for PostToolUse with query: Task
+2026-02-10T09:01:22.060Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:01:22.060Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T09:01:22.061Z [DEBUG] [useDeferredValue] Messages deferred by 1 (153→154)
+2026-02-10T09:01:22.064Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:22.075Z [DEBUG] High write ratio: blit=0, write=21143 (100.0% writes), screen=151x176
+2026-02-10T09:01:22.080Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:22.107Z [DEBUG] High write ratio: blit=0, write=21104 (100.0% writes), screen=151x176
+2026-02-10T09:01:43.408Z [DEBUG] Getting matching hook commands for SubagentStop with query: Explore
+2026-02-10T09:01:43.408Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:01:43.408Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-02-10T09:01:43.409Z [DEBUG] Getting matching hook commands for PostToolUse with query: Task
+2026-02-10T09:01:43.409Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T09:01:43.409Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-10T09:01:43.410Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T09:01:43.410Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T09:01:43.410Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T09:01:43.410Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T09:01:43.410Z [DEBUG] autocompact: tokens=59502 threshold=167000 effectiveWindow=180000
+2026-02-10T09:01:43.410Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:01:43.413Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.f80; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:01:43.413Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:43.414Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:01:43.414Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:01:43.414Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:43.414Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:01:43.414Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:43.416Z [DEBUG] [useDeferredValue] Messages deferred by 1 (154→155)
+2026-02-10T09:01:43.419Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:43.430Z [DEBUG] High write ratio: blit=0, write=21104 (100.0% writes), screen=151x176
+2026-02-10T09:01:43.432Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:43.460Z [DEBUG] High write ratio: blit=0, write=21064 (100.0% writes), screen=151x176
+2026-02-10T09:01:46.755Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:01:48.015Z [DEBUG] [useDeferredValue] Messages deferred by 1 (155→156)
+2026-02-10T09:01:48.018Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:48.022Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:48.048Z [DEBUG] High write ratio: blit=0, write=21231 (100.0% writes), screen=153x176
+2026-02-10T09:01:57.476Z [DEBUG] executePreToolHooks called for tool: AskUserQuestion
+2026-02-10T09:01:57.477Z [DEBUG] Getting matching hook commands for PreToolUse with query: AskUserQuestion
+2026-02-10T09:01:57.477Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:01:57.477Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-02-10T09:01:57.477Z [DEBUG] executePermissionRequestHooks called for tool: AskUserQuestion
+2026-02-10T09:01:57.478Z [DEBUG] Getting matching hook commands for PermissionRequest with query: AskUserQuestion
+2026-02-10T09:01:57.478Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:01:57.478Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-02-10T09:01:57.479Z [DEBUG] [useDeferredValue] Messages deferred by 1 (156→157)
+2026-02-10T09:01:57.482Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:57.498Z [DEBUG] High write ratio: blit=0, write=21977 (100.0% writes), screen=164x176
+2026-02-10T09:01:57.499Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T09:01:57.505Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:01:57.534Z [DEBUG] High write ratio: blit=0, write=21977 (100.0% writes), screen=164x176
+2026-02-10T09:02:17.168Z [DEBUG] AskUserQuestion tool permission denied
+2026-02-10T09:02:17.169Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T09:02:17.169Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T09:02:17.169Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T09:02:17.169Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T09:02:17.170Z [DEBUG] autocompact: tokens=61908 threshold=167000 effectiveWindow=180000
+2026-02-10T09:02:17.170Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T09:02:17.175Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.38.f80; cc_entrypoint=cli; cch=00000;
+2026-02-10T09:02:17.176Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:17.177Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T09:02:17.177Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T09:02:17.177Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:17.178Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T09:02:17.178Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:17.182Z [DEBUG] [useDeferredValue] Messages deferred by 3 (157→160)
+2026-02-10T09:02:17.185Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:17.202Z [DEBUG] High write ratio: blit=0, write=21222 (100.0% writes), screen=153x176
+2026-02-10T09:02:17.206Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T09:02:17.207Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T09:02:17.218Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:17.247Z [DEBUG] High write ratio: blit=0, write=21893 (100.0% writes), screen=165x176
+2026-02-10T09:02:17.987Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T09:02:17.987Z [DEBUG] Found 2.1.38 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-10T09:02:20.125Z [DEBUG] Stream started - received first chunk
+2026-02-10T09:02:21.116Z [DEBUG] [useDeferredValue] Messages deferred by 1 (160→161)
+2026-02-10T09:02:21.131Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:21.150Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-10T09:02:21.150Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:02:21.150Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T09:02:21.154Z [DEBUG] [useDeferredValue] Messages deferred by 1 (161→162)
+2026-02-10T09:02:21.156Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:21.167Z [DEBUG] High write ratio: blit=0, write=21994 (100.0% writes), screen=166x176
+2026-02-10T09:02:21.168Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T09:02:21.173Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:21.200Z [DEBUG] High write ratio: blit=0, write=22015 (100.0% writes), screen=168x176
+2026-02-10T09:02:21.370Z [DEBUG] [onCancel] focusedInputDialog=undefined streamMode=tool-use
+2026-02-10T09:02:21.373Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T09:02:21.381Z [DEBUG] High write ratio: blit=0, write=22015 (100.0% writes), screen=168x176
+2026-02-10T09:02:21.716Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-10T09:02:21.716Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T09:02:21.716Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)
+2026-02-10T09:02:21.720Z [DEBUG] MCP server "Neon": HTTP transport closed/disconnected, attempting automatic reconnection
+2026-02-10T09:02:21.720Z [DEBUG] MCP server "claude.ai Hugging Face": SSE transport closed/disconnected, attempting automatic reconnection
+2026-02-10T09:02:21.721Z [DEBUG] Cleaned up session snapshot: /Users/nishitbariya/.claude/shell-snapshots/snapshot-zsh-1770714017467-ea4j5q.sh
+2026-02-10T09:02:21.721Z [DEBUG] LSP server manager shut down successfully
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "Neon": Initializing HTTP transport to https://mcp.neon.tech/mcp
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "Neon": Node version: v24.3.0, Platform: darwin
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "Neon": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T09:02:21.721Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-10T09:02:21.722Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": Proxy options: default
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": HTTP transport options: {"url":"https://mcp.neon.tech/mcp","headers":{"User-Agent":"claude-code/2.1.38","Authorization":"[REDACTED]"},"hasAuthProvider":true,"timeoutMs":60000}
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": HTTP transport created successfully
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": Client created, setting up request handler
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": Starting connection with timeout of 30000ms
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": Testing basic HTTP connectivity to https://mcp.neon.tech/mcp
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": Parsed URL: host=mcp.neon.tech, port=default, protocol=https:
+2026-02-10T09:02:21.723Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.284Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.579Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.579Z [DEBUG] MCP server "Neon": Successfully connected to http server in 858ms
+2026-02-10T09:02:22.580Z [DEBUG] MCP server "Neon": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"mcp-server-neon","version":"0.6.4"}}
+2026-02-10T09:02:22.580Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.580Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.580Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T09:02:22.652Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 931ms
+2026-02-10T09:02:22.653Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}

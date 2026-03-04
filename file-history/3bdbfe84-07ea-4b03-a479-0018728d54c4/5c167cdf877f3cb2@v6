@@ -1,0 +1,267 @@
+"use server";
+
+import type { Sandbox } from "e2b";
+import { z } from "zod";
+import { esc, getSandboxRuntime, runOrThrow } from "@/lib/e2b";
+import { orgAction } from "@/server/action-utils";
+
+// ── Create a named agent + send first message ───────────────────────────────
+
+export const createAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+    name: z.string().min(1),
+    emoji: z.string().min(1),
+    systemPrompt: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+
+    const exists = await agentExists(runtime, input.agentId);
+
+    if (!exists) {
+      // Use $HOME so shell resolves the path (~ doesn't expand inside single quotes)
+      const workspace = `$HOME/.openclaw/workspace-${input.agentId}`;
+
+      // 1. Create workspace directory
+      await runOrThrow(
+        runtime,
+        `mkdir -p "${workspace}"`,
+        "create workspace",
+      );
+
+      // 2. Write AGENTS.md with system prompt
+      await runOrThrow(
+        runtime,
+        `cat > "${workspace}/AGENTS.md" << 'AGENTEOF'\n${input.systemPrompt}\nAGENTEOF`,
+        "write AGENTS.md",
+      );
+
+      // 3. Register agent via CLI
+      await runOrThrow(
+        runtime,
+        `openclaw agents add ${esc(input.agentId)} --workspace "${workspace}"`,
+        "register agent",
+      );
+
+      // 4. Set identity (name + emoji)
+      await runOrThrow(
+        runtime,
+        `openclaw agents set-identity --agent ${esc(input.agentId)} --name ${esc(input.name)} --emoji ${esc(input.emoji)}`,
+        "set identity",
+      );
+
+      // 5. Restart gateway to pick up new agent
+      await runOrThrow(
+        runtime,
+        `nohup openclaw gateway restart > /tmp/gateway-restart.log 2>&1 &`,
+        "gateway restart",
+      );
+
+      await runOrThrow(runtime, "sleep 3", "wait for gateway");
+    }
+
+    // 6. Send first message to the agent
+    const cmd = `openclaw agent --agent ${esc(input.agentId)} --message 'hi' --json`;
+    const result = await runOrThrow(runtime, cmd, "send to agent");
+    const raw = result.stdout?.trim() ?? "";
+
+    const jsonPayload = extractJson(raw);
+    if (jsonPayload) {
+      return jsonPayload as Record<string, unknown>;
+    }
+
+    // Command succeeded but output wasn't JSON — that's fine
+    console.log("[agents] send stdout (non-JSON):", raw);
+    return { status: "accepted" };
+  },
+);
+
+// ── List named agents ────────────────────────────────────────────────────────
+
+export const listAgents = orgAction(
+  z.object({ sandboxId: z.string().min(1) }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+
+    // Get registered agents
+    const result = await runtime.commands.run(`openclaw agents list --json`);
+    const raw = result.stdout?.trim() ?? "";
+    const json = extractJson(raw);
+
+    if (!json) {
+      // Fallback: try without --json
+      const plain = await runtime.commands.run(`openclaw agents list`);
+      console.log("[agents] list (plain):", plain.stdout);
+      return { agents: [] as AgentInfo[] };
+    }
+
+    const parsed = json as { agents?: Record<string, unknown>[] };
+    const agents = Array.isArray(parsed.agents) ? parsed.agents : [];
+
+    return {
+      agents: agents.map((a) => ({
+        id: (a.id as string) ?? "",
+        name: ((a.identity as Record<string, unknown>)?.name as string | undefined) ?? (a.id as string) ?? "",
+        emoji: ((a.identity as Record<string, unknown>)?.emoji as string | undefined) ?? null,
+        workspace: (a.workspace as string | undefined) ?? null,
+      })),
+    };
+  },
+);
+
+// ── List sessions for named agents ───────────────────────────────────────────
+
+export const listAgentSessions = orgAction(
+  z.object({ sandboxId: z.string().min(1) }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    const result = await runOrThrow(
+      runtime,
+      `openclaw sessions --json`,
+      "list agent sessions",
+    );
+    const raw = result.stdout?.trim() ?? "{}";
+    let parsed: { sessions?: Record<string, unknown>[] };
+    try {
+      parsed = JSON.parse(raw) as typeof parsed;
+    } catch {
+      throw new Error("Invalid sessions list JSON");
+    }
+
+    const sessions = Array.isArray(parsed.sessions) ? parsed.sessions : [];
+
+    // Filter to named agent sessions (key starts with "agent:<id>:")
+    // Exclude the default "main" session which belongs to the primary agent
+    const agentSessions = sessions
+      .filter((s) => {
+        const key = s.key as string | undefined;
+        if (!key) return false;
+        // Match "agent:<id>:main" or "agent:<id>:subagent:<uuid>"
+        // but not the default main agent session (just "main" or "agent:main:main")
+        return key.startsWith("agent:") && key !== "main";
+      })
+      .map((s) => ({
+        key: s.key as string,
+        label: (s.label as string | undefined) ?? null,
+        model: (s.model as string | undefined) ?? null,
+        status: deriveStatus(s),
+        updatedAt: (s.updatedAtMs as number | undefined) ?? null,
+        tokens: parseTokens(s),
+      }));
+
+    return { sessions: agentSessions, total: agentSessions.length };
+  },
+);
+
+// ── Delete a named agent ─────────────────────────────────────────────────────
+
+export const deleteAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    await runOrThrow(
+      runtime,
+      `openclaw agents delete ${esc(input.agentId)}`,
+      "delete agent",
+    );
+
+    // Restart gateway so it drops the agent
+    await runOrThrow(
+      runtime,
+      `nohup openclaw gateway restart > /tmp/gateway-restart.log 2>&1 &`,
+      "gateway restart",
+    );
+
+    return { ok: true as const };
+  },
+);
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+interface AgentInfo {
+  id: string;
+  name: string;
+  emoji: string | null;
+  workspace: string | null;
+}
+
+async function agentExists(
+  runtime: Sandbox,
+  agentId: string,
+): Promise<boolean> {
+  try {
+    const result = await runtime.commands.run(`openclaw agents list --json`);
+    if (result.exitCode !== 0) return false;
+    const json = extractJson(result.stdout?.trim() ?? "");
+    if (!json) return false;
+    const parsed = json as { agents?: { id: string }[] };
+    const agents = Array.isArray(parsed.agents) ? parsed.agents : [];
+    return agents.some((a) => a.id === agentId);
+  } catch {
+    return false;
+  }
+}
+
+function extractJson(raw: string): unknown | null {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    // noop
+  }
+  const objStart = raw.indexOf("{");
+  const arrStart = raw.indexOf("[");
+  const start =
+    objStart === -1
+      ? arrStart
+      : arrStart === -1
+        ? objStart
+        : Math.min(objStart, arrStart);
+  if (start === -1) return null;
+  const candidate = raw.slice(start);
+  try {
+    return JSON.parse(candidate);
+  } catch {
+    const lines = raw.split("\n");
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const line = lines[i].trim();
+      if (line.startsWith("{") || line.startsWith("[")) {
+        try {
+          return JSON.parse(line);
+        } catch {
+          continue;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function deriveStatus(
+  s: Record<string, unknown>,
+): "running" | "completed" | "error" | "unknown" {
+  const status = s.status as string | undefined;
+  if (status === "running" || status === "active") return "running";
+  if (status === "completed" || status === "done" || status === "success")
+    return "completed";
+  if (status === "error" || status === "failed") return "error";
+  const endedAt = s.endedAtMs as number | undefined;
+  const error = s.error as string | undefined;
+  if (error) return "error";
+  if (endedAt) return "completed";
+  return "unknown";
+}
+
+function parseTokens(
+  s: Record<string, unknown>,
+): { input: number; output: number; total: number } | null {
+  const tokens = s.tokens as Record<string, unknown> | undefined;
+  if (!tokens) return null;
+  const input = (tokens.input as number | undefined) ?? 0;
+  const output = (tokens.output as number | undefined) ?? 0;
+  return { input, output, total: input + output };
+}

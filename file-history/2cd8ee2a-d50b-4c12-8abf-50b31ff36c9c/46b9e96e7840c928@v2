@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { PostBody } from "@/components/blog/post-body";
+import { PostHeader } from "@/components/blog/post-header";
+import { getAllBlogSlugs, getBlogPost } from "@/lib/basehub.action";
+import { Footer } from "../../_components/footer";
+import { Navbar } from "../../_components/navbar";
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return await getAllBlogSlugs();
+}
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  if (!post) return { title: "Post Not Found | RunAgents" };
+
+  const description =
+    post.body.plainText.length > 160
+      ? `${post.body.plainText.slice(0, 160)}...`
+      : post.body.plainText;
+
+  return {
+    title: `${post._title} | RunAgents Blog`,
+    description,
+    openGraph: {
+      title: post._title,
+      description,
+      images: [{ url: post.coverImage.url }],
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  if (!post) notFound();
+
+  return (
+    <div className="min-h-screen bg-white text-black font-display selection:bg-black selection:text-white overflow-x-hidden">
+      <Navbar />
+      <main className="mx-auto w-full max-w-[800px] px-4 py-12 sm:px-6 sm:py-16">
+        <Link
+          href="/blog"
+          className="mb-8 inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-black transition-colors"
+        >
+          &larr; Back to Blog
+        </Link>
+        <PostHeader post={post} />
+        <div className="mt-10">
+          <PostBody content={post.body.json.content} />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}

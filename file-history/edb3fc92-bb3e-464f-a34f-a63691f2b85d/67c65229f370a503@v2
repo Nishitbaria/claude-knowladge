@@ -1,0 +1,36 @@
+import { BaseHubImage } from "basehub/next-image";
+import Link from "next/link";
+
+interface CoverImageProps {
+  url: string;
+  alt: string;
+  slug?: string;
+  priority?: boolean;
+}
+
+export function CoverImage({ url, alt, slug, priority }: CoverImageProps) {
+  const image = (
+    <BaseHubImage
+      src={url}
+      alt={alt}
+      width={1200}
+      height={630}
+      priority={priority}
+      className="w-full rounded-lg object-cover"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+    />
+  );
+
+  if (slug) {
+    return (
+      <Link
+        href={`/blog/${slug}`}
+        className="block hover:opacity-90 transition-opacity"
+      >
+        {image}
+      </Link>
+    );
+  }
+
+  return image;
+}

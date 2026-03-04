@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Fix runOrThrow to pass cwd: \"/home/user\" to all commands",
+  "description": "In src/lib/e2b.ts, add cwd: \"/home/user\" to sandbox.commands.run() so commands always execute from the correct directory regardless of sandbox state after pause/resume.",
+  "activeForm": "Fixing runOrThrow cwd",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

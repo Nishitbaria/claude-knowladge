@@ -1,0 +1,66 @@
+import { ToolLoopAgent, tool, stepCountIs, readUIMessageStream } from 'ai';
+import { webSearch } from '@exalabs/ai-sdk';
+import { z } from 'zod';
+// 1. Create the Research Agent with Exa web search tool
+export const researchAgent = new ToolLoopAgent({
+  id: "research-agent",
+  model: "anthropic/claude-sonnet-4-5",
+  instructions: `You are a research agent with web search capabilities.
+
+  Your approach:
+  - Use web search to find current, accurate information
+  - Cross-reference multiple sources when possible
+  - Cite your sources clearly
+  - Summarize your findings concisely
+
+  IMPORTANT: When you have finished researching, write a clear summary of your findings as your final response.
+  This summary will be returned to the main agent, so include all relevant information.`,
+
+  tools: {
+    webSearch: webSearch({
+      type: "auto",              // Smart hybrid search
+      numResults: 5,             // Return top 5 results
+      contents: {
+        text: {
+          maxCharacters: 2000    // Get detailed content
+        },
+        livecrawl: "preferred",  // Get fresh content when possible
+        summary: true,           // AI-generated summary per result
+      },
+    }),
+  },
+
+  stopWhen: stepCountIs(10), // Allow multiple search iterations
+});
+
+// 2. Create the research subagent tool for the main agent
+// Uses streaming to expose nested webSearch tool calls to the UI
+export const researchSubagentTool = tool({
+  description: 'Research a topic or question using web search. Returns comprehensive findings with sources.',
+  inputSchema: z.object({
+    task: z.string().describe('The research question or topic to investigate'),
+  }),
+
+  execute: async function* ({ task }, { abortSignal }) {
+    const result = await researchAgent.stream({
+      prompt: task,
+      abortSignal,
+    });
+
+    // Stream ALL UI messages (text + nested webSearch tool calls) to frontend
+    for await (const message of readUIMessageStream({
+      stream: result.toUIMessageStream(),
+    })) {
+      yield message;
+    }
+  },
+
+  // Control what superAgent's model sees (just the summary)
+  toModelOutput: ({ output: message }) => {
+    const lastTextPart = message?.parts.findLast(p => p.type === 'text');
+    return {
+      type: 'text',
+      value: lastTextPart?.text ?? 'Research completed.',
+    };
+  },
+});

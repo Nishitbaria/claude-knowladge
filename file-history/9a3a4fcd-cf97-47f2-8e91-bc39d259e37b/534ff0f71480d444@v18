@@ -1,0 +1,320 @@
+import {
+  checkout,
+  dodopayments,
+  portal,
+  webhooks,
+} from "@dodopayments/better-auth";
+import { eq } from "drizzle-orm";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { betterAuth } from "better-auth/minimal";
+import { z } from "zod";
+import { admin, oAuthProxy } from "better-auth/plugins";
+import { InvitationAcceptedEmail } from "@/emails/invitation-accepted-email";
+import { InvitationRejectedEmail } from "@/emails/invitation-rejected-email";
+import { OrgInvitationEmail } from "@/emails/org-invitation-email";
+import { PasswordResetEmail } from "@/emails/password-reset-email";
+import { VerificationEmail } from "@/emails/verification-email";
+import { WelcomeEmail } from "@/emails/welcome-email";
+import { env as clientEnv } from "@/env/client";
+import { env as serverEnv } from "@/env/server";
+import { sendEmail } from "@/lib/email/send";
+import { db } from "@/server/db";
+import * as schema from "@/server/db/models/auth.model";
+import { orgRepo } from "@/server/db/repos/org.repo";
+import { BILLING_CONFIG } from "./billing-config";
+import { dodo } from "./dodo";
+import { slugify } from "./org-utils";
+import { organization } from "better-auth/plugins";
+
+// ── Webhook payload schemas ────────────────────────────────────────────────────
+
+const subscriptionActiveSchema = z.object({
+  data: z.object({
+    subscription_id: z.string(),
+    metadata: z.object({ organizationId: z.string() }),
+  }),
+});
+
+const subscriptionEventSchema = z.object({
+  data: z.object({
+    subscription_id: z.string(),
+    metadata: z.object({ organizationId: z.string() }),
+  }),
+});
+
+// Extracted so both the user.create.after hook and the session repair path share
+// the same org-creation logic without duplication.
+// Safe to reference `auth` here because this function is only ever called at
+// runtime (inside hooks), never at module-initialisation time.
+async function createDefaultOrgForUser(user: { id: string; name: string }) {
+  const name = `${user.name}'s Workspace`;
+  const suffix = crypto.randomUUID().slice(0, 8);
+  const slug = `${slugify(user.name)}-${suffix}`;
+  const org = await auth.api.createOrganization({
+    body: { name, slug, userId: user.id },
+  });
+  if (org) {
+    const trialExpiresAt = new Date(
+      Date.now() + BILLING_CONFIG.trialDays * 24 * 60 * 60 * 1000,
+    );
+    await orgRepo.setTrialExpiresAt(org.id, trialExpiresAt);
+  }
+  return org;
+}
+
+export const auth = betterAuth({
+  baseURL: clientEnv.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // 5 minutes
+    },
+  },
+  database: drizzleAdapter(db, {
+    provider: "pg",
+    schema,
+  }),
+  databaseHooks: {
+    user: {
+      create: {
+        before: async (user) => {
+          if (serverEnv.ENABLE_SIGNUPS !== "true") {
+            throw new Error(
+              "Signups are currently disabled. Please join the waitlist.",
+            );
+          }
+          return { data: user };
+        },
+        after: async (user) => {
+          try {
+            await createDefaultOrgForUser(user);
+          } catch (err) {
+            // Do not rethrow — user creation must complete cleanly.
+            // The session hook will repair the missing org on first login.
+            console.error(
+              `[auth] user.create.after: failed to create default org for user ${user.id}`,
+              err,
+            );
+          }
+          // OAuth users (e.g. Google) arrive already verified — send welcome
+          // email now. Email/password users get it via afterEmailVerification.
+          if (!user.emailVerified) return;
+          void sendEmail({
+            to: user.email,
+            subject: "Welcome to RunAgents",
+            react: WelcomeEmail({
+              userName: user.name,
+              trialDays: BILLING_CONFIG.trialDays,
+            }),
+            text: `Welcome to RunAgents! You have a ${BILLING_CONFIG.trialDays}-day free trial. Get started at https://runagents.co/dashboard`,
+          });
+        },
+      },
+    },
+    session: {
+      create: {
+        before: async (session) => {
+
+          if (!session.activeOrganizationId) {
+            const membership = await orgRepo.findFirstMemberByUser(session.userId);
+            if (membership) {
+              return {
+                data: {
+                  ...session,
+                  activeOrganizationId: membership.organizationId,
+                },
+              };
+            }
+
+            // No membership found — the after hook likely failed during sign-up.
+            // Attempt to repair by creating the org now, before the session is issued.
+            try {
+              const userRow = await db.query.user.findFirst({
+                where: eq(schema.user.id, session.userId),
+              });
+              if (userRow) {
+                await createDefaultOrgForUser(userRow);
+                const repairedMembership = await orgRepo.findFirstMemberByUser(session.userId);
+                if (repairedMembership) {
+                  return {
+                    data: {
+                      ...session,
+                      activeOrganizationId: repairedMembership.organizationId,
+                    },
+                  };
+                }
+              }
+            } catch (err) {
+              console.error(
+                `[auth] session.create.before: org repair failed for user ${session.userId}`,
+                err,
+              );
+              // Fall through — session issued without activeOrganizationId.
+            }
+          }
+          return { data: session };
+        },
+      },
+    },
+  },
+  trustedOrigins: [clientEnv.NEXT_PUBLIC_SERVER_URL],
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: false,
+    async sendResetPassword({ user, url }) {
+      const result = await sendEmail({
+        to: user.email,
+        subject: "Reset your password",
+        react: PasswordResetEmail({ url, userName: user.name }),
+        text: `Reset your password by visiting: ${url}`,
+      });
+      if (!result.success) {
+        throw new Error(`Failed to send password reset email: ${result.error}`);
+      }
+    },
+  },
+  socialProviders: {
+    google: {
+      clientId: serverEnv.GOOGLE_CLIENT_ID,
+      clientSecret: serverEnv.GOOGLE_CLIENT_SECRET,
+      enabled: !!(serverEnv.GOOGLE_CLIENT_ID && serverEnv.GOOGLE_CLIENT_SECRET),
+    },
+  },
+  emailVerification: {
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
+    async afterEmailVerification(user) {
+      void sendEmail({
+        to: user.email,
+        subject: "Welcome to RunAgents",
+        react: WelcomeEmail({
+          userName: user.name,
+          trialDays: BILLING_CONFIG.trialDays,
+        }),
+        text: `Welcome to RunAgents! You have a ${BILLING_CONFIG.trialDays}-day free trial. Get started at https://runagents.co/dashboard`,
+      });
+    },
+    async sendVerificationEmail({ user, url }) {
+      const urlObj = new URL(url);
+      urlObj.searchParams.set("callbackURL", "/email-verification");
+      const verificationUrl = urlObj.toString();
+      const result = await sendEmail({
+        to: user.email,
+        subject: "Verify your email address",
+        react: VerificationEmail({ url: verificationUrl, userName: user.name }),
+        text: `Verify your email address by visiting: ${verificationUrl}`,
+      });
+      if (!result.success) {
+        throw new Error(`Failed to send verification email: ${result.error}`);
+      }
+    },
+  },
+  user: {},
+  plugins: [
+    admin(),
+    dodopayments({
+      client: dodo,
+      createCustomerOnSignUp: true,
+      use: [
+        checkout({
+          products: Object.values(BILLING_CONFIG.plans).map((p) => ({
+            productId: p.productId,
+            slug: p.slug,
+          })),
+          successUrl: "/billing/return",
+          authenticatedUsersOnly: true,
+        }),
+        portal(),
+        webhooks({
+          webhookKey: serverEnv.DODO_PAYMENTS_WEBHOOK_SECRET,
+          // Set subscriptionId on activation/renewal
+          onSubscriptionActive: async (payload) => {
+            const result = subscriptionActiveSchema.safeParse(payload);
+            if (!result.success) {
+              console.error("[webhook] onSubscriptionActive: invalid payload", result.error.flatten());
+              return;
+            }
+            const { subscription_id: subId, metadata: { organizationId: orgId } } = result.data.data;
+            await orgRepo.setSubscriptionId(orgId, subId);
+          },
+          // Clear subscriptionId on cancellation
+          onSubscriptionCancelled: async (payload) => {
+            const result = subscriptionEventSchema.safeParse(payload);
+            if (!result.success) {
+              console.error("[webhook] onSubscriptionCancelled: invalid payload", result.error.flatten());
+              return;
+            }
+            const { subscription_id: subId, metadata: { organizationId: orgId } } = result.data.data;
+            await orgRepo.clearSubscriptionIdIfMatches(orgId, subId);
+          },
+          // Clear subscriptionId on expiry
+          onSubscriptionExpired: async (payload) => {
+            const result = subscriptionEventSchema.safeParse(payload);
+            if (!result.success) {
+              console.error("[webhook] onSubscriptionExpired: invalid payload", result.error.flatten());
+              return;
+            }
+            const { subscription_id: subId, metadata: { organizationId: orgId } } = result.data.data;
+            await orgRepo.clearSubscriptionIdIfMatches(orgId, subId);
+          },
+        }),
+      ],
+    }),
+    organization({
+      creatorRole: "owner",
+      async sendInvitationEmail(data) {
+        const inviteLink = `${clientEnv.NEXT_PUBLIC_SERVER_URL}/invite/${data.id}`;
+        await sendEmail({
+          to: data.email,
+          subject: `Join ${data.organization.name} on RunAgents`,
+          react: OrgInvitationEmail({
+            inviteLink,
+            inviterName: data.inviter.user.name,
+            organizationName: data.organization.name,
+            role: data.role,
+          }),
+        });
+      },
+      organizationHooks: {
+        afterAcceptInvitation: async ({ invitation, user, organization }) => {
+          const inviter = await db.query.user.findFirst({
+            where: eq(schema.user.id, invitation.inviterId),
+          });
+          if (!inviter) return;
+          void sendEmail({
+            to: inviter.email,
+            subject: `${user.name} joined ${organization.name}`,
+            react: InvitationAcceptedEmail({
+              memberName: user.name,
+              memberEmail: user.email,
+              organizationName: organization.name,
+              role: invitation.role,
+            }),
+          });
+        },
+        afterRejectInvitation: async ({ invitation, user, organization }) => {
+          const inviter = await db.query.user.findFirst({
+            where: eq(schema.user.id, invitation.inviterId),
+          });
+          if (!inviter) return;
+          void sendEmail({
+            to: inviter.email,
+            subject: `Invitation to ${organization.name} was declined`,
+            react: InvitationRejectedEmail({
+              memberEmail: user.email,
+              organizationName: organization.name,
+            }),
+          });
+        },
+      },
+      schema: {
+        organization: {
+          additionalFields: {
+            trialExpiresAt: { type: "date", required: false, input: false },
+            subscriptionId: { type: "string", required: false, input: false },
+          },
+        },
+      },
+    }),
+  ],
+});

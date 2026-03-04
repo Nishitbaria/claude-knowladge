@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Check and fix errors in app/api/(replicate)/video/route.ts",
+    "status": "completed",
+    "activeForm": "Checking video route errors"
+  },
+  {
+    "content": "Check and fix errors in app/api/webhooks/replicate/route.ts",
+    "status": "in_progress",
+    "activeForm": "Checking webhooks replicate route errors"
+  },
+  {
+    "content": "Check and fix errors in app/api/webhooks/replicate/image/route.ts",
+    "status": "pending",
+    "activeForm": "Checking webhooks image route errors"
+  }
+]

@@ -1,0 +1,50 @@
+import Link from "next/link";
+import type { PostMeta } from "@/lib/basehub.fragment";
+import { Avatar } from "./blog-avatar";
+import { CoverImage } from "./blog-cover-image";
+
+interface PostCardProps {
+  post: PostMeta;
+}
+
+export function PostCard({ post }: PostCardProps) {
+  const excerpt =
+    post.body.plainText.length > 160
+      ? `${post.body.plainText.slice(0, 160)}...`
+      : post.body.plainText;
+
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <article className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-4 transition-shadow hover:shadow-md">
+      <CoverImage
+        url={post.coverImage.url}
+        alt={post.coverImage.alt ?? post._title}
+        slug={post._slug}
+      />
+      <div className="flex flex-col gap-2">
+        <Link href={`/blog/${post._slug}`}>
+          <h2 className="font-display text-xl font-semibold text-black hover:text-neutral-700 transition-colors">
+            {post._title}
+          </h2>
+        </Link>
+        <p className="text-sm text-neutral-500">{formattedDate}</p>
+        <p className="text-sm leading-relaxed text-neutral-600">{excerpt}</p>
+        <div className="mt-2 flex items-center justify-between">
+          <Avatar
+            name={post.author._title}
+            avatarUrl={post.author.avatar.url}
+            avatarAlt={post.author.avatar.alt ?? post.author._title}
+          />
+          <span className="text-xs text-neutral-400">
+            {post.body.readingTime} min read
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+}

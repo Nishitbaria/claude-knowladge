@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "5e1c76bd-bc9c-4f61-a3c9-50b52f4d5a81",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/5e1c76bd-bc9c-4f61-a3c9-50b52f4d5a81.jsonl",
+      "fileMtime": 1769754406484,
+      "firstPrompt": "Implement the following plan:  # Refactor Agent Route to ToolLoopAgent Pattern  ## Overview  Refactor `src/app/api/agents/v1/route.ts` from manual `streamText()` to the `ToolLoopAgent` class pattern f…",
+      "summary": "Refactor agent route to ToolLoopAgent pattern",
+      "messageCount": 36,
+      "created": "2026-01-29T07:05:22.161Z",
+      "modified": "2026-01-29T08:18:26.101Z",
+      "gitBranch": "development",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "1a22f0ad-b2d6-4763-885e-a6c64b4d6de9",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/1a22f0ad-b2d6-4763-885e-a6c64b4d6de9.jsonl",
+      "fileMtime": 1769754408039,
+      "firstPrompt": "lets implment this then",
+      "summary": "API Refactoring Implementation Planning and Design",
+      "messageCount": 4,
+      "created": "2026-01-29T06:55:42.226Z",
+      "modified": "2026-01-29T07:01:21.446Z",
+      "gitBranch": "development",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "2e44d5df-b260-4aeb-b9b1-24815547c096",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/2e44d5df-b260-4aeb-b9b1-24815547c096.jsonl",
+      "fileMtime": 1769765502537,
+      "firstPrompt": "No prompt",
+      "summary": "Claude Skills Discovery Tool Overview",
+      "messageCount": 4,
+      "created": "2026-01-30T06:36:21.321Z",
+      "modified": "2026-01-30T06:36:32.072Z",
+      "gitBranch": "yashsuthar/fix-folder-structure",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "2aebfa42-78e0-4259-b6f4-eb9eafcba6be",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/2aebfa42-78e0-4259-b6f4-eb9eafcba6be.jsonl",
+      "fileMtime": 1769765503816,
+      "firstPrompt": "\"use client\";  import { motion } from \"framer-motion\"; import { useRouter } from \"next/navigation\"; import type {   ComparisonData,   ComparisonData3Way,   ComparisonRow,   ComparisonRow3Way, } from \"…",
+      "summary": "Next.js Comparison Table Migration to Motion/Tailwind",
+      "messageCount": 9,
+      "created": "2026-01-30T06:26:43.923Z",
+      "modified": "2026-01-30T06:30:23.657Z",
+      "gitBranch": "yashsuthar/fix-folder-structure",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "51099589-a0b7-4150-92d6-9bb5791a7add",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/51099589-a0b7-4150-92d6-9bb5791a7add.jsonl",
+      "fileMtime": 1770013720747,
+      "firstPrompt": "Hey  I have build an ai agent and implmented @src/app/api/agents/v1/route.ts now we make some change becasue of that what happen when i send message look at both image when i refersh page then that im…",
+      "summary": "AI Agent Image Persistence Bug After API Changes",
+      "messageCount": 2,
+      "created": "2026-01-30T09:31:40.906Z",
+      "modified": "2026-01-30T09:31:48.468Z",
+      "gitBranch": "nishitbaria/refactor-ai-agent",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "bc2228c0-29e0-40d4-9785-9538bde300da",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/bc2228c0-29e0-40d4-9785-9538bde300da.jsonl",
+      "fileMtime": 1770100102442,
+      "firstPrompt": "Hey do you please tell me?",
+      "summary": "AI Agent Multi-Step Streaming & Message Parts Merge Fix",
+      "messageCount": 6,
+      "created": "2026-02-02T07:21:52.823Z",
+      "modified": "2026-02-02T07:23:46.060Z",
+      "gitBranch": "nishitbaria/refactor-ai-agent",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "ff7e454a-1c77-4ac0-a271-925f53e83abc",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/ff7e454a-1c77-4ac0-a271-925f53e83abc.jsonl",
+      "fileMtime": 1770111421193,
+      "firstPrompt": "No prompt",
+      "summary": "Model Selection: Switched to Claude Sonnet",
+      "messageCount": 2,
+      "created": "2026-02-03T06:32:13.099Z",
+      "modified": "2026-02-03T09:36:45.089Z",
+      "gitBranch": "nishitbaria/refactor-ai-agent",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "72f0eb18-f638-4280-96f3-ed9ae5b39cae",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/72f0eb18-f638-4280-96f3-ed9ae5b39cae.jsonl",
+      "fileMtime": 1770182481038,
+      "firstPrompt": "Implement the following plan:  # Agent Folder Refactoring Plan  Adopt modular folder structure from PR #11 while keeping your improvements from PR #19.  ## Target Structure  ``` src/lib/agents/ ├── in…",
+      "summary": "Agent Folder Refactoring Complete",
+      "messageCount": 22,
+      "created": "2026-02-03T10:13:41.040Z",
+      "modified": "2026-02-03T10:21:31.010Z",
+      "gitBranch": "nishitbaria/refactor-ai-agent",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "6a8b436a-1725-4d15-8fde-f7b6ba78182a",
+      "fullPath": "/Users/nishitbariya/.claude/projects/-Users-nishitbariya-Github-02-Web-Apps-ShowCart/6a8b436a-1725-4d15-8fde-f7b6ba78182a.jsonl",
+      "fileMtime": 1770182481874,
+      "firstPrompt": "hello",
+      "summary": "Agent Refactoring: Merge PR Architectures",
+      "messageCount": 24,
+      "created": "2026-02-03T09:37:05.434Z",
+      "modified": "2026-02-03T10:13:14.556Z",
+      "gitBranch": "nishitbaria/refactor-ai-agent",
+      "projectPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart",
+      "isSidechain": false
+    }
+  ],
+  "originalPath": "/Users/nishitbariya/Github/02-Web-Apps/ShowCart"
+}

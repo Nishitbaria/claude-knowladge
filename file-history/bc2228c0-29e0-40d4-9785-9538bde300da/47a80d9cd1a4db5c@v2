@@ -1,0 +1,439 @@
+import {
+  observe,
+  updateActiveObservation,
+  updateActiveTrace,
+} from "@langfuse/tracing";
+import { trace } from "@opentelemetry/api";
+import {
+  createAgentUIStreamResponse,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  TypeValidationError,
+  type UIMessage,
+  validateUIMessages,
+} from "ai";
+import type { NextRequest } from "next/server";
+import { after } from "next/server";
+import { authenticateUser } from "@/lib/auth/utils";
+import {
+  type MediaAgentCallOptions,
+  mediaAgent,
+  mediaAgentTools,
+} from "@/lib/agents/media-agent";
+import {
+  createChat,
+  getChatById,
+} from "@/server/database/repo/postgress-repo-functions/chat.repo";
+import {
+  loadChatMessages,
+  saveChatMessage,
+} from "@/server/database/repo/postgress-repo-functions/chatMessage.repo";
+import { findProjectByIdForUser } from "@/server/database/repo/postgress-repo-functions/imageEditorProjects.repo";
+import logger from "@/utils/logger";
+import { langfuseSpanProcessor } from "../../../../../instrumentation";
+
+// Allow streaming up to 180s
+export const maxDuration = 180;
+
+const handler = async (req: NextRequest) => {
+  const requestId = crypto.randomUUID();
+  const { id: userId } = await authenticateUser(requestId);
+
+  // Get the last message, projectId, and optionally chatId from client
+  const {
+    message,
+    id: projectId,
+    chatId: clientChatId,
+    globalSystemInstructions,
+    modelSelection,
+  }: {
+    message: UIMessage;
+    id: string;
+    chatId?: string;
+    globalSystemInstructions?: string;
+    modelSelection?: {
+      isAutoMode: boolean;
+      imageModel: string | null;
+      videoModel: string | null;
+    };
+  } = await req.json();
+
+  // Log model selection for debugging
+  logger.info(`Model selection received: ${JSON.stringify(modelSelection)}`);
+
+  const initialTraceInput =
+    extractTextFromUiMessage(message) ??
+    `[${message.role}] ${summarizeParts(message.parts)}`;
+
+  try {
+    // Verify project exists and user owns it
+    const project = await findProjectByIdForUser({ projectId, userId });
+    if (!project) {
+      logger.error("Project not found or access denied");
+      return new Response(
+        JSON.stringify({ error: "Project not found or access denied" }),
+        { status: 403, headers: { "Content-Type": "application/json" } },
+      );
+    }
+
+    // Resolve or create chat
+    // Client always sends a chatId (either existing or pre-generated UUID)
+    let chat: Awaited<ReturnType<typeof getChatById>> | null = null;
+    let previousMessages: UIMessage[] = [];
+
+    if (!clientChatId) {
+      // Chat not found with provided chatId - create a new chat
+      logger.error("No chatId provided by client", {
+        requestId,
+        userId,
+        projectId,
+      });
+      return new Response(
+        JSON.stringify({
+          error:
+            "chatId is required but was not provided. This usually indicates an outdated or misconfigured client. Please refresh the page or update the client and try again.",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+
+    // Update Langfuse trace with context (now that we have a chat/session id)
+    updateActiveTrace({
+      name: "agent-chat-message",
+      sessionId: clientChatId,
+      userId,
+      input: initialTraceInput,
+      metadata: {
+        projectId,
+        requestId,
+        isManualMode: modelSelection ? !modelSelection.isAutoMode : false,
+      },
+    });
+
+    updateActiveObservation({
+      input: initialTraceInput,
+    });
+
+    // Try to get existing chat
+    chat = await getChatById({ chatId: clientChatId, userId });
+
+    if (chat) {
+      // Existing chat - load messages
+      previousMessages = await loadChatMessages(chat.id, userId);
+    } else {
+      // No chatId provided - create a new chat
+
+      chat = await createChat({
+        id: clientChatId, // Use client's pre-generated ID
+        projectId,
+        userId,
+        title: "New Chat",
+      });
+
+      if (!chat) {
+        logger.error("Failed to create chat");
+        return new Response(
+          JSON.stringify({ error: "Failed to create chat" }),
+          { status: 500, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      // No previous messages for new chat
+      previousMessages = [];
+    }
+
+    // Track continuation message ID to maintain consistent IDs across multi-step tool execution
+    // When client sends an assistant message (via sendAutomaticallyWhen), we reuse its ID
+    // so all steps share the same message ID (like DB upsert pattern)
+    let continuationMessageId: string | undefined;
+
+    // Build messages array for LLM based on incoming message role
+    let messages: UIMessage[];
+
+    if (message.role === "user") {
+      // User message: append to conversation history
+      messages = [...previousMessages, message];
+      logger.info(`User message received, total messages: ${messages.length}`);
+    } else if (message.role === "assistant") {
+      // Assistant message sent by client's sendAutomaticallyWhen
+      // Preserve the client's message ID for consistency
+      continuationMessageId = message.id;
+      // Use only previous messages (new assistant message will be generated)
+      messages = previousMessages;
+      logger.info(
+        `Assistant message received (auto-continuation), using ${messages.length} previous messages, continuationId: ${continuationMessageId}`,
+      );
+    } else {
+      // Unexpected role (system, etc.)
+      logger.warn(`Unexpected message role: ${message.role}`);
+      messages = [...previousMessages, message];
+    }
+
+    const bestTraceInput =
+      extractLatestUserTextFromUiMessages(messages) ?? initialTraceInput;
+
+    updateActiveObservation({ input: bestTraceInput });
+    updateActiveTrace({ input: bestTraceInput });
+
+    // Validate messages against tool schemas to ensure compatibility
+    let validatedMessages: UIMessage[];
+    try {
+      validatedMessages = await validateUIMessages({
+        messages,
+        // biome-ignore lint/suspicious/noExplicitAny: Because we have specific tightly typed tools types
+        tools: mediaAgentTools as any,
+      });
+    } catch (error) {
+      if (error instanceof TypeValidationError) {
+        // Log validation error for monitoring
+        logger.warn(
+          `Message validation failed, starting with only new message: ${error.message}`,
+        );
+        // If validation fails (e.g., old tool schemas), start fresh with just the new message
+        validatedMessages = [message];
+      } else {
+        throw error;
+      }
+    }
+
+    // Save user message to database immediately (before streaming)
+    // Assistant messages are saved in onFinish callback after streaming completes
+    if (message.role === "user") {
+      await saveChatMessage({ message, chatId: chat.id, userId });
+      logger.info(`User message saved: ${message.id}`);
+    }
+
+    // Build agent call options from request
+    const agentOptions: MediaAgentCallOptions = {
+      isAutoMode: modelSelection?.isAutoMode ?? true,
+      imageModel: modelSelection?.imageModel ?? null,
+      videoModel: modelSelection?.videoModel ?? null,
+      globalSystemInstructions: globalSystemInstructions?.trim(),
+    };
+
+    // Flush Langfuse traces after the response is sent (serverless-friendly)
+    after(async () => {
+      await langfuseSpanProcessor.forceFlush();
+    });
+
+    // Return agent UI stream response with createAgentUIStreamResponse
+    return await createAgentUIStreamResponse({
+      agent: mediaAgent,
+      uiMessages: validatedMessages,
+      options: agentOptions,
+      // Use continuation message ID for multi-step tool execution (upsert pattern)
+      // This ensures client receives consistent IDs across all steps
+      generateMessageId: () => continuationMessageId || crypto.randomUUID(),
+      onError: (error) => {
+        // Enhanced error logging with type checking
+        if (error instanceof Error) {
+          logger.error(
+            `Stream error occurred: name=${error.name}, message=${error.message}, requestId=${requestId}, stack=${error.stack}`,
+          );
+        } else {
+          logger.error(
+            `Unknown stream error: error=${JSON.stringify(error)}, requestId=${requestId}`,
+          );
+        }
+
+        // Return context-aware error messages
+        const errorMessage = error instanceof Error ? error.message : "";
+
+        if (errorMessage.includes("rate limit")) {
+          return "I'm experiencing high demand right now. Please try again in a moment.";
+        }
+
+        if (errorMessage.includes("timeout")) {
+          return "The request took too long. Please try a simpler question.";
+        }
+
+        if (errorMessage.includes("context length")) {
+          return "The conversation is too long. Please start a new chat.";
+        }
+
+        const messageToUser =
+          "Sorry, I am not able to respond right now. Please try again later.";
+
+        updateActiveObservation({
+          output: messageToUser,
+          level: "ERROR",
+        });
+        updateActiveTrace({
+          output: messageToUser,
+        });
+
+        trace.getActiveSpan()?.end();
+        return messageToUser;
+      },
+      onFinish: async ({ responseMessage, messages, isContinuation }) => {
+        // DEBUG: Log what onFinish receives
+        logger.info(`[DEBUG] onFinish - isContinuation: ${isContinuation}`);
+        logger.info(`[DEBUG] onFinish - messages count: ${messages?.length}`);
+        logger.info(`[DEBUG] onFinish - responseMessage.parts: ${JSON.stringify(responseMessage?.parts, null, 2)}`);
+        // Log last message from messages array to compare
+        if (messages && messages.length > 0) {
+          const lastMsg = messages[messages.length - 1];
+          logger.info(`[DEBUG] onFinish - last message from messages array: ${JSON.stringify(lastMsg?.parts, null, 2)}`);
+        }
+
+        // Update Langfuse trace with output
+        const outputText = responseMessage
+          ? extractTextFromUiMessage(responseMessage)
+          : undefined;
+
+        const outputForTrace =
+          outputText ??
+          (responseMessage
+            ? `[assistant] ${summarizeParts(responseMessage.parts)}`
+            : undefined);
+
+        updateActiveObservation({
+          output: outputForTrace,
+        });
+
+        updateActiveTrace({
+          output: outputForTrace,
+        });
+
+        trace.getActiveSpan()?.end();
+
+        // Save assistant response message to database
+        // Upsert will update if already exists (from previous tool-only saves)
+        if (responseMessage) {
+          // ID priority: responseMessage.id > continuationMessageId > new UUID
+          // This ensures multi-step tool executions share the same message ID
+          const messageId =
+            responseMessage.id || continuationMessageId || crypto.randomUUID();
+
+          const messageToSave: UIMessage = {
+            ...responseMessage,
+            id: messageId,
+          };
+
+          try {
+            await saveChatMessage({
+              message: messageToSave,
+              chatId: chat.id,
+              userId,
+            });
+            logger.info(
+              `Assistant message saved: ${messageToSave.id} (${messageToSave.parts.length} parts)`,
+            );
+          } catch (saveError) {
+            logger.error(
+              `Failed to save assistant message: ${saveError instanceof Error ? saveError.message : String(saveError)}`,
+            );
+          }
+        }
+      },
+    });
+  } catch (error) {
+    // Enhanced pre-stream error logging
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    const stack = error instanceof Error ? error.stack : "no stack";
+    logger.error(
+      `Error in POST request (before streaming): error=${errorMessage}, requestId=${requestId}, stack=${stack}`,
+    );
+
+    // Update Langfuse trace with error
+    updateActiveObservation({
+      output: errorMessage,
+      level: "ERROR",
+    });
+
+    updateActiveTrace({
+      output: errorMessage,
+    });
+
+    trace.getActiveSpan()?.end();
+
+    try {
+      const textId = crypto.randomUUID();
+
+      const stream = createUIMessageStream<UIMessage>({
+        originalMessages: [message],
+        execute: ({ writer }) => {
+          writer.write({ type: "text-start", id: textId });
+          writer.write({
+            type: "text-delta",
+            id: textId,
+            delta:
+              "Sorry, I am not able to respond right now. Please try again later.",
+          });
+          writer.write({ type: "text-end", id: textId });
+        },
+      });
+
+      return createUIMessageStreamResponse({ stream });
+    } catch (streamError) {
+      const streamErrorMsg =
+        streamError instanceof Error
+          ? streamError.message
+          : String(streamError);
+      logger.error(
+        `Failed to create error stream: error=${streamErrorMsg}, requestId=${requestId}`,
+      );
+
+      // Fallback to plain text response if stream creation fails
+      return new Response(
+        JSON.stringify({
+          error:
+            "An error occurred while processing your request. Please try again.",
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+  }
+};
+
+// Wrap handler with Langfuse observe for automatic tracing
+// endOnExit: false keeps the observation open during streaming
+export const POST = observe(handler, {
+  name: "handle-agent-chat",
+  endOnExit: false,
+});
+
+function extractTextFromUiMessage(message: UIMessage): string | undefined {
+  return extractTextFromParts(message.parts);
+}
+
+function extractTextFromParts(parts: UIMessage["parts"]): string | undefined {
+  const chunks: string[] = [];
+  for (const part of parts) {
+    if (part.type === "text") {
+      chunks.push(part.text);
+    }
+  }
+  const text = chunks.join("");
+  return text.trim().length ? text : undefined;
+}
+
+function extractLatestUserTextFromUiMessages(
+  messages: UIMessage[],
+): string | undefined {
+  for (let i = messages.length - 1; i >= 0; i -= 1) {
+    const msg = messages[i];
+    if (msg.role !== "user") continue;
+    const text = extractTextFromUiMessage(msg);
+    if (text) return text;
+  }
+  return;
+}
+
+function summarizeParts(parts: UIMessage["parts"]): string {
+  const counts = new Map<string, number>();
+  for (const part of parts) {
+    counts.set(part.type, (counts.get(part.type) ?? 0) + 1);
+  }
+  const summary = [...counts.entries()]
+    .map(([type, count]) => `${type}:${count}`)
+    .join(", ");
+
+  return summary.length ? `parts(${summary})` : "parts(empty)";
+}

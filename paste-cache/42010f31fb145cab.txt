@@ -1,0 +1,1024 @@
+  },
+  {
+    id: '725838c9-b26e-4187-ad3f-09701c4d8fe1',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: '6hlrCSGNH9qs6u5n', parts: [ [Object] ] },
+  {
+    id: '360f8808-f75e-4143-b5e5-e30fea516594',
+    parts: [ [Object], [Object] ]
+  }
+]
+]: User message received, total messages: 3
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "text",
+    "text": "remove its backgroud"
+  },
+  {
+    "type": "file",
+    "mediaType": "image/jpeg",
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+  }
+]
+]: User message saved: 2Pz0OIvhDBcS6Sqr
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting Replicate generation process
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 1: Authenticating user
+]: [05c785f8-752e-4475-9429-734b55efda1c] User authenticated - ID: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 2: Parsing request payload
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 4: Validating model and credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting validation for model: background-remover, userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] Valid model confirmed: background-remover (type: extraTool)
+]: [05c785f8-752e-4475-9429-734b55efda1c] Fetching tool info and user credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] User credits: 50028, toolId: 1882fa48-514e-5833-bb1f-bfa7d71cdccf
+]: [05c785f8-752e-4475-9429-734b55efda1c] Calculating credit cost for model: background-remover
+]: [05c785f8-752e-4475-9429-734b55efda1c] Calculated credits: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] [extraTools] Credits available: 50028, Required: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 5: Processing Replicate generation with credit management
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting credit deduction for Replicate generation
+]: [05c785f8-752e-4475-9429-734b55efda1c] deductCreditsWithLedger called {"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","jobId":"05c785f8-752e-4475-9429-734b55efda1c","amount":2,"options":{"modelName":"background-remover"},"reason":"TOOLS"}
+]: [05c785f8-752e-4475-9429-734b55efda1c] Transaction started
+]: [05c785f8-752e-4475-9429-734b55efda1c] Fetching user and credit information for userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] User credit check - Available: 50028, Required: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] Creating successful DEBIT ledger entry
+]: [05c785f8-752e-4475-9429-734b55efda1c] DEBIT ledger entry created: 3dc88760-643b-4648-9a30-996197d51f89
+]: [05c785f8-752e-4475-9429-734b55efda1c] Updating user credit balance - deducting 2 credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credit balance updated - Previous: 50028, New: 50026
+]: [05c785f8-752e-4475-9429-734b55efda1c] Transaction will commit successfully
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credits deducted successfully
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credits deducted successfully using ledger
+]: [05c785f8-752e-4475-9429-734b55efda1c] Creating replicate prediction
+]: [05c785f8-752e-4475-9429-734b55efda1c] Using standard /predictions endpoint
+]: [05c785f8-752e-4475-9429-734b55efda1c] Prediction payload: {"version":"bria/remove-background","input":{"image_url":"https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg","preserve_partial_alpha":true,"content_moderation":false,"extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","toolId":"1882fa48-514e-5833-bb1f-bfa7d71cdccf","modelName":"background-remover","extraTool":true,"type":"image"}},"webhook":"https://ladybug-ultimate-solely.ngrok-free.app/api/webhooks/venus-9/v2","webhook_events_filter":["completed"]}
+]: [05c785f8-752e-4475-9429-734b55efda1c] Saving generation data with credit tracking
+]: More-tools generation data saved successfully for model: background-remover
+]: [05c785f8-752e-4475-9429-734b55efda1c] Replicate generation completed successfully. SpecialId: dxxeymhzqhrmw0cw3mjrna4920, Type: image
+]: [05c785f8-752e-4475-9429-734b55efda1c] Request completed successfully. SpecialId: dxxeymhzqhrmw0cw3mjrna4920, Type: image
+ POST /api/venus-9/tools/replicate 202 in 9.8s (compile: 1636ms, proxy.ts: 3ms, render: 8.2s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: Assistant message saved: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e (2 parts)
+ POST /api/agents/v1 200 in 19.0s (compile: 847ms, proxy.ts: 550ms, render: 17.6s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Receiving JSON with objects: 5
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Video objects in request: 0
+(node:93835) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Fetching prediction from Replicate
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: '147a81de-ab82-48c4-8396-b5629ee5fd72',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '725838c9-b26e-4187-ad3f-09701c4d8fe1',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '0beb7bab-f579-4708-b1c0-0dee3ab8023d',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: 'abbb04a6-039f-4388-a57e-fe7cbaccd794',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: '6hlrCSGNH9qs6u5n', parts: [ [Object] ] },
+  {
+    id: '360f8808-f75e-4143-b5e5-e30fea516594',
+    parts: [ [Object], [Object] ]
+  },
+  { id: '2Pz0OIvhDBcS6Sqr', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '43d448b4-6abb-4a12-ad34-f5ddc67d3b6e',
+    parts: [ [Object], [Object] ]
+  }
+]
+]: Assistant message received (auto-continuation), using 4 previous messages, continuationId: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 2.5s (compile: 6ms, proxy.ts: 1898ms, render: 575ms)
+(node:93860) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/trpc/user.getMiniUserDetails,chat.getChats?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%2C%221%22%3A%7B%22json%22%3A%7B%22projectId%22%3A%22d7c90191-6ab2-4dd7-8737-9eb521b386b8%22%7D%7D%7D 200 in 2.2s (compile: 10ms, proxy.ts: 4ms, render: 2.2s)
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Returning JSON with objects: 5
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.3s (compile: 8ms, proxy.ts: 3ms, render: 2.3s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+]: Assistant message saved: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e (2 parts)
+ POST /api/agents/v1 200 in 4.0s (compile: 14ms, proxy.ts: 517ms, render: 3.5s)
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 728ms (compile: 7ms, proxy.ts: 3ms, render: 719ms)
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Fetching prediction from Replicate
+(node:93925) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Receiving JSON with objects: 5
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Video objects in request: 0
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 939ms (compile: 6ms, proxy.ts: 478ms, render: 456ms)
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Returning JSON with objects: 5
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 738ms (compile: 6ms, proxy.ts: 3ms, render: 730ms)
+(node:93943) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Webhook received. Processing...
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Request body parsed successfully
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] Request body parsed successfully
+]: Signature verified successfully.
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Timestamp verified successfully.
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] body.output type: string
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Processing regular image upload with random S3 keys
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Fetching prediction from Replicate
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 960ms (compile: 6ms, proxy.ts: 502ms, render: 453ms)
+Error [TimeoutError]: The operation was aborted due to timeout
+    at ignore-listed frames {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+ ○ Compiling /_error ...
+ GET /_next/image?url=https%3A%2F%2Freplicate.delivery%2Fxezq%2FgahNNvKiweXdL6kPm86qN4a0fBU8EtTD44CdrN42SrAZ0fGsA%2Ftmpxjc8rzs2.png&w=1920&q=75 500 in 10.3s (compile: 10.3s, render: 29ms)
+ GET /_next/image?url=https%3A%2F%2Freplite.delivery%2Fxezq%2FgahNNvKiweXdL6kPm86qN4a0fBU8EtTD44CdrN42SrAZ0fGsA%2Ftmpxjc8rzs2.png&w=1920&q=75 500 in 10.3s (compile: 10.3s, render: 29ms)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+]: [9f5e36d0-e388-4cdd-ad47-b0b9633ec1ff] Receiving JSON with objects: 5
+]: [9f5e36d0-e388-4cdd-ad47-b0b9633ec1ff] Video objects in request: 0
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+(node:94286) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [9f5e36d0-e388-4cdd-ad47-b0b9633ec1ff] Returning JSON with objects: 5
+]: [9f5e36d0-e388-4cdd-ad47-b0b9633ec1ff] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.5s (compile: 6ms, proxy.ts: 4ms, render: 2.5s)
+ ⨯ upstream image responsed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+]: [uploadImageStreamToS3] Upload completed. S3 Key: development/FEB-02,-26/background-remover/output/1770015522228-ajw6SGJ1.png, CloudFront URL: https://d2weamipq0hk4d.cloudfront.net/development/FEB-02,-26/background-remover/output/1770015522228-ajw6SGJ1.png, S3 Location: https://imgtransformationstack-bundleddesignproductionorig-lufmmhialby9.s3.us-east-2.amazonaws.com/development/FEB-02%2C-26/background-remover/output/1770015522228-ajw6SGJ1.png
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Updating DB with S3 URLs. SpecialId: dxxeymhzqhrmw0cw3mjrna4920, S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/FEB-02,-26/background-remover/output/1770015522228-ajw6SGJ1.png"]
+]: [updateGeneration] Updating generation with ID: dxxeymhzqhrmw0cw3mjrna4920
+]: [updateGeneration] Updated metrics: duration=8940ms
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.clouront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+]: [updateGeneration] Successfully updated generation dxxeymhzqhrmw0cw3mjrna4920 with status: succeeded
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Successfully updated generation dxxeymhzqhrmw0cw3mjrna4920 with S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/FEB-02,-26/background-remover/output/1770015522228-ajw6SGJ1.png"]
+ POST /api/webhooks/venus-9/v2 200 in 26.9s (compile: 1871µs, proxy.ts: 2ms, render: 26.9s)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4dnt.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/20-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+]: [d67bdb91-278a-4abe-8c63-995b6f900512] Receiving JSON with objects: 5
+]: [d67bdb91-278a-4abe-8c63-995b6f900512] Video objects in request: 0
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+(node:94612) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+]: [d67bdb91-278a-4abe-8c63-995b6f900512] Returning JSON with objects: 5
+]: [d67bdb91-278a-4abe-8c63-995b6f900512] Video in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.6s (compile: 16ms, proxy.ts: 4ms, render: 2.5s)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ✓ Compiled in 273ms
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki/engine/javascript matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure ll the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/node_modules/shiki/dist
+Package shiki can't be external
+The request shiki/wasm matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ GET /canvas/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 65ms (compile: 17ms, proxy.ts: 6ms, render: 43ms)
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The requeki/engine/javascript matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/node_modules/shiki/dist
+Package shiki can't be external
+The request shiki/wasm matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ GET /canvas/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 38ms (compile: 8ms, proxy.ts: 2ms, render: 28ms)
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested  the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki/engine/javascript matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/node_modules/shiki/dist
+Package shiki can't be external
+The request shiki/wasm matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ GET /canvas/d7c90191-6ab2-4dd7-8737-9eb521b38200 in 45ms (compile: 8ms, proxy.ts: 4ms, render: 33ms)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/0cd306c1.webp 404
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/dist
+Package shiki can't be external
+The request shiki/engine/javascript matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ ⚠ ./node_modules/streamdown/node_modules/shiPackage shiki can't be external
+The request shiki/wasm matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+ GET /canvas/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 171ms (compile: 31ms, proxy.ts: 14ms, render: 127ms)
+(node:96359) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:96372) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/auth/get-session 200 in 2.3s (compile: 7ms, proxy.ts: 3ms, render: 2.2s)
+]: [6db6b10f-2c0b-4896-87fc-9bfe7e8d683e] Fetched from DB - objects: 5
+]: [6db6b10f-2c0b-4896-87fc-9bfe7e8d683e] Video objects in DB: 0
+ GET /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.7s (compile: 6ms, proxy.ts: 7ms, render: 2.7s)
+(node:96418) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [00637f37-b601-4592-a666-e8e092778f7d] Receiving JSON with objects: 5
+]: [00637f37-b601-4592-a666-e8e092778f7d] Video objects in request: 0
+]: [00637f37-b601-4592-a666-e8e092778f7d] Returning JSON with objects: 5
+]: [00637f37-b601-4592-a666-e8e092778f7d] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 769ms (compile: 5ms, proxy.ts: 3ms, render: 761ms)
+(node:96450) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 3.2s (compile: 714ms, proxy.ts: 4ms, render: 2.4s)
+ GET /api/trpc/chat.getChats?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22projectId%22%3A%22d7c90191-6ab2-4dd7-8737-9eb521b386b8%22%7D%7D%7D 200 in 2.4s (compile: 6ms, proxy.ts: 5ms, render: 2.4s)
+(node:96484) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: '147a81de-ab82-48c4-8396-b5629ee5fd72',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '725838c9-b26e-4187-ad3f-09701c4d8fe1',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '0beb7bab-f579-4708-b1c0-0dee3ab8023d',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: 'abbb04a6-039f-4388-a57e-fe7cbaccd794',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: '6hlrCSGNH9qs6u5n', parts: [ [Object] ] },
+  {
+    id: '360f8808-f75e-4143-b5e5-e30fea516594',
+    parts: [ [Object], [Object] ]
+  },
+  { id: '2Pz0OIvhDBcS6Sqr', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '43d448b4-6abb-4a12-ad34-f5ddc67d3b6e',
+    parts: [ [Object], [Object] ]
+  }
+]
+ GET /api/trpc/chat.getMessages?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22chatId%22%3A%22785e0249-173f-4fcf-9233-195dbdcf9109%22%7D%7D%7D 200 in 1083ms (compile: 4ms, proxy.ts: 2ms, render: 1076ms)
+]: [3410160c-f786-4524-bc49-6fd19521e18c] Receiving JSON with objects: 5
+]: [3410160c-f786-4524-bc49-6fd19521e18c] Video objects in request: 0
+]: [3410160c-f786-4524-bc49-6fd19521e18c] Returning JSON with objects: 5
+]: [3410160c-f786-4524-bc49-6fd19521e18c] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 717ms (compile: 5ms, proxy.ts: 3ms, render: 709ms)
+(node:96596) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:96812) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ POST /api/trpc/moderation.checkText?batch=1 200 in 9.9s (compile: 4ms, proxy.ts: 4ms, render: 9.9s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: User message received, total messages: 1
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "text",
+    "text": "remove backgroud from given image"
+  },
+  {
+    "type": "file",
+    "mediaType": "image/jpeg",
+    "url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+  }
+]
+]: User message saved: IQCERnayh56ufZ5F
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Starting Replicate generation process
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Step 1: Authenticating user
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] User authenticated - ID: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Step 2: Parsing request payload
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Step 4: Validating model and credits
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Starting validation for model: background-remover, userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Valid model confirmed: background-remover (type: extraTool)
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Fetching tool info and user credits
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] User credits: 50026, toolId: 1882fa48-514e-5833-bb1f-bfa7d71cdccf
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Calculating credit cost for model: background-remover
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Calculated credits: 2
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] [extraTools] Credits available: 50026, Required: 2
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Step 5: Processing Replicate generation with credit management
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Starting credit deduction for Replicate generation
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] deductCreditsWithLedger called {"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","jobId":"5db8d5b2-7d08-4090-aa53-5b4644d438b4","amount":2,"options":{"modelName":"background-remover"},"reason":"TOOLS"}
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Transaction started
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Fetching user and credit information for userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] User credit check - Available: 50026, Required: 2
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Creating successful DEBIT ledger entry
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] DEBIT ledger entry created: 28caf9b0-7059-48b9-8e8a-6b18f3c2d3a5
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Updating user credit balance - deducting 2 credits
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Credit balance updated - Previous: 50026, New: 50024
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Transaction will commit successfully
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Credits deducted successfully
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Credits deducted successfully using ledger
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Creating replicate prediction
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Using standard /predictions endpoint
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Prediction payload: {"version":"bria/remove-background","input":{"image_url":"https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg","preserve_partial_alpha":true,"content_moderation":false,"extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","toolId":"1882fa48-514e-5833-bb1f-bfa7d71cdccf","modelName":"background-remover","extraTool":true,"type":"image"}},"webhook":"https://ladybug-ultimate-solely.ngrok-free.app/api/webhooks/venus-9/v2","webhook_events_filter":["completed"]}
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Saving generation data with credit tracking
+]: More-tools generation data saved successfully for model: background-remover
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Replicate generation completed successfully. SpecialId: 4rdz9gfrfdrmr0cw3mkrhpjgq8, Type: image
+]: [5db8d5b2-7d08-4090-aa53-5b4644d438b4] Request completed successfully. SpecialId: 4rdz9gfrfdrmr0cw3mkrhpjgq8, Type: image
+ POST /api/venus-9/tools/replicate 202 in 8.3s (compile: 560ms, proxy.ts: 4ms, render: 7.7s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "I'll remove the background from this amazing astronaut cat image!",
+    "state": "done"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01WoBpAkkNkqqAUdt9DKepaD",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "I'll remove the background from this amazing astronaut cat image!",
+    "state": "done"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01WoBpAkkNkqqAUdt9DKepaD",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "I'll remove the background from this amazing astronaut cat image!",
+    "state": "done"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01WoBpAkkNkqqAUdt9DKepaD",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: Assistant message saved: 76c903ca-97f6-4974-a545-682256ba8ad0 (3 parts)
+ POST /api/agents/v1 200 in 18.1s (compile: 592ms, proxy.ts: 967ms, render: 16.6s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: [48086536-18d0-4c38-a856-b034c312a230] Receiving JSON with objects: 6
+]: [48086536-18d0-4c38-a856-b034c312a230] Video objects in request: 0
+(node:97361) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [dff3d6f6-0ae3-422b-a813-e126f9f8b505] Fetching prediction for ID: 4rdz9gfrfdrmr0cw3mkrhpjgq8 with provider: replicate
+]: [dff3d6f6-0ae3-422b-a813-e126f9f8b505] Fetching prediction from Replicate
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: 'c0f62ddf-d063-4934-857c-da8ff01cc113',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '04e0d4d6-0f89-4f68-8a0e-b91fa901940d',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: 'IQCERnayh56ufZ5F', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '76c903ca-97f6-4974-a545-682256ba8ad0',
+    parts: [ [Object], [Object], [Object] ]
+  }
+]
+]: Assistant message received (auto-continuation), using 2 previous messages, continuationId: 76c903ca-97f6-4974-a545-682256ba8ad0
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+(node:97374) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [dff3d6f6-0ae3-422b-a813-e126f9f8b505] Replicate prediction fetched successfully
+ GET /api/image/prediction/4rdz9gfrfdrmr0cw3mkrhpjgq8?provider=replicate 200 in 3.1s (compile: 7ms, proxy.ts: 2.0s, render: 1081ms)
+ GET /api/trpc/user.getMiniUserDetails,chat.getChats?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%2C%221%22%3A%7B%22json%22%3A%7B%22projectId%22%3A%22d7c90191-6ab2-4dd7-8737-9eb521b386b8%22%7D%7D%7D 200 in 2.3s (compile: 9ms, proxy.ts: 6ms, render: 2.3s)
+]: [48086536-18d0-4c38-a856-b034c312a230] Returning JSON with objects: 6
+]: [48086536-18d0-4c38-a856-b034c312a230] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.2s (compile: 11ms, proxy.ts: 10ms, render: 2.1s)
+(node:97411) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! The background has been removed from your image. The adorable space cat astronaut is now on a transparent background—ready to  used wherever you need it! It's on the canvas now.",
+    "state": "done"
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! The background has been removed from your image. The adorable space cat astronaut is now on a transparent background—ready to be used wherever you need it! It's on the canvas now.",
+    "state": "done"
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! The background has been removed from your image. The adorable space cat astronaut is now on a transparent background—ready to be used wherever you need it! It's on the canvas now.",
+    "state": "done"
+  }
+]
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: 'c0f62ddf-d063-4934-857c-da8ff01cc113',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '04e0d4d6-0f89-4f68-8a0e-b91fa901940d',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - coned parts: [
+  { id: 'IQCERnayh56ufZ5F', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '76c903ca-97f6-4974-a545-682256ba8ad0',
+    parts: [ [Object], [Object], [Object] ]
+  }
+]
+ GET /api/trpc/chat.getMessages?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22chatId%22%3A%2231bc5c85-c18a-44bc-88e6-eea40b2a558e%22%7D%7D%7D 200 in 1073ms (compile: 6ms, proxy.ts: 3ms, render: 1064ms)
+[DEBUG] saveChatMessage - MERGED parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+    },
+    "state": "output-available",
+    "output": {
+      "output": {
+        "provider": "replicate",
+        "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8"
+      },
+      "status": "succeeded",
+      "credits": 2,
+      "success": true,
+      "image_url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg",
+      "model_name": "background-remover",
+      "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+      "totalCredits": 2
+    },
+    "toolCallId": "toolu_01WoBpAkkNkqqAUdt9DKepaD"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! The background has been removed from your image. The adorable space cat astronaut is now on a transparent background—ready to be used wherever you need it! It's on the canvas now.",
+    "state": "done"
+  }
+]
+]: Assistant message saved: 76c903ca-97f6-4974-a545-682256ba8ad0 (2 parts)
+ POST /api/agents/v1 200 in 4.2s (compile: 4ms, proxy.ts: 516ms, render: 3.7s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 826ms (compile: 6ms, proxy.ts: 5ms, render: 815ms)
+(node:97445) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+][bba7a0bd-b19a-4e45-8df7-337acbb93420] Fetching prediction for ID: 4rdz9gfrfdrmr0cw3mkrhpjgq8 with provider: replicate
+]: [bba7a0bd-b19a-4e45-8df7-337acbb93420] Fetching prediction from Replicate
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: 'c0f62ddf-d063-4934-857c-da8ff01cc113',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '04e0d4d6-0f89-4f68-8a0e-b91fa901940d',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: 'IQCERnayh56ufZ5F', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '76c903ca-97f6-4974-a545-682256ba8ad0',
+    parts: [ [Object], [Object], [Object] ]
+  }
+]
+]: Assistant message received (auto-continuation), using 2 previous messages, continuationId: 76c903ca-97f6-4974-a545-682256ba8ad0
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [bba7a0bd-b19a-4e45-8df7-337acbb93420] Replicate prediction fetched successfully
+ GET /api/image/prediction/4rdz9gfrfdrmr0cw3mkrhpjgq8?provider=replicate 200 in 1004ms (compile: 6ms, proxy.ts: 553ms, render: 445ms)
+Error [AI_APICallError]: messages.1: `tool_use` ids were found without `tool_result` blocks immediately after: toolu_01WoBpAkkNkqqAUdt9DKepaD. Each `tool_use` block must have a corresponding `tool_result` block in the next message.
+    at ignore-listed frames {
+  cause: undefined,
+  url: 'https://api.anthropic.com/v1/messages',
+  requestBodyValues: [Object],
+  statusCode: 400,
+  responseHeaders: [Object],
+  responseBody: '{"type":"error","error":{"type":"invalid_request_error","message":"messages.1: `tool_use` ids were found without `tool_result` blocks immediately after: toolu_01WoBpAkkNkqqAUdt9DKepaD. Each `tool_use` block must have a corresponding `tool_result` block in the next message."},"request_id":"req_011CXip5ruxNNbD534pyq8Fo"}',
+  isRetryable: false,
+  data: [Object]
+}
+]: Stream error occurred: name=AI_APICallError, message=messages.1: `tool_use` ids were found without `tool_result` blocks immediately after: toolu_01WoBpAkkNkqqAUdt9DKepaD. Each `tool_use` block must have a corresponding `tool_result` block in the next message., requestId=015754d3-d471-4467-af95-dfca12a5bf21, stack=AI_APICallError: messages.1: `tool_use` ids were found without `tool_result` blocks immediately after: toolu_01WoBpAkkNkqqAUdt9DKepaD. Each `tool_use` block must have a corresponding `tool_result` block in the next message.
+    at /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_@ai-sdk_b0bb1090._.js:2759:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async postToApi (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_@ai-sdk_b0bb1090._.js:2632:36)
+    at async AnthropicMessagesLanguageModel.doStream (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_@ai-sdk_anthropic_dist_index_mjs_2c9ebffe._.js:2986:54)
+    at async fn (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:6158:45)
+    at async /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:2055:28
+    at async _retryWithExponentialBackoff (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:2262:16)
+    at async streamStep (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:6116:112)
+    at async fn (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:6479:17)
+    at async /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:2055:28
+]: Stream error occurred: name=Error, message=Sorry, I am not able to respond right now. Please try again later., requestId=015754d3-d471-4467-af95-dfca12a5bf21, stack=Error: Sorry, I am not able to respond right now. Please try again later.
+    at /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:4997:64
+    at runUpdateMessageJob (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:5061:15)
+    at Object.transform (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:4570:19)
+    at invokePromiseCallback (node:internal/webstreams/util:172:10)
+    at Object.transformAlgorithm (node:internal/webstreams/util:177:23)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:527:37)
+    at transformStreamDefaultSinkWriteAlgorithm (node:internal/webstreams/transformstream:573:10)
+    at node:internal/webstreams/transformstream:378:16
+    at writableStreamDefaultControllerProcessWrite (node:internal/webstreams/writablestream:1139:5)
+    at writableStreamDefaultControllerAdvanceQueueIfNeeded (node:internal/webstreams/writablestream:1265:5)
+    at writableStreamDefaultControllerWrite (node:internal/webstreams/writablestream:1128:3)
+    at writableStreamDefaultWriterWrite (node:internal/webstreams/writablestream:1018:3)
+    at [kChunk] (node:internal/webstreams/readablestream:1587:31)
+    at readableStreamFulfillReadRequest (node:internal/webstreams/readablestream:2120:24)
+    at readableStreamDefaultControllerEnqueue (node:internal/webstreams/readablestream:2312:5)
+    at transformStreamDefaultControllerEnqueue (node:internal/webstreams/transformstream:508:5)
+    at TransformStreamDefaultController.enqueue (node:internal/webstreams/transformstream:324:5)
+    at Object.transform (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:5050:24)
+    at invokePromiseCallback (node:internal/webstreams/util:172:10)
+    at Object.transformAlgorithm (node:internal/webstreams/util:177:23)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:527:37)
+    at transformStreamDefaultSinkWriteAlgorithm (node:internal/webstreams/transformstream:573:10)
+    at node:internal/webstreams/transformstream:378:16
+    at writableStreamDefaultControllerProcessWrite (node:internal/webstreams/writablestream:1139:5)
+    at writableStreamDefaultControllerAdvanceQueueIfNeeded (node:internal/webstreams/writablestream:1265:5)
+    at writableStreamDefaultControllerWrite (node:internal/webstreams/writablestream:1128:3)
+    at writableStreamDefaultWriterWrite (node:internal/webstreams/writablestream:1018:3)
+    at [kChunk] (node:internal/webstreams/readablestream:1587:31)
+    at readableStreamFulfillReadRequest (node:internal/webstreams/readablestream:2120:24)
+    at readableStreamDefaultControllerEnqueue (node:internal/webstreams/readablestream:2312:5)
+    at transformStreamDefaultControllerEnqueue (node:internal/webstreams/transformstream:508:5)
+    at TransformStreamDefaultController.enqueue (node:internal/webstreams/transformstream:324:5)
+    at Object.transform (/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.next/dev/server/chunks/node_modules_ai_dist_index_mjs_b0116780._.js:6885:40)
+    at invokePromiseCallback (node:internal/webstreams/util:172:10)
+    at Object.transformAlgorithm (node:internal/webstreams/util:177:23)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:527:37)
+    at transformStreamDefaultSinkWriteAlgorithm (node:internal/webstreams/transformstream:573:10)
+    at node:internal/webstreams/transformstream:378:16
+    at writableStreamDefaultControllerProcessWrite (node:internal/webstreams/writablestream:1139:5)
+    at writableStreamDefaultControllerAdvanceQueueIfNeeded (node:internal/webstreams/writablestream:1265:5)
+    at writableStreamDefaultControllerWrite (node:internal/webstreams/writablestream:1128:3)
+    at writableStreamDefaultWriterWrite (node:internal/webstreams/writablestream:1018:3)
+    at [kChunk] (node:internal/webstreams/readablestream:1587:31)
+    at readableStreamFulfillReadRequest (node:internal/webstreams/readablestream:2120:24)
+    at readableStreamDefaultControllerEnqueue (node:internal/webstreams/readablestream:2312:5)
+    at transformStreamDefaultControllerEnqueue (node:internal/webstreams/transformstream:508:5)
+    at Object.defaultTransformAlgorithm [as transformAlgorithm] (node:internal/webstreams/transformstream:363:3)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:527:37)
+    at transformStreamDefaultSinkWriteAlgorithm (node:internal/webstreams/transformstream:573:10)
+    at node:internal/webstreams/transformstream:378:16
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: []
+]: [DEBUG] onFinish - last message from messages array: []
+[DEBUG] saveChatMessage - message.parts: []
+ POST /api/agents/v1 200 in 2.2s (compile: 2ms, proxy.ts: 231ms, render: 1997ms)
+[DEBUG] saveChatMessage - MERGED parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg"
+    },
+    "state": "output-available",
+    "output": {
+      "output": {
+        "provider": "replicate",
+        "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8"
+      },
+      "status": "succeeded",
+      "credits": 2,
+      "success": true,
+      "image_url": "https://replicate.delivery/xezq/Vu8224lr347gM1g24hQccfNLzVfggw4iKydtLOANIFm5XfGsA/tmpxcxaiff2.jpg",
+      "model_name": "background-remover",
+      "predictionId": "4rdz9gfrfdrmr0cw3mkrhpjgq8",
+      "totalCredits": 2
+    },
+    "toolCallId": "toolu_01WoBpAkkNkqqAUdt9DKepaD"
+  },
+  {
+    "text": "Perfect! The background has been removed from your image. The adorable space cat astronaut is now on a transparent background—ready to be used wherever you need it! It's on the canvas now.",
+    "type": "text",
+    "state": "done"
+  }
+]
+]: Assistant message saved: 76c903ca-97f6-49-a545-682256ba8ad0 (0 parts)
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 761ms (compile: 6ms, proxy.ts: 4ms, render: 752ms)
+(node:97495) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [b4b80b1f-d8d3-4b8e-a3f1-3467a1905410] Receiving JSON with objects: 6
+]: [b4b80b1f-d8d3-4b8e-a3f1-3467a1905410] Video objects in request: 0
+]: [b4b80b1f-d8d3-4b8e-a3f1-3467a1905410] Returning JSON with objects: 6
+]: [b4b80b1f-d8d3-4b8e-a3f1-3467a1905410] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 783ms (compile: 12ms, proxy.ts: 3ms, render: 769ms)
+(node:97508) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [ef06ef40-8661-413a-bec6-8b1f44990789] Fetching prediction for ID: 4rdz9gfrfdrmr0cw3mkrhpjgq8 with provider: replicate
+]: [ef06ef40-8661-413a-bec6-8b1f44990789] Fetching prediction from Replicate
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Webhook received. Processing...
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Request body parsed successfully
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] Request body parsed successfully
+]: Signature verified successfully.
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Timestamp verified successfully.
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] body.output type: string
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Processing regular image upload with random S3 keys
+]: [ef06ef40-8661-413a-bec6-8b1f44990789] Replicate prediction fetched successfully
+ GET /api/image/prediction/4rdz9gfrfdrmr0cw3mkrhpjgq8?provider=replicate 200 in 1621ms (compile: 7ms, proxy.ts: 499ms, render: 1114ms)
+]: [5cb2a35c-3dbc-44c0-aaf1-cd0df3fcbc93] Receiving JSON with objects: 6
+]: [5cb2a35c-3dbc-44c0-aaf1-cd0df3fcbc93] Video objects in request: 0
+]: [5cb2a35c-3dbc-44c0-aaf1-cd0df3fcbc93] Returning JSON with objects: 6
+]: [5cb2a35c-3dbc-44c0-aaf1-cd0df3fcbc93] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 878ms (compile: 7ms, proxy.ts: 3ms, render: 868ms)
+(node:97655) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+Error [TimeoutError]: The operation was aborted due to timeout
+    at ignore-listed frames {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+ GET /_next/image?url=https%3A%2F%2Freplicate.delivery%2Fxezq%2FMzzktHTlC0p9IV9z9wiNAJWPJbePwPtm7j0UdpIMu7Zm7vBLA%2Ftmpfjq0yf37.png&w=1920&q=75 500 in 7.1s (compile: 7.1s, render: 28ms)
+ GET /_next/image?url=https%3A%2F%2Freplicate.delivery%2Fxezq%2FMzzktHTlC0p9IV9z9wiNAJWPJbePwPtm7j0UdpIMu7Zm7vBLA%2Ftmpfjq0yf37.png&w=1920&q=75 500 in 7.1s (compile: 7.1s, render: 28ms)
+]: [92130907-ae34-4ead-9444-f8d31af0ebb7] Receiving JSON with objects: 6
+]: [92130907-ae34-4ead-9444-f8d31af0ebb7] Video objects in request: 0
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [92130907-ae34-4ead-9444-f8d31af0ebb7] Returning JSON with objects: 6
+]: [92130907-ae34-4ead-9444-f8d31af0ebb7] Video objects in respoe: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 744ms (compile: 9ms, proxy.ts: 5ms, render: 730ms)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+(node:97699) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [ba4be6b1-9d9a-43cf-9e1f-72e223532f96] Receiving JSON with objects: 6
+]: [ba4be6b1-9d9a-43cf-9e1f-72e223532f96] Video objects in request: 0
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [ba4be6b1-9d9a-43cf-9e1f-72e223532f96] Returning JSON with objects: 6
+]: [ba4be6b1-9d9a-43cf-9e1f-72e223532f96] Video objects in response: 0
+ PATCH /api/image-editjects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 871ms (compile: 7ms, proxy.ts: 6ms, render: 858ms)
+(node:97835) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [uploadImageStreamToS3] Upload completed. S3 Key: development/FEB-02,-26/background-remover/output/1770015702320-ohX6FoVn.png, CloudFront URL: https://d2weamipq0hk4d.cloudfront.net/development/FEBbackground-remover/output/1770015702320-ohX6FoVn.png, S3 Location: https://imgtransformationstack-bundleddesignproductionorig-lufmmhialby9.s3.us-east-2.amazonaws.com/development/FEB-02%2C-26/background-remover/output/1770015702320-ohX6FoVn.png
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Updating DB with S3 URLs. SpecialId: 4rdz9gfrfdrmr0cw3mkrhpjgq8, S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/FEB-02,-26/background-remover/output/1770015702320-ohX6FoVn.png"]
+]: [updateGeneration] Updating generation with ID: 4rdz9gfrfdrmr0cw3mkrhpjgq8
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstre response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [updateGeneration] Updated metrics: duration=11509ms
+]: [updateGeneration] Successfully updated generation 4rdz9gfrfdrmr0cw3mkrhpjgq8 with status: succeeded
+]: [04f40931-dde1-422b-9fbf-53bc75c735f1] [POST /webhooks/replicate] Successfully updated generation 4rdz9gfrfdrmr0cw3mkrhpjgq8 with S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/FEB-02,-26/background-remover/output/1770015702320-ohX6FoVn.png"]
+ POST /api/webhooks/venus-9/v2 200 in 19.6s (compile: 644ms, proxy.ts: 3ms, render: 18.9s)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02-generation/output/7c2a18e9.webp 404
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [ffd539d7-212a-4cac-844b-944802c4c8b4] Receiving JSON with objects: 6
+]: [ffd539d7-212a-4cac-844b-944802c4c8b4] Video objects in request: 0
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+]: [ffd539d7-212a-4cac-844b-944802c4c8b4] Returning JSON with objects: 6
+]: [ffd539d7-212a-4cac-844b-944802c4c8b4] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 738ms (compile: 6ms, proxy.ts: 4ms, render: 727ms)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404
+(node:97970) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning wased)
+Error [TimeoutError]: The operation was aborted due to timeout
+    at ignore-listed frames {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+ GET /_next/image?url=https%3A%2F%2Freplicate.delivery%2Fxezq%2FMzzktHTlC0p9IV9z9wiNAJWPJbePwPtm7j0UdpIMu7Zm7vBLA%2Ftmpfjq0yf37.png&w=256&q=75 500 in 7.0s (compile: 7.0s, render: 18ms)
+ GET /_next/image?url=https%3A%2F%2Freplicate.delivery%2Fxezq%2FMzzktHTlC0p9IV9z9wiNAJWPJbePwPtm7j0UdpIMu7Zm7vBLA%2Ftmpfjq0yf37.png&w=256&q=75 500 in 7.0s (compile: 7.0s, render: 18ms)
+ ⨯ upstream image response failed for https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/7c2a18e9.webp 404

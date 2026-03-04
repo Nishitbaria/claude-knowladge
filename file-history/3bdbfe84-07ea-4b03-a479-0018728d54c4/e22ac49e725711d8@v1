@@ -1,0 +1,199 @@
+"use client";
+
+import {
+  BarChart,
+  Brain,
+  Clock,
+  History,
+  LayoutGrid,
+  MessageCircle,
+  Moon,
+  Sun,
+  Users,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { Logo } from "@/components/logo";
+import { OrgSwitcher } from "@/components/org-switcher";
+import { PricingModal } from "@/components/pricing-modal";
+import { Button } from "@/components/ui/button";
+import { useSubscriptionContext } from "@/context/subscription-context";
+import { cn } from "@/lib/utils";
+
+const NAV_ITEMS = [
+  {
+    label: "Sandboxes",
+    href: "/dashboard",
+    icon: LayoutGrid,
+    match: (p: string) => p === "/dashboard" || p.startsWith("/sandboxes"),
+  },
+  {
+    label: "Members",
+    href: "/members",
+    icon: Users,
+    match: (p: string) => p === "/members",
+  },
+];
+
+const SANDBOX_NAV_ITEMS = [
+  {
+    label: "Channels",
+    icon: MessageCircle,
+    segment: "channels",
+  },
+  {
+    label: "Crons",
+    icon: Clock,
+    segment: "cron",
+  },
+  {
+    label: "Models",
+    icon: Brain,
+    segment: "models",
+  },
+  {
+    label: "Sessions",
+    icon: History,
+    segment: "sessions",
+  },
+  {
+    label: "Usage",
+    icon: BarChart,
+    segment: "usage",
+  },
+];
+
+interface SidebarUser {
+  name: string;
+  email: string;
+  image?: string | null;
+}
+
+interface AppSidebarProps {
+  user: SidebarUser;
+}
+
+const CREDITS_USED = 1_250;
+const CREDITS_TOTAL = 5_000;
+
+export function AppSidebar({ user }: AppSidebarProps) {
+  const pathname = usePathname();
+  const { resolvedTheme, setTheme } = useTheme();
+
+  const sandboxMatch = pathname.match(/^\/sandboxes\/([^/]+)/);
+  const activeSandboxId = sandboxMatch?.[1] ?? null;
+
+  const { data: subscription, isLoading } = useSubscriptionContext();
+  const isSubscribed = subscription?.status === "subscribed";
+
+  function toggleTheme() {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  }
+
+  return (
+    <aside className="flex h-screen w-56 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
+      {/* Logo */}
+      <div className="flex h-14 items-center justify-between border-b border-sidebar-border px-4">
+        <Logo size="sm" href="/dashboard" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-7 shrink-0 text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          {resolvedTheme === "dark" ? (
+            <Sun className="size-3.5" />
+          ) : (
+            <Moon className="size-3.5" />
+          )}
+        </Button>
+      </div>
+
+      {/* Nav */}
+      <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto p-3">
+        {NAV_ITEMS.map(({ label, href, icon: Icon, match }) => {
+          const isActive = match(pathname);
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={cn(
+                "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors",
+                isActive
+                  ? "bg-sidebar-accent font-medium text-sidebar-accent-foreground"
+                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+              )}
+            >
+              <Icon className="size-4 shrink-0" />
+              {label}
+            </Link>
+          );
+        })}
+
+        {activeSandboxId && (
+          <>
+            <div className="mt-3 mb-1 px-2.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Sandbox
+            </div>
+            {SANDBOX_NAV_ITEMS.map(({ label, icon: Icon, segment }) => {
+              const href = `/sandboxes/${activeSandboxId}/${segment}`;
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={segment}
+                  href={href}
+                  className={cn(
+                    "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors",
+                    isActive
+                      ? "bg-sidebar-accent font-medium text-sidebar-accent-foreground"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                  )}
+                >
+                  <Icon className="size-4 shrink-0" />
+                  {label}
+                </Link>
+              );
+            })}
+          </>
+        )}
+      </nav>
+      {!(isLoading || isSubscribed) && (
+        <div className="border-t border-sidebar-border px-3 py-3">
+          <PricingModal>
+            <Button variant="outline" className="w-full">
+              Upgrade
+            </Button>
+          </PricingModal>
+        </div>
+      )}
+
+      {/* Credits */}
+      <div className="border-t border-sidebar-border px-3 py-3">
+        <div className="rounded-lg bg-sidebar-accent/50 px-3 py-2.5">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="font-medium text-sidebar-foreground">Credits</span>
+            <span className="text-muted-foreground">
+              {CREDITS_USED.toLocaleString()} / {CREDITS_TOTAL.toLocaleString()}
+            </span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-sidebar-border">
+            <div
+              className="h-full rounded-full bg-primary transition-all"
+              style={{ width: `${(CREDITS_USED / CREDITS_TOTAL) * 100}%` }}
+            />
+          </div>
+          <p className="mt-1.5 text-[10px] text-muted-foreground">
+            {(CREDITS_TOTAL - CREDITS_USED).toLocaleString()} remaining
+          </p>
+        </div>
+      </div>
+
+      {/* Org + User dropdown */}
+      <div className="border-t border-sidebar-border p-3">
+        <OrgSwitcher user={user} />
+      </div>
+    </aside>
+  );
+}

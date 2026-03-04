@@ -1,0 +1,110 @@
+ Can You Call a Subagent Directly WITHOUT the Main Agent?
+
+  Yes, absolutely. A subagent is just a regular ToolLoopAgent. There's nothing special about it — it only becomes a "subagent" when another agent calls it via a tool.
+
+  You have three approaches for this:
+
+  Approach 1: Route-level switching (simplest)
+
+  One API route, pick the agent based on the request:
+
+  // Conceptual — your route.ts
+  const agent = mode === 'direct'
+    ? mediaAgent        // call mediaAgent directly, skip orchestrator
+    : mainAgent;        // use orchestrator which can call any subagent
+
+  return createAgentUIStreamResponse({
+    agent,
+    uiMessages: validatedMessages,
+  });
+
+  Your client would send mode: 'direct' | 'planner' in the request body. This is the least disruptive change to your current setup — your existing mediaAgent works exactly
+  as-is for direct mode.
+
+  Approach 2: Multiple routes
+
+  /api/agents/v1          → mainAgent (orchestrator)
+  /api/agents/v1/media    → mediaAgent (direct)
+  /api/agents/v1/scrape   → scrapingAgent (direct)
+
+  Each route uses createAgentUIStreamResponse with a different agent. Client switches routes based on user choice.
+
+  Approach 3: Single orchestrator with smart routing (recommended)
+
+  Keep one route, one main agent. The main agent is smart enough to:
+  - Direct requests → immediately delegate to the right subagent
+  - Complex requests → plan first, then delegate
+
+  This is the cleanest because you don't need mode switching logic in the client at all.
+
+  ---
+  How This Maps to Your Current Code
+
+  Here's what would change conceptually:
+
+  CURRENT:
+    route.ts → mediaAgent (does everything)
+
+  PROPOSED:
+    route.ts → mainAgent (orchestrator, Sonnet model for reasoning)
+                 ├── mediaAgent (subagent, Haiku - your existing agent, unchanged)
+                 ├── scrapingAgent (subagent, Haiku - new)
+                 └── researchAgent (subagent, Haiku - new)
+
+  The key insight: your current mediaAgent doesn't change at all. It becomes a subagent by wrapping it in a tool:
+
+  // Conceptual — how mediaAgent becomes a subagent tool
+  const mediaGenerationTool = tool({
+    description: 'Generate, edit, or manipulate media (images, video, audio)',
+    inputSchema: z.object({ task: z.string() }),
+    execute: async function* ({ task }, { abortSignal }) {
+      const result = await mediaAgent.stream({ prompt: task, abortSignal });
+      for await (const msg of readUIMessageStream({
+        stream: result.toUIMessageStream(),
+      })) {
+        yield msg;  // streams progress to UI
+      }
+    },
+    toModelOutput: ({ output }) => {
+      // Main agent only sees summary, not full mediaAgent context
+      const text = output?.parts.findLast(p => p.type === 'text');
+      return { type: 'text', value: text?.text ?? 'Media task completed.' };
+    },
+  });
+
+  What stays the same
+
+  - mediaAgent definition — untouched
+  - mediaAgentTools — untouched
+  - Client-side useChat — mostly the same
+  - Chat persistence logic — same
+
+  What would be new
+
+  - mainAgent definition (new ToolLoopAgent wrapping subagents as tools)
+  - scrapingAgent and researchAgent definitions
+  - Route-level agent selection (or just always use mainAgent)
+
+  ---
+  Summary
+  ┌─────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │                  Question                   │                                               Answer                                                │
+  ├─────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Can I have a main agent with 3 subagents?   │ Yes, via the subagent pattern (agent-as-tool)                                                       │
+  ├─────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Can I have planner + direct mode?           │ Yes — either via smart instructions or route-level mode switching                                   │
+  ├─────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Can I call a subagent directly?             │ Yes — a subagent is just a regular ToolLoopAgent, call it with createAgentUIStreamResponse directly │
+  ├─────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Do I need separate routes?                  │ No — one route can select the agent dynamically                                                     │
+  ├─────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Does my existing mediaAgent need to change? │ No — it works as-is, just gets wrapped in a tool for the orchestrator                               │
+  └─────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  Want to start planning the implementation, or do you have more architectural questions?
+
+✻ Churned for 48s                                          
+
+ [Image #2] (↑ to select)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ let's start planning the implementation
+─────────────────────────────────────────────────────

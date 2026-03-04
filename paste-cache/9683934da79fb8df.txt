@@ -1,0 +1,7 @@
+❯ right now i don't know what happen but suddly my sandbox goes into root dir and my entire apps break :  look at theimage files are there now when i connect [Pasted text #2 +29 lines]\                  
+  \                                                                                                                                                                                                        
+  \                                                                                                                                                                                                        
+  before when i goes into run this commad or our app is connect then its openclaw work perfectly right now sandbox open at random dir and break our application what is issue? \                           
+  \                                                                                                                                                                                                      
+  \                                                                                                                                                                                                        
+  do you help me to fix the issue?     

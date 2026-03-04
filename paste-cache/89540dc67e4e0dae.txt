@@ -1,0 +1,27 @@
+          ' ~/.openclaw/openclaw.json > /tmp/openclaw.json && mv /tmp/openclaw.json ~/.openclaw/openclaw.json
+[e2b] Config patch OK
+[e2b] Gateway start cmd: openclaw gateway start
+[e2b] Gateway start OK
+ POST /dashboard 200 in 37.7s (compile: 36ms, proxy.ts: 19ms, render: 37.6s)
+ POST /dashboard 200 in 2.1s (compile: 76ms, proxy.ts: 11ms, render: 2.0s)
+ GET /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 2.7s (compile: 944ms, proxy.ts: 7ms, render: 1710ms)
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 1089ms (compile: 60ms, proxy.ts: 10ms, render: 1019ms)
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 843ms (compile: 22ms, proxy.ts: 5ms, render: 816ms)
+ GET /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 1383ms (compile: 34ms, proxy.ts: 7ms, render: 1342ms)
+ GET /api/auth/get-session 200 in 17ms (compile: 7ms, proxy.ts: 3ms, render: 8ms)
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 1632ms (compile: 13ms, proxy.ts: 2ms, render: 1617ms)
+ GET /api/auth/organization/list 200 in 1740ms (compile: 3ms, proxy.ts: 3ms, render: 1734ms)
+ GET /api/auth/organization/get-full-organization 200 in 2.0s (compile: 15ms, proxy.ts: 2ms, render: 1987ms)
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d 200 in 855ms (compile: 18ms, proxy.ts: 3ms, render: 834ms)
+ GET /api/auth/organization/get-full-organization 200 in 1374ms (compile: 4ms, proxy.ts: 2ms, render: 1368ms)
+ GET /api/auth/organization/get-full-organization 200 in 1387ms (compile: 8ms, proxy.ts: 4ms, render: 1374ms)
+ GET /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d/subagents 200 in 3.9s (compile: 3.8s, proxy.ts: 5ms, render: 23ms)
+[e2b] list subagent sessions cmd: openclaw sessions --json
+[e2b] list subagent sessions OK
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d/subagents 200 in 7.4s (compile: 17ms, proxy.ts: 3ms, render: 7.4s)
+[e2b] spawn subagent cmd: openclaw agent --agent 'marketing' --message 'You are now active. Await further instructions via Telegram.' --json
+[e2b] spawn subagent FAILED (exit 1)
+stderr: Gateway agent failed; falling back to embedded: Error: Unknown agent id "marketing". Use "openclaw agents list" to see configured agents.
+Error: Unknown agent id "marketing". Use "openclaw agents list" to see configured agents.
+
+ POST /sandboxes/4dabca7f-8aa6-411a-afa4-a9c4e1f5569d/subagents 200 in 4.7s (compile: 20ms, proxy.ts: 6ms, render: 4.7s)

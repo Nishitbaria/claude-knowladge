@@ -1,0 +1,252 @@
+"use server";
+
+import type { Sandbox } from "e2b";
+import { z } from "zod";
+import { esc, getSandboxRuntime, runOrThrow } from "@/lib/e2b";
+import { orgAction } from "@/server/action-utils";
+
+/**
+ * Known agent IDs that we register as named agents.
+ * Used to filter sessions — only sessions belonging to these agents
+ * are shown in the sub-agents panel.
+ */
+const REGISTERED_AGENT_IDS = [
+  "marketing",
+  "seo-auditor",
+  "content-writer",
+  "analytics",
+];
+
+// ── Setup + Spawn a sub-agent ────────────────────────────────────────────────
+
+export const spawnSubAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+    systemPrompt: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+
+    // Check if agent already exists
+    const exists = await agentExists(runtime, input.agentId);
+
+    if (!exists) {
+      // 1. Create agent directory
+      const agentDir = `~/.openclaw/workspace/agents/${input.agentId}`;
+      await runOrThrow(
+        runtime,
+        `mkdir -p ${esc(agentDir)}`,
+        "create agent dir",
+      );
+
+      // 2. Write AGENTS.md with system prompt
+      await runOrThrow(
+        runtime,
+        `cat > ${esc(`${agentDir}/AGENTS.md`)} << 'AGENTEOF'\n${input.systemPrompt}\nAGENTEOF`,
+        "write AGENTS.md",
+      );
+
+      // 3. Register agent in openclaw.json
+      const jqFilter = `
+        .agents.list = ((.agents.list // []) + [{
+          "id": $agentId,
+          "agentDir": $agentDir
+        }] | unique_by(.id))
+      `;
+      await runOrThrow(
+        runtime,
+        `jq --arg agentId ${esc(input.agentId)} --arg agentDir ${esc(agentDir)} '${jqFilter}' ~/.openclaw/openclaw.json > /tmp/openclaw.json && mv /tmp/openclaw.json ~/.openclaw/openclaw.json`,
+        "register agent",
+      );
+
+      // 4. Restart gateway to pick up new agent
+      await runOrThrow(
+        runtime,
+        `nohup openclaw gateway restart > /tmp/gateway-restart.log 2>&1 &`,
+        "gateway restart",
+      );
+
+      // Brief pause for gateway to come back up
+      await runOrThrow(runtime, "sleep 3", "wait for gateway");
+    }
+
+    // 5. Spawn the agent — output may contain non-JSON lines mixed in
+    const cmd = `openclaw agent --agent ${esc(input.agentId)} --message 'hi' --json`;
+    const result = await runOrThrow(runtime, cmd, "spawn subagent");
+    const raw = result.stdout?.trim() ?? "";
+
+    // Try to extract JSON from the output (may have text before/after JSON)
+    const jsonPayload = extractJson(raw);
+    if (jsonPayload) {
+      return jsonPayload as {
+        status: string;
+        runId?: string;
+        sessionKey?: string;
+      };
+    }
+
+    // Command succeeded (runOrThrow didn't throw) but output wasn't JSON.
+    // That's OK — the agent ran successfully, we just can't parse the response.
+    console.log("[subagent] spawn stdout (non-JSON):", raw);
+    return {
+      status: "accepted",
+      runId: null as string | null,
+      sessionKey: null as string | null,
+    };
+  },
+);
+
+// ── List sub-agent sessions ──────────────────────────────────────────────────
+
+export const listSubAgents = orgAction(
+  z.object({ sandboxId: z.string().min(1) }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    const result = await runOrThrow(
+      runtime,
+      `openclaw sessions --json`,
+      "list subagent sessions",
+    );
+    const raw = result.stdout?.trim() ?? "{}";
+    let parsed: { sessions?: Record<string, unknown>[] };
+    try {
+      parsed = JSON.parse(raw) as typeof parsed;
+    } catch {
+      throw new Error("Invalid sessions list JSON");
+    }
+
+    const sessions = Array.isArray(parsed.sessions) ? parsed.sessions : [];
+
+    // Filter to named agent sessions.
+    // `openclaw agent --agent <id>` creates sessions with key "agent:<id>:main"
+    // Sub-agents spawned from within also match "agent:<id>:subagent:<uuid>"
+    const subagentSessions = sessions
+      .filter((s) => {
+        const key = s.key as string | undefined;
+        if (!key) return false;
+        return REGISTERED_AGENT_IDS.some(
+          (id) => key === `agent:${id}:main` || key.startsWith(`agent:${id}:subagent:`),
+        );
+      })
+      .map((s) => ({
+        key: s.key as string,
+        label: (s.label as string | undefined) ?? null,
+        model: (s.model as string | undefined) ?? null,
+        status: deriveStatus(s),
+        updatedAt: (s.updatedAtMs as number | undefined) ?? null,
+        tokens: parseTokens(s),
+      }));
+
+    return { sessions: subagentSessions, total: subagentSessions.length };
+  },
+);
+
+// ── Kill a sub-agent session ─────────────────────────────────────────────────
+
+export const killSubAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    sessionKey: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    await runOrThrow(
+      runtime,
+      `openclaw sessions delete ${esc(input.sessionKey)}`,
+      "kill subagent",
+    );
+    return { ok: true as const };
+  },
+);
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+async function agentExists(
+  runtime: Sandbox,
+  agentId: string,
+): Promise<boolean> {
+  try {
+    const result = await runtime.commands.run(`openclaw agents list --json`);
+    if (result.exitCode !== 0) return false;
+    const json = extractJson(result.stdout?.trim() ?? "");
+    if (!json) return false;
+    const parsed = json as { agents?: { id: string }[] };
+    const agents = Array.isArray(parsed.agents) ? parsed.agents : [];
+    return agents.some((a) => a.id === agentId);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Extract the first JSON object or array from a string that may contain
+ * non-JSON text before or after it (e.g. log lines, warnings).
+ */
+function extractJson(raw: string): unknown | null {
+  // Try parsing the whole string first
+  try {
+    return JSON.parse(raw);
+  } catch {
+    // noop
+  }
+
+  // Try to find a JSON object in the string
+  const objStart = raw.indexOf("{");
+  const arrStart = raw.indexOf("[");
+  const start =
+    objStart === -1
+      ? arrStart
+      : arrStart === -1
+        ? objStart
+        : Math.min(objStart, arrStart);
+
+  if (start === -1) return null;
+
+  // Try parsing from the detected start position
+  const candidate = raw.slice(start);
+  try {
+    return JSON.parse(candidate);
+  } catch {
+    // Try line-by-line — last line is often the JSON
+    const lines = raw.split("\n");
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const line = lines[i].trim();
+      if (line.startsWith("{") || line.startsWith("[")) {
+        try {
+          return JSON.parse(line);
+        } catch {
+          continue;
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+function deriveStatus(
+  s: Record<string, unknown>,
+): "running" | "completed" | "error" | "unknown" {
+  const status = s.status as string | undefined;
+  if (status === "running" || status === "active") return "running";
+  if (status === "completed" || status === "done" || status === "success")
+    return "completed";
+  if (status === "error" || status === "failed") return "error";
+
+  const endedAt = s.endedAtMs as number | undefined;
+  const error = s.error as string | undefined;
+  if (error) return "error";
+  if (endedAt) return "completed";
+  return "unknown";
+}
+
+function parseTokens(
+  s: Record<string, unknown>,
+): { input: number; output: number; total: number } | null {
+  const tokens = s.tokens as Record<string, unknown> | undefined;
+  if (!tokens) return null;
+  const input = (tokens.input as number | undefined) ?? 0;
+  const output = (tokens.output as number | undefined) ?? 0;
+  return { input, output, total: input + output };
+}

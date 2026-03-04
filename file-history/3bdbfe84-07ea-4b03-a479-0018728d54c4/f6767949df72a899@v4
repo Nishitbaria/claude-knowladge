@@ -1,0 +1,123 @@
+"use client";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import {
+  createAgent,
+  deleteAgent,
+  listAgentSessions,
+  listAgents,
+} from "@/server/actions/subagent.actions";
+import type { AgentInfo, AgentSession } from "../_components/types";
+
+// ── Query keys ───────────────────────────────────────────────────────────────
+
+function agentsKey(sandboxId: string) {
+  return ["agents", sandboxId] as const;
+}
+
+function sessionsKey(sandboxId: string) {
+  return ["agent-sessions", sandboxId] as const;
+}
+
+// ── Registered agents query ──────────────────────────────────────────────────
+
+export function useAgentsList(sandboxId: string | null) {
+  return useQuery({
+    queryKey: agentsKey(sandboxId ?? ""),
+    queryFn: async () => {
+      const result = await listAgents({ sandboxId: sandboxId! });
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    enabled: !!sandboxId,
+    select: (d) => {
+      const raw = d as { agents: AgentInfo[] };
+      return { agents: raw.agents ?? [] };
+    },
+  });
+}
+
+// ── Agent sessions query ─────────────────────────────────────────────────────
+
+export function useAgentSessions(sandboxId: string | null) {
+  return useQuery({
+    queryKey: sessionsKey(sandboxId ?? ""),
+    queryFn: async () => {
+      const result = await listAgentSessions({ sandboxId: sandboxId! });
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    enabled: !!sandboxId,
+    select: (d) => {
+      const raw = d as { sessions: AgentSession[]; total: number };
+      return { sessions: raw.sessions ?? [], total: raw.total ?? 0 };
+    },
+  });
+}
+
+// ── Mutations ────────────────────────────────────────────────────────────────
+
+export function useAgentMutations(sandboxId: string | null) {
+  const qc = useQueryClient();
+
+  function invalidate() {
+    if (!sandboxId) return;
+    void qc.invalidateQueries({ queryKey: agentsKey(sandboxId) });
+    void qc.invalidateQueries({ queryKey: sessionsKey(sandboxId) });
+  }
+
+  const create = useMutation({
+    mutationFn: async (data: {
+      sandboxId: string;
+      agentId: string;
+      name: string;
+      emoji: string;
+      systemPrompt: string;
+    }) => {
+      const result = await createAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Agent created");
+    },
+    onError: (e) =>
+      toast.error(e instanceof Error ? e.message : "Failed to create agent"),
+  });
+
+  const remove = useMutation({
+    mutationFn: async (data: { sandboxId: string; agentId: string }) => {
+      const result = await deleteAgent(data);
+      if (result && typeof result === "object" && "error" in result) {
+        throw Object.assign(new Error(String(result.error)), {
+          code: result.error,
+        });
+      }
+      return result;
+    },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Agent deleted");
+    },
+    onError: (e) =>
+      toast.error(e instanceof Error ? e.message : "Failed to delete agent"),
+  });
+
+  const busy = create.isPending || remove.isPending;
+
+  return { create, remove, busy };
+}

@@ -1,0 +1,292 @@
+[DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "text": "Perfect! I've created a stunning anime-style dog floating through space with cosmic nebulae, glowing auras, and celestial elements. The image is on your canvas now!",
+    "type": "text",
+    "state": "done"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "remove its backgroud",
+    "type": "text"
+  },
+  {
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "file",
+    "mediaType": "image/jpeg"
+  },
+  {
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+    "type": "text"
+  }

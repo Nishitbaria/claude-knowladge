@@ -1,0 +1,171 @@
+import { anthropic } from "@ai-sdk/anthropic";
+import { type InferAgentUIMessage, stepCountIs, tool, ToolLoopAgent, readUIMessageStream } from "ai";
+import {
+  main_agent_prompt,
+  manual_mode_agent_prompt,
+} from "@/lib/langfuse/prompt";
+import { getPromptWithFallback } from "@/lib/langfuse/prompt-fetcher";
+import logger from "@/utils/logger";
+import {
+  editImageTool,
+  generateAudioTool,
+  generateImageTool,
+  generateVideoTool,
+  removeBackgroundTool,
+  resizeImageTool,
+  upscaleImageTool,
+  videoAddAudioTool,
+  videoLipSyncTool,
+  videoReframeTool,
+  videoSpeedChangeTool,
+  videoStitchTool,
+  videoTrimTool,
+  videoUpscalerTool,
+} from "./tools";
+
+import {
+  type MediaAgentCallOptions,
+  mediaAgentCallOptionsSchema,
+} from "./types";
+import z from "zod";
+
+
+/**
+ * Tools available to the media agent.
+ * Exported for validation in the route handler.
+ */
+export const mediaAgentTools = {
+  generateImage: generateImageTool,
+  generateVideo: generateVideoTool,
+  editImage: editImageTool,
+  generateAudio: generateAudioTool,
+  removeBackground: removeBackgroundTool,
+  resizeImage: resizeImageTool,
+  upscaleImage: upscaleImageTool,
+  // Video editing tools
+  videoLipSync: videoLipSyncTool,
+  videoAddAudio: videoAddAudioTool,
+  videoTrim: videoTrimTool,
+  videoSpeedChange: videoSpeedChangeTool,
+  videoStitch: videoStitchTool,
+  videoReframe: videoReframeTool,
+  videoUpscaler: videoUpscalerTool,
+};
+
+/**
+ * Media Agent - A specialized AI creative assistant for image generation,
+ * video creation, audio production, and media editing tasks.
+ *
+ * Uses ToolLoopAgent pattern for cleaner architecture and built-in loop control.
+ */
+export const mediaAgent = new ToolLoopAgent<
+  MediaAgentCallOptions,
+  typeof mediaAgentTools
+>({
+  id: "media-agent",
+  model: anthropic("claude-haiku-4-5"),
+  tools: mediaAgentTools,
+  maxOutputTokens: 10_000,
+  stopWhen: stepCountIs(20),
+  callOptionsSchema: mediaAgentCallOptionsSchema,
+  experimental_telemetry: { isEnabled: true },
+
+  /**
+   * Prepare the call with dynamic system prompt based on mode (auto vs manual).
+   * Receives default settings and returns overrides for this call.
+   * IMPORTANT: Must pass through `prompt` from input to output (SDK uses prompt, not messages).
+   */
+  prepareCall: async ({ options, model, tools, maxOutputTokens, prompt }) => {
+    const isManualMode = options && !options.isAutoMode;
+
+    let baseSystemPrompt: string;
+
+    if (isManualMode && options) {
+      // Manual mode: use user's selected models
+      const manualPromptFallback = manual_mode_agent_prompt(
+        options.imageModel,
+        options.videoModel,
+      );
+      baseSystemPrompt = await getPromptWithFallback(
+        "manual_mode_agent_prompt",
+        manualPromptFallback,
+      );
+      logger.info(
+        `Manual mode enabled - Image: ${options.imageModel}, Video: ${options.videoModel}`,
+      );
+    } else {
+      // Auto mode: agent selects best models
+      baseSystemPrompt = await getPromptWithFallback(
+        "main_agent_prompt",
+        main_agent_prompt,
+      );
+      logger.info("Auto mode enabled - agent will select best models");
+    }
+
+    // Merge with user's custom system instructions if provided
+    const globalInstructions = options?.globalSystemInstructions?.trim();
+    const mergedInstructions = [
+      baseSystemPrompt,
+      globalInstructions?.length
+        ? `\n\n<user-system-instructions>\n${globalInstructions}\n</user-system-instructions>\n`
+        : "",
+    ].join("");
+
+    // Return the updated settings - pass through required fields including prompt
+    // NOTE: createAgentUIStreamResponse passes model messages as `prompt`, not `messages`
+    return {
+      model,
+      tools,
+      maxOutputTokens,
+      instructions: mergedInstructions,
+      prompt, // CRITICAL: Must pass through prompt from createAgentUIStreamResponse
+    };
+  },
+});
+
+
+export const mediaSubagentTool = tool({
+  description:
+    "Generate, edit, or manipulate media (images, video, audio). " +
+    "Handles image generation, video creation, audio production, " +
+    "background removal, upscaling, and all media editing tasks.",
+  inputSchema: z.object({
+    task: z.string().describe("The media task to perform"),
+  }),
+  execute: async function* ({ task }, { abortSignal }) {
+    const result = await mediaAgent.stream({
+      prompt: task,
+      options: {
+        isAutoMode: true,
+        imageModel: null,
+        videoModel: null,
+      },
+      abortSignal,
+    });
+
+    // Stream ALL UI message parts (text + nested tool calls) to frontend
+    for await (const message of readUIMessageStream({
+      stream: result.toUIMessageStream(),
+    })) {
+      yield message;
+    }
+  },
+
+  // Control what superAgent's model sees (just the summary)
+  toModelOutput: ({ output: message }) => {
+    // Extract the final text response from mediaAgent
+    const lastTextPart = message?.parts?.findLast((p) => p.type === "text");
+    return {
+      type: "text",
+      value: lastTextPart?.text ?? "Media generation completed.",
+    };
+  },
+});
+
+
+
+/**
+ * Type-safe UIMessage type for the media agent.
+ * Use this with useChat<MediaAgentUIMessage>() for type-safe tool results.
+ */
+export type MediaAgentUIMessage = InferAgentUIMessage<typeof mediaAgent>;

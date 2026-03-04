@@ -1,0 +1,27 @@
+import type { LucideIcon } from "lucide-react";
+
+export interface AgentTemplate {
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  agentId: string;
+  emoji: string;
+  systemPrompt: string;
+}
+
+export interface AgentInfo {
+  id: string;
+  name: string;
+  emoji: string | null;
+  workspace: string | null;
+}
+
+export interface AgentSession {
+  key: string;
+  label: string | null;
+  model: string | null;
+  status: "running" | "completed" | "error" | "unknown";
+  updatedAt: number | null;
+  tokens: { input: number; output: number; total: number } | null;
+}

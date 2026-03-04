@@ -1,0 +1,43 @@
+
+./node_modules/streamdown/node_modules/shiki/dist
+Package shiki can't be external
+The request shiki/wasm matches serverExternalPackages (or the default list).
+The package resolves to a different version when requested from the project directory (1.17.7) compared to the package requested from the importing module (3.15.0).
+Make sure to install the same version of the package in both locations.
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/lib/agents/index.ts:19:1
+Module not found: Can't resolve './prompts'
+  17 |
+  18 | // Prompts
+> 19 | export {
+     | ^^^^^^^^
+> 20 |   main_agent_prompt,
+     | ^^^^^^^^^^^^^^^^^^^^
+> 21 |   manual_mode_agent_prompt,
+     | ^^^^^^^^^^^^^^^^^^^^
+> 22 |   vision_prompt,
+     | ^^^^^^^^^^^^^^^^^^^^
+> 23 | } from "./prompts";
+     | ^^^^^^^^^^^^^^^^^^^^
+  24 |
+  25 | // Tools
+  26 | export {
+
+
+
+Import trace:
+  App Route:
+    ./src/lib/agents/index.ts
+    ./src/app/api/agents/v1/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/lib/agents/index.ts:19:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+ ELIFECYCLE  Command failed with exit code 1.
+nishitbariya@nishits-MacBook-Air ShowCart % 

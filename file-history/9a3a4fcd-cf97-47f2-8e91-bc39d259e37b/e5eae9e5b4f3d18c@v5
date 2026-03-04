@@ -1,0 +1,174 @@
+"use client";
+
+import { Mail } from "lucide-react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { authClient } from "@/lib/auth-client";
+
+const COOLDOWN_SECONDS = 60;
+
+const VERIFICATION_ERROR_MESSAGES: Record<string, string> = {
+  token_expired: "That verification link has expired.",
+  invalid_token: "That verification link is invalid or has already been used.",
+  user_not_found: "We couldn't find your account.",
+};
+
+function getVerificationErrorMessage(code: string): string {
+  return (
+    VERIFICATION_ERROR_MESSAGES[code] ??
+    "Something went wrong with that verification link."
+  );
+}
+
+export default function EmailVerificationPage() {
+  const searchParams = useSearchParams();
+  const verificationError = searchParams.get("error");
+  const { data: session, isPending } = authClient.useSession();
+  const email = session?.user?.email ?? null;
+  const [cooldown, setCooldown] = useState(0);
+  const [sending, setSending] = useState(false);
+  const [resendError, setResendError] = useState<string | null>(null);
+  const [signingOut, setSigningOut] = useState(false);
+  const router = useRouter();
+
+  const handleSignOut = useCallback(async () => {
+    setSigningOut(true);
+    await authClient.signOut();
+    router.push("/sign-in");
+  }, [router]);
+
+  useEffect(() => {
+    if (cooldown <= 0 || !email) return;
+
+    const timer = setInterval(() => {
+      setCooldown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [cooldown, email]);
+
+  const handleResend = useCallback(async () => {
+    if (!email || sending || cooldown > 0) return;
+    setSending(true);
+    setResendError(null);
+    try {
+      const result = await authClient.sendVerificationEmail({
+        email,
+        callbackURL: "/email-verification",
+      });
+      if (result.error) {
+        setResendError(
+          result.error.message ?? "Failed to resend. Please try again.",
+        );
+      } else {
+        setCooldown(COOLDOWN_SECONDS);
+      }
+    } catch {
+      setResendError("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  }, [email, sending, cooldown]);
+
+  if (isPending) {
+    return (
+      <div className="flex flex-col items-center gap-6 text-center">
+        <div className="flex size-16 items-center justify-center rounded-full bg-muted animate-pulse" />
+        <div className="space-y-2">
+          <div className="h-7 w-48 rounded-md bg-muted animate-pulse mx-auto" />
+          <div className="h-4 w-72 rounded-md bg-muted animate-pulse mx-auto" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return (
+      <div className="flex flex-col items-center gap-6 text-center">
+        <div className="flex size-16 items-center justify-center rounded-full bg-muted">
+          <Mail className="size-8 text-muted-foreground" />
+        </div>
+        <div className="space-y-2">
+          <h1 className="text-2xl font-bold tracking-tight">
+            {verificationError ? "Verification failed" : "Session expired"}
+          </h1>
+          <p className="text-sm max-w-sm">
+            {verificationError ? (
+              <span className="text-destructive">
+                {getVerificationErrorMessage(verificationError)} Sign in to
+                request a new one.
+              </span>
+            ) : (
+              <span className="text-muted-foreground">
+                We couldn't find an active session. Please sign in again to
+                resend your verification email.
+              </span>
+            )}
+          </p>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Link
+            href="/sign-in"
+            className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
+          >
+            Sign in
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-6 text-center">
+      <div className="flex size-16 items-center justify-center rounded-full bg-muted">
+        <Mail className="size-8 text-muted-foreground" />
+      </div>
+
+      <div className="space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">Verify your email</h1>
+        {verificationError ? (
+          <p className="text-sm text-destructive max-w-sm">
+            {getVerificationErrorMessage(verificationError)} Request a new one
+            below.
+          </p>
+        ) : (
+          <p className="text-sm text-muted-foreground max-w-sm">
+            We sent a verification link to <strong>{email}</strong>. Please
+            check your inbox and click the link to verify your account.
+          </p>
+        )}
+      </div>
+
+      <button
+        type="button"
+        onClick={handleResend}
+        disabled={sending || cooldown > 0}
+        className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
+      >
+        {sending
+          ? "Sending..."
+          : cooldown > 0
+            ? `Resend email in ${cooldown}s`
+            : "Resend verification email"}
+      </button>
+
+      {resendError && <p className="text-xs text-destructive">{resendError}</p>}
+
+      <p className="text-xs text-muted-foreground">
+        Check your spam folder if you don't see it within a few minutes.
+      </p>
+
+      <div className="flex flex-col items-center gap-2">
+        <button
+          type="button"
+          onClick={handleSignOut}
+          disabled={signingOut}
+          className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
+        >
+          {signingOut ? "Signing out..." : "Sign out"}
+        </button>
+      </div>
+    </div>
+  );
+}

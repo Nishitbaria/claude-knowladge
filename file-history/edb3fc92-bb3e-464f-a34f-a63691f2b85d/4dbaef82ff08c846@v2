@@ -1,0 +1,11 @@
+import { NextResponse } from "next/server";
+
+export function GET() {
+  return NextResponse.json(
+    {
+      message:
+        "Draft mode is not yet configured. Set BASEHUB_DRAFT_SECRET to enable.",
+    },
+    { status: 501 },
+  );
+}

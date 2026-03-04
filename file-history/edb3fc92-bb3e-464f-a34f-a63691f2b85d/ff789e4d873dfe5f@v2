@@ -1,0 +1,37 @@
+import { fragmentOn } from "basehub";
+
+export const PostMetaFragment = fragmentOn("PostsItem", {
+  _id: true,
+  _title: true,
+  _slug: true,
+  date: true,
+  isvisible: true,
+  coverImage: { url: true, alt: true },
+  author: {
+    _title: true,
+    avatar: { url: true, alt: true },
+  },
+  body: { plainText: true, readingTime: true },
+});
+
+export type PostMeta = fragmentOn.infer<typeof PostMetaFragment>;
+
+export const PostFragment = fragmentOn("PostsItem", {
+  _id: true,
+  _title: true,
+  _slug: true,
+  date: true,
+  isvisible: true,
+  coverImage: { url: true, alt: true },
+  author: {
+    _title: true,
+    avatar: { url: true, alt: true },
+  },
+  body: {
+    json: { content: true },
+    plainText: true,
+    readingTime: true,
+  },
+});
+
+export type Post = fragmentOn.infer<typeof PostFragment>;

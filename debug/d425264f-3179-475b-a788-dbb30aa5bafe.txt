@@ -1,0 +1,1608 @@
+2026-02-05T16:42:18.900Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-05T16:42:18.900Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-05T16:42:18.900Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-05T16:42:18.900Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-05T16:42:18.903Z [DEBUG] Applying permission update: Adding 8 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)","Bash(gh pr view:*)","Bash(gh pr diff:*)","Bash(tree:*)","Bash(pnpm tsc:*)","Bash(gh pr create --title \"Refactor: AI Agent Architecture & Media Agent Consolidation\" --body \"$\\(cat <<''EOF''\n## Summary\n\n- **Consolidated media agent functionality** - Merged media-agent module into the main agents library for better organization and maintainability\n- **Fixed tool parts persistence issue** - Implemented `mergeParts` function to prevent tool parts from being overwritten during multi-step tool executions \\(images/credits now persist after page refresh\\)\n- **Updated media agent tools** - Streamlined naming conventions and improved consistency across the codebase\n- **Enhanced folder structure** - Improved organization and fixed import paths across components\n\n## Changes\n\n### Agent Architecture\n- Removed standalone `media-agent` module and integrated into main agents library\n- Updated API route to use new methods for agent observation and tracing\n- Refactored imports and function calls for new structure\n\n### Bug Fix: Tool Parts Persistence\n- Added `mergeParts` function in `chatMessage.repo.ts` to merge parts instead of replacing\n- Prevents duplicate messages when tool calls trigger multiple saves\n- Tool outputs \\(credits, image placeholders\\) now persist correctly after page refresh\n\n### Code Quality\n- Removed deprecated tools and adjusted related components\n- Fixed import paths across various components\n- Removed framer-motion animations from some components to simplify structure\n- Updated documentation to reflect changes\n\n## Test plan\n\n- [ ] Generate an image using the media agent\n- [ ] Verify credits and image placeholder appear during streaming\n- [ ] Refresh page and verify tool outputs persist\n- [ ] Test multi-step tool executions \\(image → edit → resize\\)\n\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\" --base master)"]
+2026-02-05T16:42:18.903Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-05T16:42:18.904Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-05T16:42:18.905Z [DEBUG] [STARTUP] Running setup()...
+2026-02-05T16:42:18.905Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-05T16:42:18.905Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-05T16:42:18.910Z [DEBUG] Error log sink initialized
+2026-02-05T16:42:18.912Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-05T16:42:18.912Z [DEBUG] Total plugin skills loaded: 0
+2026-02-05T16:42:18.912Z [DEBUG] Total plugin commands loaded: 0
+2026-02-05T16:42:18.912Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-05T16:42:18.912Z [DEBUG] [STARTUP] setup() completed in 7ms
+2026-02-05T16:42:18.912Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-05T16:42:18.913Z [DEBUG] Total plugin agents loaded: 0
+2026-02-05T16:42:18.913Z [DEBUG] Loaded 8 unique skills (managed: 0, user: 4, project: 4, legacy commands: 0)
+2026-02-05T16:42:18.914Z [DEBUG] getSkills returning: 8 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-05T16:42:18.914Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-02-05T16:42:18.914Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-05T16:42:18.914Z [DEBUG] [render] initLayout starting
+2026-02-05T16:42:18.914Z [DEBUG] Layout engine: yoga
+2026-02-05T16:42:18.915Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-05T16:42:18.916Z [DEBUG] Acquired PID lock for 2.1.31 (PID 14183)
+2026-02-05T16:42:18.916Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.31
+2026-02-05T16:42:18.918Z [DEBUG] [render] initLayout complete
+2026-02-05T16:42:18.920Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-05T16:42:18.923Z [DEBUG] [render] first ink render: 274ms since process start
+2026-02-05T16:42:18.924Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-05T16:42:18.924Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-05T16:42:18.951Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-05T16:42:18.952Z [DEBUG] Grove: Using fresh cached config
+2026-02-05T16:42:18.952Z [DEBUG] [render] initLayout starting
+2026-02-05T16:42:18.952Z [DEBUG] [render] initLayout complete
+2026-02-05T16:42:18.953Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-05T16:42:18.957Z [DEBUG] [render] first ink render: 308ms since process start
+2026-02-05T16:42:18.961Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-05T16:42:18.961Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-05T16:42:18.961Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-05T16:42:18.961Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-05T16:42:20.761Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309740761
+2026-02-05T16:42:20.761Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:42:20.762Z [DEBUG] Temp file written successfully, size: 27577 bytes
+2026-02-05T16:42:20.762Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:42:20.762Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309740761 to /Users/nishitbariya/.claude.json
+2026-02-05T16:42:20.762Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:42:21.524Z [DEBUG] [STARTUP] showSetupScreens() completed in 2610ms
+2026-02-05T16:42:21.525Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-05T16:42:21.525Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-05T16:42:21.525Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-05T16:42:21.525Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:42:21.525Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:42:21.528Z [DEBUG] Total LSP servers loaded: 0
+2026-02-05T16:42:21.530Z [DEBUG] [STARTUP] MCP configs loaded in 2627ms
+2026-02-05T16:42:21.537Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-05T16:42:21.554Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-05T16:42:21.555Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309741555
+2026-02-05T16:42:21.555Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:42:21.555Z [DEBUG] Temp file written successfully, size: 27577 bytes
+2026-02-05T16:42:21.555Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:42:21.555Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309741555 to /Users/nishitbariya/.claude.json
+2026-02-05T16:42:21.555Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:42:21.556Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-05T16:42:21.556Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-05T16:42:21.556Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-05T16:42:21.556Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:42:21.556Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-05T16:42:21.556Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-05T16:42:21.556Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-05T16:42:21.556Z [DEBUG] LSP server manager initialized successfully
+2026-02-05T16:42:21.556Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-05T16:42:21.557Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:42:21.557Z [DEBUG] [render] initLayout starting
+2026-02-05T16:42:21.558Z [DEBUG] [render] initLayout complete
+2026-02-05T16:42:21.563Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-05T16:42:21.579Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-05T16:42:21.580Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-05T16:42:21.580Z [DEBUG] performStartupChecks called
+2026-02-05T16:42:21.580Z [DEBUG] Starting background plugin installations
+2026-02-05T16:42:21.581Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-05T16:42:21.608Z [DEBUG] [render] first ink render: 2959ms since process start
+2026-02-05T16:42:21.841Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-05T16:42:21.841Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-05T16:42:21.841Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-05T16:42:21.841Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-05T16:42:21.842Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-05T16:42:21.842Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-05T16:42:21.842Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:42:21.851Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309741851
+2026-02-05T16:42:21.851Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:42:21.851Z [DEBUG] Temp file written successfully, size: 27577 bytes
+2026-02-05T16:42:21.851Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:42:21.851Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309741851 to /Users/nishitbariya/.claude.json
+2026-02-05T16:42:21.851Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:42:21.851Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-05T16:42:21.853Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309741853
+2026-02-05T16:42:21.853Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:42:21.853Z [DEBUG] Temp file written successfully, size: 27577 bytes
+2026-02-05T16:42:21.854Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:42:21.854Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309741853 to /Users/nishitbariya/.claude.json
+2026-02-05T16:42:21.854Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:42:21.947Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:42:21.948Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.d75; cc_entrypoint=cli;
+2026-02-05T16:42:21.949Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:42:21.949Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:42:21.949Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:42:21.966Z [DEBUG] MCP server "ide": Starting connection with timeout of 30000ms
+2026-02-05T16:42:21.966Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-05T16:42:21.966Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-05T16:42:21.966Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-05T16:42:22.000Z [DEBUG] MCP server "ide": Successfully connected to ws-ide server in 37ms
+2026-02-05T16:42:22.000Z [DEBUG] MCP server "ide": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Claude Code Cursor MCP","version":"2.1.31"}}
+2026-02-05T16:42:22.189Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-05T16:42:22.395Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-05T16:42:22.395Z [DEBUG] MCP server "claude.ai Notion": Initializing claude.ai proxy transport for server mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-05T16:42:22.395Z [DEBUG] MCP server "claude.ai Notion": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-05T16:42:22.395Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy transport created successfully
+2026-02-05T16:42:22.396Z [DEBUG] MCP server "claude.ai Notion": Starting connection with timeout of 30000ms
+2026-02-05T16:42:22.396Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-05T16:42:22.396Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-05T16:42:22.396Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-05T16:42:22.396Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-05T16:42:22.453Z [ERROR] Error: Error: 1: Command failed with ERR_STREAM_PREMATURE_CLOSE: cursor --force --install-extension anthropic.claude-code
+Premature close 
+    at QD7 (/$bunfs/root/claude:807:4029)
+    at async JD7 (/$bunfs/root/claude:807:1623)
+    at processTicksAndRejections (native:7:39)
+2026-02-05T16:42:22.636Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.31)
+2026-02-05T16:42:22.841Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:42:23.032Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309743032
+2026-02-05T16:42:23.032Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:42:23.032Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:42:23.032Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:42:23.032Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309743032 to /Users/nishitbariya/.claude.json
+2026-02-05T16:42:23.032Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:42:23.424Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:42:23.424Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:42:23.691Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-F76MHFRJ.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:712:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:729:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:758:52)
+    at #resolve (node:internal/modules/esm/loader:694:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:614:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.4.0
+2026-02-05T16:42:23.692Z [DEBUG] MCP server "posthog": Connection failed after 2160ms: MCP error -32000: Connection closed
+2026-02-05T16:42:23.692Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-05T16:42:23.694Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:42:23.694Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:42:23.694Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:42:23.821Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy connection failed after 1426ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXqFodi4j7PFLJrR9Ldbx"}
+2026-02-05T16:42:23.821Z [ERROR] MCP server "claude.ai Notion" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXqFodi4j7PFLJrR9Ldbx"}
+2026-02-05T16:42:23.822Z [DEBUG] MCP server "claude.ai Notion": Authentication required for claude.ai proxy server
+2026-02-05T16:42:24.759Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 2363ms
+2026-02-05T16:42:24.759Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}
+2026-02-05T16:42:32.224Z [DEBUG] High write ratio: blit=608, write=749 (55.2% writes), screen=16x152
+2026-02-05T16:42:32.248Z [DEBUG] High write ratio: blit=608, write=723 (54.3% writes), screen=16x152
+2026-02-05T16:42:32.429Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-02-05T16:42:32.430Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-02-05T16:42:32.459Z [DEBUG] [FileIndex] git ls-files (tracked) took 28ms
+2026-02-05T16:42:32.459Z [DEBUG] [FileIndex] git ls-files: 1214 tracked files in 29ms
+2026-02-05T16:42:32.460Z [DEBUG] [FileIndex] using git ls-files result (1214 files)
+2026-02-05T16:42:32.712Z [DEBUG] High write ratio: blit=608, write=723 (54.3% writes), screen=16x152
+2026-02-05T16:42:32.713Z [DEBUG] [FileIndex] background untracked fetch: 0 files
+2026-02-05T16:42:33.737Z [DEBUG] High write ratio: blit=608, write=723 (54.3% writes), screen=16x152
+2026-02-05T16:42:45.031Z [DEBUG] High write ratio: blit=608, write=795 (56.7% writes), screen=16x152
+2026-02-05T16:42:45.060Z [DEBUG] High write ratio: blit=608, write=769 (55.8% writes), screen=16x152
+2026-02-05T16:42:46.005Z [DEBUG] High write ratio: blit=608, write=770 (55.9% writes), screen=17x152
+2026-02-05T16:42:46.151Z [DEBUG] High write ratio: blit=608, write=771 (55.9% writes), screen=18x152
+2026-02-05T16:42:46.319Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:46.774Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:47.319Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:47.734Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:47.826Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:48.388Z [DEBUG] High write ratio: blit=608, write=772 (55.9% writes), screen=19x152
+2026-02-05T16:42:50.041Z [DEBUG] High write ratio: blit=608, write=798 (56.8% writes), screen=19x152
+2026-02-05T16:42:52.894Z [DEBUG] High write ratio: blit=608, write=798 (56.8% writes), screen=19x152
+2026-02-05T16:42:53.765Z [DEBUG] High write ratio: blit=608, write=798 (56.8% writes), screen=19x152
+2026-02-05T16:42:54.501Z [DEBUG] High write ratio: blit=608, write=821 (57.5% writes), screen=20x152
+2026-02-05T16:42:54.503Z [DEBUG] Stored image 1 to /Users/nishitbariya/.claude/image-cache/d425264f-3179-475b-a788-dbb30aa5bafe/1.png
+2026-02-05T16:42:59.605Z [DEBUG] High write ratio: blit=608, write=822 (57.5% writes), screen=20x152
+2026-02-05T16:42:59.631Z [DEBUG] High write ratio: blit=608, write=822 (57.5% writes), screen=20x152
+2026-02-05T16:42:59.808Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-02-05T16:42:59.808Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-02-05T16:42:59.815Z [DEBUG] High write ratio: blit=608, write=827 (57.6% writes), screen=24x152
+2026-02-05T16:42:59.832Z [DEBUG] [FileIndex] git ls-files (tracked) took 24ms
+2026-02-05T16:42:59.833Z [DEBUG] [FileIndex] git ls-files: 1214 tracked files in 25ms
+2026-02-05T16:42:59.833Z [DEBUG] [FileIndex] using git ls-files result (1214 files)
+2026-02-05T16:42:59.854Z [DEBUG] [FileIndex] background untracked fetch: 0 files
+2026-02-05T16:42:59.949Z [DEBUG] High write ratio: blit=608, write=828 (57.7% writes), screen=24x152
+2026-02-05T16:43:00.093Z [DEBUG] High write ratio: blit=608, write=829 (57.7% writes), screen=24x152
+2026-02-05T16:43:00.246Z [DEBUG] High write ratio: blit=608, write=830 (57.7% writes), screen=24x152
+2026-02-05T16:43:00.457Z [DEBUG] High write ratio: blit=608, write=879 (59.1% writes), screen=24x152
+2026-02-05T16:43:00.693Z [DEBUG] High write ratio: blit=608, write=880 (59.1% writes), screen=24x152
+2026-02-05T16:43:00.906Z [DEBUG] High write ratio: blit=608, write=936 (60.6% writes), screen=24x152
+2026-02-05T16:43:00.955Z [DEBUG] High write ratio: blit=608, write=937 (60.6% writes), screen=24x152
+2026-02-05T16:43:01.122Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:01.332Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:02.121Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:02.600Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:02.628Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:03.831Z [DEBUG] High write ratio: blit=608, write=938 (60.7% writes), screen=24x152
+2026-02-05T16:43:05.451Z [DEBUG] High write ratio: blit=608, write=849 (58.3% writes), screen=20x152
+2026-02-05T16:43:05.472Z [DEBUG] High write ratio: blit=608, write=823 (57.5% writes), screen=20x152
+2026-02-05T16:43:06.372Z [DEBUG] High write ratio: blit=608, write=1857 (75.3% writes), screen=22x152
+2026-02-05T16:43:06.378Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/todos/d425264f-3179-475b-a788-dbb30aa5bafe-agent-d425264f-3179-475b-a788-dbb30aa5bafe.json.tmp.14183.1770309786378
+2026-02-05T16:43:06.379Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-05T16:43:06.379Z [DEBUG] Renaming /Users/nishitbariya/.claude/todos/d425264f-3179-475b-a788-dbb30aa5bafe-agent-d425264f-3179-475b-a788-dbb30aa5bafe.json.tmp.14183.1770309786378 to /Users/nishitbariya/.claude/todos/d425264f-3179-475b-a788-dbb30aa5bafe-agent-d425264f-3179-475b-a788-dbb30aa5bafe.json
+2026-02-05T16:43:06.379Z [DEBUG] File /Users/nishitbariya/.claude/todos/d425264f-3179-475b-a788-dbb30aa5bafe-agent-d425264f-3179-475b-a788-dbb30aa5bafe.json written atomically
+2026-02-05T16:43:06.385Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:43:06.392Z [DEBUG] Stored image 1 to /Users/nishitbariya/.claude/image-cache/d425264f-3179-475b-a788-dbb30aa5bafe/1.png
+2026-02-05T16:43:06.395Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:43:06.395Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:43:06.395Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:43:06.395Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:43:06.396Z [DEBUG] Sending 9 skills via attachment (initial, 6 total sent)
+2026-02-05T16:43:06.397Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-05T16:43:06.397Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:43:06.397Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:43:06.397Z [DEBUG] FileHistory: Added snapshot for 7a9a2cae-daa6-4403-bf1f-acc726b3d36a, tracking 0 files
+2026-02-05T16:43:06.400Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json'
+    at openSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:947)
+    at d5 (/$bunfs/root/claude:11:40746)
+    at readSync (/$bunfs/root/claude:12:875)
+    at l5 (/$bunfs/root/claude:6127:113)
+    at rG (/$bunfs/root/claude:6129:226)
+    at a39 (/$bunfs/root/claude:122:1845)
+    at <anonymous> (/$bunfs/root/claude:6234:4212)
+2026-02-05T16:43:06.400Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json
+2026-02-05T16:43:06.407Z [DEBUG] High write ratio: blit=0, write=2099 (100.0% writes), screen=25x152
+2026-02-05T16:43:06.409Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:43:06.410Z [DEBUG] MCP server "ide": Calling MCP tool: closeAllDiffTabs
+2026-02-05T16:43:06.412Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-05T16:43:06.413Z [DEBUG] MCP server "ide": Tool 'closeAllDiffTabs' completed successfully in 3ms
+2026-02-05T16:43:06.417Z [DEBUG] Stats cache is up to date
+2026-02-05T16:43:06.419Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:43:06.419Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:43:06.419Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:43:06.831Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:43:06.836Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:43:06.837Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:43:06.837Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:43:06.837Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:43:07.036Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309787036
+2026-02-05T16:43:07.037Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:43:07.037Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:43:07.037Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:43:07.037Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309787036 to /Users/nishitbariya/.claude.json
+2026-02-05T16:43:07.037Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:43:07.840Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:43:07.841Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:43:08.527Z [ERROR] Failed to refresh marketplace claude-plugins-official: Failed to clone marketplace repository: SSH authentication failed. Please ensure your SSH keys are configured for GitHub, or use an HTTPS URL instead.
+
+Original error: Cloning into '/Users/nishitbariya/.claude/plugins/marketplaces/claude-plugins-official'...
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+2026-02-05T16:43:08.527Z [WARN] Plugin autoupdate: failed to refresh marketplace claude-plugins-official: Failed to refresh marketplace 'claude-plugins-official': Failed to clone marketplace repository: SSH authentication failed. Please ensure your SSH keys are configured for GitHub, or use an HTTPS URL instead.
+
+Original error: Cloning into '/Users/nishitbariya/.claude/plugins/marketplaces/claude-plugins-official'...
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+2026-02-05T16:43:08.527Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-05T16:43:09.905Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:43:13.804Z [DEBUG] High write ratio: blit=0, write=2129 (100.0% writes), screen=26x152
+2026-02-05T16:43:14.197Z [DEBUG] High write ratio: blit=0, write=2227 (100.0% writes), screen=28x152
+2026-02-05T16:43:14.223Z [DEBUG] High write ratio: blit=0, write=2227 (100.0% writes), screen=28x152
+2026-02-05T16:43:17.207Z [DEBUG] Edit tool validation error: Found 2 matches of the string to replace, but replace_all is false. To replace all occurrences, set replace_all to true. To replace only one occurrence, please provide more context to uniquely identif
+2026-02-05T16:43:17.215Z [DEBUG] High write ratio: blit=0, write=2285 (100.0% writes), screen=31x152
+2026-02-05T16:43:17.239Z [DEBUG] High write ratio: blit=0, write=2285 (100.0% writes), screen=31x152
+2026-02-05T16:43:19.662Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:43:19.662Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:43:19.663Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:43:19.663Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:43:19.663Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:43:19.674Z [DEBUG] High write ratio: blit=0, write=2343 (100.0% writes), screen=34x152
+2026-02-05T16:43:19.676Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 14ms
+2026-02-05T16:43:19.676Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:43:19.678Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:43:19.679Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:43:19.679Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:43:19.679Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:43:22.004Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:43:23.076Z [DEBUG] High write ratio: blit=0, write=2337 (100.0% writes), screen=34x152
+2026-02-05T16:43:23.583Z [DEBUG] High write ratio: blit=0, write=2419 (100.0% writes), screen=36x152
+2026-02-05T16:43:25.020Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-05T16:43:25.021Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-05T16:43:25.021Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:43:25.021Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:43:25.024Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-02-05T16:43:25.024Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-02-05T16:43:25.025Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-02-05T16:43:25.025Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:43:25.025Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:43:25.039Z [DEBUG] High write ratio: blit=0, write=2376 (100.0% writes), screen=42x152
+2026-02-05T16:43:25.040Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:43:25.042Z [DEBUG] MCP server "ide": Calling MCP tool: openDiff
+2026-02-05T16:43:25.073Z [DEBUG] High write ratio: blit=0, write=2376 (100.0% writes), screen=42x152
+2026-02-05T16:43:29.223Z [DEBUG] MCP server "ide": Tool 'openDiff' completed successfully in 4s
+2026-02-05T16:43:29.223Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:43:29.224Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:43:29.225Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 2ms
+2026-02-05T16:43:29.230Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 6ms
+2026-02-05T16:43:29.231Z [DEBUG] Aborting: tool=Edit isAbort=undefined hasFeedback=false isSubagent=false
+2026-02-05T16:43:29.231Z [DEBUG] Edit tool permission denied
+2026-02-05T16:43:29.272Z [DEBUG] High write ratio: blit=0, write=4552 (100.0% writes), screen=62x152
+2026-02-05T16:43:29.276Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309809276
+2026-02-05T16:43:29.276Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:43:29.279Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:43:29.279Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:43:29.279Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309809276 to /Users/nishitbariya/.claude.json
+2026-02-05T16:43:29.279Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:43:29.281Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309809281
+2026-02-05T16:43:29.281Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:43:29.282Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:43:29.282Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:43:29.282Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309809281 to /Users/nishitbariya/.claude.json
+2026-02-05T16:43:29.282Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:43:29.307Z [DEBUG] High write ratio: blit=2280, write=2977 (56.6% writes), screen=62x152
+2026-02-05T16:44:16.766Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:44:16.766Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:44:16.766Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:44:16.766Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:44:16.766Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:44:16.777Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:44:16.777Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 11ms
+2026-02-05T16:44:16.778Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-05T16:44:16.778Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:16.778Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:44:16.778Z [DEBUG] FileHistory: Making snapshot for message 88195ab9-eb89-49d9-a12f-3e85be344d03
+2026-02-05T16:44:16.778Z [DEBUG] FileHistory: Added snapshot for 88195ab9-eb89-49d9-a12f-3e85be344d03, tracking 0 files
+2026-02-05T16:44:16.819Z [DEBUG] High write ratio: blit=0, write=5017 (100.0% writes), screen=69x152
+2026-02-05T16:44:16.820Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:44:16.821Z [DEBUG] MCP server "ide": Calling MCP tool: closeAllDiffTabs
+2026-02-05T16:44:16.822Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:44:16.823Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770309856823
+2026-02-05T16:44:16.823Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:44:16.823Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:44:16.823Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:44:16.823Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770309856823 to /Users/nishitbariya/.claude.json
+2026-02-05T16:44:16.823Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:44:16.823Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.c5c; cc_entrypoint=cli;
+2026-02-05T16:44:16.823Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:44:16.823Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:44:16.824Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:44:16.824Z [DEBUG] MCP server "ide": Tool 'closeAllDiffTabs' completed successfully in 3ms
+2026-02-05T16:44:16.824Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:44:16.826Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:44:16.826Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:44:16.826Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:44:16.826Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:44:16.838Z [DEBUG] High write ratio: blit=2280, write=3462 (60.3% writes), screen=70x152
+2026-02-05T16:44:17.509Z [DEBUG] High write ratio: blit=3040, write=3234 (51.5% writes), screen=70x152
+2026-02-05T16:44:17.735Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:44:18.178Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:44:18.179Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:44:18.808Z [DEBUG] High write ratio: blit=3040, write=3214 (51.4% writes), screen=69x152
+2026-02-05T16:44:19.501Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:44:20.143Z [DEBUG] High write ratio: blit=3040, write=3224 (51.5% writes), screen=69x152
+2026-02-05T16:44:21.471Z [DEBUG] High write ratio: blit=3040, write=3224 (51.5% writes), screen=69x152
+2026-02-05T16:44:22.781Z [DEBUG] High write ratio: blit=3040, write=3198 (51.3% writes), screen=69x152
+2026-02-05T16:44:23.788Z [DEBUG] High write ratio: blit=0, write=5001 (100.0% writes), screen=69x152
+2026-02-05T16:44:23.809Z [DEBUG] High write ratio: blit=2280, write=3432 (60.1% writes), screen=69x152
+2026-02-05T16:44:24.317Z [DEBUG] High write ratio: blit=0, write=5152 (100.0% writes), screen=73x152
+2026-02-05T16:44:24.338Z [DEBUG] High write ratio: blit=2280, write=3577 (61.1% writes), screen=73x152
+2026-02-05T16:44:25.300Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-05T16:44:25.301Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-05T16:44:25.301Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:25.301Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-05T16:44:25.353Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:25.378Z [DEBUG] High write ratio: blit=2280, write=3578 (61.1% writes), screen=73x152
+2026-02-05T16:44:25.596Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-05T16:44:25.596Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-05T16:44:25.596Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:25.596Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-05T16:44:25.634Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:25.662Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.004Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-05T16:44:26.004Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-05T16:44:26.004Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:26.004Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-05T16:44:26.044Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.074Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-05T16:44:26.074Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:44:26.074Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-05T16:44:26.077Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.110Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.132Z [DEBUG] High write ratio: blit=2280, write=3578 (61.1% writes), screen=73x152
+2026-02-05T16:44:26.270Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-05T16:44:26.270Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:44:26.270Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-05T16:44:26.300Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.321Z [DEBUG] High write ratio: blit=2280, write=3578 (61.1% writes), screen=73x152
+2026-02-05T16:44:26.506Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-05T16:44:26.506Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:44:26.507Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-05T16:44:26.508Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:44:26.508Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:44:26.508Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:44:26.508Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:44:26.508Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:44:26.550Z [DEBUG] High write ratio: blit=0, write=5153 (100.0% writes), screen=73x152
+2026-02-05T16:44:26.551Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 43ms
+2026-02-05T16:44:26.552Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:44:26.555Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:44:26.555Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:44:26.555Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:44:26.556Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:44:26.578Z [DEBUG] High write ratio: blit=2280, write=3578 (61.1% writes), screen=73x152
+2026-02-05T16:44:27.881Z [DEBUG] High write ratio: blit=3040, write=3350 (52.4% writes), screen=73x152
+2026-02-05T16:44:28.975Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:44:29.215Z [DEBUG] High write ratio: blit=3040, write=3344 (52.4% writes), screen=73x152
+2026-02-05T16:44:30.541Z [DEBUG] High write ratio: blit=3040, write=3344 (52.4% writes), screen=73x152
+2026-02-05T16:44:31.268Z [DEBUG] High write ratio: blit=0, write=5147 (100.0% writes), screen=73x152
+2026-02-05T16:44:31.292Z [DEBUG] High write ratio: blit=2280, write=3578 (61.1% writes), screen=73x152
+2026-02-05T16:44:32.594Z [DEBUG] High write ratio: blit=3040, write=3350 (52.4% writes), screen=73x152
+2026-02-05T16:44:33.119Z [DEBUG] High write ratio: blit=0, write=5460 (100.0% writes), screen=81x152
+2026-02-05T16:44:33.146Z [DEBUG] High write ratio: blit=0, write=5460 (100.0% writes), screen=81x152
+2026-02-05T16:44:33.918Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:44:33.919Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:44:33.919Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:33.919Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:44:33.974Z [DEBUG] High write ratio: blit=0, write=5556 (100.0% writes), screen=84x152
+2026-02-05T16:44:33.983Z [DEBUG] tree-sitter: loaded from embedded
+2026-02-05T16:44:33.986Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addDirectories",
+    "directories": [
+      "/Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents"
+    ],
+    "destination": "session"
+  },
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-02-05T16:44:33.986Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-05T16:44:33.986Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-05T16:44:33.986Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:33.986Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:44:33.989Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:44:33.993Z [DEBUG] High write ratio: blit=0, write=5536 (100.0% writes), screen=89x152
+2026-02-05T16:44:35.306Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:36.621Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:37.920Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:39.231Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:39.991Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-02-05T16:44:39.991Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:44:39.991Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-02-05T16:44:40.513Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:41.791Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:43.073Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:44.359Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:45.674Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:46.953Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:48.235Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:49.545Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:50.824Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:52.109Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:53.408Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:54.701Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:55.990Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:57.274Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:58.572Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:44:59.869Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:01.151Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:02.445Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:03.747Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:05.044Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:06.337Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:07.625Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:08.923Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:10.214Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:11.505Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:12.795Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:14.118Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:15.425Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:16.712Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:18.008Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:19.314Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:20.611Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:21.904Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:23.204Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:24.510Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:25.819Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:27.126Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:28.416Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:29.728Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:31.026Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:32.336Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:33.645Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:34.938Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:36.245Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:37.558Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:38.870Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:40.161Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:41.452Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:42.734Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:44.014Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:45.295Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:46.576Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:47.865Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:49.145Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:50.414Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:51.716Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:53.000Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:54.276Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:55.560Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:56.863Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:58.147Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:45:59.430Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:00.716Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:02.005Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:03.303Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:04.590Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:05.890Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:07.173Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:08.457Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:09.740Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:11.041Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:12.350Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:13.492Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:14.133Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:14.714Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:15.316Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:15.951Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:16.548Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:17.163Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:17.778Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:18.365Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:18.976Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:19.602Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:20.201Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:20.806Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:21.408Z [DEBUG] High write ratio: blit=3040, write=3733 (55.1% writes), screen=89x152
+2026-02-05T16:46:21.547Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-02-05T16:46:21.548Z [DEBUG] Looking for shell config file: /Users/nishitbariya/.zshrc
+2026-02-05T16:46:21.548Z [DEBUG] Snapshots directory: /Users/nishitbariya/.claude/shell-snapshots
+2026-02-05T16:46:21.549Z [DEBUG] Creating snapshot at: /Users/nishitbariya/.claude/shell-snapshots/snapshot-zsh-1770309981548-9dotfo.sh
+2026-02-05T16:46:21.549Z [DEBUG] Shell binary exists: true
+2026-02-05T16:46:21.549Z [DEBUG] Execution timeout: 10000ms
+2026-02-05T16:46:21.565Z [DEBUG] High write ratio: blit=0, write=5540 (100.0% writes), screen=84x152
+2026-02-05T16:46:21.569Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:46:21.571Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:46:21.648Z [DEBUG] Shell snapshot created successfully (5326 bytes)
+2026-02-05T16:46:21.649Z [DEBUG] No session environment scripts found
+2026-02-05T16:46:21.698Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:46:21.699Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.005; cc_entrypoint=cli;
+2026-02-05T16:46:21.699Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:46:21.699Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:46:21.704Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:46:21.706Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:46:21.706Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:46:21.706Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:46:21.708Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:46:21.709Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:46:21.709Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:46:21.709Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:46:21.709Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:46:21.755Z [DEBUG] High write ratio: blit=0, write=5564 (100.0% writes), screen=84x152
+2026-02-05T16:46:21.757Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 49ms
+2026-02-05T16:46:21.758Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:46:21.760Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:46:21.760Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:46:21.760Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:46:21.760Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:46:21.801Z [DEBUG] High write ratio: blit=0, write=5564 (100.0% writes), screen=84x152
+2026-02-05T16:46:21.821Z [DEBUG] High write ratio: blit=2280, write=3989 (63.6% writes), screen=84x152
+2026-02-05T16:46:22.337Z [DEBUG] High write ratio: blit=3040, write=3761 (55.3% writes), screen=84x152
+2026-02-05T16:46:22.568Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:46:22.915Z [DEBUG] High write ratio: blit=3040, write=3761 (55.3% writes), screen=84x152
+2026-02-05T16:46:22.936Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:46:22.936Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:46:23.523Z [DEBUG] High write ratio: blit=3040, write=3741 (55.2% writes), screen=84x152
+2026-02-05T16:46:24.145Z [DEBUG] High write ratio: blit=3040, write=3741 (55.2% writes), screen=84x152
+2026-02-05T16:46:24.311Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:46:24.741Z [DEBUG] High write ratio: blit=3040, write=3751 (55.2% writes), screen=84x152
+2026-02-05T16:46:25.380Z [DEBUG] High write ratio: blit=0, write=5554 (100.0% writes), screen=84x152
+2026-02-05T16:46:25.401Z [DEBUG] High write ratio: blit=2280, write=3979 (63.6% writes), screen=84x152
+2026-02-05T16:46:25.954Z [DEBUG] High write ratio: blit=3040, write=3751 (55.2% writes), screen=84x152
+2026-02-05T16:46:26.603Z [DEBUG] High write ratio: blit=0, write=5759 (100.0% writes), screen=88x152
+2026-02-05T16:46:26.624Z [DEBUG] High write ratio: blit=0, write=5759 (100.0% writes), screen=88x152
+2026-02-05T16:46:27.391Z [DEBUG] High write ratio: blit=3040, write=3956 (56.5% writes), screen=88x152
+2026-02-05T16:46:28.659Z [DEBUG] High write ratio: blit=3040, write=3956 (56.5% writes), screen=88x152
+2026-02-05T16:46:29.152Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-05T16:46:29.152Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-05T16:46:29.152Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:29.152Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:46:29.154Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-02-05T16:46:29.155Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-02-05T16:46:29.155Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-02-05T16:46:29.155Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:29.155Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:46:29.200Z [DEBUG] High write ratio: blit=0, write=5690 (100.0% writes), screen=94x152
+2026-02-05T16:46:29.201Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:46:29.202Z [DEBUG] MCP server "ide": Calling MCP tool: openDiff
+2026-02-05T16:46:29.231Z [DEBUG] High write ratio: blit=2280, write=4115 (64.3% writes), screen=94x152
+2026-02-05T16:46:29.911Z [DEBUG] High write ratio: blit=3040, write=3887 (56.1% writes), screen=94x152
+2026-02-05T16:46:30.517Z [DEBUG] High write ratio: blit=3040, write=3887 (56.1% writes), screen=94x152
+2026-02-05T16:46:31.130Z [DEBUG] High write ratio: blit=3040, write=3887 (56.1% writes), screen=94x152
+2026-02-05T16:46:31.589Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:46:31.592Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:46:31.613Z [DEBUG] High write ratio: blit=0, write=5790 (100.0% writes), screen=90x152
+2026-02-05T16:46:31.617Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:46:31.619Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 27ms
+2026-02-05T16:46:31.621Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts
+2026-02-05T16:46:31.622Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts.tmp.14183.1770309991622
+2026-02-05T16:46:31.622Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:46:31.622Z [DEBUG] Temp file written successfully, size: 10312 bytes
+2026-02-05T16:46:31.622Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:46:31.622Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts.tmp.14183.1770309991622 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts
+2026-02-05T16:46:31.623Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts written atomically
+2026-02-05T16:46:31.624Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-05T16:46:31.624Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:46:31.624Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-05T16:46:31.626Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:46:31.626Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:46:31.626Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:46:31.626Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:46:31.626Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:46:31.693Z [DEBUG] High write ratio: blit=0, write=6421 (100.0% writes), screen=94x152
+2026-02-05T16:46:31.710Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-05T16:46:31.712Z [WARN] Cache corrupted or missing for marketplace claude-plugins-official, re-fetching from source: Marketplace file not found at /Users/nishitbariya/.claude/plugins/marketplaces/claude-plugins-official
+2026-02-05T16:46:31.715Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 125ms
+2026-02-05T16:46:31.715Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 89ms
+2026-02-05T16:46:31.716Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:46:31.722Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:46:31.724Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:46:31.724Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:46:31.724Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:46:31.726Z [DEBUG] MCP server "ide": Tool 'openDiff' completed successfully in 2s
+2026-02-05T16:46:31.726Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:46:31.739Z [DEBUG] High write ratio: blit=2280, write=4846 (68.0% writes), screen=94x152
+2026-02-05T16:46:31.740Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 14ms
+2026-02-05T16:46:32.548Z [DEBUG] High write ratio: blit=3040, write=4636 (60.4% writes), screen=94x152
+2026-02-05T16:46:33.170Z [DEBUG] High write ratio: blit=3040, write=4636 (60.4% writes), screen=94x152
+2026-02-05T16:46:33.764Z [DEBUG] High write ratio: blit=3040, write=4636 (60.4% writes), screen=94x152
+2026-02-05T16:46:33.815Z [INFO] SSH not configured for GitHub, using HTTPS for anthropics/claude-plugins-official
+2026-02-05T16:46:33.871Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:46:34.668Z [DEBUG] High write ratio: blit=0, write=6449 (100.0% writes), screen=94x152
+2026-02-05T16:46:34.693Z [DEBUG] High write ratio: blit=2280, write=4874 (68.1% writes), screen=94x152
+2026-02-05T16:46:35.100Z [DEBUG] High write ratio: blit=0, write=6508 (100.0% writes), screen=96x152
+2026-02-05T16:46:36.354Z [DEBUG] High write ratio: blit=3040, write=4705 (60.7% writes), screen=96x152
+2026-02-05T16:46:37.000Z [DEBUG] [binaryCheck] Binary 'typescript-language-server' not found
+2026-02-05T16:46:37.000Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-05T16:46:37.520Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-05T16:46:37.521Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-05T16:46:37.521Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:37.521Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:46:37.521Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-02-05T16:46:37.522Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-02-05T16:46:37.522Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-02-05T16:46:37.522Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:37.522Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-05T16:46:37.571Z [DEBUG] High write ratio: blit=0, write=6415 (100.0% writes), screen=102x152
+2026-02-05T16:46:37.573Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:46:37.573Z [DEBUG] MCP server "ide": Calling MCP tool: openDiff
+2026-02-05T16:46:37.601Z [DEBUG] High write ratio: blit=2280, write=4840 (68.0% writes), screen=102x152
+2026-02-05T16:46:38.856Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:40.132Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:41.396Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:42.660Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:43.576Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-02-05T16:46:43.576Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:43.576Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-02-05T16:46:43.938Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:45.204Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:46.469Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:47.743Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:48.673Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:49.276Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:49.876Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:50.485Z [DEBUG] High write ratio: blit=3040, write=4612 (60.3% writes), screen=102x152
+2026-02-05T16:46:50.487Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:46:50.489Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:46:50.502Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:46:50.505Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 16ms
+2026-02-05T16:46:50.506Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts.tmp.14183.1770310010506
+2026-02-05T16:46:50.506Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:46:50.506Z [DEBUG] Temp file written successfully, size: 9851 bytes
+2026-02-05T16:46:50.506Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:46:50.506Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts.tmp.14183.1770310010506 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts
+2026-02-05T16:46:50.506Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/langfuse/prompt.ts written atomically
+2026-02-05T16:46:50.508Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-05T16:46:50.508Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:46:50.508Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-05T16:46:50.509Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:46:50.509Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:46:50.509Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:46:50.509Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:46:50.509Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:46:50.522Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:46:50.587Z [DEBUG] High write ratio: blit=0, write=7129 (100.0% writes), screen=103x152
+2026-02-05T16:46:50.589Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 80ms
+2026-02-05T16:46:50.590Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:46:50.594Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:46:50.595Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:46:50.595Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:46:50.595Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:46:50.597Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 110ms
+2026-02-05T16:46:50.597Z [DEBUG] MCP server "ide": Tool 'openDiff' completed successfully in 13s
+2026-02-05T16:46:50.597Z [DEBUG] MCP server "ide": Calling MCP tool: close_tab
+2026-02-05T16:46:50.612Z [DEBUG] High write ratio: blit=2280, write=5554 (70.9% writes), screen=103x152
+2026-02-05T16:46:50.613Z [DEBUG] MCP server "ide": Tool 'close_tab' completed successfully in 16ms
+2026-02-05T16:46:51.448Z [DEBUG] High write ratio: blit=3040, write=5327 (63.7% writes), screen=103x152
+2026-02-05T16:46:52.060Z [DEBUG] High write ratio: blit=3040, write=5327 (63.7% writes), screen=103x152
+2026-02-05T16:46:52.673Z [DEBUG] High write ratio: blit=3040, write=5327 (63.7% writes), screen=103x152
+2026-02-05T16:46:52.780Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:46:53.271Z [DEBUG] High write ratio: blit=3040, write=5338 (63.7% writes), screen=103x152
+2026-02-05T16:46:53.872Z [DEBUG] High write ratio: blit=3040, write=5338 (63.7% writes), screen=103x152
+2026-02-05T16:46:53.949Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:46:53.980Z [DEBUG] High write ratio: blit=0, write=7141 (100.0% writes), screen=103x152
+2026-02-05T16:46:54.000Z [DEBUG] High write ratio: blit=2280, write=5566 (70.9% writes), screen=103x152
+2026-02-05T16:46:54.553Z [DEBUG] High write ratio: blit=3040, write=5338 (63.7% writes), screen=103x152
+2026-02-05T16:46:55.161Z [DEBUG] High write ratio: blit=3040, write=5345 (63.7% writes), screen=103x152
+2026-02-05T16:46:55.775Z [DEBUG] High write ratio: blit=3040, write=5345 (63.7% writes), screen=103x152
+2026-02-05T16:46:56.057Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-05T16:46:56.057Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:46:56.057Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:46:56.058Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:46:56.064Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:46:56.065Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:46:56.065Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:46:56.065Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:46:56.072Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:46:56.110Z [DEBUG] High write ratio: blit=0, write=7400 (100.0% writes), screen=113x152
+2026-02-05T16:46:56.111Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:46:56.112Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310016112
+2026-02-05T16:46:56.112Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:46:56.113Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:46:56.113Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:46:56.113Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310016112 to /Users/nishitbariya/.claude.json
+2026-02-05T16:46:56.113Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:46:56.114Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310016114
+2026-02-05T16:46:56.114Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:46:56.114Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:46:56.114Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:46:56.114Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310016114 to /Users/nishitbariya/.claude.json
+2026-02-05T16:46:56.114Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:46:56.139Z [DEBUG] High write ratio: blit=2280, write=5825 (71.9% writes), screen=113x152
+2026-02-05T16:46:56.653Z [DEBUG] High write ratio: blit=3040, write=5597 (64.8% writes), screen=113x152
+2026-02-05T16:46:58.294Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:01.025Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-05T16:47:01.151Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-05T16:47:01.210Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-05T16:47:01.210Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:01.210Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:47:01.210Z [DEBUG] Forked agent [prompt_suggestion] finished: 2 messages, types=[assistant, assistant], totalUsage: input=10 output=120 cacheRead=43551 cacheCreate=521
+2026-02-05T16:47:01.211Z [DEBUG] [Speculation] enabled=false
+2026-02-05T16:47:17.677Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:47:17.678Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:47:17.678Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:47:17.678Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:47:17.678Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:47:17.693Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:47:17.694Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 17ms
+2026-02-05T16:47:17.696Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-05T16:47:17.696Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:17.696Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:47:17.696Z [DEBUG] FileHistory: Making snapshot for message 53230c47-23de-4373-9981-4c07705fe1ee
+2026-02-05T16:47:17.697Z [DEBUG] FileHistory: Added snapshot for 53230c47-23de-4373-9981-4c07705fe1ee, tracking 1 files
+2026-02-05T16:47:17.703Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:17.743Z [DEBUG] High write ratio: blit=0, write=7497 (100.0% writes), screen=118x152
+2026-02-05T16:47:17.744Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:47:17.745Z [DEBUG] MCP server "ide": Calling MCP tool: closeAllDiffTabs
+2026-02-05T16:47:17.746Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:17.747Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310037747
+2026-02-05T16:47:17.747Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:47:17.747Z [DEBUG] Temp file written successfully, size: 27524 bytes
+2026-02-05T16:47:17.747Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:47:17.747Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310037747 to /Users/nishitbariya/.claude.json
+2026-02-05T16:47:17.748Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:47:17.748Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.708; cc_entrypoint=cli;
+2026-02-05T16:47:17.748Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:17.748Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:17.748Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:17.749Z [DEBUG] MCP server "ide": Tool 'closeAllDiffTabs' completed successfully in 4ms
+2026-02-05T16:47:17.749Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:47:17.751Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:47:17.751Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:17.751Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:17.751Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:17.764Z [DEBUG] High write ratio: blit=2280, write=5942 (72.3% writes), screen=118x152
+2026-02-05T16:47:18.381Z [DEBUG] High write ratio: blit=3040, write=5714 (65.3% writes), screen=118x152
+2026-02-05T16:47:18.877Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:18.979Z [DEBUG] High write ratio: blit=3040, write=5714 (65.3% writes), screen=118x152
+2026-02-05T16:47:19.106Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:47:19.108Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:47:19.593Z [DEBUG] High write ratio: blit=3040, write=5694 (65.2% writes), screen=118x152
+2026-02-05T16:47:20.193Z [DEBUG] High write ratio: blit=3040, write=5694 (65.2% writes), screen=118x152
+2026-02-05T16:47:20.292Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:20.792Z [DEBUG] High write ratio: blit=3040, write=5704 (65.2% writes), screen=118x152
+2026-02-05T16:47:21.120Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:21.163Z [DEBUG] High write ratio: blit=0, write=7507 (100.0% writes), screen=118x152
+2026-02-05T16:47:21.185Z [DEBUG] High write ratio: blit=2280, write=5932 (72.2% writes), screen=118x152
+2026-02-05T16:47:21.713Z [DEBUG] High write ratio: blit=3040, write=5704 (65.2% writes), screen=118x152
+2026-02-05T16:47:21.804Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:47:21.805Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:47:21.805Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:21.805Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:21.818Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:21.858Z [DEBUG] High write ratio: blit=0, write=7537 (100.0% writes), screen=121x152
+2026-02-05T16:47:21.879Z [DEBUG] High write ratio: blit=2280, write=5962 (72.3% writes), screen=121x152
+2026-02-05T16:47:21.885Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:21.885Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.ba9; cc_entrypoint=cli;
+2026-02-05T16:47:21.885Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:21.885Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:21.886Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:21.886Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:47:21.886Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:47:21.886Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:22.118Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.157Z [DEBUG] High write ratio: blit=0, write=7667 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.179Z [DEBUG] High write ratio: blit=2280, write=6092 (72.8% writes), screen=123x152
+2026-02-05T16:47:22.248Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.258Z [DEBUG] High write ratio: blit=0, write=7667 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.266Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.276Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.283Z [DEBUG] High write ratio: blit=0, write=7667 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.292Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.310Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.317Z [DEBUG] High write ratio: blit=0, write=7673 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.327Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.339Z [DEBUG] High write ratio: blit=0, write=7673 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.342Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.359Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.367Z [DEBUG] High write ratio: blit=0, write=7673 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.409Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.416Z [DEBUG] High write ratio: blit=0, write=7673 (100.0% writes), screen=123x152
+2026-02-05T16:47:22.439Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:47:22.439Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:47:22.439Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:22.439Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:22.445Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.481Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.489Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.499Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:22.500Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.e6a; cc_entrypoint=cli;
+2026-02-05T16:47:22.500Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:22.500Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:22.500Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:22.500Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:47:22.500Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:47:22.500Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:22.507Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.514Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.525Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.537Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.550Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.565Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.580Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.588Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.593Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.618Z [DEBUG] High write ratio: blit=0, write=7701 (100.0% writes), screen=126x152
+2026-02-05T16:47:22.619Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:22.823Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:22.863Z [DEBUG] High write ratio: blit=0, write=7836 (100.0% writes), screen=129x152
+2026-02-05T16:47:22.885Z [DEBUG] High write ratio: blit=2280, write=6261 (73.3% writes), screen=129x152
+2026-02-05T16:47:23.175Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:47:23.176Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:47:23.176Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:23.176Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:23.182Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:23.223Z [DEBUG] High write ratio: blit=0, write=7876 (100.0% writes), screen=132x152
+2026-02-05T16:47:23.237Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:23.237Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.1de; cc_entrypoint=cli;
+2026-02-05T16:47:23.237Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:23.237Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:23.237Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:23.238Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:47:23.238Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:47:23.238Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:23.238Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:47:23.238Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:47:23.238Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:47:23.238Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:47:23.238Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:47:23.241Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:23.272Z [DEBUG] High write ratio: blit=0, write=8157 (100.0% writes), screen=135x152
+2026-02-05T16:47:23.273Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 35ms
+2026-02-05T16:47:23.274Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:47:23.275Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:47:23.276Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:23.276Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:23.276Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:23.294Z [DEBUG] High write ratio: blit=2280, write=6582 (74.3% writes), screen=135x152
+2026-02-05T16:47:23.297Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:23.767Z [DEBUG] High write ratio: blit=3040, write=6354 (67.6% writes), screen=135x152
+2026-02-05T16:47:23.960Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:24.374Z [DEBUG] High write ratio: blit=3040, write=6354 (67.6% writes), screen=135x152
+2026-02-05T16:47:24.996Z [DEBUG] High write ratio: blit=3040, write=6354 (67.6% writes), screen=135x152
+2026-02-05T16:47:25.597Z [DEBUG] High write ratio: blit=3040, write=6354 (67.6% writes), screen=135x152
+2026-02-05T16:47:25.634Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:26.211Z [DEBUG] High write ratio: blit=3040, write=6348 (67.6% writes), screen=135x152
+2026-02-05T16:47:26.256Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:26.302Z [DEBUG] High write ratio: blit=0, write=8151 (100.0% writes), screen=135x152
+2026-02-05T16:47:26.326Z [DEBUG] High write ratio: blit=2280, write=6576 (74.3% writes), screen=135x152
+2026-02-05T16:47:26.861Z [DEBUG] High write ratio: blit=3040, write=6348 (67.6% writes), screen=135x152
+2026-02-05T16:47:27.690Z [DEBUG] High write ratio: blit=3040, write=6354 (67.6% writes), screen=135x152
+2026-02-05T16:47:28.893Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:47:28.893Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:47:28.893Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:28.893Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:28.902Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:28.902Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:28.902Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:28.904Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310048904
+2026-02-05T16:47:28.904Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:47:28.904Z [DEBUG] Temp file written successfully, size: 27523 bytes
+2026-02-05T16:47:28.904Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:47:28.904Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310048904 to /Users/nishitbariya/.claude.json
+2026-02-05T16:47:28.904Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:47:28.905Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.727; cc_entrypoint=cli;
+2026-02-05T16:47:28.905Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:28.905Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.727; cc_entrypoint=cli;
+2026-02-05T16:47:28.905Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:28.905Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.727; cc_entrypoint=cli;
+2026-02-05T16:47:28.905Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:28.905Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:28.912Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:28.966Z [DEBUG] High write ratio: blit=0, write=8328 (100.0% writes), screen=139x152
+2026-02-05T16:47:28.996Z [DEBUG] High write ratio: blit=2280, write=6753 (74.8% writes), screen=139x152
+2026-02-05T16:47:29.652Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:29.663Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:29.696Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:29.815Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "git add:*"
+      },
+      {
+        "toolName": "Bash",
+        "ruleContent": "git commit -m \"$(cat <<''EOF''\nrefactor: remove duplicate prompts file and unused editing instructions\n\n- Delete unused src/lib/agents/prompts.ts (duplicate of langfuse/prompt.ts)\n- Remove IMAGE EDITING/PROCESSING section from agent prompts\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\""
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-05T16:47:29.815Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-05T16:47:29.816Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-05T16:47:29.816Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:29.816Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:29.833Z [DEBUG] High write ratio: blit=0, write=8608 (100.0% writes), screen=150x152
+2026-02-05T16:47:29.835Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:47:30.295Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:31.160Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:31.607Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:32.471Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:32.923Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:33.779Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:34.240Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:35.108Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:35.541Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:35.837Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-02-05T16:47:35.837Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:35.837Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-02-05T16:47:36.383Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:36.595Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:37.003Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:37.214Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:37.631Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:37.831Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:38.223Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:38.438Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:38.834Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:39.071Z [DEBUG] High write ratio: blit=3040, write=6805 (69.1% writes), screen=150x152
+2026-02-05T16:47:39.465Z [DEBUG] High write ratio: blit=5776, write=6065 (51.2% writes), screen=150x152
+2026-02-05T16:47:39.518Z [DEBUG] High write ratio: blit=0, write=8311 (100.0% writes), screen=139x152
+2026-02-05T16:47:39.521Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:47:39.522Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:47:39.596Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:39.596Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.a8b; cc_entrypoint=cli;
+2026-02-05T16:47:39.597Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:39.597Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:39.597Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:39.597Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:47:39.597Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:47:39.597Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:39.597Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:47:39.597Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:47:39.597Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:47:39.597Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:47:39.597Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:47:39.601Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:39.635Z [DEBUG] High write ratio: blit=0, write=8513 (100.0% writes), screen=141x152
+2026-02-05T16:47:39.636Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 39ms
+2026-02-05T16:47:39.636Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:47:39.638Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:47:39.638Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:39.638Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:39.638Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:39.657Z [DEBUG] High write ratio: blit=2280, write=6938 (75.3% writes), screen=141x152
+2026-02-05T16:47:40.201Z [DEBUG] High write ratio: blit=3040, write=6710 (68.8% writes), screen=141x152
+2026-02-05T16:47:40.627Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:40.812Z [DEBUG] High write ratio: blit=3040, write=6710 (68.8% writes), screen=141x152
+2026-02-05T16:47:40.874Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:47:40.874Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:47:41.437Z [DEBUG] High write ratio: blit=3040, write=6690 (68.8% writes), screen=141x152
+2026-02-05T16:47:42.042Z [DEBUG] High write ratio: blit=3040, write=6690 (68.8% writes), screen=141x152
+2026-02-05T16:47:42.067Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:42.595Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:42.634Z [DEBUG] High write ratio: blit=0, write=8503 (100.0% writes), screen=141x152
+2026-02-05T16:47:42.663Z [DEBUG] High write ratio: blit=0, write=8503 (100.0% writes), screen=141x152
+2026-02-05T16:47:43.009Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-05T16:47:43.010Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-05T16:47:43.010Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:43.010Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:43.011Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:43.012Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.3bf; cc_entrypoint=cli;
+2026-02-05T16:47:43.012Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:43.012Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:43.012Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:43.018Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:43.059Z [DEBUG] High write ratio: blit=0, write=8531 (100.0% writes), screen=144x152
+2026-02-05T16:47:43.097Z [DEBUG] High write ratio: blit=0, write=8531 (100.0% writes), screen=144x152
+2026-02-05T16:47:43.634Z [DEBUG] High write ratio: blit=3040, write=6728 (68.9% writes), screen=144x152
+2026-02-05T16:47:44.230Z [DEBUG] High write ratio: blit=3040, write=6728 (68.9% writes), screen=144x152
+2026-02-05T16:47:44.376Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:44.536Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "git push:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-05T16:47:44.536Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-05T16:47:44.537Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-05T16:47:44.537Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:44.537Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:44.545Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:47:44.573Z [DEBUG] High write ratio: blit=0, write=8484 (100.0% writes), screen=149x152
+2026-02-05T16:47:44.840Z [DEBUG] High write ratio: blit=3040, write=6681 (68.7% writes), screen=149x152
+2026-02-05T16:47:45.443Z [DEBUG] High write ratio: blit=3040, write=6681 (68.7% writes), screen=149x152
+2026-02-05T16:47:45.712Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-05T16:47:45.713Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-05T16:47:45.742Z [DEBUG] High write ratio: blit=0, write=8540 (100.0% writes), screen=144x152
+2026-02-05T16:47:46.047Z [DEBUG] High write ratio: blit=3040, write=6719 (68.8% writes), screen=144x152
+2026-02-05T16:47:46.667Z [DEBUG] High write ratio: blit=3040, write=6719 (68.8% writes), screen=144x152
+2026-02-05T16:47:47.071Z [DEBUG] Checking for native installer update to version 2.1.31
+2026-02-05T16:47:47.071Z [DEBUG] Found 2.1.31 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-05T16:47:47.279Z [DEBUG] High write ratio: blit=3040, write=6699 (68.8% writes), screen=144x152
+2026-02-05T16:47:47.282Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-05T16:47:47.283Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.e6a; cc_entrypoint=cli;
+2026-02-05T16:47:47.283Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:47.283Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:47.284Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:47.285Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-05T16:47:47.285Z [DEBUG] Found 5 hook matchers in settings
+2026-02-05T16:47:47.285Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-05T16:47:47.287Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-05T16:47:47.288Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-05T16:47:47.288Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-05T16:47:47.288Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-05T16:47:47.288Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-05T16:47:47.298Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:47.339Z [DEBUG] High write ratio: blit=0, write=8628 (100.0% writes), screen=145x152
+2026-02-05T16:47:47.340Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 53ms
+2026-02-05T16:47:47.341Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:47:47.343Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:47:47.343Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:47.343Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:47.343Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:47.350Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:47.382Z [DEBUG] High write ratio: blit=0, write=8628 (100.0% writes), screen=145x152
+2026-02-05T16:47:47.405Z [DEBUG] High write ratio: blit=2280, write=7053 (75.6% writes), screen=145x152
+2026-02-05T16:47:47.915Z [DEBUG] High write ratio: blit=3040, write=6825 (69.2% writes), screen=145x152
+2026-02-05T16:47:48.042Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:48.504Z [DEBUG] High write ratio: blit=3040, write=6825 (69.2% writes), screen=145x152
+2026-02-05T16:47:49.124Z [DEBUG] High write ratio: blit=3040, write=6825 (69.2% writes), screen=145x152
+2026-02-05T16:47:49.742Z [DEBUG] High write ratio: blit=3040, write=6825 (69.2% writes), screen=145x152
+2026-02-05T16:47:50.016Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:50.349Z [DEBUG] High write ratio: blit=3040, write=6835 (69.2% writes), screen=145x152
+2026-02-05T16:47:50.534Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:50.601Z [DEBUG] High write ratio: blit=0, write=8638 (100.0% writes), screen=145x152
+2026-02-05T16:47:51.150Z [DEBUG] High write ratio: blit=3040, write=6835 (69.2% writes), screen=145x152
+2026-02-05T16:47:51.764Z [DEBUG] High write ratio: blit=3040, write=6835 (69.2% writes), screen=145x152
+2026-02-05T16:47:51.929Z [ERROR] Error: Error: String not found in file. Failed to apply edit.
+    at hMT (/$bunfs/root/claude:1467:731)
+    at N2R (/$bunfs/root/claude:1467:107)
+    at uXB (/$bunfs/root/claude:2178:123)
+    at sRB (/$bunfs/root/claude:1697:2291)
+    at C0 (/$bunfs/root/claude:673:20767)
+    at z6 (/$bunfs/root/claude:673:39159)
+    at Ee (/$bunfs/root/claude:673:49778)
+    at wx (/$bunfs/root/claude:673:86028)
+    at Ye (/$bunfs/root/claude:673:85002)
+    at Sd (/$bunfs/root/claude:673:84827)
+2026-02-05T16:47:51.967Z [DEBUG] High write ratio: blit=0, write=8864 (100.0% writes), screen=152x152
+2026-02-05T16:47:51.971Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-05T16:47:51.971Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:47:51.971Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:47:51.971Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-05T16:47:51.973Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.31.2ca; cc_entrypoint=cli;
+2026-02-05T16:47:51.974Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-05T16:47:51.974Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-05T16:47:51.974Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-05T16:47:51.979Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-05T16:47:51.980Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310071980
+2026-02-05T16:47:51.980Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:47:51.981Z [DEBUG] Temp file written successfully, size: 27523 bytes
+2026-02-05T16:47:51.981Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:47:51.981Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310071980 to /Users/nishitbariya/.claude.json
+2026-02-05T16:47:51.981Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:47:51.981Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310071981
+2026-02-05T16:47:51.981Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:47:51.982Z [DEBUG] Temp file written successfully, size: 27523 bytes
+2026-02-05T16:47:51.982Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:47:51.982Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310071981 to /Users/nishitbariya/.claude.json
+2026-02-05T16:47:51.982Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:47:52.006Z [DEBUG] High write ratio: blit=0, write=8770 (100.0% writes), screen=149x152
+2026-02-05T16:47:52.526Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:53.148Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:53.764Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:54.359Z [DEBUG] Stream started - received first chunk
+2026-02-05T16:47:54.760Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:56.082Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:57.409Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:47:58.743Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:48:00.065Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:48:01.385Z [DEBUG] High write ratio: blit=3040, write=6967 (69.6% writes), screen=149x152
+2026-02-05T16:48:02.040Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-05T16:48:02.333Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-05T16:48:02.542Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-05T16:48:02.542Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:48:02.542Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-05T16:48:02.542Z [DEBUG] Forked agent [prompt_suggestion] finished: 2 messages, types=[assistant, assistant], totalUsage: input=10 output=356 cacheRead=48606 cacheCreate=409
+2026-02-05T16:48:02.543Z [DEBUG] [Speculation] enabled=false
+2026-02-05T16:48:02.685Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:03.709Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:04.321Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:04.924Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:05.527Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:06.126Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:06.726Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:07.992Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:09.255Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:10.517Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:11.794Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:13.052Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:14.322Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:15.590Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:16.865Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:18.143Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:19.407Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:20.686Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:21.947Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:23.212Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:24.477Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:25.745Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:27.003Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:28.268Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:29.534Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:30.808Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:32.078Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:33.345Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:34.613Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:35.882Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:37.147Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:38.411Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:39.674Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:40.940Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:42.200Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:43.467Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:44.730Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:45.983Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:47.254Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:48.522Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:49.791Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:51.054Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:52.320Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:53.586Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:54.855Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:56.125Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:57.394Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:58.657Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:48:59.919Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:01.177Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:02.449Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:03.706Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:04.963Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:05.947Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:06.417Z [DEBUG] High write ratio: blit=0, write=8807 (100.0% writes), screen=149x152
+2026-02-05T16:49:06.420Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.14183.1770310146420
+2026-02-05T16:49:06.420Z [DEBUG] Preserving file permissions: 100644
+2026-02-05T16:49:06.420Z [DEBUG] Temp file written successfully, size: 27523 bytes
+2026-02-05T16:49:06.420Z [DEBUG] Applied original permissions to temp file
+2026-02-05T16:49:06.420Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.14183.1770310146420 to /Users/nishitbariya/.claude.json
+2026-02-05T16:49:06.420Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-05T16:49:06.555Z [DEBUG] High write ratio: blit=3040, write=7004 (69.7% writes), screen=149x152
+2026-02-05T16:49:07.066Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-05T16:49:07.066Z [DEBUG] Found 0 hook matchers in settings
+2026-02-05T16:49:07.066Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)
+2026-02-05T16:49:07.075Z [DEBUG] MCP server "ide": WebSocket transport closed/disconnected, attempting automatic reconnection
+2026-02-05T16:49:07.077Z [DEBUG] MCP server "ide": WebSocket transport closed/disconnected, attempting automatic reconnection
+2026-02-05T16:49:07.077Z [DEBUG] MCP server "claude.ai Hugging Face": SSE transport closed/disconnected, attempting automatic reconnection
+2026-02-05T16:49:07.078Z [DEBUG] Cleaned up session snapshot: /Users/nishitbariya/.claude/shell-snapshots/snapshot-zsh-1770309981548-9dotfo.sh
+2026-02-05T16:49:07.079Z [DEBUG] LSP server manager shut down successfully
+2026-02-05T16:49:07.081Z [DEBUG] MCP server "ide": Starting connection with timeout of 30000ms
+2026-02-05T16:49:07.081Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-05T16:49:07.081Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-05T16:49:07.081Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-05T16:49:07.082Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-05T16:49:07.088Z [DEBUG] MCP server "ide": Successfully connected to ws-ide server in 9ms
+2026-02-05T16:49:07.088Z [DEBUG] MCP server "ide": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Claude Code Cursor MCP","version":"2.1.31"}}
+2026-02-05T16:49:07.090Z [DEBUG] MCP server "ide": WebSocket reconnection successful after 14ms (attempt 1)
+2026-02-05T16:49:07.091Z [DEBUG] MCP server "ide": WebSocket reconnection successful after 14ms (attempt 1)
+2026-02-05T16:49:07.120Z [DEBUG] High write ratio: blit=0, write=8457 (100.0% writes), screen=144x152
+2026-02-05T16:49:07.161Z [DEBUG] High write ratio: blit=3040, write=6654 (68.6% writes), screen=144x152
+2026-02-05T16:49:07.778Z [DEBUG] High write ratio: blit=3040, write=6654 (68.6% writes), screen=144x152

@@ -1,0 +1,862 @@
+2026-02-10T06:21:04.352Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-10T06:21:04.352Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-10T06:21:04.352Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-10T06:21:04.352Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-10T06:21:04.355Z [DEBUG] Applying permission update: Adding 16 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)","Bash(gh pr view:*)","Bash(gh pr diff:*)","Bash(tree:*)","Bash(pnpm tsc:*)","Bash(gh pr create --title \"Refactor: AI Agent Architecture & Media Agent Consolidation\" --body \"$\\(cat <<''EOF''\n## Summary\n\n- **Consolidated media agent functionality** - Merged media-agent module into the main agents library for better organization and maintainability\n- **Fixed tool parts persistence issue** - Implemented `mergeParts` function to prevent tool parts from being overwritten during multi-step tool executions \\(images/credits now persist after page refresh\\)\n- **Updated media agent tools** - Streamlined naming conventions and improved consistency across the codebase\n- **Enhanced folder structure** - Improved organization and fixed import paths across components\n\n## Changes\n\n### Agent Architecture\n- Removed standalone `media-agent` module and integrated into main agents library\n- Updated API route to use new methods for agent observation and tracing\n- Refactored imports and function calls for new structure\n\n### Bug Fix: Tool Parts Persistence\n- Added `mergeParts` function in `chatMessage.repo.ts` to merge parts instead of replacing\n- Prevents duplicate messages when tool calls trigger multiple saves\n- Tool outputs \\(credits, image placeholders\\) now persist correctly after page refresh\n\n### Code Quality\n- Removed deprecated tools and adjusted related components\n- Fixed import paths across various components\n- Removed framer-motion animations from some components to simplify structure\n- Updated documentation to reflect changes\n\n## Test plan\n\n- [ ] Generate an image using the media agent\n- [ ] Verify credits and image placeholder appear during streaming\n- [ ] Refresh page and verify tool outputs persist\n- [ ] Test multi-step tool executions \\(image → edit → resize\\)\n\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\" --base master)","Bash(git push:*)","WebFetch(domain:elements.ai-sdk.dev)","WebSearch","WebFetch(domain:www.npmjs.com)","Bash(npx ai-elements@latest add context)","Bash(npx shadcn@latest add:*)","Bash(yes:*)","Bash(npx tsc:*)"]
+2026-02-10T06:21:04.355Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-10T06:21:04.357Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-10T06:21:04.357Z [DEBUG] [STARTUP] Running setup()...
+2026-02-10T06:21:04.357Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-10T06:21:04.358Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-10T06:21:04.361Z [DEBUG] Error log sink initialized
+2026-02-10T06:21:04.363Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-10T06:21:04.363Z [DEBUG] Total plugin skills loaded: 0
+2026-02-10T06:21:04.363Z [DEBUG] Total plugin commands loaded: 0
+2026-02-10T06:21:04.363Z [DEBUG] [STARTUP] setup() completed in 6ms
+2026-02-10T06:21:04.363Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-10T06:21:04.363Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-10T06:21:04.365Z [DEBUG] Total plugin agents loaded: 0
+2026-02-10T06:21:04.365Z [DEBUG] Loaded 7 unique skills (managed: 0, user: 5, project: 2, additional: 0, legacy commands: 0)
+2026-02-10T06:21:04.365Z [DEBUG] getSkills returning: 7 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-10T06:21:04.366Z [DEBUG] [STARTUP] Commands and agents loaded in 3ms
+2026-02-10T06:21:04.366Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-10T06:21:04.366Z [DEBUG] [render] initLayout starting
+2026-02-10T06:21:04.366Z [DEBUG] Layout engine: yoga
+2026-02-10T06:21:04.368Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-10T06:21:04.368Z [DEBUG] Acquired PID lock for 2.1.37 (PID 2345)
+2026-02-10T06:21:04.368Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.37
+2026-02-10T06:21:04.369Z [DEBUG] [render] initLayout complete
+2026-02-10T06:21:04.371Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-10T06:21:04.373Z [DEBUG] [render] first ink render: 262ms since process start
+2026-02-10T06:21:04.373Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-10T06:21:04.373Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-10T06:21:04.399Z [DEBUG] Grove: Using fresh cached config
+2026-02-10T06:21:04.402Z [DEBUG] [render] initLayout starting
+2026-02-10T06:21:04.402Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-10T06:21:04.403Z [DEBUG] [render] initLayout complete
+2026-02-10T06:21:04.403Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-10T06:21:04.406Z [DEBUG] [render] first ink render: 295ms since process start
+2026-02-10T06:21:04.408Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T06:21:04.408Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T06:21:04.408Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-10T06:21:04.408Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-10T06:21:08.274Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704468274
+2026-02-10T06:21:08.274Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:08.275Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:08.275Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:08.275Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704468274 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:08.275Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:08.984Z [DEBUG] [STARTUP] showSetupScreens() completed in 4618ms
+2026-02-10T06:21:08.984Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-10T06:21:08.984Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-10T06:21:08.984Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-10T06:21:08.985Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:08.985Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:08.988Z [DEBUG] Total LSP servers loaded: 0
+2026-02-10T06:21:08.988Z [DEBUG] [STARTUP] MCP configs loaded in 4633ms
+2026-02-10T06:21:08.993Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-10T06:21:08.997Z [DEBUG] MCP server "Neon": Initializing HTTP transport to https://mcp.neon.tech/mcp
+2026-02-10T06:21:08.997Z [DEBUG] MCP server "Neon": Node version: v24.3.0, Platform: darwin
+2026-02-10T06:21:08.997Z [DEBUG] MCP server "Neon": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+2026-02-10T06:21:09.015Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-10T06:21:09.016Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704469016
+2026-02-10T06:21:09.016Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:09.016Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:09.016Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:09.016Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704469016 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:09.016Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:09.017Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-10T06:21:09.017Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-10T06:21:09.017Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:09.017Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-10T06:21:09.017Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:21:09.017Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-10T06:21:09.017Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-10T06:21:09.017Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-10T06:21:09.017Z [DEBUG] LSP server manager initialized successfully
+2026-02-10T06:21:09.018Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": Proxy options: default
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": HTTP transport options: {"url":"https://mcp.neon.tech/mcp","headers":{"User-Agent":"claude-code/2.1.37","Authorization":"[REDACTED]"},"hasAuthProvider":true,"timeoutMs":60000}
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": HTTP transport created successfully
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": Client created, setting up request handler
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": Starting connection with timeout of 30000ms
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": Testing basic HTTP connectivity to https://mcp.neon.tech/mcp
+2026-02-10T06:21:09.018Z [DEBUG] MCP server "Neon": Parsed URL: host=mcp.neon.tech, port=default, protocol=https:
+2026-02-10T06:21:09.019Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:09.019Z [DEBUG] [render] initLayout starting
+2026-02-10T06:21:09.019Z [DEBUG] [render] initLayout complete
+2026-02-10T06:21:09.024Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-10T06:21:09.038Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704469038
+2026-02-10T06:21:09.038Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:09.038Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:09.038Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:09.038Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704469038 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:09.038Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:09.039Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704469039
+2026-02-10T06:21:09.039Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:09.039Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:09.039Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:09.039Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704469039 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:09.039Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:09.040Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-10T06:21:09.040Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-10T06:21:09.041Z [DEBUG] performStartupChecks called
+2026-02-10T06:21:09.041Z [DEBUG] Starting background plugin installations
+2026-02-10T06:21:09.041Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-10T06:21:09.071Z [DEBUG] [render] first ink render: 4960ms since process start
+2026-02-10T06:21:09.613Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-10T06:21:09.614Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-10T06:21:09.614Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-10T06:21:09.614Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-10T06:21:09.615Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-10T06:21:09.615Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-10T06:21:09.615Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:21:09.621Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704469621
+2026-02-10T06:21:09.621Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:09.621Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:09.621Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:09.621Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704469621 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:09.622Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:09.623Z [DEBUG] Org penguin mode: disabled (extra_usage_disabled)
+2026-02-10T06:21:09.623Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-10T06:21:09.625Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704469625
+2026-02-10T06:21:09.626Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:09.626Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:09.626Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:09.626Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704469625 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:09.626Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:10.085Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-10T06:21:10.085Z [DEBUG] MCP server "claude.ai Notion": Initializing claude.ai proxy transport for server mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-10T06:21:10.085Z [DEBUG] MCP server "claude.ai Notion": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-10T06:21:10.085Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy transport created successfully
+2026-02-10T06:21:10.086Z [DEBUG] MCP server "claude.ai Notion": Starting connection with timeout of 30000ms
+2026-02-10T06:21:10.086Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T06:21:10.086Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-10T06:21:10.086Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-10T06:21:10.086Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-10T06:21:10.546Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.37)
+2026-02-10T06:21:10.638Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:11.051Z [DEBUG] High write ratio: blit=880, write=1276 (59.2% writes), screen=15x176
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": Successfully connected to http server in 2233ms
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"mcp-server-neon","version":"0.6.4"}}
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:11.230Z [DEBUG] MCP server "Neon": No token data found
+2026-02-10T06:21:11.307Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy connection failed after 1222ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXyuUgadcYNEe6rS4gW9j"}
+2026-02-10T06:21:11.307Z [ERROR] MCP server "claude.ai Notion" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXyuUgadcYNEe6rS4gW9j"}
+2026-02-10T06:21:11.307Z [DEBUG] MCP server "claude.ai Notion": Authentication required for claude.ai proxy server
+2026-02-10T06:21:11.310Z [DEBUG] High write ratio: blit=880, write=1276 (59.2% writes), screen=15x176
+2026-02-10T06:21:11.328Z [DEBUG] High write ratio: blit=880, write=1276 (59.2% writes), screen=15x176
+2026-02-10T06:21:11.426Z [DEBUG] High write ratio: blit=880, write=1277 (59.2% writes), screen=15x176
+2026-02-10T06:21:11.453Z [DEBUG] High write ratio: blit=880, write=1184 (57.4% writes), screen=15x176
+2026-02-10T06:21:11.589Z [DEBUG] High write ratio: blit=880, write=1185 (57.4% writes), screen=15x176
+2026-02-10T06:21:11.611Z [DEBUG] High write ratio: blit=880, write=1146 (56.6% writes), screen=15x176
+2026-02-10T06:21:11.722Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:21:11.723Z [DEBUG] Downloading native installer version 2.1.38
+2026-02-10T06:21:12.028Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:12.032Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/todos/7eb146ff-dbac-495d-9fa5-a83c507638c6-agent-7eb146ff-dbac-495d-9fa5-a83c507638c6.json.tmp.2345.1770704472032
+2026-02-10T06:21:12.032Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-10T06:21:12.032Z [DEBUG] Renaming /Users/nishitbariya/.claude/todos/7eb146ff-dbac-495d-9fa5-a83c507638c6-agent-7eb146ff-dbac-495d-9fa5-a83c507638c6.json.tmp.2345.1770704472032 to /Users/nishitbariya/.claude/todos/7eb146ff-dbac-495d-9fa5-a83c507638c6-agent-7eb146ff-dbac-495d-9fa5-a83c507638c6.json
+2026-02-10T06:21:12.032Z [DEBUG] File /Users/nishitbariya/.claude/todos/7eb146ff-dbac-495d-9fa5-a83c507638c6-agent-7eb146ff-dbac-495d-9fa5-a83c507638c6.json written atomically
+2026-02-10T06:21:12.035Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json'
+    at openSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:947)
+    at oC (/$bunfs/root/claude:11:49132)
+    at readSync (/$bunfs/root/claude:12:875)
+    at tC (/$bunfs/root/claude:6113:113)
+    at TC (/$bunfs/root/claude:6115:226)
+    at zc9 (/$bunfs/root/claude:179:2233)
+    at <anonymous> (/$bunfs/root/claude:6325:4212)
+2026-02-10T06:21:12.035Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json
+2026-02-10T06:21:12.036Z [DEBUG] Stats cache stale (2026-02-08), processing 2026-02-09 to 2026-02-09 in background
+2026-02-10T06:21:12.044Z [DEBUG] Acquired PID lock for 2.1.29 (PID 2345)
+2026-02-10T06:21:12.048Z [DEBUG] Released PID lock for 2.1.29
+2026-02-10T06:21:12.048Z [DEBUG] Stats cache saved successfully (lastComputedDate: 2026-02-09)
+2026-02-10T06:21:12.048Z [DEBUG] Stats cache updated with 3 new sessions
+2026-02-10T06:21:12.052Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 1966ms
+2026-02-10T06:21:12.052Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}
+2026-02-10T06:21:12.085Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-65X3S4HB.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:713:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:730:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:52)
+    at #resolve (node:internal/modules/esm/loader:695:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:615:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.6.0
+2026-02-10T06:21:12.085Z [DEBUG] MCP server "posthog": Connection failed after 3096ms: MCP error -32000: Connection closed
+2026-02-10T06:21:12.085Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.377Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:12.388Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:12.691Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:14.304Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:14.314Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:14.314Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:14.314Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:15.097Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-10T06:21:15.097Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-10T06:21:15.819Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: analyzeMcp]
+2026-02-10T06:21:15.826Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:21:15.826Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:21:15.826Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:21:17.828Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-10T06:21:17.829Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:17.838Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T06:21:17.841Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:21:17.851Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-10T06:21:17.853Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:17.856Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T06:21:17.861Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:21:17.966Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770704477966
+2026-02-10T06:21:17.966Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:21:17.966Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:21:17.966Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:21:17.966Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770704477966 to /Users/nishitbariya/.claude.json
+2026-02-10T06:21:17.966Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:21:20.103Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:21:20.103Z [DEBUG] Downloading native installer version 2.1.38
+2026-02-10T06:24:42.816Z [DEBUG] Atomically installed binary to /Users/nishitbariya/.local/share/claude/versions/2.1.38
+2026-02-10T06:24:42.822Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:24:42.824Z [DEBUG] Atomically updated symlink /Users/nishitbariya/.local/bin/claude -> /Users/nishitbariya/.local/share/claude/versions/2.1.38
+2026-02-10T06:24:42.824Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:24:58.539Z [DEBUG] Atomically installed binary to /Users/nishitbariya/.local/share/claude/versions/2.1.38
+2026-02-10T06:24:58.542Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:24:58.542Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:32:33.494Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:32:35.637Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:35.642Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:36.041Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:32:36.041Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T06:32:36.042Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:32:36.042Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:32:36.725Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:38.166Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:39.150Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/settings.json.tmp.2345.1770705159150
+2026-02-10T06:32:39.150Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:32:39.150Z [DEBUG] Temp file written successfully, size: 84 bytes
+2026-02-10T06:32:39.150Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:32:39.150Z [DEBUG] Renaming /Users/nishitbariya/.claude/settings.json.tmp.2345.1770705159150 to /Users/nishitbariya/.claude/settings.json
+2026-02-10T06:32:39.151Z [DEBUG] File /Users/nishitbariya/.claude/settings.json written atomically
+2026-02-10T06:32:39.154Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/settings.json.tmp.2345.1770705159154
+2026-02-10T06:32:39.154Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:32:39.154Z [DEBUG] Temp file written successfully, size: 63 bytes
+2026-02-10T06:32:39.154Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:32:39.154Z [DEBUG] Renaming /Users/nishitbariya/.claude/settings.json.tmp.2345.1770705159154 to /Users/nishitbariya/.claude/settings.json
+2026-02-10T06:32:39.155Z [DEBUG] File /Users/nishitbariya/.claude/settings.json written atomically
+2026-02-10T06:32:39.155Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:39.162Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:32:39.170Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:32:41.053Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:32:41.053Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T06:32:41.054Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:32:41.054Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:32:45.622Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:32:47.157Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:32:47.319Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:32:47.320Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T06:32:47.320Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:32:47.320Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:33:09.202Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.2345.1770705189202
+2026-02-10T06:33:09.202Z [DEBUG] Preserving file permissions: 100644
+2026-02-10T06:33:09.202Z [DEBUG] Temp file written successfully, size: 27699 bytes
+2026-02-10T06:33:09.202Z [DEBUG] Applied original permissions to temp file
+2026-02-10T06:33:09.202Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.2345.1770705189202 to /Users/nishitbariya/.claude.json
+2026-02-10T06:33:09.203Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-10T06:33:09.205Z [DEBUG] Metadata string for ai-sdk:
+2026-02-10T06:33:09.205Z [DEBUG] <command-message>ai-sdk</command-message>
+<command-name>/ai-sdk</command-name>
+<command-args>Explain me concept of agent define by vercel ai sdk \
+\
+https://ai-sdk.dev/docs/agents/overview</command-ar
+2026-02-10T06:33:09.205Z [DEBUG] command-message tags in metadata: 1
+2026-02-10T06:33:09.210Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:33:09.211Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:33:09.212Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:33:09.212Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:33:09.214Z [DEBUG] Sending 8 skills via attachment (initial, 6 total sent)
+2026-02-10T06:33:09.217Z [DEBUG] processPromptSlashCommand creating 4 messages for ai-sdk
+2026-02-10T06:33:09.217Z [DEBUG] Message 1: <command-message>ai-sdk</command-message>
+<command-name>/ai-sdk</command-name>
+<command-args>Explain me concept of agent define by vercel ai sdk \
+\
+https://ai-sdk.dev/docs/agents/overview</command-ar
+2026-02-10T06:33:09.217Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: /Users/nishitbariya/.claude/skills/ai-sdk\n\n## Prerequisites\n\nBefore searching docs, check if `node_modules/ai/docs/` exists. If not, install
+2026-02-10T06:33:09.217Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-10T06:33:09.217Z [DEBUG] Message 4: [ATTACHMENT]
+2026-02-10T06:33:09.219Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-10T06:33:09.219Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:09.219Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:33:09.219Z [DEBUG] FileHistory: Added snapshot for 19aecd52-4fe2-46a3-9f3c-c718b7a2c747, tracking 0 files
+2026-02-10T06:33:09.221Z [DEBUG] [useDeferredValue] Messages deferred by 4 (2→6)
+2026-02-10T06:33:09.224Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:09.232Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T06:33:09.233Z [DEBUG] [useDeferredValue] Messages deferred by 4 (2→6)
+2026-02-10T06:33:09.235Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-10T06:33:09.239Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-10T06:33:09.250Z [DEBUG] autocompact: tokens=1813 threshold=167000 effectiveWindow=180000
+2026-02-10T06:33:09.251Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:09.251Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:09.251Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:09.254Z [DEBUG] [useDeferredValue] Messages deferred by 4 (2→6)
+2026-02-10T06:33:09.256Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:10.676Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:33:10.680Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:33:10.682Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:10.682Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:10.683Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:10.683Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:10.683Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:14.022Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:33:14.996Z [DEBUG] [useDeferredValue] Messages deferred by 1 (6→7)
+2026-02-10T06:33:15.001Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:15.012Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:16.331Z [DEBUG] executePreToolHooks called for tool: WebFetch
+2026-02-10T06:33:16.332Z [DEBUG] Getting matching hook commands for PreToolUse with query: WebFetch
+2026-02-10T06:33:16.332Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:16.332Z [DEBUG] Matched 0 unique hooks for query "WebFetch" (0 before deduplication)
+2026-02-10T06:33:16.340Z [DEBUG] [useDeferredValue] Messages deferred by 1 (7→8)
+2026-02-10T06:33:16.344Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:16.354Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:17.705Z [DEBUG] executePreToolHooks called for tool: Grep
+2026-02-10T06:33:17.706Z [DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+2026-02-10T06:33:17.706Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:17.706Z [DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+2026-02-10T06:33:17.716Z [DEBUG] [useDeferredValue] Messages deferred by 1 (8→9)
+2026-02-10T06:33:17.719Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:17.728Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:18.588Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-10T06:33:18.589Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.977; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:33:18.589Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:18.589Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:18.590Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:18.590Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:18.590Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:18.866Z [DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+2026-02-10T06:33:18.866Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:33:18.866Z [DEBUG] Matched 1 unique hooks for query "Grep" (1 before deduplication)
+2026-02-10T06:33:18.867Z [DEBUG] [useDeferredValue] Messages deferred by 3 (9→12)
+2026-02-10T06:33:18.869Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:18.878Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:19.501Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:33:23.342Z [DEBUG] Getting matching hook commands for PostToolUse with query: WebFetch
+2026-02-10T06:33:23.342Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:33:23.342Z [DEBUG] Matched 0 unique hooks for query "WebFetch" (0 before deduplication)
+2026-02-10T06:33:23.343Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:33:23.343Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:33:23.343Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:33:23.343Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:33:23.344Z [DEBUG] autocompact: tokens=41929 threshold=167000 effectiveWindow=180000
+2026-02-10T06:33:23.345Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:33:23.349Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:33:23.351Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:23.351Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:23.351Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:23.351Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:23.351Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:23.355Z [DEBUG] [useDeferredValue] Messages deferred by 1 (12→13)
+2026-02-10T06:33:23.358Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:23.374Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:26.257Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:33:26.261Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:26.464Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:33:26.465Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:33:26.465Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:26.465Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:33:26.468Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:33:26.468Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:33:26.468Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:33:26.469Z [DEBUG] [useDeferredValue] Messages deferred by 1 (13→14)
+2026-02-10T06:33:26.471Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:26.480Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:27.126Z [DEBUG] [useDeferredValue] Messages deferred by 3 (14→17)
+2026-02-10T06:33:27.131Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:27.137Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:33:27.138Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:33:27.138Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:27.138Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:33:27.141Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:33:27.141Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:33:27.141Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:33:27.143Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:33:27.143Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:33:27.143Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:33:27.143Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:33:27.144Z [DEBUG] autocompact: tokens=47009 threshold=167000 effectiveWindow=180000
+2026-02-10T06:33:27.144Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:33:27.147Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:33:27.148Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:27.148Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:27.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:27.148Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:27.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:27.150Z [DEBUG] [useDeferredValue] Messages deferred by 7 (14→21)
+2026-02-10T06:33:27.152Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:27.160Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:29.346Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:33:46.909Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-10T06:33:46.909Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:46.909Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:33:46.910Z [DEBUG] autocompact: tokens=49249 threshold=167000 effectiveWindow=180000
+2026-02-10T06:33:46.910Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:33:46.921Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:33:46.923Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:33:46.923Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:33:46.923Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:33:46.924Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:46.924Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:46.927Z [DEBUG] [useDeferredValue] Messages deferred by 2 (21→23)
+2026-02-10T06:33:46.930Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:46.934Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T06:33:46.941Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:46.971Z [DEBUG] High write ratio: blit=0, write=4597 (100.0% writes), screen=107x176
+2026-02-10T06:33:51.141Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:33:51.550Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-10T06:33:51.558Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-10T06:33:51.558Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:33:51.558Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:33:51.558Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=9 cacheRead=48073 cacheCreate=1190
+2026-02-10T06:33:51.559Z [DEBUG] [Speculation] enabled=false
+2026-02-10T06:33:53.543Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.548Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.569Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.573Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.587Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.602Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.618Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.622Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.635Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.654Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.661Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.671Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.684Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.688Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.701Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.717Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.721Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.751Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.755Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.801Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.805Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.817Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.840Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.853Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.864Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.872Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.894Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.901Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.905Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.934Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.938Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:53.951Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.967Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:53.971Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:54.001Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:54.005Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:54.022Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:54.032Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:54.051Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:54.055Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:33:54.084Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:33:54.087Z [DEBUG] High write ratio: blit=0, write=4634 (100.0% writes), screen=107x176
+2026-02-10T06:34:54.090Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-10T06:34:54.090Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:34:54.090Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-10T06:35:07.032Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:35:09.405Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:35:11.091Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:35:22.901Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:36:14.716Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:36:14.840Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:36:36.912Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:37:04.601Z [DEBUG] High write ratio: blit=2464, write=4224 (63.2% writes), screen=107x176
+2026-02-10T06:39:32.360Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:39:32.360Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:39:32.361Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:39:32.361Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:39:32.363Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-10T06:39:32.363Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:39:32.363Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:39:32.363Z [DEBUG] FileHistory: Making snapshot for message 09755c4a-7ff5-491c-96b2-0f7a89762f56
+2026-02-10T06:39:32.363Z [DEBUG] FileHistory: Added snapshot for 09755c4a-7ff5-491c-96b2-0f7a89762f56, tracking 0 files
+2026-02-10T06:39:32.365Z [DEBUG] [useDeferredValue] Messages deferred by 1 (23→24)
+2026-02-10T06:39:32.370Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.380Z [DEBUG] High write ratio: blit=0, write=4626 (100.0% writes), screen=109x176
+2026-02-10T06:39:32.384Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T06:39:32.386Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-10T06:39:32.386Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-10T06:39:32.386Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.28b; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:39:32.387Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:39:32.387Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:39:32.387Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.387Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:39:32.387Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.388Z [DEBUG] autocompact: tokens=49114 threshold=167000 effectiveWindow=180000
+2026-02-10T06:39:32.389Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:39:32.391Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:39:32.392Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:39:32.392Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:39:32.392Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.392Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:39:32.392Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.397Z [DEBUG] [useDeferredValue] Messages deferred by 1 (23→24)
+2026-02-10T06:39:32.404Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:32.427Z [DEBUG] High write ratio: blit=0, write=5830 (100.0% writes), screen=117x176
+2026-02-10T06:39:33.752Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:39:36.018Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:39:36.021Z [DEBUG] [useDeferredValue] Messages deferred by 1 (24→25)
+2026-02-10T06:39:36.032Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:36.055Z [DEBUG] High write ratio: blit=0, write=5840 (100.0% writes), screen=117x176
+2026-02-10T06:39:37.695Z [DEBUG] [useDeferredValue] Messages deferred by 1 (25→26)
+2026-02-10T06:39:37.700Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:37.723Z [DEBUG] High write ratio: blit=0, write=5840 (100.0% writes), screen=117x176
+2026-02-10T06:39:38.066Z [DEBUG] [useDeferredValue] Messages deferred by 1 (26→27)
+2026-02-10T06:39:38.072Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:38.081Z [DEBUG] High write ratio: blit=0, write=5881 (100.0% writes), screen=119x176
+2026-02-10T06:39:38.091Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:38.118Z [DEBUG] High write ratio: blit=0, write=5957 (100.0% writes), screen=121x176
+2026-02-10T06:39:39.247Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:39:39.248Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:39:39.248Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:39:39.248Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:39:39.251Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:39:39.251Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:39:39.251Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:39:39.252Z [DEBUG] [useDeferredValue] Messages deferred by 1 (27→28)
+2026-02-10T06:39:39.255Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:39.262Z [DEBUG] High write ratio: blit=0, write=5957 (100.0% writes), screen=121x176
+2026-02-10T06:39:39.269Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:39.293Z [DEBUG] High write ratio: blit=0, write=5958 (100.0% writes), screen=121x176
+2026-02-10T06:39:39.913Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:39:39.915Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:39:39.915Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:39:39.915Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:39:39.918Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:39:39.918Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:39:39.918Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:39:39.920Z [DEBUG] [useDeferredValue] Messages deferred by 4 (28→32)
+2026-02-10T06:39:39.923Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:39.931Z [DEBUG] High write ratio: blit=0, write=5958 (100.0% writes), screen=121x176
+2026-02-10T06:39:39.934Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:39.962Z [DEBUG] High write ratio: blit=0, write=5958 (100.0% writes), screen=121x176
+2026-02-10T06:39:40.630Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:39:40.630Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:39:40.630Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:39:40.631Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:39:40.634Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:39:40.634Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:39:40.634Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:39:40.635Z [WARN] [PROMPT CACHE BREAK] unknown cause [source=repl_main_thread, call #4, cache read: 41331 → 10431, creation: 38688]
+2026-02-10T06:39:40.637Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:39:40.637Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:39:40.637Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:39:40.637Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:39:40.639Z [DEBUG] autocompact: tokens=60747 threshold=167000 effectiveWindow=180000
+2026-02-10T06:39:40.639Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:39:40.642Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:39:40.644Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:39:40.644Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:39:40.644Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:40.645Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:39:40.645Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:40.648Z [DEBUG] [useDeferredValue] Messages deferred by 8 (32→40)
+2026-02-10T06:39:40.651Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:40.659Z [DEBUG] High write ratio: blit=0, write=5958 (100.0% writes), screen=121x176
+2026-02-10T06:39:40.662Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:39:40.689Z [DEBUG] High write ratio: blit=0, write=5958 (100.0% writes), screen=121x176
+2026-02-10T06:39:44.213Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:40:18.740Z [DEBUG] [useDeferredValue] Messages deferred by 1 (40→41)
+2026-02-10T06:40:18.753Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:40:18.791Z [DEBUG] High write ratio: blit=0, write=12197 (100.0% writes), screen=259x176
+2026-02-10T06:40:18.796Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-10T06:40:18.796Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:40:18.796Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:40:18.796Z [DEBUG] autocompact: tokens=64810 threshold=167000 effectiveWindow=180000
+2026-02-10T06:40:18.798Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:40:18.801Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:40:18.802Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:40:18.802Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:40:18.802Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:40:18.802Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:40:18.802Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:40:18.805Z [DEBUG] [useDeferredValue] Messages deferred by 1 (41→42)
+2026-02-10T06:40:18.806Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:40:18.808Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T06:40:18.810Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:40:18.835Z [DEBUG] High write ratio: blit=0, write=12146 (100.0% writes), screen=259x176
+2026-02-10T06:40:21.247Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:40:21.664Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-10T06:40:21.672Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-10T06:40:21.672Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:40:21.672Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:40:21.672Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=16 cacheRead=63034 cacheCreate=1790
+2026-02-10T06:40:21.672Z [DEBUG] [Speculation] enabled=false
+2026-02-10T06:40:46.881Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:42:53.671Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:43:37.479Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:44:03.450Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:45:45.640Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:45:49.772Z [DEBUG] High write ratio: blit=2464, write=11794 (82.7% writes), screen=259x176
+2026-02-10T06:45:58.540Z [DEBUG] Stored image 1 to /Users/nishitbariya/.claude/image-cache/7eb146ff-dbac-495d-9fa5-a83c507638c6/1.png
+2026-02-10T06:47:37.703Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-02-10T06:47:37.704Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-02-10T06:47:37.729Z [DEBUG] [FileIndex] git ls-files (tracked) took 25ms
+2026-02-10T06:47:37.730Z [DEBUG] [FileIndex] git ls-files: 1006 tracked files in 26ms
+2026-02-10T06:47:37.731Z [DEBUG] [FileIndex] using git ls-files result (1006 files)
+2026-02-10T06:47:39.799Z [DEBUG] [FileIndex] background untracked fetch: 0 files
+2026-02-10T06:47:43.821Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-02-10T06:47:43.821Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-02-10T06:47:43.846Z [DEBUG] [FileIndex] git ls-files (tracked) took 25ms
+2026-02-10T06:47:43.846Z [DEBUG] [FileIndex] git ls-files: 1006 tracked files in 25ms
+2026-02-10T06:47:43.848Z [DEBUG] [FileIndex] using git ls-files result (1006 files)
+2026-02-10T06:47:43.867Z [DEBUG] [FileIndex] background untracked fetch: 0 files
+2026-02-10T06:47:51.200Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-10T06:47:51.208Z [DEBUG] Stored image 1 to /Users/nishitbariya/.claude/image-cache/7eb146ff-dbac-495d-9fa5-a83c507638c6/1.png
+2026-02-10T06:47:51.209Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:47:51.209Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:47:51.209Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:47:51.209Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:47:51.210Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-10T06:47:51.210Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:47:51.210Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:47:51.210Z [DEBUG] FileHistory: Making snapshot for message ac6dca02-2313-4437-b5f7-df2376e26f08
+2026-02-10T06:47:51.210Z [DEBUG] FileHistory: Added snapshot for ac6dca02-2313-4437-b5f7-df2376e26f08, tracking 0 files
+2026-02-10T06:47:51.212Z [DEBUG] [useDeferredValue] Messages deferred by 1 (42→43)
+2026-02-10T06:47:51.214Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:51.223Z [DEBUG] High write ratio: blit=0, write=12185 (100.0% writes), screen=261x176
+2026-02-10T06:47:51.226Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-10T06:47:51.226Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-10T06:47:51.227Z [DEBUG] autocompact: tokens=65971 threshold=167000 effectiveWindow=180000
+2026-02-10T06:47:51.227Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:47:51.229Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:47:51.230Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:47:51.230Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:47:51.230Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:51.230Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:47:51.230Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:51.237Z [DEBUG] [useDeferredValue] Messages deferred by 1 (42→43)
+2026-02-10T06:47:51.240Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:51.248Z [DEBUG] High write ratio: blit=0, write=13768 (100.0% writes), screen=272x176
+2026-02-10T06:47:53.218Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T06:47:53.218Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T06:47:53.218Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T06:47:53.218Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T06:47:55.948Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:47:55.963Z [DEBUG] [useDeferredValue] Messages deferred by 1 (43→44)
+2026-02-10T06:47:55.970Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:55.997Z [DEBUG] High write ratio: blit=0, write=13758 (100.0% writes), screen=272x176
+2026-02-10T06:47:57.163Z [DEBUG] High write ratio: blit=2464, write=13348 (84.4% writes), screen=272x176
+2026-02-10T06:47:58.461Z [DEBUG] [useDeferredValue] Messages deferred by 1 (44→45)
+2026-02-10T06:47:58.479Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:58.516Z [DEBUG] High write ratio: blit=0, write=13764 (100.0% writes), screen=272x176
+2026-02-10T06:47:59.114Z [DEBUG] [useDeferredValue] Messages deferred by 1 (45→46)
+2026-02-10T06:47:59.119Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:59.137Z [DEBUG] High write ratio: blit=0, write=13799 (100.0% writes), screen=274x176
+2026-02-10T06:47:59.145Z [DEBUG] [useDeferredValue] Messages deferred by 1 (45→46)
+2026-02-10T06:47:59.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:47:59.181Z [DEBUG] High write ratio: blit=0, write=13876 (100.0% writes), screen=276x176
+2026-02-10T06:48:00.141Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:48:00.142Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:48:00.142Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:48:00.142Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:48:00.150Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:48:00.150Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:48:00.150Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:48:00.153Z [DEBUG] [useDeferredValue] Messages deferred by 1 (46→47)
+2026-02-10T06:48:00.156Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:00.164Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:00.194Z [DEBUG] High write ratio: blit=0, write=13877 (100.0% writes), screen=276x176
+2026-02-10T06:48:00.960Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-10T06:48:00.961Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-10T06:48:00.961Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:48:00.961Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-10T06:48:00.966Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-10T06:48:00.966Z [DEBUG] Found 5 hook matchers in settings
+2026-02-10T06:48:00.966Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-10T06:48:00.970Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-10T06:48:00.970Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-10T06:48:00.970Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-10T06:48:00.970Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-10T06:48:00.972Z [DEBUG] autocompact: tokens=71803 threshold=167000 effectiveWindow=180000
+2026-02-10T06:48:00.973Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:48:00.977Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:48:00.978Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:48:00.978Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:48:00.978Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:00.978Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:48:00.979Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:00.982Z [DEBUG] [useDeferredValue] Messages deferred by 7 (47→54)
+2026-02-10T06:48:00.985Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:00.989Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:01.022Z [DEBUG] High write ratio: blit=0, write=13877 (100.0% writes), screen=276x176
+2026-02-10T06:48:05.054Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:48:11.885Z [DEBUG] Stored image 2 to /Users/nishitbariya/.claude/image-cache/7eb146ff-dbac-495d-9fa5-a83c507638c6/2.png
+2026-02-10T06:48:38.838Z [DEBUG] [useDeferredValue] Messages deferred by 1 (54→55)
+2026-02-10T06:48:38.854Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:38.890Z [DEBUG] High write ratio: blit=0, write=20506 (100.0% writes), screen=421x176
+2026-02-10T06:48:39.158Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-10T06:48:39.158Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:48:39.158Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:48:39.158Z [DEBUG] autocompact: tokens=74699 threshold=167000 effectiveWindow=180000
+2026-02-10T06:48:39.162Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-10T06:48:39.168Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-10T06:48:39.169Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-10T06:48:39.169Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-10T06:48:39.169Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-10T06:48:39.169Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:39.170Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:39.172Z [DEBUG] [useDeferredValue] Messages deferred by 1 (55→56)
+2026-02-10T06:48:39.174Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:39.176Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-10T06:48:39.182Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T06:48:39.202Z [DEBUG] High write ratio: blit=0, write=20446 (100.0% writes), screen=421x176
+2026-02-10T06:48:42.738Z [DEBUG] Stream started - received first chunk
+2026-02-10T06:48:42.778Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-10T06:48:42.798Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-10T06:48:42.798Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:48:42.798Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-10T06:48:42.798Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=9 cacheRead=72896 cacheCreate=1817
+2026-02-10T06:48:42.799Z [DEBUG] [Speculation] enabled=false
+2026-02-10T06:49:39.184Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-10T06:49:39.184Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T06:49:39.184Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-10T06:50:00.120Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:02.222Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:03.801Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:11.891Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:14.414Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:33.787Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:50:35.962Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:55:02.332Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:55:10.672Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:55:11.395Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T06:56:09.312Z [DEBUG] High write ratio: blit=2464, write=20074 (89.1% writes), screen=421x176
+2026-02-10T07:26:53.365Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T07:26:53.366Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T07:26:53.366Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T07:26:53.366Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T07:57:15.534Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T07:57:15.534Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T07:57:15.535Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T07:57:15.535Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T08:18:37.184Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:18:37.268Z [DEBUG] High write ratio: blit=0, write=20484 (100.0% writes), screen=421x176
+2026-02-10T08:18:37.781Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:18:37.815Z [DEBUG] High write ratio: blit=0, write=16972 (100.0% writes), screen=453x96
+2026-02-10T08:18:49.217Z [DEBUG] High write ratio: blit=1440, write=16562 (92.0% writes), screen=453x96
+2026-02-10T08:18:49.235Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:18:49.264Z [DEBUG] High write ratio: blit=0, write=16972 (100.0% writes), screen=453x96
+2026-02-10T08:18:49.319Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:18:49.384Z [DEBUG] High write ratio: blit=0, write=16972 (100.0% writes), screen=453x96
+2026-02-10T08:18:49.396Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:18:49.488Z [DEBUG] High write ratio: blit=0, write=16330 (100.0% writes), screen=728x40
+2026-02-10T08:19:06.636Z [DEBUG] High write ratio: blit=720, write=15964 (95.7% writes), screen=728x40
+2026-02-10T08:27:11.465Z [DEBUG] Checking for native installer update to version 2.1.38
+2026-02-10T08:27:11.467Z [DEBUG] Version 2.1.38 already installed, updating symlink
+2026-02-10T08:27:11.467Z [DEBUG] Created directory /Users/nishitbariya/.local/bin for symlink
+2026-02-10T08:27:11.467Z [DEBUG] Successfully updated to version 2.1.38
+2026-02-10T08:57:02.874Z [DEBUG] High write ratio: blit=720, write=15964 (95.7% writes), screen=728x40
+2026-02-10T08:57:03.045Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-10T08:57:03.094Z [DEBUG] High write ratio: blit=0, write=20286 (100.0% writes), screen=423x165
+2026-02-10T08:57:04.975Z [DEBUG] High write ratio: blit=2310, write=19876 (89.6% writes), screen=423x165
+2026-02-10T08:57:08.110Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-02-10T08:57:08.110Z [DEBUG] Found 0 hook matchers in settings
+2026-02-10T08:57:08.110Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)

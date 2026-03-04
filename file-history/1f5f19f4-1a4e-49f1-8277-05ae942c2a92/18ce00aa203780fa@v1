@@ -1,0 +1,252 @@
+import { ToolLoopAgent, tool, stepCountIs, readUIMessageStream } from 'ai';
+import { anthropic } from '@ai-sdk/anthropic';
+import { z } from 'zod';
+
+// Import the specialized agents
+import { mediaAgent } from './media-agent';
+import { researchAgent } from './research-agents';
+
+/**
+ * Task Item Schema - represents individual steps in a task
+ */
+export const taskItemSchema = z.object({
+  type: z.enum(['text', 'agent_call']).describe('Type of task item'),
+  text: z.string().describe('Description of this step'),
+  agent: z.enum(['media', 'research']).optional().describe('Which agent to call'),
+  agentTask: z.string().optional().describe('Task to give to the agent'),
+  result: z.string().optional().describe('Result from agent execution'),
+});
+
+/**
+ * Task Schema - represents a high-level task with multiple steps
+ */
+export const taskSchema = z.object({
+  title: z.string().describe('Task title/name'),
+  items: z.array(taskItemSchema).describe('Steps to complete this task'),
+  status: z.enum(['pending', 'in_progress', 'completed', 'error']).describe('Current status'),
+});
+
+/**
+ * Plan Schema - the complete execution plan
+ */
+export const planSchema = z.object({
+  tasks: z.array(taskSchema).describe('List of tasks to execute'),
+  summary: z.string().optional().describe('Overall plan summary'),
+});
+
+export type TaskItem = z.infer<typeof taskItemSchema>;
+export type Task = z.infer<typeof taskSchema>;
+export type Plan = z.infer<typeof planSchema>;
+
+/**
+ * Planner Agent - Creates and executes multi-step plans
+ *
+ * This agent:
+ * 1. Analyzes user requirements
+ * 2. Creates a structured execution plan
+ * 3. Executes tasks sequentially
+ * 4. Calls specialized agents (media, research) as needed
+ * 5. Streams progress updates to UI
+ */
+export const plannerAgent = new ToolLoopAgent({
+  id: 'planner-agent',
+  model: anthropic('claude-sonnet-4-5'),
+  instructions: `You are a planning agent. Your role has TWO PHASES:
+
+PHASE 1: CREATE PLAN (FIRST REQUEST)
+When you receive a complex request for the first time:
+1. Analyze the user's request carefully
+2. Use the createPlan tool to generate a structured execution plan
+3. Break complex requests into 2-5 main tasks
+4. Each task should have 2-6 items/steps
+5. Mark items that need agent calls with type: "agent_call" and specify which agent
+6. All tasks should start with status: "pending"
+7. After calling createPlan, respond with: "Plan created! Waiting for user approval to execute."
+8. STOP - Do not execute anything yet
+
+PHASE 2: EXECUTE PLAN (AFTER APPROVAL)
+When you receive the executePlan tool call with an approved plan:
+1. Use the executePlan tool with the provided plan
+2. The tool will execute each task sequentially
+3. Provide a final summary when execution completes
+
+Available Agents:
+- Media Agent: For image/video/audio generation, editing, upscaling, background removal
+- Research Agent: For web search, finding information, researching topics
+
+CRITICAL: After creating a plan, you MUST stop and wait for approval. Do NOT execute immediately.`,
+
+  tools: {
+    // Tool to call the media agent
+    callMediaAgent: tool({
+      description: 'Call the media agent for image, video, or audio generation and editing tasks',
+      inputSchema: z.object({
+        task: z.string().describe('The task for the media agent'),
+      }),
+      execute: async ({ task }, { abortSignal }) => {
+        const result = await mediaAgent.generate({
+          prompt: task,
+          options: {
+            isAutoMode: true,
+            imageModel: null,
+            videoModel: null,
+          },
+          abortSignal,
+        });
+        return result.text;
+      },
+    }),
+
+    // Tool to call the research agent
+    callResearchAgent: tool({
+      description: 'Call the research agent for web search and information gathering',
+      inputSchema: z.object({
+        task: z.string().describe('The research question or topic'),
+      }),
+      execute: async ({ task }, { abortSignal }) => {
+        const result = await researchAgent.generate({
+          prompt: task,
+          abortSignal,
+        });
+        return result.text;
+      },
+    }),
+
+    // Tool to create the initial plan
+    createPlan: tool({
+      description: 'Create an execution plan based on user requirements. Call this FIRST before executing any tasks.',
+      inputSchema: planSchema,
+      execute: async (plan) => {
+        // Return the plan directly - it will be displayed in the UI
+        return plan;
+      },
+    }),
+
+    // Tool to execute an approved plan
+    executePlan: tool({
+      description: 'Execute an approved plan by running each task sequentially. This is called AFTER user approves the plan.',
+      inputSchema: planSchema,
+      execute: async function* (plan) {
+        // Stream progress updates as we execute tasks
+        yield {
+          type: 'text',
+          value: `Starting execution of ${plan.tasks.length} tasks...`,
+        };
+
+        for (let i = 0; i < plan.tasks.length; i++) {
+          const task = plan.tasks[i];
+
+          // Update task status to in_progress
+          task.status = 'in_progress';
+          yield {
+            type: 'tool-createPlan',
+            toolCallId: `execution-update-${i}`,
+            state: 'output-available',
+            output: { ...plan, tasks: [...plan.tasks] },
+          };
+
+          try {
+            // Execute each item in the task
+            for (const item of task.items) {
+              if (item.type === 'agent_call' && item.agent && item.agentTask) {
+                yield {
+                  type: 'text',
+                  value: `Calling ${item.agent} agent: ${item.text}`,
+                };
+
+                // Call the appropriate agent
+                let result: string;
+                if (item.agent === 'media') {
+                  const mediaResult = await mediaAgent.generate({
+                    prompt: item.agentTask,
+                    options: {
+                      isAutoMode: true,
+                      imageModel: null,
+                      videoModel: null,
+                    },
+                  });
+                  result = mediaResult.text;
+                } else if (item.agent === 'research') {
+                  const researchResult = await researchAgent.generate({
+                    prompt: item.agentTask,
+                  });
+                  result = researchResult.text;
+                } else {
+                  result = 'Unknown agent type';
+                }
+
+                // Store the result
+                item.result = result;
+              }
+            }
+
+            // Mark task as completed
+            task.status = 'completed';
+            yield {
+              type: 'tool-createPlan',
+              toolCallId: `execution-complete-${i}`,
+              state: 'output-available',
+              output: { ...plan, tasks: [...plan.tasks] },
+            };
+          } catch (error) {
+            task.status = 'error';
+            yield {
+              type: 'text',
+              value: `Error executing task "${task.title}": ${error}`,
+            };
+          }
+        }
+
+        return {
+          success: true,
+          message: 'All tasks completed!',
+          plan,
+        };
+      },
+    }),
+  },
+
+  stopWhen: stepCountIs(20), // Allow multiple iterations for task execution
+});
+
+/**
+ * Planner Subagent Tool - Exposes the planner to the super agent
+ */
+export const plannerSubagentTool = tool({
+  description: `Create and execute multi-step plans for complex requests.
+
+  Use this when the user's request requires:
+  - Multiple coordinated steps (e.g., "research X then create Y")
+  - Combining outputs from different agents
+  - Sequential workflow with dependencies
+
+  The planner will create a structured plan, show it to the user,
+  and execute tasks while providing progress updates.`,
+
+  inputSchema: z.object({
+    task: z.string().describe('The complex multi-step request to plan and execute'),
+  }),
+
+  execute: async function* ({ task }, { abortSignal }) {
+    const result = await plannerAgent.stream({
+      prompt: task,
+      abortSignal,
+    });
+
+    // Stream ALL UI messages (plan creation + task execution) to frontend
+    for await (const message of readUIMessageStream({
+      stream: result.toUIMessageStream(),
+    })) {
+      yield message;
+    }
+  },
+
+  // Control what superAgent's model sees (just the summary)
+  toModelOutput: ({ output: message }) => {
+    const lastTextPart = message?.parts.findLast(p => p.type === 'text');
+    return {
+      type: 'text',
+      value: lastTextPart?.text ?? 'Plan execution completed.',
+    };
+  },
+});

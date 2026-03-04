@@ -1,0 +1,1823 @@
+2026-02-03T10:13:41.041Z [DEBUG] Aborting: tool=ExitPlanMode isAbort=undefined hasFeedback=false isSubagent=false
+2026-02-03T10:13:41.041Z [DEBUG] ExitPlanMode tool permission denied
+2026-02-03T10:13:41.100Z [DEBUG] High write ratio: blit=0, write=23446 (100.0% writes), screen=524x195
+2026-02-03T10:13:41.101Z [DEBUG] Full reset (scrollback changes): scrollbackRows=496, firstChangeY=296
+  prev: "                                                                                                                                                                                                   "
+  next: "  ⎿  User rejected Claude's plan:                                                                                                                                                                  "
+2026-02-03T10:13:41.195Z [DEBUG] Getting matching hook commands for SessionEnd with query: clear
+2026-02-03T10:13:41.195Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:41.195Z [DEBUG] Matched 0 unique hooks for query "clear" (0 before deduplication)
+2026-02-03T10:13:41.195Z [DEBUG] Cleared all session hooks for session 6a8b436a-1725-4d15-8fde-f7b6ba78182a
+2026-02-03T10:13:41.195Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T10:13:41.196Z [DEBUG] Getting matching hook commands for SessionStart with query: clear
+2026-02-03T10:13:41.196Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:41.196Z [DEBUG] Matched 0 unique hooks for query "clear" (0 before deduplication)
+2026-02-03T10:13:41.197Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-02-03T10:13:41.197Z [DEBUG] FileHistory: Added snapshot for 552a7d08-5f29-4958-ac3c-3ee178fdc2f9, tracking 0 files
+2026-02-03T10:13:41.200Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.34550.1770113621200
+2026-02-03T10:13:41.200Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:13:41.200Z [DEBUG] Temp file written successfully, size: 26744 bytes
+2026-02-03T10:13:41.200Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:13:41.200Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.34550.1770113621200 to /Users/nishitbariya/.claude.json
+2026-02-03T10:13:41.200Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T10:13:41.204Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.34550.1770113621204
+2026-02-03T10:13:41.204Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:13:41.204Z [DEBUG] Temp file written successfully, size: 26744 bytes
+2026-02-03T10:13:41.204Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:13:41.204Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.34550.1770113621204 to /Users/nishitbariya/.claude.json
+2026-02-03T10:13:41.204Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T10:13:41.265Z [DEBUG] High write ratio: blit=0, write=10672 (100.0% writes), screen=246x195
+2026-02-03T10:13:41.265Z [DEBUG] Full reset (scrollback changes): scrollbackRows=488, firstChangeY=5
+  prev: "│                                                    │ Recent activity                                                                                                                            │"
+  next: "│                       ▐▛███▜▌                      │ Recent activity                                                                                                                            │"
+2026-02-03T10:13:41.297Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T10:13:41.304Z [DEBUG] MCP server "ide": Calling MCP tool: closeAllDiffTabs
+2026-02-03T10:13:41.305Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:13:41.305Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-03T10:13:41.314Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-03T10:13:41.314Z [DEBUG] Total plugin skills loaded: 0
+2026-02-03T10:13:41.314Z [DEBUG] Total plugin commands loaded: 0
+2026-02-03T10:13:41.316Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-03T10:13:41.316Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-03T10:13:41.316Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-03T10:13:41.316Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.c0f; cc_entrypoint=cli;
+2026-02-03T10:13:41.317Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:13:41.317Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:13:41.317Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:13:41.318Z [DEBUG] Loaded 8 unique skills (managed: 0, user: 4, project: 4, legacy commands: 0)
+2026-02-03T10:13:41.318Z [DEBUG] getSkills returning: 8 skill dir commands, 0 plugin skills, 1 bundled skills
+2026-02-03T10:13:41.331Z [DEBUG] MCP server "ide": Tool 'closeAllDiffTabs' completed successfully in 27ms
+2026-02-03T10:13:41.343Z [DEBUG] High write ratio: blit=0, write=10743 (100.0% writes), screen=247x195
+2026-02-03T10:13:41.397Z [DEBUG] High write ratio: blit=0, write=10743 (100.0% writes), screen=247x195
+2026-02-03T10:13:41.401Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:13:41.403Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:13:41.403Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:13:41.403Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:13:41.403Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:13:41.669Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-03T10:13:41.704Z [DEBUG] High write ratio: blit=0, write=10743 (100.0% writes), screen=247x195
+2026-02-03T10:13:41.839Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T10:13:41.844Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T10:13:42.084Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:13:44.030Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:13:44.771Z [DEBUG] High write ratio: blit=0, write=10841 (100.0% writes), screen=248x195
+2026-02-03T10:13:44.799Z [DEBUG] High write ratio: blit=0, write=10876 (100.0% writes), screen=250x195
+2026-02-03T10:13:45.500Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:45.501Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:45.501Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:45.501Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:45.505Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:45.505Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:45.505Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:45.522Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:46.114Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:46.268Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:46.269Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:46.269Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:46.269Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:46.271Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:46.271Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:46.271Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:46.286Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:46.323Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:46.649Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:46.649Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:46.649Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:46.649Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:46.651Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:46.651Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:46.651Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:46.666Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:47.020Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:47.029Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:47.029Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:47.029Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:47.029Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:47.031Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:47.031Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:47.031Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:47.046Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:47.076Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:47.565Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:47.566Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:47.566Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:47.566Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:47.568Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:47.568Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:47.568Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:47.588Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:48.201Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:48.202Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:48.202Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:48.202Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:48.204Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:48.204Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:48.204Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:48.220Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:48.249Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:48.756Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:13:48.756Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:13:48.756Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:48.756Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:13:48.758Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:13:48.758Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:13:48.758Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:13:48.776Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:48.854Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:49.244Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:13:49.244Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:49.244Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:13:49.245Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:13:49.245Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:13:49.246Z [DEBUG] Sending 9 skills via attachment (initial, 6 total sent)
+2026-02-03T10:13:49.246Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:13:49.246Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:13:49.247Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:13:49.252Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 6ms
+2026-02-03T10:13:49.253Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:13:49.256Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:13:49.256Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:13:49.256Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:13:49.257Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:13:49.273Z [DEBUG] High write ratio: blit=0, write=10877 (100.0% writes), screen=250x195
+2026-02-03T10:13:52.009Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:13:52.949Z [DEBUG] High write ratio: blit=0, write=10951 (100.0% writes), screen=252x195
+2026-02-03T10:13:54.263Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:13:54.263Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:13:54.263Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:54.263Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:13:54.266Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:13:54.266Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:54.266Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:13:54.266Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:13:54.266Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:13:54.267Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:13:54.267Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:13:54.267Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:13:54.283Z [DEBUG] High write ratio: blit=0, write=10951 (100.0% writes), screen=252x195
+2026-02-03T10:13:54.285Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 18ms
+2026-02-03T10:13:54.285Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:13:54.287Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:13:54.288Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:13:54.288Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:13:54.288Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:13:56.718Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:13:56.752Z [DEBUG] High write ratio: blit=0, write=10872 (100.0% writes), screen=252x195
+2026-02-03T10:13:58.542Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:13:58.543Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:13:58.543Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:13:58.543Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:13:58.545Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:13:58.545Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:13:58.545Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:13:58.572Z [DEBUG] High write ratio: blit=0, write=10846 (100.0% writes), screen=252x195
+2026-02-03T10:14:00.416Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:00.417Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:00.417Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:00.417Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:00.419Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:00.419Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:00.419Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:00.450Z [DEBUG] High write ratio: blit=0, write=10881 (100.0% writes), screen=253x195
+2026-02-03T10:14:02.211Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:02.212Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:02.212Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:02.212Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:02.213Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:02.213Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:02.213Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:02.245Z [DEBUG] High write ratio: blit=0, write=10906 (100.0% writes), screen=254x195
+2026-02-03T10:14:03.823Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:03.823Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:03.823Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:03.823Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:03.826Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:03.826Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:03.826Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:03.841Z [DEBUG] High write ratio: blit=0, write=10926 (100.0% writes), screen=255x195
+2026-02-03T10:14:03.870Z [DEBUG] High write ratio: blit=0, write=10926 (100.0% writes), screen=255x195
+2026-02-03T10:14:05.583Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:05.584Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:05.584Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:05.584Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:05.586Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:05.586Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:05.586Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:05.602Z [DEBUG] High write ratio: blit=0, write=10961 (100.0% writes), screen=256x195
+2026-02-03T10:14:06.733Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:06.733Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:06.733Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:06.733Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:06.735Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:06.735Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:06.735Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:06.758Z [DEBUG] High write ratio: blit=0, write=11007 (100.0% writes), screen=257x195
+2026-02-03T10:14:07.999Z [DEBUG] executePreToolHooks called for tool: TaskCreate
+2026-02-03T10:14:08.000Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskCreate
+2026-02-03T10:14:08.000Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:08.000Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:08.001Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskCreate
+2026-02-03T10:14:08.001Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:08.001Z [DEBUG] Matched 0 unique hooks for query "TaskCreate" (0 before deduplication)
+2026-02-03T10:14:08.003Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:08.003Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:08.003Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:08.003Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:08.004Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:08.036Z [DEBUG] High write ratio: blit=0, write=11027 (100.0% writes), screen=258x195
+2026-02-03T10:14:08.045Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 41ms
+2026-02-03T10:14:08.050Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:08.061Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:08.061Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:08.061Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:08.062Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:08.106Z [DEBUG] High write ratio: blit=0, write=11052 (100.0% writes), screen=259x195
+2026-02-03T10:14:11.265Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:11.445Z [DEBUG] High write ratio: blit=0, write=11052 (100.0% writes), screen=259x195
+2026-02-03T10:14:11.489Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:14:11.490Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:14:11.490Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:11.490Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:11.495Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:14:11.495Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:11.495Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:11.501Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:11.501Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:11.501Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:11.501Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:11.501Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:11.555Z [DEBUG] High write ratio: blit=0, write=11071 (100.0% writes), screen=259x195
+2026-02-03T10:14:11.598Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 97ms
+2026-02-03T10:14:11.703Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:11.721Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:11.723Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:11.723Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:11.723Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:14.335Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:14.353Z [DEBUG] High write ratio: blit=0, write=11079 (100.0% writes), screen=259x195
+2026-02-03T10:14:15.836Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:14:15.837Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:14:15.837Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:15.837Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:14:15.875Z [DEBUG] High write ratio: blit=0, write=11260 (100.0% writes), screen=262x195
+2026-02-03T10:14:15.939Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:14:15.940Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.7cc; cc_entrypoint=cli;
+2026-02-03T10:14:15.940Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:15.940Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:15.941Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:15.941Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:14:15.941Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:15.941Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:14:15.942Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:15.942Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:15.942Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:15.943Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:15.943Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:15.963Z [DEBUG] High write ratio: blit=0, write=11264 (100.0% writes), screen=262x195
+2026-02-03T10:14:15.965Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 23ms
+2026-02-03T10:14:15.966Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:15.969Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:15.970Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:15.970Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:15.970Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:16.773Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:18.123Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:18.166Z [DEBUG] High write ratio: blit=0, write=11264 (100.0% writes), screen=262x195
+2026-02-03T10:14:18.615Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:14:18.616Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:14:18.616Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:18.616Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:18.617Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:14:18.617Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:18.617Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:18.636Z [DEBUG] High write ratio: blit=0, write=11264 (100.0% writes), screen=262x195
+2026-02-03T10:14:18.667Z [DEBUG] High write ratio: blit=0, write=11264 (100.0% writes), screen=262x195
+2026-02-03T10:14:18.860Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:14:18.861Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:14:18.861Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:18.861Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:18.862Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:14:18.862Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:18.862Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:18.886Z [DEBUG] High write ratio: blit=0, write=11256 (100.0% writes), screen=262x195
+2026-02-03T10:14:18.900Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:18.900Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:18.900Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:18.900Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:18.900Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:18.920Z [DEBUG] High write ratio: blit=0, write=11256 (100.0% writes), screen=262x195
+2026-02-03T10:14:18.923Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 23ms
+2026-02-03T10:14:18.923Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:18.926Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:18.927Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:18.927Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:18.927Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:20.963Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:21.435Z [DEBUG] High write ratio: blit=0, write=11310 (100.0% writes), screen=264x195
+2026-02-03T10:14:26.323Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:26.324Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:26.324Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:26.324Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:26.326Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:26.348Z [DEBUG] High write ratio: blit=0, write=11356 (100.0% writes), screen=266x195
+2026-02-03T10:14:26.352Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 26ms
+2026-02-03T10:14:26.353Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-image.ts
+2026-02-03T10:14:26.353Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-image.ts.tmp.34550.1770113666353
+2026-02-03T10:14:26.353Z [DEBUG] Temp file written successfully, size: 971 bytes
+2026-02-03T10:14:26.353Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-image.ts.tmp.34550.1770113666353 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-image.ts
+2026-02-03T10:14:26.353Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-image.ts written atomically
+2026-02-03T10:14:26.354Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:26.354Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:26.354Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:26.364Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:26.367Z [DEBUG] [binaryCheck] Binary 'typescript-language-server' not found
+2026-02-03T10:14:26.367Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:26.789Z [DEBUG] High write ratio: blit=0, write=11920 (100.0% writes), screen=279x195
+2026-02-03T10:14:35.005Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:35.006Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:35.006Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:35.006Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:35.007Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:35.019Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 12ms
+2026-02-03T10:14:35.021Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-video.ts
+2026-02-03T10:14:35.021Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-video.ts.tmp.34550.1770113675021
+2026-02-03T10:14:35.021Z [DEBUG] Temp file written successfully, size: 2225 bytes
+2026-02-03T10:14:35.021Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-video.ts.tmp.34550.1770113675021 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-video.ts
+2026-02-03T10:14:35.022Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-video.ts written atomically
+2026-02-03T10:14:35.023Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:35.023Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:35.023Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:35.049Z [DEBUG] High write ratio: blit=0, write=11966 (100.0% writes), screen=281x195
+2026-02-03T10:14:35.050Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:35.051Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:35.051Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:35.150Z [DEBUG] High write ratio: blit=0, write=12749 (100.0% writes), screen=295x195
+2026-02-03T10:14:40.086Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:40.086Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:40.086Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:40.086Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:40.087Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:40.109Z [DEBUG] High write ratio: blit=0, write=12791 (100.0% writes), screen=297x195
+2026-02-03T10:14:40.112Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 25ms
+2026-02-03T10:14:40.113Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/edit-image.ts
+2026-02-03T10:14:40.113Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/edit-image.ts.tmp.34550.1770113680113
+2026-02-03T10:14:40.113Z [DEBUG] Temp file written successfully, size: 1249 bytes
+2026-02-03T10:14:40.113Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/edit-image.ts.tmp.34550.1770113680113 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/edit-image.ts
+2026-02-03T10:14:40.113Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/edit-image.ts written atomically
+2026-02-03T10:14:40.114Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:40.114Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:40.114Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:40.123Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:40.124Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:40.124Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:40.523Z [DEBUG] High write ratio: blit=0, write=13456 (100.0% writes), screen=310x195
+2026-02-03T10:14:42.123Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:42.124Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:42.124Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:42.124Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:42.124Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:42.133Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 9ms
+2026-02-03T10:14:42.134Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-audio.ts
+2026-02-03T10:14:42.134Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-audio.ts.tmp.34550.1770113682134
+2026-02-03T10:14:42.134Z [DEBUG] Temp file written successfully, size: 496 bytes
+2026-02-03T10:14:42.134Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-audio.ts.tmp.34550.1770113682134 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-audio.ts
+2026-02-03T10:14:42.134Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/generate-audio.ts written atomically
+2026-02-03T10:14:42.135Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:42.135Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:42.135Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:42.153Z [DEBUG] High write ratio: blit=0, write=13504 (100.0% writes), screen=312x195
+2026-02-03T10:14:42.155Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:42.155Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:42.155Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:42.499Z [DEBUG] High write ratio: blit=0, write=14005 (100.0% writes), screen=324x195
+2026-02-03T10:14:44.267Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:44.268Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:44.268Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:44.268Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:44.269Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:44.294Z [DEBUG] High write ratio: blit=0, write=14054 (100.0% writes), screen=326x195
+2026-02-03T10:14:44.296Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 27ms
+2026-02-03T10:14:44.297Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/remove-background.ts
+2026-02-03T10:14:44.298Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/remove-background.ts.tmp.34550.1770113684298
+2026-02-03T10:14:44.298Z [DEBUG] Temp file written successfully, size: 624 bytes
+2026-02-03T10:14:44.298Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/remove-background.ts.tmp.34550.1770113684298 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/remove-background.ts
+2026-02-03T10:14:44.298Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/remove-background.ts written atomically
+2026-02-03T10:14:44.298Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:44.298Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:44.298Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:44.306Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:44.307Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:44.307Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:44.623Z [DEBUG] High write ratio: blit=0, write=14617 (100.0% writes), screen=339x195
+2026-02-03T10:14:48.120Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:48.133Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:48.133Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:48.133Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:48.177Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:48.311Z [DEBUG] High write ratio: blit=0, write=14662 (100.0% writes), screen=341x195
+2026-02-03T10:14:48.332Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 155ms
+2026-02-03T10:14:48.336Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/resize-image.ts
+2026-02-03T10:14:48.338Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/resize-image.ts.tmp.34550.1770113688337
+2026-02-03T10:14:48.339Z [DEBUG] Temp file written successfully, size: 966 bytes
+2026-02-03T10:14:48.339Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/resize-image.ts.tmp.34550.1770113688337 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/resize-image.ts
+2026-02-03T10:14:48.340Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/resize-image.ts written atomically
+2026-02-03T10:14:48.362Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:48.362Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:48.362Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:48.434Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:48.435Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:48.435Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:50.703Z [DEBUG] High write ratio: blit=0, write=15268 (100.0% writes), screen=354x195
+2026-02-03T10:14:50.771Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:50.772Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:50.772Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:50.772Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:50.773Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:50.803Z [DEBUG] High write ratio: blit=0, write=15314 (100.0% writes), screen=356x195
+2026-02-03T10:14:50.806Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 33ms
+2026-02-03T10:14:50.807Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/upscale-image.ts
+2026-02-03T10:14:50.807Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/upscale-image.ts.tmp.34550.1770113690807
+2026-02-03T10:14:50.807Z [DEBUG] Temp file written successfully, size: 989 bytes
+2026-02-03T10:14:50.807Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/upscale-image.ts.tmp.34550.1770113690807 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/upscale-image.ts
+2026-02-03T10:14:50.808Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/upscale-image.ts written atomically
+2026-02-03T10:14:50.809Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:50.809Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:50.809Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:50.819Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:50.820Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:50.820Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:51.136Z [DEBUG] High write ratio: blit=0, write=15926 (100.0% writes), screen=369x195
+2026-02-03T10:14:52.085Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:14:52.086Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:14:52.086Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:52.086Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:14:52.087Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:52.125Z [DEBUG] High write ratio: blit=0, write=15963 (100.0% writes), screen=371x195
+2026-02-03T10:14:52.132Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 45ms
+2026-02-03T10:14:52.133Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/index.ts
+2026-02-03T10:14:52.134Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/index.ts.tmp.34550.1770113692134
+2026-02-03T10:14:52.134Z [DEBUG] Temp file written successfully, size: 370 bytes
+2026-02-03T10:14:52.134Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/index.ts.tmp.34550.1770113692134 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/index.ts
+2026-02-03T10:14:52.134Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/tools/index.ts written atomically
+2026-02-03T10:14:52.136Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:14:52.136Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:52.136Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:14:52.149Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:52.149Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:52.150Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:52.150Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:52.150Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:52.205Z [DEBUG] High write ratio: blit=0, write=16398 (100.0% writes), screen=379x195
+2026-02-03T10:14:52.209Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:14:52.211Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:14:52.211Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:14:52.211Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 61ms
+2026-02-03T10:14:52.213Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:52.220Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:52.221Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:52.221Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:52.222Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:54.278Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:54.333Z [DEBUG] High write ratio: blit=0, write=16398 (100.0% writes), screen=379x195
+2026-02-03T10:14:54.652Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:14:54.652Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:14:54.652Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:54.652Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:54.654Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:14:54.654Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:54.654Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:54.678Z [DEBUG] High write ratio: blit=0, write=16398 (100.0% writes), screen=379x195
+2026-02-03T10:14:54.716Z [DEBUG] High write ratio: blit=0, write=16398 (100.0% writes), screen=379x195
+2026-02-03T10:14:54.967Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:14:54.968Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:14:54.968Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:14:54.968Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:54.970Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:14:54.970Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:14:54.970Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:14:55.009Z [DEBUG] High write ratio: blit=0, write=16389 (100.0% writes), screen=379x195
+2026-02-03T10:14:55.019Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:14:55.019Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:14:55.019Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:14:55.019Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:14:55.019Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:14:55.047Z [DEBUG] High write ratio: blit=0, write=16389 (100.0% writes), screen=379x195
+2026-02-03T10:14:55.050Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 31ms
+2026-02-03T10:14:55.051Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:14:55.054Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:14:55.054Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:14:55.054Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:14:55.055Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:14:56.942Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:14:57.245Z [DEBUG] High write ratio: blit=0, write=16437 (100.0% writes), screen=381x195
+2026-02-03T10:14:57.281Z [DEBUG] High write ratio: blit=0, write=16437 (100.0% writes), screen=381x195
+2026-02-03T10:15:03.098Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:03.099Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:03.099Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:03.099Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:03.103Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:03.130Z [DEBUG] High write ratio: blit=0, write=16487 (100.0% writes), screen=383x195
+2026-02-03T10:15:03.133Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 31ms
+2026-02-03T10:15:03.134Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/error-handler.ts
+2026-02-03T10:15:03.134Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/error-handler.ts.tmp.34550.1770113703134
+2026-02-03T10:15:03.134Z [DEBUG] Temp file written successfully, size: 1433 bytes
+2026-02-03T10:15:03.134Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/error-handler.ts.tmp.34550.1770113703134 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/error-handler.ts
+2026-02-03T10:15:03.135Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/error-handler.ts written atomically
+2026-02-03T10:15:03.135Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:03.135Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:03.135Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:03.145Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:03.145Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:03.145Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:03.521Z [DEBUG] High write ratio: blit=0, write=16963 (100.0% writes), screen=395x195
+2026-02-03T10:15:06.512Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:06.513Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:06.513Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:06.513Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:06.514Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:06.543Z [DEBUG] High write ratio: blit=0, write=17007 (100.0% writes), screen=397x195
+2026-02-03T10:15:06.546Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 32ms
+2026-02-03T10:15:06.546Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts
+2026-02-03T10:15:06.547Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts.tmp.34550.1770113706547
+2026-02-03T10:15:06.547Z [DEBUG] Temp file written successfully, size: 827 bytes
+2026-02-03T10:15:06.547Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts.tmp.34550.1770113706547 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts
+2026-02-03T10:15:06.547Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts written atomically
+2026-02-03T10:15:06.548Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:06.548Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:06.548Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:06.557Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:06.558Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:06.558Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:06.894Z [DEBUG] High write ratio: blit=0, write=17313 (100.0% writes), screen=408x195
+2026-02-03T10:15:07.610Z [DEBUG] High write ratio: blit=0, write=17313 (100.0% writes), screen=408x195
+2026-02-03T10:15:08.163Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:08.164Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:08.164Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:08.164Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:08.166Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:08.198Z [DEBUG] High write ratio: blit=0, write=17355 (100.0% writes), screen=410x195
+2026-02-03T10:15:08.202Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 36ms
+2026-02-03T10:15:08.203Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/index.ts
+2026-02-03T10:15:08.203Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/index.ts.tmp.34550.1770113708203
+2026-02-03T10:15:08.203Z [DEBUG] Temp file written successfully, size: 202 bytes
+2026-02-03T10:15:08.203Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/index.ts.tmp.34550.1770113708203 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/index.ts
+2026-02-03T10:15:08.203Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/index.ts written atomically
+2026-02-03T10:15:08.205Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:08.205Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:08.205Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:08.223Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:08.223Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:08.223Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:08.230Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:15:08.230Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:15:08.230Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:08.230Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:15:08.230Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:15:08.278Z [DEBUG] High write ratio: blit=0, write=17653 (100.0% writes), screen=422x195
+2026-02-03T10:15:08.284Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 54ms
+2026-02-03T10:15:08.284Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:15:08.287Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:15:08.288Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:15:08.288Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:15:08.288Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:15:10.685Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:15:10.714Z [DEBUG] High write ratio: blit=0, write=17653 (100.0% writes), screen=422x195
+2026-02-03T10:15:10.970Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:15:10.971Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:15:10.971Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:10.971Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:10.973Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:15:10.974Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:10.974Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:11.003Z [DEBUG] High write ratio: blit=0, write=17653 (100.0% writes), screen=422x195
+2026-02-03T10:15:11.284Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:15:11.284Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:15:11.284Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:11.284Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:11.286Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:15:11.286Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:11.286Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:11.313Z [DEBUG] High write ratio: blit=0, write=17645 (100.0% writes), screen=422x195
+2026-02-03T10:15:11.345Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:15:11.345Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:15:11.345Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:11.345Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:15:11.345Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:15:11.354Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 9ms
+2026-02-03T10:15:11.355Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:15:11.357Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:15:11.357Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:15:11.357Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:15:11.357Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:15:11.383Z [DEBUG] High write ratio: blit=0, write=17648 (100.0% writes), screen=422x195
+2026-02-03T10:15:14.346Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:15:14.492Z [DEBUG] High write ratio: blit=0, write=17683 (100.0% writes), screen=424x195
+2026-02-03T10:15:14.531Z [DEBUG] High write ratio: blit=0, write=17683 (100.0% writes), screen=424x195
+2026-02-03T10:15:14.692Z [DEBUG] High write ratio: blit=0, write=17683 (100.0% writes), screen=424x195
+2026-02-03T10:15:20.865Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:20.866Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:20.866Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:20.866Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:20.867Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:20.895Z [DEBUG] High write ratio: blit=0, write=17727 (100.0% writes), screen=426x195
+2026-02-03T10:15:20.898Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 31ms
+2026-02-03T10:15:20.898Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/stream-utils.ts
+2026-02-03T10:15:20.898Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/stream-utils.ts.tmp.34550.1770113720898
+2026-02-03T10:15:20.899Z [DEBUG] Temp file written successfully, size: 1394 bytes
+2026-02-03T10:15:20.899Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/stream-utils.ts.tmp.34550.1770113720898 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/stream-utils.ts
+2026-02-03T10:15:20.899Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/stream-utils.ts written atomically
+2026-02-03T10:15:20.900Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:20.900Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:20.900Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:20.910Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:20.910Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:20.910Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:21.140Z [DEBUG] High write ratio: blit=0, write=18070 (100.0% writes), screen=438x195
+2026-02-03T10:15:52.028Z [WARN] Streaming stall detected: 30.9s gap between events (stall #1)
+2026-02-03T10:15:52.988Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:52.990Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:52.990Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:52.990Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:52.992Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:53.026Z [DEBUG] High write ratio: blit=0, write=18130 (100.0% writes), screen=440x195
+2026-02-03T10:15:53.031Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 39ms
+2026-02-03T10:15:53.031Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/polling.ts
+2026-02-03T10:15:53.032Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/polling.ts.tmp.34550.1770113753032
+2026-02-03T10:15:53.032Z [DEBUG] Temp file written successfully, size: 7825 bytes
+2026-02-03T10:15:53.032Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/polling.ts.tmp.34550.1770113753032 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/polling.ts
+2026-02-03T10:15:53.032Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/polling.ts written atomically
+2026-02-03T10:15:53.034Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:53.034Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:53.034Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:53.051Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:53.053Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:53.053Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:53.318Z [DEBUG] High write ratio: blit=0, write=18663 (100.0% writes), screen=451x195
+2026-02-03T10:15:53.339Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:15:53.340Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:15:53.340Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:53.340Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:15:53.341Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:53.342Z [WARN] Streaming completed with 1 stall(s), total stall time: 30.9s
+2026-02-03T10:15:53.376Z [DEBUG] High write ratio: blit=0, write=18700 (100.0% writes), screen=453x195
+2026-02-03T10:15:53.380Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 39ms
+2026-02-03T10:15:53.380Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/index.ts
+2026-02-03T10:15:53.381Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/index.ts.tmp.34550.1770113753381
+2026-02-03T10:15:53.381Z [DEBUG] Temp file written successfully, size: 262 bytes
+2026-02-03T10:15:53.381Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/index.ts.tmp.34550.1770113753381 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/index.ts
+2026-02-03T10:15:53.381Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/utils/index.ts written atomically
+2026-02-03T10:15:53.382Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:15:53.382Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:53.382Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:15:53.385Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:15:53.385Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:15:53.386Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:53.387Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:15:53.387Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:15:53.442Z [DEBUG] High write ratio: blit=0, write=19030 (100.0% writes), screen=465x195
+2026-02-03T10:15:53.446Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:15:53.448Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:15:53.448Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:15:53.448Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 62ms
+2026-02-03T10:15:53.449Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:15:53.454Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:15:53.455Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:15:53.455Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:15:53.455Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:15:57.758Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:15:57.827Z [DEBUG] High write ratio: blit=0, write=19030 (100.0% writes), screen=465x195
+2026-02-03T10:15:58.117Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:15:58.117Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:15:58.117Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:58.117Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:58.119Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:15:58.119Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:58.119Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:58.149Z [DEBUG] High write ratio: blit=0, write=19030 (100.0% writes), screen=465x195
+2026-02-03T10:15:58.439Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:15:58.439Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:15:58.439Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:15:58.439Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:58.441Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:15:58.441Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:15:58.441Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:15:58.476Z [DEBUG] High write ratio: blit=0, write=19027 (100.0% writes), screen=465x195
+2026-02-03T10:15:58.488Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:15:58.488Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:15:58.488Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:15:58.488Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:15:58.488Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:15:58.518Z [DEBUG] High write ratio: blit=0, write=19027 (100.0% writes), screen=465x195
+2026-02-03T10:15:58.520Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 32ms
+2026-02-03T10:15:58.521Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:15:58.523Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:15:58.524Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:15:58.524Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:15:58.524Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:16:01.090Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:16:01.334Z [DEBUG] High write ratio: blit=0, write=19085 (100.0% writes), screen=467x195
+2026-02-03T10:16:01.375Z [DEBUG] High write ratio: blit=0, write=19085 (100.0% writes), screen=467x195
+2026-02-03T10:16:06.932Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:16:06.933Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:16:06.933Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:16:06.933Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:16:06.934Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:16:06.967Z [DEBUG] High write ratio: blit=0, write=19116 (100.0% writes), screen=469x195
+2026-02-03T10:16:06.971Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 37ms
+2026-02-03T10:16:06.972Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/types.ts
+2026-02-03T10:16:06.972Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/types.ts.tmp.34550.1770113766972
+2026-02-03T10:16:06.972Z [DEBUG] Temp file written successfully, size: 1031 bytes
+2026-02-03T10:16:06.972Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/types.ts.tmp.34550.1770113766972 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/types.ts
+2026-02-03T10:16:06.972Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/types.ts written atomically
+2026-02-03T10:16:06.973Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:16:06.973Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:16:06.973Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:16:07.122Z [DEBUG] High write ratio: blit=0, write=19554 (100.0% writes), screen=481x195
+2026-02-03T10:16:07.128Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:16:07.130Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:16:07.130Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:16:52.696Z [DEBUG] High write ratio: blit=0, write=19554 (100.0% writes), screen=481x195
+2026-02-03T10:16:54.878Z [DEBUG] High write ratio: blit=0, write=19554 (100.0% writes), screen=481x195
+2026-02-03T10:16:54.893Z [WARN] Streaming stall detected: 47.9s gap between events (stall #1)
+2026-02-03T10:16:55.485Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:16:55.492Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:16:55.492Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:16:55.492Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:16:55.494Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:16:55.527Z [DEBUG] High write ratio: blit=0, write=19587 (100.0% writes), screen=483x195
+2026-02-03T10:16:55.532Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 38ms
+2026-02-03T10:16:55.537Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/prompts.ts
+2026-02-03T10:16:55.537Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/prompts.ts.tmp.34550.1770113815537
+2026-02-03T10:16:55.537Z [DEBUG] Temp file written successfully, size: 9873 bytes
+2026-02-03T10:16:55.537Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/prompts.ts.tmp.34550.1770113815537 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/prompts.ts
+2026-02-03T10:16:55.538Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/prompts.ts written atomically
+2026-02-03T10:16:55.539Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:16:55.539Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:16:55.539Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:16:55.553Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:16:55.554Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:16:55.554Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:17:12.085Z [DEBUG] High write ratio: blit=0, write=20188 (100.0% writes), screen=495x195
+2026-02-03T10:17:12.569Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:17:12.570Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:17:12.570Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:12.570Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:17:12.572Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:12.606Z [DEBUG] High write ratio: blit=0, write=20225 (100.0% writes), screen=497x195
+2026-02-03T10:17:12.611Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 39ms
+2026-02-03T10:17:12.611Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/media-agent.ts
+2026-02-03T10:17:12.611Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/media-agent.ts.tmp.34550.1770113832611
+2026-02-03T10:17:12.612Z [DEBUG] Temp file written successfully, size: 3615 bytes
+2026-02-03T10:17:12.612Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/media-agent.ts.tmp.34550.1770113832611 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/media-agent.ts
+2026-02-03T10:17:12.612Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/media-agent.ts written atomically
+2026-02-03T10:17:12.613Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:17:12.613Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:12.613Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:17:12.633Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:17:12.634Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:17:12.634Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:17:16.640Z [DEBUG] High write ratio: blit=0, write=20595 (100.0% writes), screen=509x195
+2026-02-03T10:17:16.683Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T10:17:16.684Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T10:17:16.684Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:16.684Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T10:17:16.685Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:16.685Z [WARN] Streaming completed with 1 stall(s), total stall time: 47.9s
+2026-02-03T10:17:16.734Z [DEBUG] High write ratio: blit=0, write=20626 (100.0% writes), screen=511x195
+2026-02-03T10:17:16.739Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 54ms
+2026-02-03T10:17:16.740Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/index.ts
+2026-02-03T10:17:16.740Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/index.ts.tmp.34550.1770113836740
+2026-02-03T10:17:16.740Z [DEBUG] Temp file written successfully, size: 890 bytes
+2026-02-03T10:17:16.740Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/index.ts.tmp.34550.1770113836740 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/index.ts
+2026-02-03T10:17:16.740Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/index.ts written atomically
+2026-02-03T10:17:16.741Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T10:17:16.741Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:16.741Z [DEBUG] Matched 1 unique hooks for query "Write" (1 before deduplication)
+2026-02-03T10:17:16.743Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:16.743Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:16.743Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:16.743Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:16.744Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:16.822Z [DEBUG] High write ratio: blit=0, write=21031 (100.0% writes), screen=523x195
+2026-02-03T10:17:16.826Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:17:16.829Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:17:16.829Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:17:16.829Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 86ms
+2026-02-03T10:17:16.830Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:16.835Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:16.836Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:16.836Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:16.837Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:19.661Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:19.716Z [DEBUG] High write ratio: blit=0, write=21031 (100.0% writes), screen=523x195
+2026-02-03T10:17:20.123Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:17:20.123Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:17:20.123Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:20.123Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:17:20.125Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:17:20.125Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:20.125Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:17:20.156Z [DEBUG] High write ratio: blit=0, write=21031 (100.0% writes), screen=523x195
+2026-02-03T10:17:20.450Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:17:20.450Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:17:20.450Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:20.450Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:17:20.452Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:17:20.452Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:20.452Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:17:20.490Z [DEBUG] High write ratio: blit=0, write=21019 (100.0% writes), screen=523x195
+2026-02-03T10:17:20.498Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:20.498Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:20.498Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:20.498Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:20.498Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:20.510Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 12ms
+2026-02-03T10:17:20.511Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:20.514Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:20.514Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:20.514Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:20.514Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:20.545Z [DEBUG] High write ratio: blit=0, write=21018 (100.0% writes), screen=523x195
+2026-02-03T10:17:22.898Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:23.668Z [DEBUG] High write ratio: blit=0, write=21079 (100.0% writes), screen=525x195
+2026-02-03T10:17:28.658Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:28.659Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:28.659Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:28.659Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:28.662Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:28.711Z [DEBUG] High write ratio: blit=0, write=21118 (100.0% writes), screen=527x195
+2026-02-03T10:17:28.716Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 54ms
+2026-02-03T10:17:28.718Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:28.721Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113848721
+2026-02-03T10:17:28.721Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:28.721Z [DEBUG] Temp file written successfully, size: 14260 bytes
+2026-02-03T10:17:28.721Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:28.721Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113848721 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:28.722Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:28.725Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:28.725Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:28.725Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:28.727Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:28.727Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:28.727Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:28.727Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:28.727Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:28.825Z [DEBUG] High write ratio: blit=0, write=24210 (100.0% writes), screen=556x195
+2026-02-03T10:17:28.836Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:17:28.843Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:17:28.843Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:17:28.844Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 116ms
+2026-02-03T10:17:28.846Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:28.854Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:28.856Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:28.856Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:28.856Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:31.288Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:31.343Z [DEBUG] High write ratio: blit=0, write=24210 (100.0% writes), screen=556x195
+2026-02-03T10:17:33.905Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:33.906Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:33.906Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:33.906Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:33.917Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:34.034Z [DEBUG] High write ratio: blit=0, write=24249 (100.0% writes), screen=558x195
+2026-02-03T10:17:34.053Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 136ms
+2026-02-03T10:17:34.056Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113854056
+2026-02-03T10:17:34.056Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:34.056Z [DEBUG] Temp file written successfully, size: 14282 bytes
+2026-02-03T10:17:34.056Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:34.056Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113854056 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:34.057Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:34.059Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:34.059Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:34.060Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:34.062Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:34.062Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:34.062Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:34.063Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:34.063Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:34.208Z [DEBUG] High write ratio: blit=0, write=24797 (100.0% writes), screen=567x195
+2026-02-03T10:17:34.216Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 154ms
+2026-02-03T10:17:34.217Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:34.221Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:34.223Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:34.223Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:34.223Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:37.212Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:37.252Z [DEBUG] High write ratio: blit=0, write=24797 (100.0% writes), screen=567x195
+2026-02-03T10:17:39.139Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:39.140Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:39.140Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:39.140Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:39.141Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:39.176Z [DEBUG] High write ratio: blit=0, write=24836 (100.0% writes), screen=569x195
+2026-02-03T10:17:39.179Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 38ms
+2026-02-03T10:17:39.180Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113859180
+2026-02-03T10:17:39.180Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:39.181Z [DEBUG] Temp file written successfully, size: 14281 bytes
+2026-02-03T10:17:39.181Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:39.181Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113859180 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:39.181Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:39.182Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:39.182Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:39.182Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:39.190Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:39.190Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:39.191Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:39.191Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:39.191Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:39.266Z [DEBUG] High write ratio: blit=0, write=25430 (100.0% writes), screen=578x195
+2026-02-03T10:17:39.271Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 80ms
+2026-02-03T10:17:39.272Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:39.276Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:39.277Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:39.277Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:39.278Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:41.297Z [DEBUG] Restarting caffeinate to maintain sleep prevention
+2026-02-03T10:17:41.297Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T10:17:41.300Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T10:17:41.674Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:41.713Z [DEBUG] High write ratio: blit=0, write=25429 (100.0% writes), screen=578x195
+2026-02-03T10:17:42.833Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:42.834Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:42.834Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:42.834Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:42.837Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:42.899Z [DEBUG] High write ratio: blit=0, write=25468 (100.0% writes), screen=580x195
+2026-02-03T10:17:42.905Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 68ms
+2026-02-03T10:17:42.906Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113862906
+2026-02-03T10:17:42.906Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:42.907Z [DEBUG] Temp file written successfully, size: 14280 bytes
+2026-02-03T10:17:42.907Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:42.907Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113862906 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:42.907Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:42.909Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:42.909Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:42.909Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:42.912Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:42.912Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:42.912Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:42.912Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:42.913Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:43.158Z [DEBUG] High write ratio: blit=0, write=25956 (100.0% writes), screen=589x195
+2026-02-03T10:17:43.170Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 258ms
+2026-02-03T10:17:43.174Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:43.193Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:43.210Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:43.210Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:43.216Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:45.545Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:45.610Z [DEBUG] High write ratio: blit=0, write=25956 (100.0% writes), screen=589x195
+2026-02-03T10:17:46.844Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:46.845Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:46.845Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:46.845Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:46.846Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:46.888Z [DEBUG] High write ratio: blit=0, write=25995 (100.0% writes), screen=591x195
+2026-02-03T10:17:46.891Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 45ms
+2026-02-03T10:17:46.892Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113866892
+2026-02-03T10:17:46.892Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:46.893Z [DEBUG] Temp file written successfully, size: 14278 bytes
+2026-02-03T10:17:46.893Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:46.893Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113866892 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:46.894Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:46.895Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:46.895Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:46.895Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:46.905Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:46.905Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:46.906Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:46.906Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:46.906Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:47.007Z [DEBUG] High write ratio: blit=0, write=27005 (100.0% writes), screen=602x195
+2026-02-03T10:17:47.015Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 109ms
+2026-02-03T10:17:47.017Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:47.021Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:47.022Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:47.022Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:47.022Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:49.467Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:49.539Z [DEBUG] High write ratio: blit=0, write=27007 (100.0% writes), screen=602x195
+2026-02-03T10:17:51.669Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:51.670Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:51.670Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:51.670Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:51.672Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:51.713Z [DEBUG] High write ratio: blit=0, write=27047 (100.0% writes), screen=604x195
+2026-02-03T10:17:51.718Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 46ms
+2026-02-03T10:17:51.720Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113871720
+2026-02-03T10:17:51.720Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:51.720Z [DEBUG] Temp file written successfully, size: 14263 bytes
+2026-02-03T10:17:51.720Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:51.720Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113871720 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:51.721Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:51.722Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:51.722Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:51.722Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:51.724Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:51.724Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:51.724Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:51.724Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:51.724Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:51.841Z [DEBUG] High write ratio: blit=0, write=28556 (100.0% writes), screen=623x195
+2026-02-03T10:17:51.849Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 125ms
+2026-02-03T10:17:51.850Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:51.853Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:51.854Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:51.854Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:51.855Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:54.043Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:54.123Z [DEBUG] High write ratio: blit=0, write=28556 (100.0% writes), screen=623x195
+2026-02-03T10:17:56.212Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:17:56.213Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:17:56.213Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:17:56.213Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:17:56.216Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:56.266Z [DEBUG] High write ratio: blit=0, write=28595 (100.0% writes), screen=625x195
+2026-02-03T10:17:56.270Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 54ms
+2026-02-03T10:17:56.271Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113876271
+2026-02-03T10:17:56.271Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:17:56.272Z [DEBUG] Temp file written successfully, size: 14248 bytes
+2026-02-03T10:17:56.272Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:17:56.272Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113876271 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:17:56.272Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:17:56.273Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:17:56.273Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:17:56.273Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:17:56.309Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:17:56.309Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:17:56.309Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:17:56.310Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:17:56.310Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:17:56.422Z [DEBUG] High write ratio: blit=0, write=30114 (100.0% writes), screen=644x195
+2026-02-03T10:17:56.429Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 120ms
+2026-02-03T10:17:56.430Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:17:56.433Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:17:56.434Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:17:56.434Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:17:56.434Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:17:58.848Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:17:58.921Z [DEBUG] High write ratio: blit=0, write=30114 (100.0% writes), screen=644x195
+2026-02-03T10:18:00.825Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:18:00.825Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:18:00.825Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:00.825Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:18:00.826Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:00.872Z [DEBUG] High write ratio: blit=0, write=30153 (100.0% writes), screen=646x195
+2026-02-03T10:18:00.877Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 51ms
+2026-02-03T10:18:00.878Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113880878
+2026-02-03T10:18:00.878Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:18:00.878Z [DEBUG] Temp file written successfully, size: 14233 bytes
+2026-02-03T10:18:00.878Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:18:00.878Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113880878 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:18:00.879Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:18:00.880Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:18:00.880Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:00.880Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:18:00.881Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:00.881Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:00.882Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:00.882Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:00.882Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:01.013Z [DEBUG] High write ratio: blit=0, write=31548 (100.0% writes), screen=666x195
+2026-02-03T10:18:01.021Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 139ms
+2026-02-03T10:18:01.023Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:01.032Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:01.033Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:01.033Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:01.034Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:02.967Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:03.761Z [DEBUG] High write ratio: blit=0, write=31649 (100.0% writes), screen=668x195
+2026-02-03T10:18:09.979Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:18:09.980Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:18:09.980Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:09.980Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:18:09.981Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:10.032Z [DEBUG] High write ratio: blit=0, write=31688 (100.0% writes), screen=670x195
+2026-02-03T10:18:10.037Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 56ms
+2026-02-03T10:18:10.038Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113890038
+2026-02-03T10:18:10.038Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:18:10.038Z [DEBUG] Temp file written successfully, size: 13131 bytes
+2026-02-03T10:18:10.038Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:18:10.038Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts.tmp.34550.1770113890038 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts
+2026-02-03T10:18:10.038Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/app/api/agents/v1/route.ts written atomically
+2026-02-03T10:18:10.040Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:18:10.040Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:10.040Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:18:10.042Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:10.042Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:10.042Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:10.042Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:10.042Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:10.170Z [DEBUG] High write ratio: blit=0, write=38914 (100.0% writes), screen=713x195
+2026-02-03T10:18:10.183Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 141ms
+2026-02-03T10:18:10.186Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:10.192Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:10.194Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:10.194Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:10.194Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:10.275Z [DEBUG] High write ratio: blit=0, write=38914 (100.0% writes), screen=713x195
+2026-02-03T10:18:12.518Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:13.041Z [DEBUG] High write ratio: blit=0, write=38982 (100.0% writes), screen=715x195
+2026-02-03T10:18:13.141Z [DEBUG] High write ratio: blit=0, write=38982 (100.0% writes), screen=715x195
+2026-02-03T10:18:14.540Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:18:14.540Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:18:14.540Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:14.540Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:18:14.543Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:14.596Z [DEBUG] High write ratio: blit=0, write=39023 (100.0% writes), screen=717x195
+2026-02-03T10:18:14.601Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 58ms
+2026-02-03T10:18:14.603Z [DEBUG] FileHistory: Tracked file modification for /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/server/actions/ai.actions.ts
+2026-02-03T10:18:14.604Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/server/actions/ai.actions.ts.tmp.34550.1770113894604
+2026-02-03T10:18:14.604Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:18:14.605Z [DEBUG] Temp file written successfully, size: 28408 bytes
+2026-02-03T10:18:14.605Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:18:14.605Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/server/actions/ai.actions.ts.tmp.34550.1770113894604 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/server/actions/ai.actions.ts
+2026-02-03T10:18:14.605Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/server/actions/ai.actions.ts written atomically
+2026-02-03T10:18:14.607Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:18:14.607Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:14.607Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:18:14.608Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:14.608Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:14.609Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:14.609Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:14.609Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:14.684Z [DEBUG] High write ratio: blit=0, write=39782 (100.0% writes), screen=726x195
+2026-02-03T10:18:14.691Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .ts
+2026-02-03T10:18:14.695Z [DEBUG] [binaryCheck] Cache hit for 'typescript-language-server': false
+2026-02-03T10:18:14.695Z [DEBUG] [lspRecommendation] Skipping typescript-lsp@claude-plugins-official (binary 'typescript-language-server' not found)
+2026-02-03T10:18:14.696Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 87ms
+2026-02-03T10:18:14.697Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:14.701Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:14.701Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:14.701Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:14.702Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:16.807Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:16.876Z [DEBUG] High write ratio: blit=0, write=39782 (100.0% writes), screen=726x195
+2026-02-03T10:18:17.210Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:18:17.210Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:18:17.210Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:17.210Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:17.213Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:18:17.213Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:17.213Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:17.279Z [DEBUG] High write ratio: blit=0, write=39782 (100.0% writes), screen=726x195
+2026-02-03T10:18:17.540Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:18:17.540Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:18:17.540Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:17.540Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:17.542Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:18:17.542Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:17.542Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:17.591Z [DEBUG] High write ratio: blit=0, write=39783 (100.0% writes), screen=726x195
+2026-02-03T10:18:17.604Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:17.604Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:17.605Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:17.605Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:17.605Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:17.660Z [DEBUG] High write ratio: blit=0, write=39786 (100.0% writes), screen=726x195
+2026-02-03T10:18:17.663Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 58ms
+2026-02-03T10:18:17.664Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:17.666Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:17.667Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:17.667Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:17.667Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:20.118Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:20.373Z [DEBUG] High write ratio: blit=0, write=39786 (100.0% writes), screen=726x195
+2026-02-03T10:18:21.167Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:18:21.167Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:18:21.167Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:21.167Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:18:21.224Z [DEBUG] High write ratio: blit=0, write=39966 (100.0% writes), screen=729x195
+2026-02-03T10:18:21.296Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:18:21.296Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ae5; cc_entrypoint=cli;
+2026-02-03T10:18:21.296Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:21.296Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:21.297Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:21.297Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:18:21.297Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:21.297Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:18:21.298Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:21.298Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:21.298Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:21.298Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:21.298Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:21.356Z [DEBUG] High write ratio: blit=0, write=39970 (100.0% writes), screen=729x195
+2026-02-03T10:18:21.360Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 62ms
+2026-02-03T10:18:21.361Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:21.364Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:21.364Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:21.364Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:21.364Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:22.412Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:23.722Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:23.775Z [DEBUG] High write ratio: blit=0, write=39970 (100.0% writes), screen=729x195
+2026-02-03T10:18:24.132Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:18:24.132Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:18:24.132Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:24.132Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:24.134Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:18:24.134Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:24.134Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:24.187Z [DEBUG] High write ratio: blit=0, write=39970 (100.0% writes), screen=729x195
+2026-02-03T10:18:24.422Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:18:24.422Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:18:24.422Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:24.422Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:24.424Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:18:24.424Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:18:24.424Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:18:24.491Z [DEBUG] High write ratio: blit=0, write=39967 (100.0% writes), screen=729x195
+2026-02-03T10:18:24.512Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:18:24.512Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:18:24.513Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:18:24.513Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:18:24.513Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:18:24.565Z [DEBUG] High write ratio: blit=0, write=39977 (100.0% writes), screen=729x195
+2026-02-03T10:18:24.569Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 56ms
+2026-02-03T10:18:24.570Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:18:24.572Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:18:24.572Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:24.572Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:24.573Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:26.746Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:26.842Z [DEBUG] High write ratio: blit=0, write=39977 (100.0% writes), screen=729x195
+2026-02-03T10:18:27.440Z [DEBUG] High write ratio: blit=0, write=39977 (100.0% writes), screen=729x195
+2026-02-03T10:18:27.555Z [DEBUG] High write ratio: blit=0, write=39977 (100.0% writes), screen=729x195
+2026-02-03T10:18:27.897Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:18:27.897Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:18:27.897Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:27.897Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:18:27.900Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:18:27.900Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:18:27.900Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.086; cc_entrypoint=cli;
+2026-02-03T10:18:27.900Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:27.900Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:27.901Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.086; cc_entrypoint=cli;
+2026-02-03T10:18:27.901Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:18:27.901Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:18:27.901Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:27.901Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:18:27.954Z [DEBUG] High write ratio: blit=0, write=40031 (100.0% writes), screen=732x195
+2026-02-03T10:18:28.023Z [DEBUG] High write ratio: blit=0, write=40031 (100.0% writes), screen=732x195
+2026-02-03T10:18:28.543Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:28.595Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:18:28.713Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "pnpm tsc:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-03T10:18:28.714Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-03T10:18:28.714Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-03T10:18:28.714Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:28.714Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:18:28.769Z [DEBUG] High write ratio: blit=0, write=39985 (100.0% writes), screen=740x195
+2026-02-03T10:18:34.748Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-02-03T10:18:34.748Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:18:34.748Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-02-03T10:19:28.095Z [DEBUG] High write ratio: blit=0, write=39985 (100.0% writes), screen=740x195
+2026-02-03T10:19:28.718Z [DEBUG] High write ratio: blit=0, write=39970 (100.0% writes), screen=740x195
+2026-02-03T10:19:29.270Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-02-03T10:19:29.270Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2026-02-03T10:19:29.272Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json.tmp.34550.1770113969272
+2026-02-03T10:19:29.272Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:19:29.273Z [DEBUG] Temp file written successfully, size: 256 bytes
+2026-02-03T10:19:29.273Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:19:29.273Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json.tmp.34550.1770113969272 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json
+2026-02-03T10:19:29.273Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json written atomically
+2026-02-03T10:19:29.276Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(pnpm tsc:*)"]
+2026-02-03T10:19:29.335Z [DEBUG] High write ratio: blit=0, write=40028 (100.0% writes), screen=732x195
+2026-02-03T10:19:29.341Z [DEBUG] [Todo Migration] Skipping migration - 8 tasks already exist
+2026-02-03T10:19:29.344Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T10:19:31.369Z [DEBUG] High write ratio: blit=0, write=40075 (100.0% writes), screen=733x195
+2026-02-03T10:19:32.371Z [DEBUG] High write ratio: blit=0, write=40075 (100.0% writes), screen=733x195
+2026-02-03T10:19:33.368Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:34.410Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:35.409Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:36.423Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:37.116Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:37.552Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:38.497Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:39.516Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:40.514Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:41.525Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:42.508Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:43.539Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:44.531Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:45.516Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:46.528Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:47.527Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:48.544Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:49.799Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:50.643Z [DEBUG] High write ratio: blit=0, write=40076 (100.0% writes), screen=733x195
+2026-02-03T10:19:51.650Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:52.624Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:53.685Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:54.662Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:55.662Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:56.675Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:57.685Z [DEBUG] High write ratio: blit=0, write=40077 (100.0% writes), screen=733x195
+2026-02-03T10:19:58.309Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:19:58.310Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ac6; cc_entrypoint=cli;
+2026-02-03T10:19:58.310Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:19:58.310Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:19:58.311Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:19:58.312Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:19:58.312Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:19:58.312Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:19:58.314Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:19:58.314Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:19:58.314Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:19:58.315Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:19:58.315Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:19:58.377Z [DEBUG] High write ratio: blit=0, write=40398 (100.0% writes), screen=737x195
+2026-02-03T10:19:58.382Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 68ms
+2026-02-03T10:19:58.383Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:19:58.387Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:19:58.388Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:19:58.388Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:19:58.388Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:19:59.477Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:00.446Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:00.446Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:00.446Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:00.457Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:01.195Z [DEBUG] High write ratio: blit=0, write=40521 (100.0% writes), screen=739x195
+2026-02-03T10:20:01.255Z [DEBUG] High write ratio: blit=0, write=40521 (100.0% writes), screen=739x195
+2026-02-03T10:20:02.157Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:02.157Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:02.157Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:02.157Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:02.216Z [DEBUG] High write ratio: blit=0, write=40603 (100.0% writes), screen=742x195
+2026-02-03T10:20:02.279Z [DEBUG] High write ratio: blit=0, write=40603 (100.0% writes), screen=742x195
+2026-02-03T10:20:04.220Z [DEBUG] High write ratio: blit=0, write=40648 (100.0% writes), screen=743x195
+2026-02-03T10:20:05.220Z [DEBUG] High write ratio: blit=0, write=40648 (100.0% writes), screen=743x195
+2026-02-03T10:20:06.221Z [DEBUG] High write ratio: blit=0, write=40648 (100.0% writes), screen=743x195
+2026-02-03T10:20:07.234Z [DEBUG] High write ratio: blit=0, write=40648 (100.0% writes), screen=743x195
+2026-02-03T10:20:07.652Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:07.653Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ac6; cc_entrypoint=cli;
+2026-02-03T10:20:07.653Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:07.653Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:07.653Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:07.654Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:07.654Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:07.654Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:07.655Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:07.655Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:07.657Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:07.657Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:07.657Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:07.716Z [DEBUG] High write ratio: blit=0, write=40624 (100.0% writes), screen=743x195
+2026-02-03T10:20:07.720Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 63ms
+2026-02-03T10:20:07.721Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:07.724Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:07.724Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:07.724Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:07.724Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:08.576Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:10.417Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:11.017Z [DEBUG] High write ratio: blit=0, write=40688 (100.0% writes), screen=745x195
+2026-02-03T10:20:11.959Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:11.960Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:11.960Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:11.960Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:12.017Z [DEBUG] High write ratio: blit=0, write=40743 (100.0% writes), screen=748x195
+2026-02-03T10:20:14.028Z [DEBUG] High write ratio: blit=0, write=40788 (100.0% writes), screen=749x195
+2026-02-03T10:20:15.071Z [DEBUG] High write ratio: blit=0, write=40788 (100.0% writes), screen=749x195
+2026-02-03T10:20:16.484Z [DEBUG] High write ratio: blit=0, write=40788 (100.0% writes), screen=749x195
+2026-02-03T10:20:16.704Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:16.704Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.634; cc_entrypoint=cli;
+2026-02-03T10:20:16.704Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:16.704Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:16.704Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:16.705Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:16.705Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:16.705Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:16.706Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:16.706Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:16.706Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:16.706Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:16.706Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:16.773Z [DEBUG] High write ratio: blit=0, write=41109 (100.0% writes), screen=752x195
+2026-02-03T10:20:16.781Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 75ms
+2026-02-03T10:20:16.782Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:16.786Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:16.787Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:16.787Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:16.787Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:17.517Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:18.892Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:19.508Z [DEBUG] High write ratio: blit=0, write=41245 (100.0% writes), screen=754x195
+2026-02-03T10:20:20.961Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:20.962Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:20.962Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:20.962Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:21.029Z [DEBUG] High write ratio: blit=0, write=41390 (100.0% writes), screen=757x195
+2026-02-03T10:20:21.109Z [DEBUG] High write ratio: blit=0, write=41390 (100.0% writes), screen=757x195
+2026-02-03T10:20:23.059Z [DEBUG] High write ratio: blit=0, write=41435 (100.0% writes), screen=758x195
+2026-02-03T10:20:23.748Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:23.749Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.634; cc_entrypoint=cli;
+2026-02-03T10:20:23.749Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:23.749Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:23.750Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:23.751Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:23.751Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:23.751Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:23.752Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:23.752Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:23.753Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:23.753Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:23.753Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:23.805Z [DEBUG] High write ratio: blit=0, write=41580 (100.0% writes), screen=761x195
+2026-02-03T10:20:23.810Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 57ms
+2026-02-03T10:20:23.812Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:23.815Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:23.816Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:23.816Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:23.816Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:24.901Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:26.109Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:26.292Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:26.292Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:26.292Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:26.949Z [DEBUG] High write ratio: blit=0, write=41630 (100.0% writes), screen=763x195
+2026-02-03T10:20:28.644Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:28.645Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:28.645Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:28.645Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:28.706Z [DEBUG] High write ratio: blit=0, write=41773 (100.0% writes), screen=766x195
+2026-02-03T10:20:28.775Z [DEBUG] High write ratio: blit=0, write=41773 (100.0% writes), screen=766x195
+2026-02-03T10:20:30.702Z [DEBUG] High write ratio: blit=0, write=41818 (100.0% writes), screen=767x195
+2026-02-03T10:20:31.176Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:31.177Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.634; cc_entrypoint=cli;
+2026-02-03T10:20:31.177Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:31.177Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:31.179Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:31.180Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:31.180Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:31.180Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:31.181Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:31.181Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:31.185Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:31.185Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:31.185Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:31.244Z [DEBUG] High write ratio: blit=0, write=41963 (100.0% writes), screen=770x195
+2026-02-03T10:20:31.248Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 63ms
+2026-02-03T10:20:31.249Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:31.251Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:31.252Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:31.252Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:31.252Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:32.588Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:33.615Z [ERROR] Error: Error: EISDIR: illegal operation on a directory, read
+    at readFileSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:742)
+    at yC (/$bunfs/root/claude:11:40705)
+    at readFileSync (/$bunfs/root/claude:12:701)
+    at AVB (/$bunfs/root/claude:5140:20088)
+    at call (/$bunfs/root/claude:3532:1451)
+    at call (/$bunfs/root/claude:3528:7071)
+    at <anonymous> (/$bunfs/root/claude:3544:1608)
+    at processTicksAndRejections (native:7:39)
+2026-02-03T10:20:33.616Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:33.616Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:33.616Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:33.665Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:35.297Z [DEBUG] High write ratio: blit=0, write=42229 (100.0% writes), screen=775x195
+2026-02-03T10:20:36.286Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:20:36.286Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:20:36.286Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:36.286Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:20:36.289Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:20:36.289Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:36.289Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:20:36.347Z [DEBUG] High write ratio: blit=0, write=42229 (100.0% writes), screen=775x195
+2026-02-03T10:20:36.359Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:36.359Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:36.360Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:36.360Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:36.360Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:36.414Z [DEBUG] High write ratio: blit=0, write=42229 (100.0% writes), screen=775x195
+2026-02-03T10:20:36.417Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 57ms
+2026-02-03T10:20:36.418Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:36.420Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:36.421Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:36.421Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:36.421Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:36.482Z [DEBUG] High write ratio: blit=0, write=42229 (100.0% writes), screen=775x195
+2026-02-03T10:20:38.890Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:38.951Z [DEBUG] High write ratio: blit=0, write=42225 (100.0% writes), screen=775x195
+2026-02-03T10:20:40.644Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T10:20:40.645Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T10:20:40.645Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:40.645Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T10:20:40.647Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:40.706Z [DEBUG] High write ratio: blit=0, write=42270 (100.0% writes), screen=777x195
+2026-02-03T10:20:40.712Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 65ms
+2026-02-03T10:20:40.713Z [DEBUG] Writing to temp file: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts.tmp.34550.1770114040713
+2026-02-03T10:20:40.713Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:20:40.714Z [DEBUG] Temp file written successfully, size: 838 bytes
+2026-02-03T10:20:40.714Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:20:40.714Z [DEBUG] Renaming /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts.tmp.34550.1770114040713 to /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts
+2026-02-03T10:20:40.714Z [DEBUG] File /Users/nishitbariya/Github/02-Web-Apps/ShowCart/src/lib/agents/middleware/tracing.ts written atomically
+2026-02-03T10:20:40.717Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T10:20:40.717Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:40.717Z [DEBUG] Matched 1 unique hooks for query "Edit" (1 before deduplication)
+2026-02-03T10:20:40.718Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:40.718Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:40.719Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:40.719Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:40.719Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:40.812Z [DEBUG] High write ratio: blit=0, write=44333 (100.0% writes), screen=793x195
+2026-02-03T10:20:40.821Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 102ms
+2026-02-03T10:20:40.821Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:40.832Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:40.833Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:40.833Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:40.833Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:42.846Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:43.685Z [DEBUG] High write ratio: blit=0, write=44402 (100.0% writes), screen=795x195
+2026-02-03T10:20:44.713Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:44.715Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:44.715Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:44.715Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:44.800Z [DEBUG] High write ratio: blit=0, write=44502 (100.0% writes), screen=798x195
+2026-02-03T10:20:46.875Z [DEBUG] High write ratio: blit=0, write=44548 (100.0% writes), screen=799x195
+2026-02-03T10:20:47.866Z [DEBUG] High write ratio: blit=0, write=44548 (100.0% writes), screen=799x195
+2026-02-03T10:20:48.372Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:48.373Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.634; cc_entrypoint=cli;
+2026-02-03T10:20:48.373Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:48.373Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:48.374Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:48.375Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:48.375Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:48.375Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:48.376Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:48.376Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:48.376Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:48.377Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:48.377Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:48.438Z [DEBUG] High write ratio: blit=0, write=44752 (100.0% writes), screen=802x195
+2026-02-03T10:20:48.443Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 67ms
+2026-02-03T10:20:48.445Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:48.449Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:48.450Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:48.450Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:48.451Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:49.350Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:50.552Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:51.401Z [DEBUG] High write ratio: blit=0, write=44916 (100.0% writes), screen=806x195
+2026-02-03T10:20:51.898Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T10:20:51.899Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T10:20:51.899Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:51.899Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T10:20:51.901Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T10:20:51.901Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:51.901Z [DEBUG] Matched 1 unique hooks for query "Read" (1 before deduplication)
+2026-02-03T10:20:51.903Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:51.903Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:51.903Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:51.904Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:51.904Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:51.960Z [DEBUG] High write ratio: blit=0, write=44917 (100.0% writes), screen=806x195
+2026-02-03T10:20:51.965Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 62ms
+2026-02-03T10:20:51.966Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:51.969Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:51.970Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:51.970Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:51.970Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:54.567Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:55.457Z [DEBUG] High write ratio: blit=0, write=44988 (100.0% writes), screen=808x195
+2026-02-03T10:20:56.721Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:56.721Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:56.721Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:56.721Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:56.781Z [DEBUG] High write ratio: blit=0, write=45019 (100.0% writes), screen=810x195
+2026-02-03T10:20:56.803Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:56.803Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ae5; cc_entrypoint=cli;
+2026-02-03T10:20:56.803Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:56.803Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:56.804Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:56.804Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:56.804Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:56.804Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:57.220Z [DEBUG] High write ratio: blit=0, write=45019 (100.0% writes), screen=810x195
+2026-02-03T10:20:57.325Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:57.326Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:57.326Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:57.326Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:57.386Z [DEBUG] High write ratio: blit=0, write=45020 (100.0% writes), screen=810x195
+2026-02-03T10:20:57.402Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:57.402Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ae5; cc_entrypoint=cli;
+2026-02-03T10:20:57.402Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:57.402Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:57.403Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:57.403Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:57.403Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:57.403Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:57.519Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:57.766Z [DEBUG] High write ratio: blit=0, write=45020 (100.0% writes), screen=810x195
+2026-02-03T10:20:57.904Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:57.905Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:57.905Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:57.905Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:57.965Z [DEBUG] High write ratio: blit=0, write=45020 (100.0% writes), screen=810x195
+2026-02-03T10:20:57.982Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:57.982Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ae5; cc_entrypoint=cli;
+2026-02-03T10:20:57.983Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:57.983Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:57.983Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:57.983Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:57.983Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:57.983Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:58.338Z [DEBUG] High write ratio: blit=0, write=45020 (100.0% writes), screen=810x195
+2026-02-03T10:20:58.451Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:58.505Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:20:58.505Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:20:58.505Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:20:58.505Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:58.562Z [DEBUG] High write ratio: blit=0, write=45024 (100.0% writes), screen=810x195
+2026-02-03T10:20:58.626Z [DEBUG] High write ratio: blit=0, write=45024 (100.0% writes), screen=810x195
+2026-02-03T10:20:58.630Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:20:58.630Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ae5; cc_entrypoint=cli;
+2026-02-03T10:20:58.630Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:58.630Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:58.631Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:58.631Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:20:58.631Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:20:58.631Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:20:58.632Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:20:58.632Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:20:58.632Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:20:58.632Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:20:58.632Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:20:58.692Z [DEBUG] High write ratio: blit=0, write=45024 (100.0% writes), screen=810x195
+2026-02-03T10:20:58.696Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 64ms
+2026-02-03T10:20:58.697Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:20:58.700Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:20:58.700Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:20:58.700Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:20:58.700Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:20:58.704Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:20:58.762Z [DEBUG] High write ratio: blit=0, write=45024 (100.0% writes), screen=810x195
+2026-02-03T10:20:59.286Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:01.154Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:01.834Z [DEBUG] High write ratio: blit=0, write=45122 (100.0% writes), screen=812x195
+2026-02-03T10:21:03.152Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:21:03.153Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:21:03.153Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:03.153Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:21:03.215Z [DEBUG] High write ratio: blit=0, write=45221 (100.0% writes), screen=815x195
+2026-02-03T10:21:03.280Z [DEBUG] High write ratio: blit=0, write=45221 (100.0% writes), screen=815x195
+2026-02-03T10:21:05.213Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:06.262Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:07.278Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:08.291Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:09.299Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:10.305Z [DEBUG] High write ratio: blit=0, write=45266 (100.0% writes), screen=816x195
+2026-02-03T10:21:10.494Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:21:10.495Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ac6; cc_entrypoint=cli;
+2026-02-03T10:21:10.495Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:10.495Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:10.496Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:10.497Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:21:10.497Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:21:10.497Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:21:10.498Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:21:10.498Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:21:10.499Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:21:10.499Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:21:10.499Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:21:10.556Z [DEBUG] High write ratio: blit=0, write=45242 (100.0% writes), screen=816x195
+2026-02-03T10:21:10.565Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 66ms
+2026-02-03T10:21:10.567Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:21:10.570Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:21:10.571Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:10.571Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:10.571Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:11.636Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:13.488Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:14.065Z [DEBUG] High write ratio: blit=0, write=45334 (100.0% writes), screen=818x195
+2026-02-03T10:21:14.134Z [DEBUG] High write ratio: blit=0, write=45334 (100.0% writes), screen=818x195
+2026-02-03T10:21:14.378Z [DEBUG] executePreToolHooks called for tool: TaskUpdate
+2026-02-03T10:21:14.378Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskUpdate
+2026-02-03T10:21:14.378Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:14.378Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:21:14.382Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskUpdate
+2026-02-03T10:21:14.382Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:21:14.382Z [DEBUG] Matched 0 unique hooks for query "TaskUpdate" (0 before deduplication)
+2026-02-03T10:21:14.440Z [DEBUG] High write ratio: blit=0, write=45334 (100.0% writes), screen=818x195
+2026-02-03T10:21:14.452Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:21:14.452Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:21:14.452Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:21:14.452Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:21:14.452Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:21:14.512Z [DEBUG] High write ratio: blit=0, write=45315 (100.0% writes), screen=818x195
+2026-02-03T10:21:14.516Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 64ms
+2026-02-03T10:21:14.516Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:21:14.519Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:21:14.520Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:14.520Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:14.520Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:17.000Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:17.060Z [DEBUG] High write ratio: blit=0, write=45315 (100.0% writes), screen=818x195
+2026-02-03T10:21:17.109Z [DEBUG] executePreToolHooks called for tool: TaskList
+2026-02-03T10:21:17.109Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskList
+2026-02-03T10:21:17.109Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:17.109Z [DEBUG] Matched 0 unique hooks for query "TaskList" (0 before deduplication)
+2026-02-03T10:21:17.113Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskList
+2026-02-03T10:21:17.113Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:21:17.113Z [DEBUG] Matched 0 unique hooks for query "TaskList" (0 before deduplication)
+2026-02-03T10:21:17.172Z [DEBUG] High write ratio: blit=0, write=45315 (100.0% writes), screen=818x195
+2026-02-03T10:21:17.182Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:21:17.182Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:21:17.182Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:21:17.183Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:21:17.183Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:21:17.238Z [DEBUG] High write ratio: blit=0, write=45315 (100.0% writes), screen=818x195
+2026-02-03T10:21:17.242Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 60ms
+2026-02-03T10:21:17.242Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:21:17.245Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:21:17.246Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:17.246Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:17.246Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:19.461Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:20.160Z [DEBUG] High write ratio: blit=0, write=45249 (100.0% writes), screen=813x195
+2026-02-03T10:21:21.337Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T10:21:21.337Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T10:21:21.337Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:21.337Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:21:21.403Z [DEBUG] High write ratio: blit=0, write=45430 (100.0% writes), screen=816x195
+2026-02-03T10:21:21.435Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T10:21:21.435Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.40d; cc_entrypoint=cli;
+2026-02-03T10:21:21.435Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:21.435Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:21.436Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:21.436Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T10:21:21.436Z [DEBUG] Found 5 hook matchers in settings
+2026-02-03T10:21:21.436Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T10:21:21.437Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T10:21:21.437Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T10:21:21.438Z [DEBUG] MCP server "ide": Calling MCP tool: getDiagnostics
+2026-02-03T10:21:21.438Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T10:21:21.438Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T10:21:21.498Z [DEBUG] High write ratio: blit=0, write=45690 (100.0% writes), screen=819x195
+2026-02-03T10:21:21.502Z [DEBUG] MCP server "ide": Tool 'getDiagnostics' completed successfully in 64ms
+2026-02-03T10:21:21.503Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:21:21.505Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:21:21.506Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:21.506Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:21.506Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:22.187Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:23.847Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:30.985Z [DEBUG] High write ratio: blit=0, write=47042 (100.0% writes), screen=862x195
+2026-02-03T10:21:31.005Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-03T10:21:31.005Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:31.005Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-03T10:21:31.065Z [DEBUG] High write ratio: blit=0, write=46876 (100.0% writes), screen=861x195
+2026-02-03T10:21:31.069Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T10:21:31.074Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-03T10:21:31.079Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.b2b; cc_entrypoint=cli;
+2026-02-03T10:21:31.080Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T10:21:31.080Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T10:21:31.080Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T10:21:31.085Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.34550.1770114091085
+2026-02-03T10:21:31.085Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:21:31.086Z [DEBUG] Temp file written successfully, size: 26744 bytes
+2026-02-03T10:21:31.086Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:21:31.086Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.34550.1770114091085 to /Users/nishitbariya/.claude.json
+2026-02-03T10:21:31.086Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T10:21:31.087Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.34550.1770114091087
+2026-02-03T10:21:31.087Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T10:21:31.087Z [DEBUG] Temp file written successfully, size: 26744 bytes
+2026-02-03T10:21:31.087Z [DEBUG] Applied original permissions to temp file
+2026-02-03T10:21:31.087Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.34550.1770114091087 to /Users/nishitbariya/.claude.json
+2026-02-03T10:21:31.088Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T10:21:33.636Z [DEBUG] Stream started - received first chunk
+2026-02-03T10:21:33.749Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-03T10:21:33.868Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-03T10:21:33.868Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T10:21:33.868Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-03T10:21:33.868Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=5 cacheRead=99753 cacheCreate=797
+2026-02-03T10:21:33.868Z [DEBUG] [Speculation] enabled=false
+2026-02-03T10:22:22.480Z [DEBUG] High write ratio: blit=0, write=46886 (100.0% writes), screen=861x195
+2026-02-03T10:22:26.788Z [DEBUG] High write ratio: blit=0, write=46886 (100.0% writes), screen=861x195
+2026-02-03T10:22:34.660Z [DEBUG] High write ratio: blit=0, write=46886 (100.0% writes), screen=861x195
+2026-02-03T10:22:35.417Z [DEBUG] High write ratio: blit=0, write=46886 (100.0% writes), screen=861x195
+2026-02-03T10:22:36.167Z [DEBUG] High write ratio: blit=0, write=47886 (100.0% writes), screen=861x205
+2026-02-03T10:22:36.770Z [DEBUG] High write ratio: blit=0, write=44886 (100.0% writes), screen=869x175
+2026-02-03T10:22:38.761Z [DEBUG] High write ratio: blit=0, write=44886 (100.0% writes), screen=869x175
+2026-02-03T10:22:39.150Z [DEBUG] High write ratio: blit=0, write=47386 (100.0% writes), screen=861x200
+2026-02-03T10:22:39.741Z [DEBUG] High write ratio: blit=0, write=47586 (100.0% writes), screen=861x202
+2026-02-03T10:24:43.813Z [DEBUG] High write ratio: blit=0, write=47586 (100.0% writes), screen=861x202
+2026-02-03T10:24:46.378Z [DEBUG] High write ratio: blit=0, write=47586 (100.0% writes), screen=861x202
+2026-02-03T11:04:43.358Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-02-03T11:04:43.358Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T11:04:43.358Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)

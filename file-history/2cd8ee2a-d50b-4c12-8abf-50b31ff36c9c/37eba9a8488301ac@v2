@@ -1,0 +1,4 @@
+import { basehub } from "basehub";
+import { env } from "@/env/server";
+
+export const basehubClient = basehub({ token: env.BASEHUB_TOKEN });

@@ -1,0 +1,361 @@
+(node:98890) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ POST /api/trpc/moderation.checkText?batch=1 200 in 3.0s (compile: 8ms, proxy.ts: 5ms, render: 3.0s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: User message received, total messages: 1
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "text",
+    "text": "Generate image of a bird in the space anime style"
+  }
+]
+]: User message saved: uFBkSLXG7AHjlqw9
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Starting image generation process
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Parsing request data
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: prompt, value: A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: aspect_ratio, value: 1:1
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: modelName, value: seedream-4.5
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: provider, value: replicate
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: num_outputs, value: 1
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] FormData field: isAgent, value: true
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] User authenticated - ID: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Parsed data - {"parsedData":{"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","aspect_ratio":"1:1","num_outputs":1,"modelName":"seedream-4.5","provider":"replicate","style":null,"selected_chips":null,"styleType":null,"isAgent":true}}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Parsed data - Model ID: seedream-4.5
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Original prompt: A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Starting tool info retrieval for model: seedream-4.5
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Tool info retrieval completed in 711ms (cached or fresh)
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Credits available: 50024, Required: 8
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Model validated. Credits: 50024, Fee: 8
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Model and credits validated
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Total credits required: 8
+]: ReplicateProvider initialized
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Provider 'replicate' selected
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Starting image generation process for model: seedream-4.5
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Deducting 8 credits using requestId as jobId
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] deductCreditsWithLedger called {"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","jobId":"595b5c06-b4ea-4f57-81a6-2f2c6b71477e","amount":8,"options":{"modelName":"seedream-4.5"},"reason":"IMAGE_GENERATION"}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Transaction started
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Fetching user and credit information for userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] User credit check - Available: 50024, Required: 8
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Creating successful DEBIT ledger entry
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] DEBIT ledger entry created: 5e056b51-14f9-43d5-b62b-b8615868a351
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Updating user credit balance - deducting 8 credits
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Credit balance updated - Previous: 50024, New: 50016
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Transaction will commit successfully
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Credits deducted successfully
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Credits deducted successfully
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] No image processing required for this request
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Initiating model-specific generation process
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Starting Replicate generation process for model: seedream-4.5, styleType: none
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Getting model details for seedream-4.5
+]: Getting model details for: seedream-4.5
+]: Model details: {"modelValue":"bytedance/seedream-4.5","additionalConfig":{"size":"4K","sequential_image_generation":"auto"}}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Building webhook input with prompt: "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations"
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Input before validation: {"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","num_outputs":1,"aspect_ratio":"1:1","extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","modelName":"seedream-4.5","toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","styleType":null,"isAgent":true}}
+]: Validating input for model: seedream-4.5
+]: Input data: {"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","num_outputs":1,"aspect_ratio":"1:1","extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","modelName":"seedream-4.5","toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","styleType":null,"isAgent":true}}
+]: Validating data: {"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","num_outputs":1,"aspect_ratio":"1:1"}
+]: Validation successful for model seedream-4.5
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Input validation successful
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Validated data: {"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","aspect_ratio":"1:1","extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","modelName":"seedream-4.5","toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","styleType":null,"isAgent":true}}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Merging validated data with additional configuration
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Additional input JSON: {"isAgent":true,"originalPrompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","selected_chips":null}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Additional config: {"size":"4K","sequential_image_generation":"auto"}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Merged data: {"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","aspect_ratio":"1:1","extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","modelName":"seedream-4.5","toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","styleType":null,"isAgent":true},"isAgent":true,"originalPrompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","selected_chips":null,"size":"4K","sequential_image_generation":"auto"}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Webhook properties: {"input":{"prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","aspect_ratio":"1:1","extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","modelName":"seedream-4.5","toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","styleType":null,"isAgent":true},"isAgent":true,"originalPrompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","selected_chips":null,"size":"4K","sequential_image_generation":"auto"},"webhook":"https://ladybug-ultimate-solely.ngrok-free.app/api/webhooks/venus-9/v2","webhook_events_filter":["completed"]}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Sending generation request to Replicate API
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Replicate API response: {"id":"1bn3n43r35rmy0cw3mmrm24a80","model":"bytedance/seedream-4.5","version":"hidden","input":{"aspect_ratio":"1:1","extraData":{"isAgent":true,"modelName":"seedream-4.5","styleType":null,"toolId":"2d397dab-2031-57d8-aee4-381f6a1f14d0","userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws"},"isAgent":true,"originalPrompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","prompt":"A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations","selected_chips":null,"sequential_image_generation":"auto","size":"4K"},"logs":"","output":null,"data_removed":false,"error":null,"source":"api","status":"starting","created_at":"2026-02-02T07:03:02.937Z","urls":{"cancel":"https://api.replicate.com/v1/predictions/1bn3n43r35rmy0cw3mmrm24a80/cancel","get":"https://api.replicate.com/v1/predictions/1bn3n43r35rmy0cw3mmrm24a80","stream":"https://stream.replicate.com/v1/files/jbxs-qupfnycymkxs74lofofb7gzl73d74gtm4rbcd2z35cdcuxroessq","web":"https://replicate.com/p/1bn3n43r35rmy0cw3mmrm24a80"}}
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Generation started successfully, prediction ID: 1bn3n43r35rmy0cw3mmrm24a80
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Generation result: status=processing, specialId=1bn3n43r35rmy0cw3mmrm24a80
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Generation is processing, saving generation data to database
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Saving generation data to database:
+      - modelName: seedream-4.5
+      - provider: replicate
+      - userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+      - specialId: 1bn3n43r35rmy0cw3mmrm24a80
+      - status: processing
+      - toolId: 2d397dab-2031-57d8-aee4-381f6a1f14d0
+      - requestId: 595b5c06-b4ea-4f57-81a6-2f2c6b71477e
+    
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Successfully saved generation data to database with credit tracking
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Generation process completed with status: processing
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Model request processed successfully
+]: [595b5c06-b4ea-4f57-81a6-2f2c6b71477e] Process completed
+ POST /api/venus-9/v2/image 202 in 7.3s (compile: 914ms, proxy.ts: 4ms, render: 6.4s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "toolCallId": "toolu_01BPLn7VwrMkxdAJcxzPwV3J",
+    "state": "output-available",
+    "input": {
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+        "provider": "replicate"
+      },
+      "model": "seedream-4.5",
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "aspect_ratio": "1:1",
+      "credits": 8,
+      "totalCredits": 8
+    }
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "toolCallId": "toolu_01BPLn7VwrMkxdAJcxzPwV3J",
+    "state": "output-available",
+    "input": {
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+        "provider": "replicate"
+      },
+      "model": "seedream-4.5",
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "aspect_ratio": "1:1",
+      "credits": 8,
+      "totalCredits": 8
+    }
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "toolCallId": "toolu_01BPLn7VwrMkxdAJcxzPwV3J",
+    "state": "output-available",
+    "input": {
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+        "provider": "replicate"
+      },
+      "model": "seedream-4.5",
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "aspect_ratio": "1:1",
+      "credits": 8,
+      "totalCredits": 8
+    }
+  }
+]
+]: Assistant message saved: 3bef06ab-7393-4f7f-be10-23ba3bd8f7de (2 parts)
+ POST /api/agents/v1 200 in 16.6s (compile: 7ms, proxy.ts: 539ms, render: 16.1s)
+]: [50715db9-0c35-444d-97d3-ae6d4b605a84] Receiving JSON with objects: 7
+]: [50715db9-0c35-444d-97d3-ae6d4b605a84] Video objects in request: 0
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: [b304530d-85db-450e-91d5-f69657bc3dda] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [b304530d-85db-450e-91d5-f69657bc3dda] Fetching prediction from Replicate
+(node:99318) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: 'e0d85f18-60f6-4601-b9a2-b8a9797dec97',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '642176c8-9304-4040-b163-e88bf0b6cb1f',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: 'uFBkSLXG7AHjlqw9', parts: [ [Object] ] },
+  {
+    id: '3bef06ab-7393-4f7f-be10-23ba3bd8f7de',
+    parts: [ [Object], [Object] ]
+  }
+]
+]: Assistant message received (auto-continuation), using 2 previous messages, continuationId: 3bef06ab-7393-4f7f-be10-23ba3bd8f7de
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+(node:99333) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/trpc/user.getMiniUserDetails,chat.getChats?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%2C%221%22%3A%7B%22json%22%3A%7B%22projectId%22%3A%22d7c90191-6ab2-4dd7-8737-9eb521b386b8%22%7D%7D%7D 200 in 2.2s (compile: 16ms, proxy.ts: 22ms, render: 2.1s)
+]: [b304530d-85db-450e-91d5-f69657bc3dda] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 3.1s (compile: 6ms, proxy.ts: 1978ms, render: 1141ms)
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: 'e0d85f18-60f6-4601-b9a2-b8a9797dec97',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '642176c8-9304-4040-b163-e88bf0b6cb1f',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: 'uFBkSLXG7AHjlqw9', parts: [ [Object] ] },
+  {
+    id: '3bef06ab-7393-4f7f-be10-23ba3bd8f7de',
+    parts: [ [Object], [Object] ]
+  }
+]
+ GET /api/trpc/chat.getMessages?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22chatId%22%3A%22fac7c617-d706-41e7-acbd-5cb928eb27aa%22%7D%7D%7D 200 in 961ms (compile: 7ms, proxy.ts: 3ms, render: 951ms)
+(node:99371) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [50715db9-0c35-444d-97d3-ae6d4b605a84] Returning JSON with objects: 7
+]: [50715db9-0c35-444d-97d3-ae6d4b605a84] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.4s (compile: 6ms, proxy.ts: 3ms, render: 2.4s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! Here's your cosmic anime bird! It's now on the canvas—a stunning celestial creature soaring through glowing nebulas and starfields with that beautiful anime aesthetic. 🚀✨",
+    "state": "done"
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "t"step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! Here's your cosmic anime bird! It's now on the canvas—a stunning celestial creature soaring through glowing nebulas and starfields with that beautiful anime aesthetic. 🚀✨",
+    "state": "done"
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! Here's your cosmic anime bird! It's now on the canvas—a stunning celestial creature soaring through glowing nebulas and starfields with that beautiful anime aesthetic. 🚀✨",
+    "state": "done"
+  }
+]
+[DEBUG] saveChatMessage - MERGED parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime artlighting, dramatic sky with galaxies and constellations",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "1bn3n43r35rmy0cw3mmrm24a80"
+      },
+      "prompt": "A majestic bird soaring through a vibrant cosmic space environment in anime style, with detailed feathers, glowing nebulas and star fields in the background, ethereal light trails, dynamic composition, vivid colors with deep purples and blues, high quality anime art, cinematic lighting, dramatic sky with galaxies and constellations",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "1bn3n43r35rmy0cw3mmrm24a80",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_01BPLn7VwrMkxdAJcxzPwV3J"
+  },
+  {
+    "type": "text",
+    "text": "Perfect! Here's your cosmic anime bird! It's now on the canvas—a stunng celestial creature soaring through glowing nebulas and starfields with that beautiful anime aesthetic. 🚀✨",
+    "state": "done"
+  }
+]
+]: Assistant message saved: 3bef06ab-7393-4f7f-be10-23ba3bd8f7de (2 parts)
+ POST /api/agents/v1 200 in 5.0s (compile: 3ms, proxy.ts: 539ms, render: 4.5s)
+]: [fb481156-42e7-4913-9563-e8af67e2efe8] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [fb481156-42e7-4913-9563-e8af67e2efe8] Fetching prediction from Replicate
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 803ms (compile: 5ms, proxy.ts: 4ms, render: 794ms)
+]: [fb481156-42e7-4913-9563-e8af67e2efe8] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 952ms (compile: 5ms, proxy.ts: 498ms, render: 449ms)
+(node:99416) Warning: `--localstorage-file` was provided without a valid path
+(Use `nodtrace-warnings ...` to show where the warning was created)
+]: [2df320e5-f63b-4f80-8363-ef9f951db0f0] Receiving JSON with objects: 7
+]: [2df320e5-f63b-4f80-8363-ef9f951db0f0] Video objects in request: 0
+]: [2df320e5-f63b-4f80-8363-ef9f951db0f0] Returning JSON with objects: 7
+]: [2df320e5-f63b-4f80-8363-ef9f951db0f0] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 746ms (compile: 8ms, proxy.ts: 3ms, render: 734ms)
+(node:99439) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [f0cb85cc-61a4-4bff-b7c2-652e3c4f4b99] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [f0cb85cc-61a4-4bff-b7c2-652e3c4f4b99] Fetching prediction from Replicate
+]: [f0cb85cc-61a4-4bff-b7c2-652e3c4f4b99] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 1602ms (compile: 9ms, proxy.ts: 511ms, render: 1082ms)
+]: [1ae0eb7a-f5eb-4d1a-981c-f2ff848aa52f] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [1ae0eb7a-f5eb-4d1a-981c-f2ff848aa52f] Fetching prediction from Replicate
+]: [1ae0eb7a-f5eb-4d1a-981c-f2ff848aa52f] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 1057ms (compile: 6ms, proxy.ts: 598ms, render: 453ms)
+]: [6a65fcbf-c9ed-4736-9a26-67c933676b70] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [6a65fcbf-c9ed-4736-9a26-67c933676b70] Fetching prediction from Replicate
+]: [6a65fcbf-c9ed-4736-9a26-67c933676b70] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 1136ms (compile: 10ms, proxy.ts: 578ms, render: 548ms)
+]: [2491970a-d23a-4df3-91ad-a9513e4be534] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [2491970a-d23a-4df3-91ad-a9513e4be534] Fetching prediction from Replicate
+]: [2491970a-d23a-4df3-91ad-a9513e4be534] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 1028ms (compile: 11ms, proxy.ts: 538ms, render: 479ms)
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Webhook received. Processing...
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Request body parsed successfully
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] Request body parsed successfully
+]: Signature verified successfully.
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Timestamp verified successfully.
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] body.output type: object
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Processing agent-generated image with deterministic S3 keys
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Generated S3 key[0] for prediction 1bn3n43r35rmy0cw3mmrm24a80: development/2026-02-02/image-generation/output/1ca4460f.webp
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Generated 1 S3 key(s) for prediction 1bn3n43r35rmy0cw3mmrm24a80. Keys: ["development/2026-02-02/image-generation/output/1ca4460f.webp"]
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Starting upload to predetermined S3 keys. Image URLs: ["https://replicate.delivery/xezq/UbxS1he7IrxuJybkwE0hcfAHMhKjeh70RvjfigXYC1e9Hf3gF/tmpc94x2e4_.jpg"], S3 Keys: ["development/2026-02-02/image-generation/output/1ca4460f.webp"]
+]: [uploadImagesToSpecificKeys] Uploading image 1/1 to S3 key: development/2026-02-02/image-generation/output/1ca4460f.webp
+]: [uploadImagesToSpecificKeys] Calling uploadImageStreamToS3 with s3Key: development/2026-02-02/image-generation/output/1ca4460f.webp, imageUrl: https://replicate.delivery/xezq/UbxS1he7IrxuJybkwE0hcfAHMhKjeh70RvjfigXYC1e9Hf3gF/tmpc94x2e4_.jpg
+]: [beee3446-acb0-48dc-91d1-7a4923fa4b4c] Fetching prediction for ID: 1bn3n43r35rmy0cw3mmrm24a80 with provider: replicate
+]: [beee3446-acb0-48dc-91d1-7a4923fa4b4c] Fetching prediction from Replicate
+]: [beee3446-acb0-48dc-91d1-7a4923fa4b4c] Replicate prediction fetched successfully
+ GET /api/image/prediction/1bn3n43r35rmy0cw3mmrm24a80?provider=replicate 200 in 1432ms (compile: 5ms, proxy.ts: 500ms, render: 928ms)
+]: [aeb88e81-23d9-4d45-bcee-80fed1e70c50] Receiving JSON with objects: 7
+]: [aeb88e81-23d9-4d45-bcee-80fed1e70c50] Video objects in request: 0
+(node:99881) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [uploadImageStreamToS3] Upload completed. S3 Key: development/2026-02-02/image-generation/output/1ca4460f.webp, CloudFront URL: https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/1ca4460f.webp, S3 Location: https://imgtransformationstack-bundleddesignproductionorig-lufmmhialby9.s3.us-east-2.amazonaws.com/development/2026-02-02/image-generation/output/1ca4460f.webp
+]: [uploadImagesToSpecificKeys] Successfully uploaded image 1 to S3. Key: development/2026-02-02/image-generation/output/1ca4460f.webp, URL: https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/1ca4460f.webp
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Successfully uploaded 1 image(s) to predetermined S3 keys. Final S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/1ca4460f.webp"]
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Updating DB with S3 URLs. SpecialId: 1bn3n43r35rmy0cw3mmrm24a80, S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/1ca4460f.webp"]
+]: [updateGeneration] Updating generation with ID: 1bn3n43r35rmy0cw3mmrm24a80
+]: [aeb88e81-23d9-4d45-bcee-80fed1e70c50] Returning JSON with objects: 7
+]: [aeb88e81-23d9-4d45-bcee-80fed1e70c50] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.4s (compile: 10ms, proxy.ts: 6ms, render: 2.4s)
+]: [updateGeneration] Updated metrics: duration=31026ms
+]: [updateGeneration] Successfully updated generation 1bn3n43r35rmy0cw3mmrm24a80 with status: succeeded
+]: [bf146c09-8077-4bfd-a273-0fc31bcd8df9] [POST /webhooks/replicate] Successfully updated generation 1bn3n43r35rmy0cw3mmrm24a80 with S3 URLs: ["https://d2weamipq0hk4d.cloudfront.net/development/2026-02-02/image-generation/output/1ca4460f.webp"]
+ POST /api/webhooks/venus-9/v2 200 in 8.7s (compile: 4ms, proxy.ts: 4ms, render: 8.7s)

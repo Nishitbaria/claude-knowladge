@@ -1,0 +1,131 @@
+Create an agent team to implement Resend email integration. Here is the exact breakdown:
+
+---
+
+TEAM LEAD: Orchestrate all 4 teammates in sequence. Wait for each teammate to fully complete before moving to the next. Do not implement anything yourself — only coordinate, review, and synthesize.
+
+---
+
+TEAMMATE 1 — Context Researcher:
+Your job is to build full project context before anything is built. Do the following in order:
+
+1. Check if CLAUDE.md or AGENTS.md exists at the project root. If found, read it fully and extract: what this product does, tech stack, conventions, and any existing patterns.
+2. If neither file exists, read package.json, the top-level folder structure, and any README to infer what the product does.
+3. Read src/server.ts (or wherever the server entrypoint is). Check if RESEND_API_KEY is present in the environment config, dotenv loading, or any config validation (e.g. zod env schema). Note whether it is validated or just assumed.
+4. Search the codebase for any existing email-related code (search for: "resend", "sendEmail", "nodemailer", "email" in src/).
+5. Research and summarize best practices for:
+   - Resend SDK usage in Next.js (App Router), including domain verification flow, DNS records needed, and React Email templates
+   - Better Auth email integration patterns (verification emails, magic links, password reset)
+   - Next.js App Router API route conventions for email sending
+6. Write a full context summary and hand it to the Team Lead before proceeding.
+
+Wait for Team Lead confirmation before finishing.
+
+---
+
+TEAMMATE 2 — PRD Writer (starts after Teammate 1 is done):
+Using the context from Teammate 1, write a detailed PRD (Product Requirements Document) as a markdown file saved to: `docs/prd-resend-email.md`
+
+The PRD must cover:
+
+1. **Objective**: What we are building and why
+2. **Current State**: What exists today (from Teammate 1's findings)
+3. **RESEND_API_KEY Validation**: Confirm it exists in server.ts env config — if not, add zod/env validation for it as part of this plan
+4. **Domain Verification**: Steps to verify domain in Resend dashboard, DNS records (MX, SPF, DKIM), and how to test it
+5. **Email Types to Implement**:
+   - Email verification (on signup, triggered by Better Auth)
+   - Password reset email
+   - (Optional) Welcome email post-verification
+6. **Implementation Plan**: File-by-file breakdown of what to create/modify:
+   - `src/lib/email/resend.ts` — Resend client singleton
+   - `src/lib/email/templates/` — React Email templates for each email type
+   - `src/lib/email/send.ts` — typed sendEmail utility
+   - Integration with Better Auth hooks/callbacks
+   - Any API routes needed
+7. **Testing Plan**: How to test locally (Resend dev mode), how to verify delivery
+8. **Acceptance Criteria**: Definition of done
+
+Save the PRD to `docs/prd-resend-email.md`. Report back to Team Lead with the file path and a 3-sentence summary.
+
+Wait for Team Lead confirmation before finishing.
+
+---
+
+TEAMMATE 3 — Implementer (starts after Teammate 2 is done):
+Read `docs/prd-resend-email.md` fully before writing a single line of code.
+
+Implement everything in the PRD:
+
+1. Check `src/server.ts` (or the env validation file) — if RESEND_API_KEY is not validated, add it to the env schema with a clear error message if missing.
+2. Create `src/lib/email/resend.ts`:
+```ts
+   // Resend singleton — import this, never instantiate Resend directly elsewhere
+```
+3. Create React Email templates in `src/lib/email/templates/`:
+   - `verification-email.tsx` — email verification template
+   - `password-reset.tsx` — password reset template
+   Use clean, minimal HTML-safe React Email components. Include the product name from context.
+4. Create `src/lib/email/send.ts` — a typed `sendEmail()` utility that wraps the Resend SDK, handles errors, and logs failures without crashing the request.
+5. Wire into Better Auth: find where Better Auth handles email verification and password reset callbacks. Integrate `sendEmail()` there.
+6. If any Next.js API routes are needed for email actions, create them under `src/app/api/`.
+7. Do NOT touch any unrelated files. Only create or modify files in scope.
+8. After implementation, run any available typecheck or lint command (e.g. `pnpm typecheck` or `npx tsc --noEmit`) and fix any errors.
+
+Report back to Team Lead with: list of files created/modified, any issues encountered, and confirmation that typecheck passes.
+
+Wait for Team Lead confirmation before finishing.
+
+---
+
+TEAMMATE 4 — Git & PR Agent (starts after Teammate 3 is done):
+Your job is clean git hygiene and opening a PR.
+
+1. Run `git status` to see all changed/new files.
+2. Run `git fetch origin` and `git checkout development` (or `develop` — check which exists) then `git pull origin development`.
+3. Create a new branch: `git checkout -b feature/resend-email-integration`
+4. Stage all relevant files: `git add` only files related to this implementation (do NOT add unrelated files or lockfile changes unless dependencies were intentionally added).
+5. Commit with a conventional commit message:
+```
+   feat(email): implement Resend email integration with Better Auth
+   
+   - Add RESEND_API_KEY validation in env config
+   - Create Resend client singleton and sendEmail utility
+   - Add React Email templates for verification and password reset
+   - Wire email sending into Better Auth callbacks
+   - Add PRD at docs/prd-resend-email.md
+```
+6. Push the branch: `git push origin feature/resend-email-integration`
+7. Open a PR using GitHub CLI:
+```
+   gh pr create \
+     --base development \
+     --title "feat(email): Resend email integration with Better Auth" \
+     --body "## Summary
+   Implements Resend email integration as described in docs/prd-resend-email.md.
+
+   ## Changes
+   - RESEND_API_KEY env validation
+   - Resend client singleton + sendEmail utility
+   - React Email templates (verification, password reset)
+   - Better Auth callback integration
+
+   ## Testing
+   - Set RESEND_API_KEY in .env.local
+   - Trigger signup flow to verify email is sent
+   - Check Resend dashboard for delivery logs
+
+   ## Checklist
+   - [ ] RESEND_API_KEY added to .env.example
+   - [ ] Domain verified in Resend dashboard
+   - [ ] Emails tested in Resend dev mode"
+```
+8. Report the PR URL back to Team Lead.
+
+---
+
+TEAM LEAD — Final Synthesis:
+Once all 4 teammates are done, output a final summary:
+- What was built
+- Files created/modified
+- PR link
+- Any open items the developer needs to handle manually (e.g. DNS records to add, Resend dashboard steps, env vars to set in production)

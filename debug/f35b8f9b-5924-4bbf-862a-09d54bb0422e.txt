@@ -1,0 +1,338 @@
+2026-02-09T10:26:56.456Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-09T10:26:56.456Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-09T10:26:56.456Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-09T10:26:56.456Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-09T10:26:56.459Z [DEBUG] Applying permission update: Adding 9 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)","Bash(gh pr view:*)","Bash(gh pr diff:*)","Bash(tree:*)","Bash(pnpm tsc:*)","Bash(gh pr create --title \"Refactor: AI Agent Architecture & Media Agent Consolidation\" --body \"$\\(cat <<''EOF''\n## Summary\n\n- **Consolidated media agent functionality** - Merged media-agent module into the main agents library for better organization and maintainability\n- **Fixed tool parts persistence issue** - Implemented `mergeParts` function to prevent tool parts from being overwritten during multi-step tool executions \\(images/credits now persist after page refresh\\)\n- **Updated media agent tools** - Streamlined naming conventions and improved consistency across the codebase\n- **Enhanced folder structure** - Improved organization and fixed import paths across components\n\n## Changes\n\n### Agent Architecture\n- Removed standalone `media-agent` module and integrated into main agents library\n- Updated API route to use new methods for agent observation and tracing\n- Refactored imports and function calls for new structure\n\n### Bug Fix: Tool Parts Persistence\n- Added `mergeParts` function in `chatMessage.repo.ts` to merge parts instead of replacing\n- Prevents duplicate messages when tool calls trigger multiple saves\n- Tool outputs \\(credits, image placeholders\\) now persist correctly after page refresh\n\n### Code Quality\n- Removed deprecated tools and adjusted related components\n- Fixed import paths across various components\n- Removed framer-motion animations from some components to simplify structure\n- Updated documentation to reflect changes\n\n## Test plan\n\n- [ ] Generate an image using the media agent\n- [ ] Verify credits and image placeholder appear during streaming\n- [ ] Refresh page and verify tool outputs persist\n- [ ] Test multi-step tool executions \\(image → edit → resize\\)\n\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\" --base master)","Bash(git push:*)"]
+2026-02-09T10:26:56.459Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-09T10:26:56.461Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-09T10:26:56.462Z [DEBUG] [STARTUP] Running setup()...
+2026-02-09T10:26:56.462Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-09T10:26:56.463Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-09T10:26:56.465Z [DEBUG] Error log sink initialized
+2026-02-09T10:26:56.468Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-09T10:26:56.468Z [DEBUG] Total plugin skills loaded: 0
+2026-02-09T10:26:56.468Z [DEBUG] Total plugin commands loaded: 0
+2026-02-09T10:26:56.468Z [DEBUG] [STARTUP] setup() completed in 6ms
+2026-02-09T10:26:56.468Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-09T10:26:56.468Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-09T10:26:56.468Z [DEBUG] Total plugin agents loaded: 0
+2026-02-09T10:26:56.469Z [DEBUG] Loaded 5 unique skills (managed: 0, user: 4, project: 1, additional: 0, legacy commands: 0)
+2026-02-09T10:26:56.469Z [DEBUG] getSkills returning: 5 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-09T10:26:56.469Z [DEBUG] [STARTUP] Commands and agents loaded in 1ms
+2026-02-09T10:26:56.469Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-09T10:26:56.469Z [DEBUG] [render] initLayout starting
+2026-02-09T10:26:56.469Z [DEBUG] Layout engine: yoga
+2026-02-09T10:26:56.471Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-09T10:26:56.472Z [DEBUG] Acquired PID lock for 2.1.37 (PID 1611)
+2026-02-09T10:26:56.472Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.37
+2026-02-09T10:26:56.473Z [DEBUG] [render] initLayout complete
+2026-02-09T10:26:56.475Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:26:56.477Z [DEBUG] [render] first ink render: 266ms since process start
+2026-02-09T10:26:56.477Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-09T10:26:56.489Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-09T10:26:56.504Z [DEBUG] Grove: Cache stale, returning cached data and refreshing in background
+2026-02-09T10:26:56.507Z [DEBUG] [render] initLayout starting
+2026-02-09T10:26:56.507Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-09T10:26:56.508Z [DEBUG] [render] initLayout complete
+2026-02-09T10:26:56.508Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:26:56.509Z [DEBUG] [render] first ink render: 298ms since process start
+2026-02-09T10:26:56.511Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-09T10:26:56.511Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-09T10:26:56.511Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-09T10:26:56.511Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-09T10:26:57.223Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817223
+2026-02-09T10:26:57.223Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.223Z [DEBUG] Temp file written successfully, size: 27782 bytes
+2026-02-09T10:26:57.223Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.223Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817223 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.223Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.224Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817224
+2026-02-09T10:26:57.224Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.224Z [DEBUG] Temp file written successfully, size: 27818 bytes
+2026-02-09T10:26:57.224Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.224Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817224 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.225Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.228Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817228
+2026-02-09T10:26:57.228Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.228Z [DEBUG] Temp file written successfully, size: 27843 bytes
+2026-02-09T10:26:57.228Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.228Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817228 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.228Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.286Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817286
+2026-02-09T10:26:57.286Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.286Z [DEBUG] Temp file written successfully, size: 27843 bytes
+2026-02-09T10:26:57.286Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.286Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817286 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.287Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.288Z [DEBUG] [STARTUP] showSetupScreens() completed in 819ms
+2026-02-09T10:26:57.288Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-09T10:26:57.288Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-09T10:26:57.288Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-09T10:26:57.288Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:57.288Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:57.289Z [DEBUG] Total LSP servers loaded: 0
+2026-02-09T10:26:57.289Z [DEBUG] [STARTUP] MCP configs loaded in 830ms
+2026-02-09T10:26:57.292Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-09T10:26:57.293Z [DEBUG] MCP server "Neon": Initializing HTTP transport to https://mcp.neon.tech/mcp
+2026-02-09T10:26:57.293Z [DEBUG] MCP server "Neon": Node version: v24.3.0, Platform: darwin
+2026-02-09T10:26:57.293Z [DEBUG] MCP server "Neon": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+2026-02-09T10:26:57.306Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-09T10:26:57.307Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817307
+2026-02-09T10:26:57.308Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.308Z [DEBUG] Temp file written successfully, size: 27843 bytes
+2026-02-09T10:26:57.308Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.308Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817307 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.308Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.308Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-09T10:26:57.308Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-09T10:26:57.308Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:57.309Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-09T10:26:57.309Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:26:57.309Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-09T10:26:57.309Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-09T10:26:57.309Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-09T10:26:57.309Z [DEBUG] LSP server manager initialized successfully
+2026-02-09T10:26:57.309Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-09T10:26:57.309Z [DEBUG] MCP server "Neon": Proxy options: default
+2026-02-09T10:26:57.309Z [DEBUG] MCP server "Neon": HTTP transport options: {"url":"https://mcp.neon.tech/mcp","headers":{"User-Agent":"claude-code/2.1.37","Authorization":"[REDACTED]"},"hasAuthProvider":true,"timeoutMs":60000}
+2026-02-09T10:26:57.309Z [DEBUG] MCP server "Neon": HTTP transport created successfully
+2026-02-09T10:26:57.310Z [DEBUG] MCP server "Neon": Client created, setting up request handler
+2026-02-09T10:26:57.310Z [DEBUG] MCP server "Neon": Starting connection with timeout of 30000ms
+2026-02-09T10:26:57.311Z [DEBUG] MCP server "Neon": Testing basic HTTP connectivity to https://mcp.neon.tech/mcp
+2026-02-09T10:26:57.311Z [DEBUG] MCP server "Neon": Parsed URL: host=mcp.neon.tech, port=default, protocol=https:
+2026-02-09T10:26:57.311Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:57.311Z [DEBUG] [render] initLayout starting
+2026-02-09T10:26:57.312Z [DEBUG] [render] initLayout complete
+2026-02-09T10:26:57.316Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:26:57.330Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817330
+2026-02-09T10:26:57.330Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.330Z [DEBUG] Temp file written successfully, size: 27843 bytes
+2026-02-09T10:26:57.330Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.330Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817330 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.330Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.331Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817331
+2026-02-09T10:26:57.331Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.331Z [DEBUG] Temp file written successfully, size: 27925 bytes
+2026-02-09T10:26:57.331Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.331Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817331 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.331Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.332Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-09T10:26:57.333Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-09T10:26:57.333Z [DEBUG] performStartupChecks called
+2026-02-09T10:26:57.333Z [DEBUG] Starting background plugin installations
+2026-02-09T10:26:57.333Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-09T10:26:57.361Z [DEBUG] [render] first ink render: 1149ms since process start
+2026-02-09T10:26:57.633Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-09T10:26:57.634Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817634
+2026-02-09T10:26:57.634Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.634Z [DEBUG] Temp file written successfully, size: 27959 bytes
+2026-02-09T10:26:57.634Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.634Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817634 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.634Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.635Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:26:57.635Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-02-09T10:26:57.635Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-02-09T10:26:57.635Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-09T10:26:57.636Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817636
+2026-02-09T10:26:57.636Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.636Z [DEBUG] Temp file written successfully, size: 27993 bytes
+2026-02-09T10:26:57.636Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.636Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817636 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.636Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.637Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817637
+2026-02-09T10:26:57.637Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.637Z [DEBUG] Temp file written successfully, size: 27992 bytes
+2026-02-09T10:26:57.637Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.637Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817637 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.637Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.638Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-09T10:26:57.638Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-09T10:26:57.642Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-09T10:26:57.645Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817645
+2026-02-09T10:26:57.645Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.645Z [DEBUG] Temp file written successfully, size: 27992 bytes
+2026-02-09T10:26:57.645Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.645Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817645 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.645Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.687Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817687
+2026-02-09T10:26:57.687Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.687Z [DEBUG] Temp file written successfully, size: 27992 bytes
+2026-02-09T10:26:57.687Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.687Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817687 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.687Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.691Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817691
+2026-02-09T10:26:57.691Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.692Z [DEBUG] Temp file written successfully, size: 27992 bytes
+2026-02-09T10:26:57.692Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.692Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817691 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.693Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.701Z [DEBUG] MCP server "ide": Starting connection with timeout of 30000ms
+2026-02-09T10:26:57.701Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:26:57.701Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-09T10:26:57.701Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-09T10:26:57.726Z [DEBUG] MCP server "ide": Successfully connected to ws-ide server in 25ms
+2026-02-09T10:26:57.726Z [DEBUG] MCP server "ide": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Claude Code Cursor MCP","version":"2.1.37"}}
+2026-02-09T10:26:57.840Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/settings.json.tmp.1611.1770632817840
+2026-02-09T10:26:57.840Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.841Z [DEBUG] Temp file written successfully, size: 36 bytes
+2026-02-09T10:26:57.841Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.841Z [DEBUG] Renaming /Users/nishitbariya/.claude/settings.json.tmp.1611.1770632817840 to /Users/nishitbariya/.claude/settings.json
+2026-02-09T10:26:57.841Z [DEBUG] File /Users/nishitbariya/.claude/settings.json written atomically
+2026-02-09T10:26:57.841Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.1611.1770632817841
+2026-02-09T10:26:57.841Z [DEBUG] Preserving file permissions: 100644
+2026-02-09T10:26:57.842Z [DEBUG] Temp file written successfully, size: 28026 bytes
+2026-02-09T10:26:57.842Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:26:57.842Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.1611.1770632817841 to /Users/nishitbariya/.claude.json
+2026-02-09T10:26:57.842Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-09T10:26:57.842Z [DEBUG] Org penguin mode: disabled (extra_usage_disabled)
+2026-02-09T10:26:57.996Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.37)
+2026-02-09T10:26:58.096Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:58.144Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Notion": Initializing claude.ai proxy transport for server mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Notion": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy transport created successfully
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Notion": Starting connection with timeout of 30000ms
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-09T10:26:58.145Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-09T10:26:58.200Z [ERROR] Error: Error: 1: Command failed with ERR_STREAM_PREMATURE_CLOSE: cursor --force --install-extension anthropic.claude-code
+Premature close 
+    at qG7 (/$bunfs/root/claude:1141:4029)
+    at async $G7 (/$bunfs/root/claude:1141:1623)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:26:58.568Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:58.568Z [DEBUG] MCP server "Neon": Successfully connected to http server in 1275ms
+2026-02-09T10:26:58.568Z [DEBUG] MCP server "Neon": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"mcp-server-neon","version":"0.6.4"}}
+2026-02-09T10:26:58.569Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:58.569Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:58.569Z [DEBUG] MCP server "Neon": No token data found
+2026-02-09T10:26:58.642Z [DEBUG] Checking for native installer update to version 2.1.37
+2026-02-09T10:26:58.642Z [DEBUG] Found 2.1.37 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-09T10:26:58.650Z [DEBUG] Cleaned up stale lock: 2.1.31.lock
+2026-02-09T10:26:58.650Z [DEBUG] Cleaned up 1 stale version locks
+2026-02-09T10:26:59.093Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy connection failed after 948ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxLQtQa6mf46FaVQHASy"}
+2026-02-09T10:26:59.093Z [ERROR] MCP server "claude.ai Notion" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxLQtQa6mf46FaVQHASy"}
+2026-02-09T10:26:59.093Z [DEBUG] MCP server "claude.ai Notion": Authentication required for claude.ai proxy server
+2026-02-09T10:26:59.521Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-65X3S4HB.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:713:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:730:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:52)
+    at #resolve (node:internal/modules/esm/loader:695:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:615:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.6.0
+2026-02-09T10:26:59.521Z [DEBUG] MCP server "posthog": Connection failed after 2231ms: MCP error -32000: Connection closed
+2026-02-09T10:26:59.521Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:26:59.522Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:27:00.102Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 1957ms
+2026-02-09T10:27:00.102Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}
+2026-02-09T10:27:00.681Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:27:00.681Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:27:00.682Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:27:01.258Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: analyzeMcp]
+2026-02-09T10:27:01.266Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:27:01.266Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:27:01.266Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:27:23.869Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-09T10:27:23.869Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:27:23.869Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

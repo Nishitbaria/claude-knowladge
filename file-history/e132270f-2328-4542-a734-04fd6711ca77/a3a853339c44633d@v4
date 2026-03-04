@@ -1,0 +1,26 @@
+import { redirect } from "next/navigation";
+import { getAuthedSession } from "@/server/action-utils";
+import { AppSidebar } from "@/components/sidebar";
+import { SubscriptionProvider } from "@/context/subscription-context";
+
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await getAuthedSession().catch(() => null);
+  if (!session) redirect("/sign-in");
+
+  const { user } = session;
+
+  if (!user.emailVerified) redirect("/email-verification");
+
+  return (
+    <SubscriptionProvider>
+      <div className="flex h-screen overflow-hidden bg-background">
+        <AppSidebar user={user} />
+        <main className="flex flex-1 flex-col overflow-y-auto">{children}</main>
+      </div>
+    </SubscriptionProvider>
+  );
+}

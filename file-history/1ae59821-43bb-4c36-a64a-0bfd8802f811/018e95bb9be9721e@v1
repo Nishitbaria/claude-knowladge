@@ -1,0 +1,45 @@
+import { resend } from "@/lib/resend";
+import { env } from "@/env/server";
+import type { ReactElement } from "react";
+
+interface SendEmailOptions {
+  to: string;
+  subject: string;
+  react: ReactElement;
+  text?: string;
+  from?: string;
+}
+
+interface SendEmailResult {
+  success: boolean;
+  messageId?: string;
+  error?: string;
+}
+
+const DEFAULT_FROM = `RunAgents <hello@${env.EMAIL_DOMAIN}>`;
+
+export async function sendEmail(
+  options: SendEmailOptions,
+): Promise<SendEmailResult> {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: options.from ?? DEFAULT_FROM,
+      to: options.to,
+      subject: options.subject,
+      react: options.react,
+      text: options.text,
+    });
+
+    if (error) {
+      console.error("[email] Resend API error:", error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true, messageId: data?.id };
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Unknown email error";
+    console.error("[email] Unexpected error:", message);
+    return { success: false, error: message };
+  }
+}

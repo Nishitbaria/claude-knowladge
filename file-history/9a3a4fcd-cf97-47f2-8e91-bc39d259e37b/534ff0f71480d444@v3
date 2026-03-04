@@ -1,0 +1,100 @@
+import {
+  checkout,
+  dodopayments,
+  portal,
+} from "@dodopayments/better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { betterAuth } from "better-auth/minimal";
+import { env as clientEnv } from "@/env/client";
+import { env as serverEnv } from "@/env/server";
+import { db } from "@/server/db";
+import * as schema from "@/server/db/models/auth.model";
+import { BILLING_CONFIG } from "./billing-config";
+import { dodo } from "./dodo";
+import { resend } from "./resend";
+
+export const auth = betterAuth({
+  baseURL: clientEnv.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // 5 minutes
+    },
+  },
+  database: drizzleAdapter(db, {
+    provider: "pg",
+    schema,
+  }),
+  databaseHooks: {
+    user: {
+      create: {
+        before: async (user) => {
+          if (serverEnv.ENABLE_SIGNUPS !== "true") {
+            throw new Error(
+              "Signups are currently disabled. Please join the waitlist.",
+            );
+          }
+          return { data: user };
+        },
+      },
+    },
+  },
+  trustedOrigins: [clientEnv.NEXT_PUBLIC_SERVER_URL],
+  emailAndPassword: {
+    enabled: true,
+    async sendResetPassword({ user, url }) {
+      await resend.emails.send({
+        from: `RunAgents Auth <hello@${serverEnv.EMAIL_DOMAIN}>`,
+        to: user.email,
+        subject: "Reset your password",
+        text: `Click the link to reset your password: ${url}`,
+      });
+    },
+  },
+  socialProviders: {
+    google: {
+      clientId: serverEnv.GOOGLE_CLIENT_ID,
+      clientSecret: serverEnv.GOOGLE_CLIENT_SECRET,
+      enabled: !!(serverEnv.GOOGLE_CLIENT_ID && serverEnv.GOOGLE_CLIENT_SECRET),
+    },
+  },
+  emailVerification: {
+    async sendVerificationEmail({ user, url }) {
+      await resend.emails.send({
+        from: `RunAgents Auth <hello@${serverEnv.EMAIL_DOMAIN}>`,
+        to: user.email,
+        subject: "Verify your email address",
+        text: `Click the link to verify your email: ${url}`,
+      });
+    },
+  },
+  user: {
+    additionalFields: {
+      trialExpiresAt: {
+        type: "date",
+        defaultValue: () =>
+          new Date(
+            Date.now() + BILLING_CONFIG.trialDays * 24 * 60 * 60 * 1000,
+          ),
+        input: false,
+      },
+    },
+  },
+  plugins: [
+    dodopayments({
+      client: dodo,
+      createCustomerOnSignUp: true,
+      use: [
+        checkout({
+          products: Object.values(BILLING_CONFIG.plans).map((p) => ({
+            productId: p.productId,
+            slug: p.slug,
+          })),
+          successUrl: "/billing/return",
+          authenticatedUsersOnly: true,
+        }),
+        portal(),
+      ],
+    }),
+  ],
+});

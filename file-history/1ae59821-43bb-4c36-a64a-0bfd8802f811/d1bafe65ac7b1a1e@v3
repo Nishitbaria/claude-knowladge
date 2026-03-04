@@ -1,0 +1,97 @@
+import {
+  Body,
+  Button,
+  Container,
+  Head,
+  Heading,
+  Hr,
+  Html,
+  Preview,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
+
+interface WelcomeEmailProps {
+  userName?: string;
+  trialDays?: number;
+}
+
+export const WelcomeEmail = ({
+  userName,
+  trialDays = 7,
+}: WelcomeEmailProps) => {
+  return (
+    <Html>
+      <Head />
+      <Preview>Welcome to RunAgents — let's get started</Preview>
+      <Tailwind>
+        <Body className="mx-auto my-auto bg-white px-2 font-sans text-black">
+          <Container className="mx-auto my-[40px] max-w-[465px] rounded-lg border border-solid border-[#eaeaea] p-[20px] shadow-sm">
+            <Section className="mt-[32px]">
+              <Text className="text-[24px] font-bold tracking-tight text-center text-black mx-0 my-[30px] p-0">
+                RunAgents
+              </Text>
+            </Section>
+
+            <Heading className="mx-0 my-[15px] p-0 text-center text-[24px] font-bold text-black tracking-tight">
+              Welcome aboard!
+            </Heading>
+
+            <Text className="text-[14px] leading-[24px] text-black">
+              Hi {userName || "there"},
+            </Text>
+
+            <Text className="text-[14px] leading-[24px] text-black">
+              Thanks for signing up for RunAgents. You now have a{" "}
+              <strong>{trialDays}-day free trial</strong> to explore everything
+              we offer — deploy AI agents, automate your team's workflows, and
+              connect to Telegram, all without writing code.
+            </Text>
+
+            <Text className="text-[14px] leading-[24px] text-black">
+              Here's how to get started:
+            </Text>
+
+            <Text className="text-[14px] leading-[24px] text-black pl-[12px]">
+              1. Head to your dashboard
+              <br />
+              2. Create your first AI agent
+              <br />
+              3. Deploy it to Telegram in minutes
+            </Text>
+
+            <Section className="my-[32px] text-center">
+              <Button
+                className="rounded-md bg-black px-[20px] py-[12px] text-center text-[14px] font-semibold text-white no-underline"
+                href="https://runagents.co/dashboard"
+              >
+                Go to Dashboard
+              </Button>
+            </Section>
+
+            <Text className="text-[14px] leading-[24px] text-black">
+              If you have any questions, just reply to this email — we're happy
+              to help.
+            </Text>
+
+            <Hr className="mx-0 my-[26px] w-full border border-solid border-[#eaeaea]" />
+
+            <Text className="text-[12px] leading-[24px] text-[#666666] text-center mb-0">
+              RunAgents
+              <br />
+              Automate your team's workflow without writing code.
+            </Text>
+          </Container>
+        </Body>
+      </Tailwind>
+    </Html>
+  );
+};
+
+WelcomeEmail.PreviewProps = {
+  userName: "Jane",
+  trialDays: 7,
+} as WelcomeEmailProps;
+
+export default WelcomeEmail;

@@ -1,0 +1,48 @@
+import { ChevronLeft } from "lucide-react";
+import { headers } from "next/headers";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { GridBackground } from "@/components/grid-background";
+import { Logo } from "@/components/logo";
+import { WaitlistForm } from "@/components/waitlist-form";
+import { env } from "@/env/server";
+import { auth } from "@/lib/auth";
+
+export default async function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (session) redirect("/dashboard");
+
+  return (
+    <div className="relative flex min-h-screen flex-col items-center justify-center p-4 overflow-hidden bg-background text-foreground selection:bg-foreground selection:text-background">
+      {/* Background blobs for premium feel - stay light */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-teal-50/50 rounded-full blur-[120px] pointer-events-none" />
+
+      <GridBackground opacity="opacity-[0.04]" />
+
+      <div className="relative z-10 w-full max-w-md space-y-8 ">
+        <div className="flex flex-col items-center gap-6 text-center">
+          <Logo size="lg" />
+        </div>
+
+        <div className="flex w-full flex-col items-center">
+          {env.ENABLE_SIGNUPS !== "true" ? <WaitlistForm /> : children}
+        </div>
+
+        <div className="flex justify-center">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all"
+          >
+            <ChevronLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+            Back to homepage
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

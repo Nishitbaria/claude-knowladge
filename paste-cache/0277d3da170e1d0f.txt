@@ -1,0 +1,281 @@
+Create an agent team to implement Basehub CMS blog pages. Execute teammates strictly in sequence. Team Lead: do NOT implement anything yourself — only coordinate, review outputs, and synthesize. Wait for each teammate to fully complete and confirm before moving to the next.
+
+---
+
+TEAMMATE 1 — Context Researcher (runs first):
+
+Your job is to gather ALL context before anything is built. Do every step below:
+
+STEP A — Current project context:
+1. Check for CLAUDE.md or AGENTS.md at the project root. Read fully if found.
+2. If not found, read package.json, top-level folder structure, and README to understand what this product is.
+3. Look for any existing blog or CMS-related code: search for "basehub", "blog", "posts", "cms" across src/.
+4. Check .env.example or .env.local — note if BASEHUB_TOKEN is already present.
+5. Read package.json scripts — check if "basehub dev" or "basehub" is already in dev/build scripts.
+6. Identify the routing convention: is this App Router (src/app/) or Pages Router (src/pages/)?
+
+STEP B — ShowCart reference repo (your primary implementation reference):
+Use GitHub CLI to inspect the ShowCart repository:
+
+  gh repo clone FounderFeedAdmin/ShowCart /tmp/showcart --depth=1
+
+Then read the following from it:
+  - /tmp/showcart/package.json → confirm basehub version used
+  - Find any basehub-related files: `find /tmp/showcart -name "*.ts" -o -name "*.tsx" | xargs grep -l "basehub" 2>/dev/null`
+  - Read every file that imports from "basehub" — understand: how they init the client, how they query posts, how they render RichText, how they use Pump component, how they handle slugs and routing
+  - Check if they use --output flag for SDK generation (custom .basehub/ dir)
+  - Note their exact folder structure for blog: page files, component files, query patterns
+
+STEP C — Basehub SDK patterns (from your knowledge + ShowCart findings):
+Summarize:
+1. How SDK is installed and generated (basehub dev & next dev, basehub && next build)
+2. Required env vars: BASEHUB_TOKEN, BASEHUB_DRAFT_SECRET
+3. How Pump component works for RSC + real-time draft preview
+4. How RichText component renders body content
+5. How BaseHubImage works vs next/image
+6. How Next.js draftMode() integrates with Pump
+7. The expected Basehub content schema for a blog: Posts collection fields (title, slug, date, author, excerpt, body/richtext, coverImage, tags)
+
+Write a complete context summary document. Report to Team Lead with summary. Clean up: rm -rf /tmp/showcart
+
+Wait for Team Lead confirmation.
+
+---
+
+TEAMMATE 2 — PRD Writer (starts after Teammate 1 confirms done):
+
+Read Teammate 1's context summary fully. Then write a detailed PRD saved to: docs/prd-basehub-blog.md
+
+The PRD must include:
+
+1. **Objective** — What we're building and why (blog powered by Basehub CMS in this specific product)
+
+2. **Current State** — What exists today (from Teammate 1 findings, any existing blog/CMS code)
+
+3. **Basehub Content Schema Required**
+   Define the exact collections and fields the developer must create in the Basehub dashboard:
+   - Blog document (singleton)
+     - Posts (collection):
+       - title (text, required)
+       - slug (slug, required)
+       - date (date, required)
+       - excerpt (text)
+       - coverImage (image)
+       - author (text or reference)
+       - tags (multi-text)
+       - body (rich text, required)
+     - (optional) Categories (collection)
+   Note: Developer must create this schema in Basehub dashboard before running the generator.
+
+4. **Environment Variables**
+   - BASEHUB_TOKEN (required — read token from Basehub Connect tab)
+   - BASEHUB_DRAFT_SECRET (required — any secure string for draft preview)
+   - Check if these need to be added to env validation in server.ts/env config
+
+5. **Package.json Script Changes**
+   - dev script: "basehub dev & next dev" (or concurrently for Windows)
+   - build script: "basehub && next build"
+   - postinstall: "basehub" (for Vercel/CI)
+
+6. **File-by-file Implementation Plan**
+   Based on ShowCart patterns, specify exactly what to create:
+   - src/lib/basehub/client.ts — basehub client setup
+   - src/app/blog/page.tsx — blog index (list all posts)
+   - src/app/blog/[slug]/page.tsx — single post page with generateStaticParams
+   - src/app/blog/[slug]/opengraph-image.tsx — OG image (if appropriate)
+   - src/components/blog/post-card.tsx — card component for listing
+   - src/components/blog/post-body.tsx — RichText renderer wrapper
+   - src/components/blog/post-header.tsx — title, date, author, cover image
+   - src/app/api/draft/route.ts — draft mode enable/disable routes
+   - Any Toolbar component for draft preview UX
+
+7. **Routing & SEO Plan**
+   - /blog → index page, SSG with ISR (revalidate: 60)
+   - /blog/[slug] → post page, generateStaticParams from Pump query
+   - generateMetadata for each post (title, description, OG tags)
+
+8. **Build & Test Plan**
+   - How to run locally: basehub dev & next dev
+   - How to test with draft content
+   - How to verify SDK codegen output
+   - TypeScript checks
+
+9. **Acceptance Criteria** — definition of done checklist
+
+10. **Manual Steps for Developer** (things agents can't do):
+    - Create Basehub account and repo
+    - Create Posts collection schema in Basehub dashboard
+    - Get BASEHUB_TOKEN from Connect tab
+    - Add env vars to .env.local and Vercel/production
+
+Save to docs/prd-basehub-blog.md. Report to Team Lead with file path and 3-sentence summary.
+
+Wait for Team Lead confirmation.
+
+---
+
+TEAMMATE 3 — Implementer (starts after Teammate 2 confirms done):
+
+Read docs/prd-basehub-blog.md fully before writing any code.
+
+Also re-read ShowCart patterns from Teammate 1's context summary — match the implementation style closely.
+
+Execute in this exact order:
+
+1. **Install basehub SDK**
+   Run: `pnpm add basehub` (or npm/yarn — match the project's package manager from package.json)
+
+2. **Update package.json scripts**
+   Modify dev, build, and add postinstall as specified in the PRD.
+   Use concurrently if the project is Windows-compatible (check package.json for existing concurrently).
+
+3. **Add env vars**
+   - Check if .env.example exists → add BASEHUB_TOKEN= and BASEHUB_DRAFT_SECRET= with comments
+   - Check server.ts or env config (zod schema) → add validation for BASEHUB_TOKEN if env validation exists
+
+4. **Run SDK codegen** (only if BASEHUB_TOKEN is available in environment)
+   Run: `pnpm basehub` or skip and note that developer must run this after setting up their token.
+   If token not present, create a placeholder note in the code comments.
+
+5. **Create all files from the PRD's file-by-file plan:**
+
+   src/lib/basehub/client.ts:
+```ts
+   // Re-export basehub client — import from here, not directly from "basehub"
+   export { basehub } from "basehub"
+```
+
+   src/app/blog/page.tsx:
+   - Use Pump to query all posts (title, slug, date, excerpt, coverImage, author)
+   - Render a grid of PostCard components
+   - Add generateMetadata for the blog index
+   - ISR with revalidate: 60
+
+   src/app/blog/[slug]/page.tsx:
+   - generateStaticParams from basehub posts query
+   - generateMetadata from post fields
+   - Use Pump to query single post by slug
+   - Render PostHeader + PostBody
+   - Handle 404 with notFound() if slug doesn't match
+
+   src/components/blog/post-card.tsx:
+   - Props: title, slug, date, excerpt, coverImage, author
+   - Use BaseHubImage for cover image
+   - Link to /blog/[slug]
+   - Clean, minimal design matching the project's existing component style
+
+   src/components/blog/post-header.tsx:
+   - Title, date (formatted), author, cover image (full width BaseHubImage)
+
+   src/components/blog/post-body.tsx:
+   - Wrapper around Basehub RichText component
+   - Add custom handlers for: code blocks, images, headings
+   - Prose styling
+
+   src/app/api/draft/route.ts:
+   - Enable: validate secret param, call draftMode().enable(), redirect
+   - Disable: call draftMode().disable(), redirect
+
+6. **Wire draftMode into Pump**
+   In page files using Pump, import draftMode from "next/headers" and pass draft prop.
+
+7. **Add Toolbar**
+   Import Toolbar from "basehub/react-toolbar" and render it in blog layout or individual pages.
+
+8. **Typecheck**
+   Run: `pnpm typecheck` or `npx tsc --noEmit`
+   Fix ALL TypeScript errors before reporting done. Note: if basehub types aren't generated yet (no token), add // @ts-expect-error comments with TODO notes rather than breaking the build.
+
+9. **Build check**
+   Run: `pnpm build` or `next build --dry-run` if available. Fix any build errors.
+
+Report to Team Lead:
+- List of all files created/modified
+- Any TypeScript errors that require the token to resolve
+- Confirmation that build passes or specific errors remaining
+- Any deviations from the PRD and why
+
+Wait for Team Lead confirmation.
+
+---
+
+TEAMMATE 4 — Git & PR Agent (starts after Teammate 3 confirms done):
+
+1. Run `git status` to see all changed/created files
+2. Run `git fetch origin`
+3. Check which base branch exists: `git branch -r | grep -E "development|develop|dev"` — use whichever matches
+4. `git checkout <base-branch> && git pull origin <base-branch>`
+5. `git checkout -b feature/basehub-blog-implementation`
+6. Stage only relevant files (not lockfile changes unless basehub was newly installed — if it was, include the lockfile):
+   `git add src/app/blog/ src/components/blog/ src/lib/basehub/ src/app/api/draft/ docs/prd-basehub-blog.md .env.example package.json`
+   Also add lockfile if basehub package was newly installed.
+7. Commit:
+```
+   feat(blog): implement Basehub CMS blog pages
+   
+   - Install basehub SDK and update dev/build scripts
+   - Add BASEHUB_TOKEN + BASEHUB_DRAFT_SECRET env validation
+   - Create blog index page (/blog) with Pump + ISR
+   - Create dynamic post page (/blog/[slug]) with generateStaticParams
+   - Add PostCard, PostHeader, PostBody components
+   - Wire RichText renderer with custom handlers
+   - Add draft mode API routes (/api/draft)
+   - Add BaseHubImage for optimized images
+   - Add Toolbar for draft preview UX
+   - Add PRD at docs/prd-basehub-blog.md
+```
+8. `git push origin feature/basehub-blog-implementation`
+9. Open PR with GitHub CLI:
+```
+   gh pr create \
+     --base <base-branch> \
+     --title "feat(blog): Basehub CMS blog pages implementation" \
+     --body "## Summary
+   Implements blog pages powered by Basehub CMS as described in docs/prd-basehub-blog.md.
+   Reference implementation pattern taken from FounderFeedAdmin/ShowCart.
+
+   ## What's Included
+   - Blog index page at /blog with ISR (revalidate: 60)
+   - Dynamic post page at /blog/[slug] with generateStaticParams
+   - PostCard, PostHeader, PostBody components
+   - RichText renderer with custom handlers
+   - Draft mode API routes + Basehub Toolbar
+   - BaseHubImage for CMS-optimized images
+   - BASEHUB_TOKEN env validation
+
+   ## ⚠️ Manual Steps Required Before This Works
+   1. Create a Basehub account and repository at basehub.com
+   2. Create the Posts collection schema in Basehub dashboard (see PRD for exact fields)
+   3. Copy BASEHUB_TOKEN from the Connect tab in Basehub
+   4. Add to .env.local: BASEHUB_TOKEN=your_token and BASEHUB_DRAFT_SECRET=any_secret
+   5. Run: pnpm basehub (to generate type-safe SDK)
+   6. Run: pnpm dev (which now runs basehub dev & next dev in parallel)
+
+   ## Testing
+   - Set env vars → run pnpm dev → visit /blog
+   - Test draft mode: hit /api/draft?secret=YOUR_SECRET to enable preview
+   - Verify rich text rendering on a post with mixed content
+
+   ## Checklist
+   - [ ] BASEHUB_TOKEN added to Vercel environment variables
+   - [ ] BASEHUB_DRAFT_SECRET added to Vercel environment variables
+   - [ ] Posts schema created in Basehub dashboard
+   - [ ] At least 1 test post created in Basehub to verify rendering
+   - [ ] postinstall script verified on Vercel build"
+```
+10. Report the PR URL to Team Lead.
+
+---
+
+TEAM LEAD — Final Synthesis:
+Once all 4 teammates are done, output a final handoff summary:
+
+**What was built:** [file list]
+**PR:** [link]
+**SDK codegen status:** [generated or pending token]
+**Manual steps the developer MUST do before this works:**
+1. Basehub account + repo setup
+2. Posts schema creation (with field list)
+3. Env vars to add locally and in Vercel
+4. pnpm basehub to generate SDK types
+**Open questions / follow-ups:** [anything that needs decision]

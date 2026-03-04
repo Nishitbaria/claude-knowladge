@@ -1,0 +1,35 @@
+user@e2b:~/.openclaw$ openclaw agents -h
+
+🦞 OpenClaw 2026.3.2 (85377a2) — One CLI to rule them all, and one more restart because you changed the port.
+
+Usage: openclaw agents [options] [command]
+
+Manage isolated agents (workspaces + auth + routing)
+
+Options:
+  -h, --help    Display help for command
+
+Commands:
+  add           Add a new isolated agent
+  bind          Add routing bindings for an agent
+  bindings      List routing bindings
+  delete        Delete an agent and prune workspace/state
+  list          List configured agents
+  set-identity  Update an agent identity (name/theme/emoji/avatar)
+  unbind        Remove routing bindings for an agent
+
+Docs: docs.openclaw.ai/cli/agents
+
+user@e2b:~/.openclaw$ openclaw agents delete -h
+
+🦞 OpenClaw 2026.3.2 (85377a2) — I'm the reason your shell history looks like a hacker-movie montage.
+
+Usage: openclaw agents delete [options] <id>
+
+Delete an agent and prune workspace/state
+
+Options:
+  --force     Skip confirmation (default: false)
+  -h, --help  Delp for command
+  --json      Output JSON summary (default: false)
+user@e2b:~/.openclaw$ 

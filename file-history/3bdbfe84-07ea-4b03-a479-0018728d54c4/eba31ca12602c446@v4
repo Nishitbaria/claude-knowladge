@@ -1,0 +1,242 @@
+"use client";
+
+import { RefreshCw, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AGENT_TEMPLATES } from "../_constants/templates";
+import {
+  useAgentMutations,
+  useAgentSessions,
+  useAgentsList,
+} from "../_hooks/use-subagents";
+import type { AgentInfo, AgentSession, AgentTemplate } from "./types";
+
+// ── Status badge ─────────────────────────────────────────────────────────────
+
+const STATUS_STYLES: Record<AgentSession["status"], string> = {
+  running: "bg-green-500/10 text-green-600",
+  completed: "bg-blue-500/10 text-blue-600",
+  error: "bg-destructive/10 text-destructive",
+  unknown: "bg-muted text-muted-foreground",
+};
+
+function StatusBadge({ status }: { status: AgentSession["status"] }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${STATUS_STYLES[status]}`}
+    >
+      {status === "running" && (
+        <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+      )}
+      {status.charAt(0).toUpperCase() + status.slice(1)}
+    </span>
+  );
+}
+
+// ── Template card ────────────────────────────────────────────────────────────
+
+function TemplateCard({
+  template,
+  isDeployed,
+  onCreate,
+  onDelete,
+  busy,
+}: {
+  template: AgentTemplate;
+  isDeployed: boolean;
+  onCreate: () => void;
+  onDelete: () => void;
+  busy: boolean;
+}) {
+  const Icon = template.icon;
+  return (
+    <article className="flex flex-col justify-between rounded-xl border bg-card p-5 shadow-sm">
+      <div className="flex items-start gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="text-sm font-medium">
+            {template.emoji} {template.name}
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            {template.description}
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex gap-2">
+        {isDeployed ? (
+          <>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-medium text-green-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+              Deployed
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              className="ml-auto"
+              disabled={busy}
+              onClick={onDelete}
+            >
+              <Trash2 className="mr-1 h-3.5 w-3.5" />
+              Remove
+            </Button>
+          </>
+        ) : (
+          <Button
+            size="sm"
+            className="w-full"
+            disabled={busy}
+            onClick={onCreate}
+          >
+            Deploy Agent
+          </Button>
+        )}
+      </div>
+    </article>
+  );
+}
+
+// ── Session row ──────────────────────────────────────────────────────────────
+
+function SessionRow({ session }: { session: AgentSession }) {
+  // Extract agent name from key like "agent:marketing:main" -> "marketing"
+  const agentId = session.key.split(":")[1] ?? session.key;
+
+  return (
+    <div className="flex items-center justify-between rounded-lg border bg-card px-4 py-3">
+      <div className="flex flex-col gap-1 min-w-0">
+        <span className="text-sm font-medium truncate">
+          {session.label ?? agentId}
+        </span>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          {session.model && <span>{session.model}</span>}
+          {session.tokens && (
+            <span>{session.tokens.total.toLocaleString()} tokens</span>
+          )}
+          {session.updatedAt && (
+            <span>
+              {new Date(session.updatedAt).toLocaleTimeString()}
+            </span>
+          )}
+        </div>
+      </div>
+      <StatusBadge status={session.status} />
+    </div>
+  );
+}
+
+// ── Main view ────────────────────────────────────────────────────────────────
+
+export function SubAgentsView({ sandboxId }: { sandboxId: string }) {
+  const {
+    data: agentsData,
+    isLoading: agentsLoading,
+    refetch: refetchAgents,
+  } = useAgentsList(sandboxId);
+  const {
+    data: sessionsData,
+    isLoading: sessionsLoading,
+    refetch: refetchSessions,
+  } = useAgentSessions(sandboxId);
+  const { create, remove, busy } = useAgentMutations(sandboxId);
+
+  const deployedAgents = agentsData?.agents ?? [];
+  const sessions = sessionsData?.sessions ?? [];
+  const isLoading = agentsLoading || sessionsLoading;
+
+  const deployedIds = new Set(deployedAgents.map((a: AgentInfo) => a.id));
+
+  function handleCreate(template: AgentTemplate) {
+    create.mutate({
+      sandboxId,
+      agentId: template.agentId,
+      name: template.name,
+      emoji: template.emoji,
+      systemPrompt: template.systemPrompt,
+    });
+  }
+
+  function handleDelete(agentId: string) {
+    remove.mutate({ sandboxId, agentId });
+  }
+
+  function handleRefresh() {
+    void refetchAgents();
+    void refetchSessions();
+  }
+
+  return (
+    <section className="flex flex-col gap-6 p-6 md:p-8">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-xl font-semibold tracking-tight">Agents</h1>
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            Deploy named agents with their own workspace and skills. Chat via
+            Telegram.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRefresh}
+          disabled={isLoading}
+        >
+          <RefreshCw
+            className={`mr-1.5 h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`}
+          />
+          Refresh
+        </Button>
+      </div>
+
+      {/* Template cards */}
+      <div>
+        <h2 className="mb-3 text-sm font-medium text-muted-foreground">
+          Agent Templates
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {AGENT_TEMPLATES.map((template) => (
+            <TemplateCard
+              key={template.id}
+              template={template}
+              isDeployed={deployedIds.has(template.agentId)}
+              onCreate={() => handleCreate(template)}
+              onDelete={() => handleDelete(template.agentId)}
+              busy={busy}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Sessions */}
+      <div>
+        <h2 className="mb-3 text-sm font-medium text-muted-foreground">
+          Agent Sessions ({sessions.length})
+        </h2>
+        {isLoading && sessions.length === 0 ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <span
+                className="h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent animate-spin"
+                aria-hidden="true"
+              />
+              <span className="text-sm">Loading sessions...</span>
+            </div>
+          </div>
+        ) : sessions.length === 0 ? (
+          <div className="flex items-center justify-center rounded-lg border border-dashed py-12">
+            <p className="text-sm text-muted-foreground">
+              No agent sessions yet. Deploy an agent above to get started.
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2">
+            {sessions.map((session) => (
+              <SessionRow key={session.key} session={session} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

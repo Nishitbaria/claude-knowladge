@@ -1,0 +1,471 @@
+2026-02-03T06:28:33.845Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-03T06:28:33.845Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-03T06:28:33.845Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-03T06:28:33.845Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-03T06:28:33.848Z [DEBUG] Applying permission update: Adding 3 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)"]
+2026-02-03T06:28:33.848Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-03T06:28:33.850Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-03T06:28:33.850Z [DEBUG] [STARTUP] Running setup()...
+2026-02-03T06:28:33.850Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-03T06:28:33.851Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-03T06:28:33.857Z [DEBUG] Error log sink initialized
+2026-02-03T06:28:33.858Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-03T06:28:33.858Z [DEBUG] Total plugin skills loaded: 0
+2026-02-03T06:28:33.858Z [DEBUG] Total plugin commands loaded: 0
+2026-02-03T06:28:33.858Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-03T06:28:33.858Z [DEBUG] [STARTUP] setup() completed in 8ms
+2026-02-03T06:28:33.858Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-03T06:28:33.859Z [DEBUG] Total plugin agents loaded: 0
+2026-02-03T06:28:33.860Z [DEBUG] Loaded 8 unique skills (managed: 0, user: 4, project: 4, legacy commands: 0)
+2026-02-03T06:28:33.860Z [DEBUG] getSkills returning: 8 skill dir commands, 0 plugin skills, 1 bundled skills
+2026-02-03T06:28:33.861Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-02-03T06:28:33.861Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-03T06:28:34.175Z [DEBUG] [render] initLayout starting
+2026-02-03T06:28:34.176Z [DEBUG] Layout engine: yoga
+2026-02-03T06:28:34.178Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-03T06:28:34.180Z [DEBUG] Acquired PID lock for 2.1.29 (PID 21494)
+2026-02-03T06:28:34.181Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.29
+2026-02-03T06:28:34.186Z [DEBUG] [render] initLayout complete
+2026-02-03T06:28:34.190Z [DEBUG] [render] first ink render: 672ms since process start
+2026-02-03T06:28:34.190Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-03T06:28:34.212Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:28:34.242Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-03T06:28:34.268Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100114268
+2026-02-03T06:28:34.268Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:34.268Z [DEBUG] Temp file written successfully, size: 26619 bytes
+2026-02-03T06:28:34.268Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:34.268Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100114268 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:34.269Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:34.270Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100114270
+2026-02-03T06:28:34.270Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:34.270Z [DEBUG] Temp file written successfully, size: 26620 bytes
+2026-02-03T06:28:34.270Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:34.270Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100114270 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:34.270Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:34.832Z [DEBUG] High write ratio: blit=0, write=1905 (100.0% writes), screen=36x164
+2026-02-03T06:28:38.291Z [DEBUG] High write ratio: blit=0, write=1905 (100.0% writes), screen=36x164
+2026-02-03T06:28:38.326Z [DEBUG] High write ratio: blit=0, write=1895 (100.0% writes), screen=36x164
+2026-02-03T06:28:38.326Z [DEBUG] Full reset (scrollback changes): scrollbackRows=8, firstChangeY=0
+  prev: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+  next: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+2026-02-03T06:28:39.013Z [DEBUG] High write ratio: blit=0, write=1895 (100.0% writes), screen=36x164
+2026-02-03T06:28:39.045Z [DEBUG] High write ratio: blit=0, write=1905 (100.0% writes), screen=36x164
+2026-02-03T06:28:39.045Z [DEBUG] Full reset (scrollback changes): scrollbackRows=8, firstChangeY=0
+  prev: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+  next: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+2026-02-03T06:28:40.319Z [DEBUG] High write ratio: blit=0, write=1905 (100.0% writes), screen=36x164
+2026-02-03T06:28:40.349Z [DEBUG] High write ratio: blit=0, write=1895 (100.0% writes), screen=36x164
+2026-02-03T06:28:40.349Z [DEBUG] Full reset (scrollback changes): scrollbackRows=8, firstChangeY=0
+  prev: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+  next: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+2026-02-03T06:28:40.790Z [DEBUG] High write ratio: blit=0, write=1895 (100.0% writes), screen=36x164
+2026-02-03T06:28:40.822Z [DEBUG] High write ratio: blit=0, write=1893 (100.0% writes), screen=36x164
+2026-02-03T06:28:40.822Z [DEBUG] Full reset (scrollback changes): scrollbackRows=8, firstChangeY=0
+  prev: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+  next: "Welcome to Claude Code v2.1.29                                                                                                                                      "
+2026-02-03T06:28:42.338Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100122338
+2026-02-03T06:28:42.338Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:42.339Z [DEBUG] Temp file written successfully, size: 26644 bytes
+2026-02-03T06:28:42.339Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:42.339Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100122338 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:42.339Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:42.341Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100122341
+2026-02-03T06:28:42.341Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:42.342Z [DEBUG] Temp file written successfully, size: 26644 bytes
+2026-02-03T06:28:42.342Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:42.342Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100122341 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:42.342Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:42.350Z [DEBUG] High write ratio: blit=0, write=1222 (100.0% writes), screen=28x164
+2026-02-03T06:28:42.350Z [DEBUG] Full reset (shrink->below): prevHeight=36, nextHeight=28, viewport=29
+2026-02-03T06:28:45.842Z [DEBUG] High write ratio: blit=0, write=1222 (100.0% writes), screen=28x164
+2026-02-03T06:28:46.845Z [DEBUG] High write ratio: blit=0, write=1222 (100.0% writes), screen=28x164
+2026-02-03T06:28:47.153Z [DEBUG] High write ratio: blit=0, write=1222 (100.0% writes), screen=28x164
+2026-02-03T06:28:51.353Z [DEBUG] High write ratio: blit=0, write=1418 (100.0% writes), screen=25x164
+2026-02-03T06:28:56.363Z [ERROR] Error: Error: Failed to delete keychain entry
+    at ol9 (/$bunfs/root/claude:187:10369)
+    at async Hi9 (/$bunfs/root/claude:188:592)
+    at async $i9 (/$bunfs/root/claude:188:496)
+    at async kKA (/$bunfs/root/claude:1733:25443)
+    at async startOAuthFlow (/$bunfs/root/claude:1733:26974)
+    at processTicksAndRejections (native:7:39)
+2026-02-03T06:28:56.364Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100136364
+2026-02-03T06:28:56.364Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:56.364Z [DEBUG] Temp file written successfully, size: 26644 bytes
+2026-02-03T06:28:56.364Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:56.365Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100136364 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:56.365Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:56.438Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100136438
+2026-02-03T06:28:56.438Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:56.438Z [DEBUG] Temp file written successfully, size: 26644 bytes
+2026-02-03T06:28:56.438Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:56.438Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100136438 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:56.438Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:56.791Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100136791
+2026-02-03T06:28:56.791Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:56.791Z [DEBUG] Temp file written successfully, size: 26913 bytes
+2026-02-03T06:28:56.791Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:56.791Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100136791 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:56.791Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:57.384Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100137384
+2026-02-03T06:28:57.384Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:57.384Z [DEBUG] Temp file written successfully, size: 27045 bytes
+2026-02-03T06:28:57.384Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:57.384Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100137384 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:57.385Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:57.387Z [DEBUG] Getting matching hook commands for Notification with query: auth_success
+2026-02-03T06:28:57.387Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T06:28:57.387Z [DEBUG] Matched 0 unique hooks for query "auth_success" (0 before deduplication)
+2026-02-03T06:28:57.924Z [DEBUG] Metrics opt-out API response: enabled=true, vcsLinking=false
+2026-02-03T06:31:58.408Z [DEBUG] High write ratio: blit=0, write=1160 (100.0% writes), screen=28x164
+2026-02-03T06:31:59.962Z [DEBUG] High write ratio: blit=0, write=1146 (100.0% writes), screen=26x164
+2026-02-03T06:32:02.632Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100322632
+2026-02-03T06:32:02.632Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:02.632Z [DEBUG] Temp file written successfully, size: 27044 bytes
+2026-02-03T06:32:02.632Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:02.632Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100322632 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:02.633Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:02.634Z [DEBUG] [render] initLayout starting
+2026-02-03T06:32:02.634Z [DEBUG] [render] initLayout complete
+2026-02-03T06:32:02.636Z [DEBUG] [render] first ink render: 209119ms since process start
+2026-02-03T06:32:02.638Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:32:02.644Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100322644
+2026-02-03T06:32:02.644Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:02.644Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:02.644Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:02.644Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100322644 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:02.644Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:02.669Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-03T06:32:02.670Z [DEBUG] Grove: Cache stale, returning cached data and refreshing in background
+2026-02-03T06:32:02.671Z [DEBUG] [render] initLayout starting
+2026-02-03T06:32:02.672Z [DEBUG] [render] initLayout complete
+2026-02-03T06:32:02.672Z [DEBUG] [render] first ink render: 209156ms since process start
+2026-02-03T06:32:02.680Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:32:02.683Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:32:02.683Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:32:02.683Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:32:02.683Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-03T06:32:03.056Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100323056
+2026-02-03T06:32:03.056Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:03.056Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:03.056Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:03.056Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100323056 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:03.056Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:03.126Z [DEBUG] [STARTUP] showSetupScreens() completed in 209265ms
+2026-02-03T06:32:03.126Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-03T06:32:03.126Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-03T06:32:03.126Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-03T06:32:03.126Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T06:32:03.126Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T06:32:03.129Z [DEBUG] Total LSP servers loaded: 0
+2026-02-03T06:32:03.129Z [DEBUG] [STARTUP] MCP configs loaded in 209281ms
+2026-02-03T06:32:03.134Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-03T06:32:03.150Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-03T06:32:03.152Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100323152
+2026-02-03T06:32:03.152Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:03.152Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:03.152Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:03.152Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100323152 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:03.152Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:03.153Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-03T06:32:03.153Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-03T06:32:03.154Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-03T06:32:03.154Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-03T06:32:03.154Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-03T06:32:03.154Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T06:32:03.154Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-03T06:32:03.154Z [DEBUG] LSP server manager initialized successfully
+2026-02-03T06:32:03.154Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-03T06:32:03.154Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T06:32:03.155Z [DEBUG] [render] initLayout starting
+2026-02-03T06:32:03.155Z [DEBUG] [render] initLayout complete
+2026-02-03T06:32:03.156Z [DEBUG] [render] first ink render: 209639ms since process start
+2026-02-03T06:32:03.159Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-03T06:32:03.164Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-03T06:32:03.172Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:32:03.185Z [DEBUG] High write ratio: blit=0, write=1059 (100.0% writes), screen=18x164
+2026-02-03T06:32:03.197Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-03T06:32:03.198Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-03T06:32:03.198Z [DEBUG] performStartupChecks called
+2026-02-03T06:32:03.198Z [DEBUG] Starting background plugin installations
+2026-02-03T06:32:03.198Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-03T06:32:03.270Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-03T06:32:03.270Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-03T06:32:03.270Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-03T06:32:03.273Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-03T06:32:03.273Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-03T06:32:03.273Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:32:03.291Z [DEBUG] High write ratio: blit=0, write=1110 (100.0% writes), screen=18x164
+2026-02-03T06:32:03.418Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100323418
+2026-02-03T06:32:03.418Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:03.418Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:03.418Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:03.418Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100323418 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:03.418Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:03.452Z [DEBUG] MCP server "ide": Starting connection with timeout of 30000ms
+2026-02-03T06:32:03.452Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-03T06:32:03.452Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-03T06:32:03.452Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-03T06:32:03.483Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100323483
+2026-02-03T06:32:03.483Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:03.483Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:03.483Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:03.483Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100323483 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:03.483Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:03.488Z [DEBUG] MCP server "ide": Successfully connected to ws-ide server in 39ms
+2026-02-03T06:32:03.488Z [DEBUG] MCP server "ide": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Claude Code Cursor MCP","version":"2.1.27"}}
+2026-02-03T06:32:03.520Z [DEBUG] High write ratio: blit=0, write=1110 (100.0% writes), screen=18x164
+2026-02-03T06:32:03.631Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-03T06:32:03.903Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-03T06:32:03.904Z [DEBUG] MCP server "claude.ai Notion": Initializing claude.ai proxy transport for server mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-03T06:32:03.904Z [DEBUG] MCP server "claude.ai Notion": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01BnGhZYL82QLwu7nvS3tXQk
+2026-02-03T06:32:03.904Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy transport created successfully
+2026-02-03T06:32:03.904Z [DEBUG] MCP server "claude.ai Notion": Starting connection with timeout of 30000ms
+2026-02-03T06:32:03.905Z [DEBUG] MCP server "claude.ai Hugging Face": Initializing claude.ai proxy transport for server mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-03T06:32:03.905Z [DEBUG] MCP server "claude.ai Hugging Face": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01Efpr846aH1oHW5LTu2bvDg
+2026-02-03T06:32:03.905Z [DEBUG] MCP server "claude.ai Hugging Face": claude.ai proxy transport created successfully
+2026-02-03T06:32:03.905Z [DEBUG] MCP server "claude.ai Hugging Face": Starting connection with timeout of 30000ms
+2026-02-03T06:32:03.909Z [ERROR] Error: Error: 1: Command failed with ERR_STREAM_PREMATURE_CLOSE: cursor --force --install-extension anthropic.claude-code
+Premature close 
+    at a97 (/$bunfs/root/claude:809:4029)
+    at async i97 (/$bunfs/root/claude:809:1623)
+    at processTicksAndRejections (native:7:39)
+2026-02-03T06:32:04.650Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.29)
+2026-02-03T06:32:04.730Z [DEBUG] MCP server "claude.ai Notion": claude.ai proxy connection failed after 826ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXkfeSyRsRwsC7kQUqtHS"}
+2026-02-03T06:32:04.731Z [ERROR] MCP server "claude.ai Notion" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXkfeSyRsRwsC7kQUqtHS"}
+2026-02-03T06:32:04.731Z [DEBUG] MCP server "claude.ai Notion": Authentication required for claude.ai proxy server
+2026-02-03T06:32:04.750Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T06:32:04.750Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T06:32:05.718Z [DEBUG] MCP server "claude.ai Hugging Face": Successfully connected to claudeai-proxy server in 1813ms
+2026-02-03T06:32:05.719Z [DEBUG] MCP server "claude.ai Hugging Face": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"serverVersion":{"name":"@huggingface/mcp-services","title":"Hugging Face","icons":[{"src":"https://huggingface.co/favicon.ico"}],"version":"0.3.1","websiteUrl":"https://huggingface.co/mcp"}}
+2026-02-03T06:32:06.387Z [DEBUG] High write ratio: blit=0, write=1147 (100.0% writes), screen=19x164
+2026-02-03T06:32:06.817Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-F76MHFRJ.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:712:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:729:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:758:52)
+    at #resolve (node:internal/modules/esm/loader:694:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:614:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.4.0
+2026-02-03T06:32:06.817Z [DEBUG] MCP server "posthog": Connection failed after 3687ms: MCP error -32000: Connection closed
+2026-02-03T06:32:06.817Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-03T06:32:06.822Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T06:32:06.822Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T06:32:06.822Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T06:32:06.829Z [DEBUG] High write ratio: blit=0, write=1147 (100.0% writes), screen=19x164
+2026-02-03T06:32:09.844Z [DEBUG] High write ratio: blit=0, write=1114 (100.0% writes), screen=23x164
+2026-02-03T06:32:09.847Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/todos/ff7e454a-1c77-4ac0-a271-925f53e83abc-agent-ff7e454a-1c77-4ac0-a271-925f53e83abc.json.tmp.21494.1770100329847
+2026-02-03T06:32:09.848Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-03T06:32:09.848Z [DEBUG] Renaming /Users/nishitbariya/.claude/todos/ff7e454a-1c77-4ac0-a271-925f53e83abc-agent-ff7e454a-1c77-4ac0-a271-925f53e83abc.json.tmp.21494.1770100329847 to /Users/nishitbariya/.claude/todos/ff7e454a-1c77-4ac0-a271-925f53e83abc-agent-ff7e454a-1c77-4ac0-a271-925f53e83abc.json
+2026-02-03T06:32:09.848Z [DEBUG] File /Users/nishitbariya/.claude/todos/ff7e454a-1c77-4ac0-a271-925f53e83abc-agent-ff7e454a-1c77-4ac0-a271-925f53e83abc.json written atomically
+2026-02-03T06:32:09.851Z [DEBUG] Stats cache is up to date
+2026-02-03T06:32:09.852Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json'
+    at openSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:947)
+    at yC (/$bunfs/root/claude:11:40705)
+    at readSync (/$bunfs/root/claude:12:875)
+    at kC (/$bunfs/root/claude:5143:113)
+    at vG (/$bunfs/root/claude:5145:226)
+    at wq9 (/$bunfs/root/claude:121:1845)
+    at <anonymous> (/$bunfs/root/claude:5250:4212)
+2026-02-03T06:32:09.852Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json
+2026-02-03T06:32:10.787Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-03T06:32:10.787Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-03T06:32:13.110Z [DEBUG] High write ratio: blit=0, write=1144 (100.0% writes), screen=23x164
+2026-02-03T06:32:13.113Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T06:32:13.120Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:32:13.134Z [DEBUG] High write ratio: blit=0, write=1127 (100.0% writes), screen=21x164
+2026-02-03T06:32:13.139Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100333139
+2026-02-03T06:32:13.139Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:13.139Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:13.139Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:13.139Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100333139 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:13.140Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:13.141Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100333141
+2026-02-03T06:32:13.141Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:13.141Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:13.142Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:13.142Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100333141 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:13.142Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:13.142Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T06:32:14.521Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T06:32:14.522Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T06:32:19.204Z [DEBUG] High write ratio: blit=0, write=1232 (100.0% writes), screen=27x164
+2026-02-03T06:32:23.226Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/settings.json.tmp.21494.1770100343226
+2026-02-03T06:32:23.227Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:23.227Z [DEBUG] Temp file written successfully, size: 57 bytes
+2026-02-03T06:32:23.227Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:23.227Z [DEBUG] Renaming /Users/nishitbariya/.claude/settings.json.tmp.21494.1770100343226 to /Users/nishitbariya/.claude/settings.json
+2026-02-03T06:32:23.228Z [DEBUG] File /Users/nishitbariya/.claude/settings.json written atomically
+2026-02-03T06:32:23.230Z [DEBUG] FileHistory: Added snapshot for 27183c43-e311-440f-92e2-28819ea98e0a, tracking 0 files
+2026-02-03T06:32:23.241Z [DEBUG] High write ratio: blit=0, write=1297 (100.0% writes), screen=27x164
+2026-02-03T06:32:23.244Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T06:32:23.250Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:32:23.263Z [DEBUG] High write ratio: blit=0, write=1191 (100.0% writes), screen=24x164
+2026-02-03T06:32:23.264Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T06:32:23.272Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100343272
+2026-02-03T06:32:23.272Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:23.273Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:23.273Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:23.273Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100343272 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:23.273Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:23.274Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770100343274
+2026-02-03T06:32:23.274Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:32:23.274Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T06:32:23.274Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:32:23.274Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770100343274 to /Users/nishitbariya/.claude.json
+2026-02-03T06:32:23.275Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:32:24.627Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T06:32:24.627Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T06:33:23.267Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T06:33:23.267Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T06:33:23.267Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T06:33:53.091Z [DEBUG] High write ratio: blit=0, write=1140 (100.0% writes), screen=24x164
+2026-02-03T07:00:47.440Z [DEBUG] High write ratio: blit=0, write=1155 (100.0% writes), screen=24x164
+2026-02-03T07:00:51.188Z [DEBUG] High write ratio: blit=0, write=1127 (100.0% writes), screen=24x157
+2026-02-03T07:00:51.225Z [DEBUG] High write ratio: blit=0, write=1127 (100.0% writes), screen=24x157
+2026-02-03T07:01:51.201Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T07:01:51.201Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T07:01:51.202Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T07:14:09.715Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T07:14:09.716Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T07:14:09.716Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T07:15:08.126Z [DEBUG] High write ratio: blit=0, write=1127 (100.0% writes), screen=24x157
+2026-02-03T07:16:08.146Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T07:16:08.146Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T07:16:08.147Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T07:36:55.728Z [DEBUG] High write ratio: blit=0, write=1140 (100.0% writes), screen=24x158
+2026-02-03T07:36:55.772Z [DEBUG] High write ratio: blit=0, write=1160 (100.0% writes), screen=24x163
+2026-02-03T07:36:55.823Z [DEBUG] High write ratio: blit=0, write=1176 (100.0% writes), screen=24x167
+2026-02-03T07:36:55.879Z [DEBUG] High write ratio: blit=0, write=1192 (100.0% writes), screen=24x171
+2026-02-03T07:36:55.935Z [DEBUG] High write ratio: blit=0, write=1204 (100.0% writes), screen=24x174
+2026-02-03T07:36:55.994Z [DEBUG] High write ratio: blit=0, write=1212 (100.0% writes), screen=24x176
+2026-02-03T07:36:56.052Z [DEBUG] High write ratio: blit=0, write=1220 (100.0% writes), screen=24x178
+2026-02-03T07:36:56.116Z [DEBUG] High write ratio: blit=0, write=1232 (100.0% writes), screen=24x181
+2026-02-03T07:36:56.186Z [DEBUG] High write ratio: blit=0, write=1240 (100.0% writes), screen=24x183
+2026-02-03T07:36:56.265Z [DEBUG] High write ratio: blit=0, write=1240 (100.0% writes), screen=24x183
+2026-02-03T07:36:56.328Z [DEBUG] High write ratio: blit=0, write=1244 (100.0% writes), screen=24x184
+2026-02-03T07:36:56.411Z [DEBUG] High write ratio: blit=0, write=1244 (100.0% writes), screen=24x184
+2026-02-03T07:36:56.614Z [DEBUG] High write ratio: blit=0, write=1236 (100.0% writes), screen=24x182
+2026-02-03T07:36:56.662Z [DEBUG] High write ratio: blit=0, write=1220 (100.0% writes), screen=24x178
+2026-02-03T07:36:56.710Z [DEBUG] High write ratio: blit=0, write=1212 (100.0% writes), screen=24x176
+2026-02-03T07:37:56.720Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T07:37:56.720Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T07:37:56.721Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T08:33:30.900Z [DEBUG] High write ratio: blit=0, write=1212 (100.0% writes), screen=24x176
+2026-02-03T08:33:31.109Z [DEBUG] High write ratio: blit=0, write=1212 (100.0% writes), screen=24x176
+2026-02-03T08:34:54.254Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T08:34:54.254Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T08:34:54.255Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T08:47:52.377Z [DEBUG] High write ratio: blit=0, write=1188 (100.0% writes), screen=24x176
+2026-02-03T08:47:56.312Z [DEBUG] High write ratio: blit=0, write=1008 (100.0% writes), screen=24x131
+2026-02-03T08:47:56.349Z [DEBUG] High write ratio: blit=0, write=1028 (100.0% writes), screen=24x136
+2026-02-03T08:47:56.370Z [DEBUG] High write ratio: blit=0, write=1036 (100.0% writes), screen=24x138
+2026-02-03T08:47:56.391Z [DEBUG] High write ratio: blit=0, write=1056 (100.0% writes), screen=24x143
+2026-02-03T08:47:56.416Z [DEBUG] High write ratio: blit=0, write=1064 (100.0% writes), screen=24x145
+2026-02-03T08:47:59.718Z [DEBUG] High write ratio: blit=0, write=1060 (100.0% writes), screen=24x144
+2026-02-03T08:47:59.745Z [DEBUG] High write ratio: blit=0, write=1060 (100.0% writes), screen=24x144
+2026-02-03T08:47:59.773Z [DEBUG] High write ratio: blit=0, write=1052 (100.0% writes), screen=24x142
+2026-02-03T08:47:59.806Z [DEBUG] High write ratio: blit=0, write=1052 (100.0% writes), screen=24x142
+2026-02-03T08:47:59.828Z [DEBUG] High write ratio: blit=0, write=1040 (100.0% writes), screen=24x139
+2026-02-03T08:47:59.861Z [DEBUG] High write ratio: blit=0, write=1040 (100.0% writes), screen=24x139
+2026-02-03T08:47:59.886Z [DEBUG] High write ratio: blit=0, write=1032 (100.0% writes), screen=24x137
+2026-02-03T08:47:59.920Z [DEBUG] High write ratio: blit=0, write=1032 (100.0% writes), screen=24x137
+2026-02-03T08:47:59.971Z [DEBUG] High write ratio: blit=0, write=1028 (100.0% writes), screen=24x136
+2026-02-03T08:48:00.032Z [DEBUG] High write ratio: blit=0, write=1020 (100.0% writes), screen=24x134
+2026-02-03T08:48:00.059Z [DEBUG] High write ratio: blit=0, write=1020 (100.0% writes), screen=24x134
+2026-02-03T08:48:00.097Z [DEBUG] High write ratio: blit=0, write=1016 (100.0% writes), screen=24x133
+2026-02-03T08:48:00.125Z [DEBUG] High write ratio: blit=0, write=1016 (100.0% writes), screen=24x133
+2026-02-03T08:48:00.318Z [DEBUG] High write ratio: blit=0, write=1020 (100.0% writes), screen=24x134
+2026-02-03T08:48:00.379Z [DEBUG] High write ratio: blit=0, write=1060 (100.0% writes), screen=24x144
+2026-02-03T08:48:00.411Z [DEBUG] High write ratio: blit=0, write=1060 (100.0% writes), screen=24x144
+2026-02-03T08:48:00.439Z [DEBUG] High write ratio: blit=0, write=1096 (100.0% writes), screen=24x153
+2026-02-03T08:48:00.474Z [DEBUG] High write ratio: blit=0, write=1096 (100.0% writes), screen=24x153
+2026-02-03T08:49:00.457Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T08:49:00.457Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T08:49:00.457Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:06:57.957Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:57.993Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.031Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.062Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.094Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.123Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.152Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.185Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.378Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.433Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.757Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.775Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.804Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.830Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.879Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.906Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:06:58.940Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:07:58.719Z [DEBUG] High write ratio: blit=0, write=1104 (100.0% writes), screen=24x154
+2026-02-03T09:07:58.798Z [DEBUG] High write ratio: blit=0, write=1104 (100.0% writes), screen=24x154
+2026-02-03T09:07:58.879Z [DEBUG] High write ratio: blit=0, write=1108 (100.0% writes), screen=24x155
+2026-02-03T09:07:58.924Z [DEBUG] High write ratio: blit=0, write=1108 (100.0% writes), screen=24x155
+2026-02-03T09:07:58.988Z [DEBUG] High write ratio: blit=0, write=1112 (100.0% writes), screen=24x156
+2026-02-03T09:07:59.028Z [DEBUG] High write ratio: blit=0, write=1112 (100.0% writes), screen=24x156
+2026-02-03T09:07:59.131Z [DEBUG] High write ratio: blit=0, write=1116 (100.0% writes), screen=24x157
+2026-02-03T09:07:59.222Z [DEBUG] High write ratio: blit=0, write=1120 (100.0% writes), screen=24x158
+2026-02-03T09:08:59.233Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T09:08:59.233Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:08:59.233Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:14:42.449Z [DEBUG] High write ratio: blit=0, write=1244 (100.0% writes), screen=24x189
+2026-02-03T09:14:43.518Z [DEBUG] High write ratio: blit=0, write=1120 (100.0% writes), screen=24x158
+2026-02-03T09:14:43.934Z [DEBUG] High write ratio: blit=0, write=1244 (100.0% writes), screen=24x189
+2026-02-03T09:15:43.959Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T09:15:43.959Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:15:43.960Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:22:24.050Z [DEBUG] High write ratio: blit=0, write=1108 (100.0% writes), screen=24x155
+2026-02-03T09:23:24.060Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T09:23:24.060Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:23:24.060Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:28:02.382Z [DEBUG] High write ratio: blit=0, write=1100 (100.0% writes), screen=24x153
+2026-02-03T09:28:02.447Z [DEBUG] High write ratio: blit=0, write=1072 (100.0% writes), screen=24x146
+2026-02-03T09:28:02.529Z [DEBUG] High write ratio: blit=0, write=1060 (100.0% writes), screen=24x143
+2026-02-03T09:28:02.606Z [DEBUG] High write ratio: blit=0, write=1056 (100.0% writes), screen=24x142
+2026-02-03T09:28:02.681Z [DEBUG] High write ratio: blit=0, write=1048 (100.0% writes), screen=24x140
+2026-02-03T09:29:02.692Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T09:29:02.692Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:29:02.693Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:31:30.867Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-03T09:31:30.867Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:31:30.867Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-03T09:36:45.113Z [DEBUG] High write ratio: blit=0, write=1005 (100.0% writes), screen=30x109
+2026-02-03T09:36:45.124Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T09:36:45.137Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T09:36:45.163Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770111405163
+2026-02-03T09:36:45.163Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T09:36:45.163Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T09:36:45.163Z [DEBUG] Applied original permissions to temp file
+2026-02-03T09:36:45.163Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770111405163 to /Users/nishitbariya/.claude.json
+2026-02-03T09:36:45.163Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T09:36:45.168Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.21494.1770111405168
+2026-02-03T09:36:45.168Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T09:36:45.168Z [DEBUG] Temp file written successfully, size: 27043 bytes
+2026-02-03T09:36:45.168Z [DEBUG] Applied original permissions to temp file
+2026-02-03T09:36:45.168Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.21494.1770111405168 to /Users/nishitbariya/.claude.json
+2026-02-03T09:36:45.168Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T09:36:45.169Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T09:36:46.807Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T09:36:46.809Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T09:36:48.045Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-03T09:36:48.045Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T09:36:48.045Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

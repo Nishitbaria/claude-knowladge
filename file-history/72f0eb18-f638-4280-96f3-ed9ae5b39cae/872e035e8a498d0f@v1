@@ -1,0 +1,927 @@
+import axios, { type AxiosError, type AxiosResponse } from "axios";
+import { cookies, headers } from "next/headers";
+import { ModelProvider } from "@/config/image-generator/enums";
+import { ExtraToolModels } from "@/config/more-tools/more-tools-config";
+import type { Model as VideoModel } from "@/config/video-generator/enums";
+import { frontendVideoModelConfig } from "@/config/video-generator/frontend-model-config";
+import { env } from "@/env/client";
+import { pollPrediction } from "@/lib/agents/model-suggester/utils/polling";
+import { auth } from "@/lib/auth";
+import { createServerEvent } from "@/lib/posthog-server";
+import replicate from "@/lib/replicate";
+import type {
+  CreateImageGenerationInput,
+  GenerateAudioInput,
+  GenerateEditImageWithPollingInput,
+  GenerateImageWithPollingInput,
+  GenerateVideoWithPollingInput,
+} from "@/types/agents";
+import {
+  calculateImageCredits,
+  calculateMoreToolCredits,
+  calculateVideoCredits,
+} from "@/utils/agent-credit-calculation";
+import { ErrorsMessagesForAPIs } from "@/utils/errors.messages";
+import logger from "@/utils/logger";
+
+const handleAxiosError = (axoisErr: AxiosError) => {
+  logger.error("[debug] axios error details", {
+    status: axoisErr.response?.status,
+    statusText: axoisErr.response?.statusText,
+    data: axoisErr.response?.data,
+    message: axoisErr.message,
+  });
+
+  // Extract actual error message from API response if available
+  const responseData = axoisErr.response?.data;
+  const actualErrorMessage =
+    (responseData &&
+    typeof responseData === "object" &&
+    "message" in responseData &&
+    typeof responseData.message === "string"
+      ? responseData.message
+      : null) || axoisErr.message;
+
+  return {
+    success: false,
+    error: actualErrorMessage,
+    raw_response: responseData,
+  };
+};
+
+export async function createImageGenerationAction({
+  prompt,
+  modelName,
+  aspect_ratio = "1:1",
+}: CreateImageGenerationInput) {
+  try {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (!session?.user?.id) {
+      // [error] Missing auth context
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    const userId = session.user.id;
+
+    // [step] Create form data payload (aligned with client behavior)
+    const formData = new FormData();
+    formData.append("prompt", prompt);
+    formData.append("aspect_ratio", aspect_ratio);
+    formData.append("modelName", modelName); // Dynamic model from autoModelSuggest
+    formData.append("provider", ModelProvider.REPLICATE); // From model config
+    formData.append("num_outputs", "1");
+    formData.append("isAgent", "true"); // Flag to identify agent-generated images
+
+    // [step] Resolve API URL
+    const reqHeaders = await headers();
+    const origin = reqHeaders.get("origin") || reqHeaders.get("x-url");
+    const baseUrl = origin || env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/v2/image`;
+
+    // [step] Forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // [step] Submit image generation request
+    const response = await axios.post(apiUrl, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        // Forward authentication cookies
+        Cookie: cookieHeader,
+      },
+    });
+
+    const result = response.data;
+
+    if (result.success && result.data.specialId) {
+      return {
+        success: true,
+        predictionId: result.data.specialId,
+        status: result.data.status,
+        model: modelName,
+        prompt,
+        aspect_ratio,
+      };
+    }
+    // [error] API indicated failure
+    logger.error(
+      `[error] image generation API call failed: ${JSON.stringify(result)}`,
+    );
+    throw new Error(result.message || "Failed to create image generation");
+  } catch (error) {
+    // [error] Unexpected exception
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logger.error(`[error] createImageGenerationAction failed: ${errorMsg}`);
+
+    // Log additional axios error details if available
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function generateImageWithPollingAction({
+  prompt,
+  modelName,
+  aspect_ratio = "1:1",
+}: GenerateImageWithPollingInput) {
+  try {
+    const start = Date.now();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+
+    // Calculate credits before generation
+    const { modelCredits, totalCredits } = calculateImageCredits(modelName, 1);
+
+    const creationResult = await createImageGenerationAction({
+      prompt,
+      modelName,
+      aspect_ratio,
+    });
+
+    if (!creationResult.success) {
+      // [error] Creation failed
+      logger.error(`[error] image creation failed: ${creationResult.error}`);
+      return creationResult;
+    }
+
+    // @ts-expect-error - predictionId exists in the creationResult
+    const predictionId = creationResult.predictionId;
+
+    const eventProperties = {
+      model: modelName,
+      provider: ModelProvider.REPLICATE,
+      predictionId,
+      duration_ms: Date.now() - start,
+      status: "created",
+      tool: "image-generator",
+    };
+
+    // Capture creation timing to PostHog (server-side)
+    // Note: Completion will be tracked client-side
+    try {
+      await createServerEvent(
+        "model_generation",
+        String(userId ?? ""),
+        eventProperties,
+      );
+    } catch (phErr: any) {
+      // PostHog capture failed silently
+    }
+
+    // Return immediately with predictionId for client-side polling
+    return {
+      success: true,
+      predictionId,
+      status: "succeeded",
+      output: {
+        predictionId,
+        provider: "replicate",
+      },
+      model: modelName,
+      prompt,
+      aspect_ratio,
+      credits: modelCredits,
+      totalCredits,
+    };
+  } catch (error) {
+    // [error] Unexpected exception in polling controller
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logger.error(`[error] generateImageWithPollingAction failed: ${errorMsg}`);
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function generateVideoWithPollingAction({
+  prompt,
+  modelName,
+  image_url,
+  aspect_ratio = "16:9",
+  duration,
+  resolution,
+  negative_prompt,
+  generate_audio = true,
+}: GenerateVideoWithPollingInput) {
+  try {
+    const start = Date.now();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      // [error] Missing auth context
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    // Get model configuration to determine variant and default values
+    const baseModel = modelName as unknown as VideoModel;
+    const modelConfig = frontendVideoModelConfig[baseModel];
+    if (!modelConfig) {
+      // [error] Missing model config
+      logger.error("[error] model configuration not found", { modelName });
+      throw new Error(`Model configuration not found for: ${modelName}`);
+    }
+
+    // Determine the correct model variant (text-to-video or image-to-video)
+    const hasImage = image_url && image_url.trim() !== "";
+    const modelVariant = hasImage
+      ? modelConfig.imageToVideoVariant
+      : modelConfig.textToVideoVariant;
+
+    // Calculate credits before generation
+    const { modelCredits, totalCredits } = calculateVideoCredits(
+      modelVariant,
+      {
+        duration,
+        resolution,
+        generate_audio,
+      },
+      `video-gen-${Date.now()}`,
+    );
+
+    // Build Fal proxy target URL like the client does (provider/modelVariant)
+    const requestLink = `${modelConfig.provider}/${modelVariant}`;
+
+    // Submit via Fal proxy (handles credits, auth, webhooks)
+    const reqHeaders = await headers();
+    const origin = reqHeaders.get("origin") || reqHeaders.get("x-url");
+    const baseUrl = origin || env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/videos`;
+
+    // Build request body with default values from model config
+    const requestBody = {
+      prompt,
+      toolUniqueName: "video-generator",
+      modelUniqueId: modelVariant, // Use the resolved variant
+      aspect_ratio,
+      provider: modelConfig.provider,
+      isAgent: true, // Flag to identify agent-generated videos for deterministic S3 keys
+      ...(image_url && { image_url }),
+      // Explicit overrides from caller (if provided)
+      ...(duration && { duration }),
+      ...(resolution && { resolution }),
+      ...(negative_prompt && { negative_prompt }),
+      // Add generate_audio (required for VEO 3.1 and similar models)
+      generate_audio,
+      // Add default values for required fields from model config
+      ...(modelConfig.ui.fields.duration && {
+        duration: duration || modelConfig.ui.fields.duration.default || "5",
+      }),
+      ...(modelConfig.ui.fields.resolution && {
+        resolution:
+          resolution || modelConfig.ui.fields.resolution.default || "1080p",
+      }),
+      ...(modelConfig.ui.fields.negative_prompt && {
+        negative_prompt:
+          negative_prompt ||
+          modelConfig.ui.fields.negative_prompt.default ||
+          "",
+      }),
+    };
+
+    // step 4 is forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // step 5 is submit background remover request
+    const response: AxiosResponse<unknown> = await axios.post(
+      apiUrl,
+      requestBody,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          // Forward authentication cookies
+          Cookie: cookieHeader,
+        },
+      },
+    );
+
+    const responseData = response.data as {
+      data?: { specialId?: string };
+      request_id?: string;
+      requestId?: string;
+    };
+    const predictionId =
+      responseData?.data?.specialId ||
+      responseData?.request_id ||
+      responseData?.requestId ||
+      undefined;
+
+    const eventProperties = {
+      model: modelName,
+      provider: modelConfig.provider,
+      predictionId,
+      duration_ms: Date.now() - start,
+      status: "succeeded",
+      tool: "video-generator",
+      requestLink,
+    };
+
+    // Capture submission timing to PostHog (server-side)
+    try {
+      await createServerEvent(
+        "model_generation",
+        String(userId ?? ""),
+        eventProperties,
+      );
+    } catch (phErr: any) {
+      // PostHog capture failed silently
+    }
+
+    return {
+      success: true,
+      status: "succeeded",
+      model: modelName,
+      prompt,
+      image_url,
+      aspect_ratio,
+      credits: modelCredits,
+      totalCredits,
+      output: {
+        predictionId,
+        requestLink,
+      },
+    };
+  } catch (error) {
+    // [error] Unexpected exception in video polling controller
+    logger.error("[error] generateVideoWithPollingAction failed", error);
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function GenerateEditImageAction({
+  prompt,
+  image_urls,
+  model_name = "nano_banana_pro",
+}: GenerateEditImageWithPollingInput) {
+  // [info] Start: image edit generation with polling (multi-image)
+
+  try {
+    const start = Date.now();
+    // step 1 is authenticate user
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      // [error] Missing auth context
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    // [info] Authenticated
+
+    // step 2 is create JSON payload for unified replicate API (multi-image)
+    const requestBody = {
+      modelName: "image-editor", // Required: model identifier
+      prompt,
+      images: image_urls, // Changed: input_images → images
+      model_name,
+      auto_upscale: false, // Optional: can add if needed
+    };
+
+    // step 3 is resolve API URL (prefer request origin for cookie domain)
+    const reqHeaders = await headers();
+    const origin = reqHeaders.get("origin") || reqHeaders.get("x-url");
+    const baseUrl = origin || env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/tools/replicate`;
+    // step 4 is forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // step 5 is submit image edit request
+    const response = await axios.post(apiUrl, requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+        // Forward authentication cookies
+        Cookie: cookieHeader,
+      },
+    });
+
+    const result = response.data;
+
+    // Accept 202 response and extract id from data.specialId (unified API format)
+    const isAccepted = response.status === 202 || response.status === 200;
+    const apiPredictionId = result?.data?.specialId;
+
+    if (isAccepted && apiPredictionId) {
+      const predictionId = apiPredictionId;
+
+      // step 6 is poll until completion using centralized function
+
+      // Reuse existing cookies for polling request
+
+      try {
+        const prediction = await pollPrediction(predictionId, {
+          baseUrl,
+          provider: ModelProvider.REPLICATE,
+          cookie: cookieHeader,
+          maxAttempts: 60, // 5 minutes max
+          initialDelayMs: 2000, // 2 seconds for testing (changed from 15s)
+          totalTimeoutMs: 5 * 60 * 1000, // 5 minutes total
+          fixedInterval: true, // Use fixed 2s interval for testing direct Replicate API impact
+        });
+
+        const eventProperties = {
+          model: model_name,
+          provider: ModelProvider.REPLICATE,
+          predictionId,
+          duration_ms: Date.now() - start,
+          status: prediction.status,
+          tool: "image-edit",
+        };
+
+        // Capture timing to PostHog (server-side)
+        try {
+          await createServerEvent(
+            "model_generation",
+            String(userId ?? ""),
+            eventProperties,
+          );
+        } catch (phErr: any) {
+          // PostHog capture failed silently
+        }
+
+        if (prediction.status === "succeeded") {
+          // step 12 is return the final result
+          const finalResult = {
+            success: true,
+            predictionId,
+            status: "succeeded",
+            output: prediction.output || [],
+            model_name,
+            prompt,
+            image_urls,
+            created_at: prediction.created_at,
+          };
+
+          return finalResult;
+        }
+        if (prediction.status === "failed") {
+          // [error] Prediction indicates failure
+          logger.error(
+            "[error] image edit generation failed",
+            prediction.error,
+          );
+          return {
+            success: false,
+            error: prediction.error || "Image edit generation failed",
+          };
+        }
+        // [error] Unexpected status
+        logger.error("[error] unexpected prediction status", prediction.status);
+        return {
+          success: false,
+          error: `Unexpected prediction status: ${prediction.status}`,
+        };
+      } catch (pollError) {
+        // [error] Polling failed
+        logger.error("[error] polling failed", pollError);
+        try {
+          await createServerEvent("model_generation", String(userId ?? ""), {
+            model: model_name,
+            provider: ModelProvider.REPLICATE,
+            predictionId,
+            duration_ms: Date.now() - start,
+            status: "polling_failed",
+            tool: "image-edit",
+          });
+        } catch (phErr: any) {
+          // PostHog capture failed silently
+        }
+        return {
+          success: false,
+          error:
+            pollError instanceof Error ? pollError.message : "Polling failed",
+        };
+      }
+    } else {
+      // [error] API indicated failure
+      logger.error("[error] unified replicate API call failed", result);
+      throw new Error(
+        result.message || "Failed to create image edit generation",
+      );
+    }
+  } catch (error) {
+    // [error] Unexpected exception
+    logger.error("[error] generateEditImageWithPollingAction failed", error);
+
+    // Log additional axios error details if available
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function bgRemoverAction({ imageUrl }: { imageUrl: string }) {
+  // [info] Start: background remover
+  try {
+    const start = Date.now();
+    // step 1 is authenticate user
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    // Calculate credits for this tool
+    const credits = calculateMoreToolCredits(
+      ExtraToolModels.BACKGROUND_REMOVER,
+    );
+
+    // step 2 is create JSON payload for background remover API
+    const requestBody = {
+      modelName: "background-remover",
+      image_url: imageUrl,
+      preserve_partial_alpha: true,
+      content_moderation: false,
+    };
+
+    // step 3 is resolve API URL
+    const reqHeaders = await headers();
+    const origin = reqHeaders.get("origin") || reqHeaders.get("x-url");
+    const baseUrl = origin || env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/tools/replicate`;
+
+    // step 4 is forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // step 5 is submit background remover request
+    const response = await axios.post(apiUrl, requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+        // Forward authentication cookies
+        Cookie: cookieHeader,
+      },
+    });
+
+    const result = response.data;
+
+    if (result.success && result.data.specialId) {
+      const predictionId = result.data.specialId;
+      // [info] Creation succeeded
+
+      const eventProperties = {
+        model: "background-remover",
+        provider: ModelProvider.REPLICATE,
+        predictionId,
+        duration_ms: Date.now() - start,
+        status: "created",
+        tool: "background-remover",
+      };
+
+      // Capture creation timing to PostHog (server-side)
+      // Note: Completion will be tracked client-side
+      try {
+        await createServerEvent(
+          "model_generation",
+          String(userId ?? ""),
+          eventProperties,
+        );
+      } catch (phErr: any) {
+        // PostHog capture failed silently
+      }
+
+      // Return immediately with predictionId for client-side polling
+      return {
+        success: true,
+        predictionId,
+        status: "succeeded",
+        output: {
+          predictionId,
+          provider: "replicate",
+        },
+        model_name: "background-remover",
+        image_url: imageUrl,
+        credits,
+        totalCredits: credits,
+      };
+    } else {
+      // [error] API indicated failure
+      logger.error("[error] background remover API call failed", result);
+      throw new Error(
+        result.message || "Failed to create background remover generation",
+      );
+    }
+  } catch (error) {
+    // [error] Unexpected exception
+    logger.error("[error] bgRemoverAction failed", error);
+
+    // Log additional axios error details if available
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function generateAudioAction({ prompt }: GenerateAudioInput) {
+  // [info] Start: audio generation
+  try {
+    const start = Date.now();
+    // step 1 is authenticate user
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    const input = {
+      seed: 0,
+      prompt,
+      cfg_weight: 0.5,
+      temperature: 0.8,
+      exaggeration: 0.5,
+    };
+
+    const output = await replicate.run("resemble-ai/chatterbox", { input });
+
+    // Capture timing to PostHog (server-side)
+    try {
+      const eventProperties = {
+        model: "resemble-ai/chatterbox",
+        provider: ModelProvider.REPLICATE,
+        duration_ms: Date.now() - start,
+        status: "succeeded",
+        tool: "audio-generator",
+      };
+      await createServerEvent(
+        "model_generation",
+        String(userId ?? ""),
+        eventProperties,
+      );
+    } catch (phErr: any) {
+      // PostHog capture failed silently
+    }
+
+    return output;
+  } catch (error) {
+    logger.error("[error] generateAudioAction failed", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function generateImageResizerAction({
+  imageUrl,
+  aspect_ratio,
+  quality = "high",
+}: {
+  imageUrl: string;
+  aspect_ratio: string;
+  quality?: string;
+}) {
+  // [info] Start: image resizer
+  try {
+    const start = Date.now();
+    // step 1 is authenticate user
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    // Calculate credits for this tool
+    const credits = calculateMoreToolCredits(ExtraToolModels.IMAGE_RESIZER);
+
+    // step 2 is create JSON payload for image resizer API
+    const requestBody = {
+      modelName: "image-resizer",
+      input_image: imageUrl,
+      aspect_ratio,
+      quality,
+    };
+
+    // step 3 is resolve API URL
+    const reqHeaders = await headers();
+    const origin = reqHeaders.get("origin") || reqHeaders.get("x-url");
+    const baseUrl = origin || env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/tools/replicate`;
+
+    // step 4 is forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // step 5 is submit image resizer request
+    const response = await axios.post(apiUrl, requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+        // Forward authentication cookies
+        Cookie: cookieHeader,
+      },
+    });
+
+    const result = response.data;
+
+    if (result.success && result.data.specialId) {
+      const predictionId = result.data.specialId;
+      // [info] Creation succeeded
+
+      const eventProperties = {
+        model: "image-resizer",
+        provider: ModelProvider.REPLICATE,
+        predictionId,
+        duration_ms: Date.now() - start,
+        status: "created",
+        tool: "image-resizer",
+      };
+
+      // Capture creation timing to PostHog (server-side)
+      // Note: Completion will be tracked client-side
+      try {
+        await createServerEvent(
+          "model_generation",
+          String(userId ?? ""),
+          eventProperties,
+        );
+      } catch (phErr: any) {
+        // PostHog capture failed silently
+      }
+
+      // Return immediately with predictionId for client-side polling
+      return {
+        success: true,
+        predictionId,
+        status: "succeeded",
+        output: {
+          predictionId,
+          provider: "replicate",
+        },
+        model_name: "image-resizer",
+        input_image: imageUrl,
+        aspect_ratio,
+        quality,
+        credits,
+        totalCredits: credits,
+      };
+    } else {
+      // [error] API indicated failure
+      logger.error("[error] image resizer API call failed", result);
+      throw new Error(
+        result.message || "Failed to create image resizer generation",
+      );
+    }
+  } catch (error) {
+    // [error] Unexpected exception
+    logger.error("[error] generateImageResizerAction failed", error);
+
+    // Log additional axios error details if available
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}
+
+export async function generateImageUpscalerAction({
+  imageUrl,
+  upscale_factor,
+  compression_quality,
+}: {
+  imageUrl: string;
+  upscale_factor: string;
+  compression_quality?: number;
+}) {
+  // [info] Start: image resizer
+  try {
+    const start = Date.now();
+    // step 1 is authenticate user
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    const userId = session?.user?.id;
+    if (!userId) {
+      logger.error("[error] user authentication failed - no user or userId");
+      throw new Error(ErrorsMessagesForAPIs.USER_NOT_AUTHENTICATED);
+    }
+
+    // Calculate credits for this tool
+    const credits = calculateMoreToolCredits(ExtraToolModels.IMAGE_UPSCALER);
+
+    // step 2 is create JSON payload for image resizer API
+    const requestBody = {
+      modelName: "upscaler",
+      image: imageUrl,
+      upscale_factor,
+      // default to 100 if not provided per tool schema description
+      ...(compression_quality !== undefined && { compression_quality }),
+    };
+
+    // step 3 is resolve API URL
+    const baseUrl = env.NEXT_PUBLIC_SERVER_URL;
+    const apiUrl = `${baseUrl}/api/venus-9/tools/replicate`;
+
+    // step 4 is forward auth cookies
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    // step 5 is submit image upscaler request
+    const response = await axios.post(apiUrl, requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+        // Forward authentication cookies
+        Cookie: cookieHeader,
+      },
+    });
+
+    const result = response.data;
+
+    if (result.success && result.data.specialId) {
+      const predictionId = result.data.specialId;
+      // [info] Creation succeeded
+
+      const eventProperties = {
+        model: "image-upscaler",
+        provider: ModelProvider.REPLICATE,
+        predictionId,
+        duration_ms: Date.now() - start,
+        status: "created",
+        tool: "image-upscaler",
+      };
+
+      // Capture creation timing to PostHog (server-side)
+      // Note: Completion will be tracked client-side
+      try {
+        await createServerEvent(
+          "model_generation",
+          String(userId ?? ""),
+          eventProperties,
+        );
+      } catch (phErr: any) {
+        // PostHog capture failed silently
+      }
+
+      // Return immediately with predictionId for client-side polling
+      return {
+        success: true,
+        predictionId,
+        status: "succeeded",
+        output: {
+          predictionId,
+          provider: "replicate",
+        },
+        model_name: "image-upscaler",
+        input_image: imageUrl,
+        upscale_factor,
+        compression_quality,
+        credits,
+        totalCredits: credits,
+      };
+    } else {
+      // [error] API indicated failure
+      logger.error("[error] image upscaler API call failed", result);
+      throw new Error(
+        result.message || "Failed to create image upscaler generation",
+      );
+    }
+  } catch (error) {
+    // [error] Unexpected exception
+    logger.error("[error] generateImageUpscalerAction failed", error);
+
+    // Log additional axios error details if available
+    if (axios.isAxiosError(error)) return handleAxiosError(error as AxiosError);
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+}

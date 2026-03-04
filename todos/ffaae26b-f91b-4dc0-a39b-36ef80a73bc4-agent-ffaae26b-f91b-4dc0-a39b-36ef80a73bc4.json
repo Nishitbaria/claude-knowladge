@@ -1,0 +1,44 @@
+[
+  {
+    "content": "Remove duplicate OpenAI import on line 19",
+    "status": "completed",
+    "priority": "medium",
+    "id": "1"
+  },
+  {
+    "content": "Move hardcoded Langfuse secrets to environment variables",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Remove unused _analyze_image_for_video method",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Fix or remove non-functional observe decorator",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Clean up empty style enhancement variables",
+    "status": "completed",
+    "priority": "low",
+    "id": "5"
+  },
+  {
+    "content": "Add consistent error handling throughout",
+    "status": "completed",
+    "priority": "medium",
+    "id": "6"
+  },
+  {
+    "content": "Run linting and type checking",
+    "status": "in_progress",
+    "priority": "medium",
+    "id": "7"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Read the full video page file to understand context",
+    "status": "completed",
+    "activeForm": "Reading the full video page file"
+  },
+  {
+    "content": "Extract success handler into separate function",
+    "status": "completed",
+    "activeForm": "Extracting success handler function"
+  },
+  {
+    "content": "Extract failure handler into separate function",
+    "status": "completed",
+    "activeForm": "Extracting failure handler function"
+  },
+  {
+    "content": "Extract status update handlers (STARTING, PROCESSING, etc.)",
+    "status": "completed",
+    "activeForm": "Extracting status update handlers"
+  },
+  {
+    "content": "Refactor pollPrediction to use extracted handlers",
+    "status": "completed",
+    "activeForm": "Refactoring pollPrediction function"
+  },
+  {
+    "content": "Verify the changes work correctly",
+    "status": "in_progress",
+    "activeForm": "Verifying the changes"
+  }
+]

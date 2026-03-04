@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Fix E2B template to set workdir and user",
+  "description": "In scripts/e2b/runagents-dev.template.ts, add .setUser(\"user\") and .setWorkdir(\"/home/user\") to the template chain so the default persists to sandbox execution.",
+  "activeForm": "Fixing E2B template workdir",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

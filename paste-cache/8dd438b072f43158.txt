@@ -1,0 +1,212 @@
+Here's a complete breakdown of everything about Sub-Agents in OpenClaw, plus how you can leverage them inside runAgents.co.
+
+---
+
+## What Are Sub-Agents?
+
+Sub-agents are background agent runs spawned from an existing agent run. They run in their own session (`agent:<agentId>:subagent:<uuid>`) and, when finished, announce their result back to the requester chat channel.
+
+Think of them as **child workers** that your main agent can spin up to handle tasks in parallel without blocking its own execution.
+
+**Primary goals:**
+- Parallelize "research / long task / slow tool" work without blocking the main run
+- Keep sub-agents isolated by default (session separation + optional sandboxing)
+- Keep the tool surface hard to misuse: sub-agents do not get session tools by default
+- Support configurable nesting depth for orchestrator patterns
+
+**Cost note:** Each sub-agent has its own context and token usage. For heavy or repetitive tasks, set a cheaper model for sub-agents and keep your main agent on a higher-quality model. You configure this via `agents.defaults.subagents.model` or per-agent overrides.
+
+---
+
+## How Sub-Agents Are Created (The Tool)
+
+Sub-agents are spawned using the **`sessions_spawn`** tool. Here are the parameters:
+
+| Param | Description |
+|---|---|
+| `task` (required) | The instruction/prompt for the sub-agent |
+| `label` | Optional friendly name |
+| `agentId` | Spawn under a different agent ID (if allowed) |
+| `model` | Override the model for this sub-agent |
+| `thinking` | Override thinking level |
+| `runTimeoutSeconds` | Auto-abort after N seconds (default: 0 = no limit) |
+| `cleanup` | `delete` or `keep` (default: `keep`) |
+
+`sessions_spawn` is always non-blocking: it returns `{ status: "accepted", runId, childSessionKey }` immediately.
+
+**Model inheritance:** Default model inherits the caller unless you set `agents.defaults.subagents.model` (or per-agent `agents.list[].subagents.model`); an explicit `sessions_spawn.model` still wins.
+
+**Agent targeting:** You can allow sub-agents to spawn under other agent IDs using `agents.list[].subagents.allowAgents`. Use `["*"]` to allow any agent ID, or list specific ones.
+
+---
+
+## Session Directory & Structure
+
+Sub-agent sessions follow this key pattern:
+
+| Depth | Session Key Shape | Role | Can Spawn? |
+|---|---|---|---|
+| 0 | `agent:<id>:main` | Main agent | Always |
+| 1 | `agent:<id>:subagent:<uuid>` | Sub-agent / orchestrator | Only if `maxSpawnDepth >= 2` |
+| 2 | `agent:<id>:subagent:<uuid>:subagent:<uuid>` | Leaf worker | Never |
+
+Sub-agent sessions are automatically archived after `agents.defaults.subagents.archiveAfterMinutes` (default: 60). Archive uses `sessions.delete` and renames the transcript to `*.deleted.<timestamp>`.
+
+---
+
+## How to Use Sub-Agents — Slash Commands
+
+Use `/subagents` to manage them in the current session:
+
+```
+/subagents list                    # see all sub-agent runs
+/subagents kill <id|#|all>         # stop a specific or all sub-agents
+/subagents log <id|#> [limit] [tools]  # view sub-agent logs
+/subagents info <id|#>           # metadata: status, timestamps, session, transcript
+/subagents send <id|#> <message>   # send a message to a running sub-agent
+```
+
+---
+
+## Nested Sub-Agents (Orchestrator Pattern)
+
+By default, sub-agents cannot spawn their own sub-agents (`maxSpawnDepth: 1`). You can enable one level of nesting by setting `maxSpawnDepth: 2`, which allows the orchestrator pattern: main → orchestrator sub-agent → worker sub-sub-agents.
+
+**Config to enable:**
+
+```json
+{
+  "agents": {
+    "defaults": {
+      "subagents": {
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 5,
+        "maxConcurrent": 8
+      }
+    }
+  }
+}
+```
+
+**The announce chain flows upward:**
+1. Depth-2 worker finishes → announces to depth-1 orchestrator
+2. Depth-1 orchestrator synthesizes, finishes → announces to main
+3. Main agent receives and delivers to user
+
+Each level only sees announces from its direct children.
+
+---
+
+## Tool Policy (What Sub-Agents Can/Can't Do)
+
+By default, sub-agents get all tools except session tools an tools — specifically `sessions_list`, `sessions_history`, `sessions_send`, and `sessions_spawn` are denied.
+
+When nesting is enabled (`maxSpawnDepth >= 2`), depth-1 orchestrators additionally get `sessions_spawn`, `subagents`, `sessions_list`, and `sessions_history` so they can manage their children.
+
+**Override with config:**
+
+```json
+{
+  "tools": {
+    "subagents": {
+      "tools": {
+        "deny": ["gateway", "cron"],
+        "allow": ["read", "exec", "process"]
+      }
+    }
+  }
+}
+```
+
+---
+
+## Announce System (How Results Come Back)
+
+The announce step runs inside the sub-agent session (not the requester session). The announce reply is normalized into a standard template with:
+
+- **Status** — derived from runtime outcome: `success`, `error`, `timeout`, or `unknown`
+- **Result** — the summary content from the announce step
+- **Notes** — error details and context
+
+Announce payloads also include stats: runtime duration, token usage (input/output/total), estimated cost, session key, and transcript f a sub-agent replies `ANNOUNCE_SKIP`, nothing is posted back.
+
+---
+
+## Authentication
+
+Sub-agent auth is resolved by agent id, not by session type. The auth store is loaded from that agent's `agentDir`. The main agent's auth profiles are merged in as a fallback; agent profiles override main profiles on conflicts.
+
+---
+
+## Stopping & Cascade
+
+- `/stop` in the main chat stops everything — all depth-1 and cascades to depth-2
+- `/subagents kill <id>` stops a specific sub-agent and its children
+- `/subagents kill all` stops everything for the requester
+
+---
+
+## Key Limitations
+
+- Sub-agent announce is best-effort. If the gateway restarts, pending "announce back" work is lost.
+- Sub-agent context only injects `AGENTS.md` + `TOOLS.md` (no `SOUL.md`, `IDENTITY.md`, `USER.md`, `HEARTBEAT.md`, or `BOOTSTRAP.md`).
+- Maximum nesting depth is 5 (`maxSpawnDepth` range: 1–5). Depth 2 is recommended for most use cases.
+- `maxChildrenPerAgent` caps active children per session (default: 5, range: 1–20).
+
+---
+
+## How tgrate Sub-Agents into runAgents.co
+
+Here's how this maps to your platform:
+
+### 1. **Marketing Workflow Parallelization**
+Your marketing manager users could trigger a main agent from Mission Control that spawns sub-agents for parallel tasks. For example, a "Campaign Launch" agent could spawn:
+- Sub-agent 1: Research competitors via web tools
+- Sub-agent 2: Draft email copy
+- Sub-agent 3: Analyze SEMrush/HubSpot data
+
+All running concurrently, results announced back and synthesized.
+
+### 2. **Platform Config Layer**
+In your SaaS wrapper, you'd expose the sub-agent config as user-friendly settings in Mission Control:
+
+```json
+{
+  "agents": {
+    "defaults": {
+      "subagents": {
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 3,
+        "maxConcurrent": 4,
+        "model": "a-cheaper-model",
+        "archiveAfterMinutes": 30
+      }
+    }
+  }
+}
+```
+
+This lets you **control costs** per customer — set cheaper models for sub-agents, limit concurrency, and auto-archive sessions to keep E2B sandbox srage clean.
+
+### 3. **Triggering via Agent Send**
+Combine with `openclaw agent` (Agent Send) to programmatically kick off orchestrator patterns from your backend:
+
+```bash
+openclaw agent --agent marketing-orchestrator \
+  --message "Run full SEO audit for client X" \
+  --json
+```
+
+The orchestrator spawns sub-agents, they do their work, results flow back up the chain, and your platform captures the final JSON output to display in Mission Control's metrics dashboard.
+
+### 4. **Monitoring Sub-Agents in Your Dashboard**
+Use the `/subagents list` and `/subagents info` commands (or the equivalent API calls through the gateway) to surface real-time sub-agent status in your Mission Control UI — showing which tasks are running, completed, or failed, with token usage and cost estimates per run.
+
+### 5. **Cost Management (Critical for SaaS)**
+Since each sub-agent has its own token budget, you'd want to:
+- Set `runTimeoutSeconds` to prevent runaway costs
+- Use cheaper models for sub-agents (`agents.defaults.subagentsodel`)
+- Set `maxChildrenPerAgent` limits per customer tier
+- Track the cost stats from announce payloads for your billing/usage metrics
+
+This essentially turns sub-agents into your platform's **task execution engine** — the main agent is the "brain" your marketing users interact with, and sub-agents are the invisible workers doing the heavy lifting in parallel.

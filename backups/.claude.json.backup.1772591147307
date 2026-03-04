@@ -1,0 +1,1105 @@
+{
+  "numStartups": 97,
+  "installMethod": "native",
+  "autoUpdates": false,
+  "theme": "dark-ansi",
+  "hasSeenTasksHint": true,
+  "tipsHistory": {
+    "new-user-warmup": 8,
+    "shift-enter": 92,
+    "memory-command": 84,
+    "theme-command": 90,
+    "status-line": 82,
+    "prompt-queue": 39,
+    "enter-to-steer-in-relatime": 90,
+    "todo-list": 90,
+    "# for memory": 29,
+    "install-github-app": 92,
+    "drag-and-drop-images": 92,
+    "paste-images-mac": 95,
+    "double-esc": 20,
+    "continue": 95,
+    "shift-tab": 97,
+    "image-paste": 90,
+    "custom-agents": 84,
+    "permissions": 97,
+    "custom-commands": 90,
+    "plan-mode-for-complex-tasks": 90,
+    "double-esc-code-restore": 92,
+    "tab-toggle-thinking": 27,
+    "ultrathink-keyword": 39,
+    "stickers-command": 36,
+    "default-permission-mode-config": 92,
+    "install-slack-app": 92,
+    "rename-conversation": 84,
+    "config-thinking-mode": 38,
+    "btw-side-question": 38,
+    "desktop-app": 84,
+    "web-app": 87,
+    "mobile-app": 87,
+    "vscode-command-install": 92,
+    "agent-flag": 90,
+    "git-worktrees": 92,
+    "overage-promo": 66,
+    "terminal-setup": 70,
+    "guest-passes": 90
+  },
+  "promptQueueUseCount": 20,
+  "cachedStatsigGates": {
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_tool_pear": false,
+    "tengu_migrate_ignore_patterns": true,
+    "tengu_vscode_review_upsell": false,
+    "tengu_glob_with_rg": false,
+    "tengu_web_tasks": true,
+    "tengu_log_1p_events": true,
+    "code_slack_app_install_banner": false,
+    "tengu_prompt_suggestion": true,
+    "tengu_year_end_2025_campaign_promo": false,
+    "tengu_streaming_tool_execution2": false
+  },
+  "cachedDynamicConfigs": {
+    "tengu_1p_event_batch_config": {
+      "scheduledDelayMillis": 5000,
+      "maxExportBatchSize": 200,
+      "maxQueueSize": 8192
+    },
+    "tengu-top-of-feed-tip": {
+      "tip": "",
+      "color": ""
+    }
+  },
+  "cachedGrowthBookFeatures": {
+    "strawberry_granite_flag": "N/A",
+    "persimmon_marble_flag": "N/A",
+    "tengu_mcp_tool_search": true,
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_tool_pear": false,
+    "tengu_c4w_usage_limit_notifications_enabled": true,
+    "tengu_thinkback": false,
+    "tengu_ant_attribution_header_new": true,
+    "tengu_vscode_review_upsell": false,
+    "tengu_sumi": true,
+    "tengu_react_vulnerability_warning": false,
+    "tengu_accept_with_feedback": true,
+    "tengu_tool_result_persistence": true,
+    "tengu_tool_search_unsupported_models": [
+      "haiku"
+    ],
+    "tengu_1p_event_batch_config": {
+      "scheduledDelayMillis": 10000,
+      "maxExportBatchSize": 400,
+      "maxQueueSize": 8192
+    },
+    "tengu_scratch": false,
+    "tengu_brass_pebble": false,
+    "tengu_event_sampling_config": {},
+    "tengu_log_segment_events": false,
+    "tengu_log_datadog_events": true,
+    "tengu_keybinding_customization": false,
+    "tengu-top-of-feed-tip": {
+      "tip": "",
+      "color": ""
+    },
+    "tengu_code_diff_cli": true,
+    "tengu_post_compact_survey": false,
+    "tengu_claudeai_mcp_connectors": true,
+    "tengu_attribution_header": true,
+    "enhanced_telemetry_beta": false,
+    "tengu_pid_based_version_locking": true,
+    "tengu_cache_plum_violet": true,
+    "tengu_streaming_tool_execution2": true,
+    "tengu_session_memory": false,
+    "tengu_permission_explainer": true,
+    "tengu_bash_haiku_prefetch": true,
+    "tengu_plan_mode_interview_phase": false,
+    "tengu_plank_river_frost": "user_intent",
+    "tengu_chrome_auto_enable": false,
+    "tengu_marble_anvil": true,
+    "tengu_scarf_coffee": false,
+    "tengu_keybinding_customization_release": true,
+    "tengu_pr_status_cli": true,
+    "tengu_marble_kite": false,
+    "tengu_system_prompt_global_cache": true,
+    "tengu_coral_fern": false,
+    "tengu_tst_kx7": false,
+    "tengu_workout": false,
+    "tengu_file_write_optimization": true,
+    "tengu_cork_m4q": true,
+    "tengu_sm_compact": false,
+    "tengu_compact_cache_prefix": true,
+    "tengu_compact_streaming_retry": false,
+    "tengu_oboe": true,
+    "tengu_tst_names_in_messages": false,
+    "tengu_vinteuil_phrase": true,
+    "tengu_vscode_onboarding": false,
+    "tengu_quiet_fern": true,
+    "tengu_penguins_enabled": true,
+    "tengu_chomp_inflection": false,
+    "tengu_silver_lantern": false,
+    "tengu_copper_lantern": false,
+    "tengu_copper_lantern_config": {
+      "meridian": "2026-02-05T07:59:00Z"
+    },
+    "tengu_penguins_off": null,
+    "tengu_marble_lantern_disabled": false,
+    "tengu_workout2": true,
+    "tengu_plum_vx3": true,
+    "tengu_mcp_elicitation": false,
+    "tengu_snippet_save": false,
+    "tengu_kv7_prompt_sort": false,
+    "tengu_bergotte_lantern": false,
+    "tengu_fgts": false,
+    "tengu_penguin_mode_promo": {
+      "discountPercent": 0,
+      "endDate": "Feb 16"
+    },
+    "tengu_birthday_hat": false,
+    "tengu_immediate_model_command": false,
+    "tengu_mulberry_fog": false,
+    "tengu_prompt_cache_1h_config": {
+      "allowlist": [
+        "repl_main_thread*",
+        "sdk"
+      ]
+    },
+    "tengu_disable_streaming_to_non_streaming_fallback": false,
+    "tengu_slate_nexus": true,
+    "tengu_ccr_bridge": true,
+    "tengu_marble_sandcastle": true,
+    "tengu_streaming_text": false,
+    "tengu_pebble_leaf_prune": false,
+    "tengu_birch_mist": true,
+    "tengu_swann_brevity": "focused",
+    "tengu_moth_copse": false,
+    "tengu_coral_whistle": false,
+    "tengu_crystal_beam": {
+      "budgetTokens": 0
+    },
+    "tengu_auto_background_agents": false,
+    "tengu_tool_input_aliasing": false,
+    "tengu_oak_drum": false,
+    "tengu_destructive_command_warning": false,
+    "tengu_amber_quartz": false,
+    "tengu_amber_prism": false,
+    "tengu_summarize_tool_results": false
+  },
+  "userID": "7f00badd77510b44d2e51b1a77c6eb77853438953fddb5af1e22190370729fc7",
+  "firstStartTime": "2025-07-10T19:07:29.178Z",
+  "projects": {
+    "/Users/nishitbariya/Desktop/Github/animate-banners": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 2,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "predict.py",
+        "requirements.txt",
+        "README.md",
+        "cog.yaml",
+        "predict.py"
+      ],
+      "exampleFilesGeneratedAt": 1752174589270,
+      "lastTotalWebSearchRequests": 0,
+      "lastCost": 0.0004936,
+      "lastAPIDuration": 2623,
+      "lastDuration": 49646,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 542,
+      "lastTotalOutputTokens": 15,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastSessionId": "054800de-2819-48b0-9da0-aa33001f5e99"
+    },
+    "/Users/nishitbariya/Desktop/Github/python/python": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastDuration": 1760960,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastSessionId": "8837d002-fb98-4380-a261-93a165e31a4c"
+    },
+    "/Users/nishitbariya/Desktop/Github/Workflow/famous-videos": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "/Users/nishitbariya/Desktop/Github/TheBundle-AI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 4,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "modelDetails.ts",
+        "user.action.ts",
+        "image-editor.tsx",
+        "PricingSection.tsx",
+        "PromptForm.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1758563733275,
+      "lastTotalWebSearchRequests": 0,
+      "hasCompletedProjectOnboarding": true,
+      "lastCost": 0.9915630000000001,
+      "lastAPIDuration": 349746,
+      "lastToolDuration": 420,
+      "lastDuration": 1598020,
+      "lastLinesAdded": 826,
+      "lastLinesRemoved": 228,
+      "lastTotalInputTokens": 1671,
+      "lastTotalOutputTokens": 20661,
+      "lastTotalCacheCreationInputTokens": 58756,
+      "lastTotalCacheReadInputTokens": 1539920,
+      "lastSessionId": "c3940f60-b56b-48d4-8fd5-ed540ed3ce5c"
+    },
+    "/Users/nishitbariya/Desktop/Github/NeonlightAI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 4,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "components/forms/ImageGenerationForm.tsx",
+        "components/forms/ModelSelector.tsx",
+        "lib/actions/generation.actions.ts",
+        "app/api/image/replicate/text-to-image/route.ts",
+        "app/(root)/dashboard/text-to-image/page.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1756994346746,
+      "lastTotalWebSearchRequests": 0,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 3323,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastSessionId": "77bbdc60-09f4-4f3e-a01d-dbe6db062475"
+    },
+    "/Users/nishitbariya/Desktop/Dev Agency/ugc-ad-creator": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {
+        "context7": {
+          "type": "sse",
+          "url": "https://mcp.context7.com/mcp"
+        },
+        "github": {
+          "command": "npx",
+          "args": [
+            "-y",
+            "@modelcontextprotocol/server-github"
+          ],
+          "env": {
+            "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+          }
+        },
+        "firecrawl-mcp": {
+          "command": "npx",
+          "args": [
+            "-y",
+            "firecrawl-mcp"
+          ],
+          "env": {
+            "FIRECRAWL_API_KEY": "fc-127df873bfea4e86a7e3c2ec37b6792a"
+          }
+        },
+        "shadcn": {
+          "type": "stdio",
+          "command": "npx",
+          "args": [
+            "shadcn@latest",
+            "mcp"
+          ],
+          "env": {}
+        }
+      },
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 6,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "app/page.tsx",
+        "lib/prisma.ts",
+        "page.tsx",
+        "prisma.ts",
+        "page.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1757160063075,
+      "lastTotalWebSearchRequests": 0,
+      "lastCost": 0.26614945,
+      "lastAPIDuration": 90970,
+      "lastToolDuration": 33,
+      "lastDuration": 179452,
+      "lastLinesAdded": 101,
+      "lastLinesRemoved": 61,
+      "lastTotalInputTokens": 1011,
+      "lastTotalOutputTokens": 3160,
+      "lastTotalCacheCreationInputTokens": 45727,
+      "lastTotalCacheReadInputTokens": 173310,
+      "lastSessionId": "4dbeb74e-2f41-4002-a2f7-304b3a6861cf"
+    },
+    "/Users/nishitbariya/Desktop/Github/Workflow/Avatar Image Generator/animexl": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 3,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastTotalWebSearchRequests": 0,
+      "lastCost": 0.06173940000000001,
+      "lastAPIDuration": 14157,
+      "lastToolDuration": 0,
+      "lastDuration": 4076694,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 101,
+      "lastTotalOutputTokens": 429,
+      "lastTotalCacheCreationInputTokens": 14422,
+      "lastTotalCacheReadInputTokens": 4735,
+      "lastSessionId": "c4c9d986-d1e1-4e29-9033-34dc33fc26aa"
+    },
+    "/Users/nishitbariya/Desktop/Github/python/image-editor": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0.37137024999999996,
+      "lastAPIDuration": 84695,
+      "lastToolDuration": 339,
+      "lastDuration": 1831720,
+      "lastLinesAdded": 16,
+      "lastLinesRemoved": 12,
+      "lastTotalInputTokens": 1344,
+      "lastTotalOutputTokens": 2972,
+      "lastTotalCacheCreationInputTokens": 40281,
+      "lastTotalCacheReadInputTokens": 587191,
+      "lastTotalWebSearchRequests": 0,
+      "lastSessionId": "12527378-e670-4bb9-a13e-bb4c73f2685c"
+    },
+    "/Users/nishitbariya/Downloads/skyspacex": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 2,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "app/layout.tsx",
+        "components/landing/hero.tsx",
+        "components/auth/login.tsx",
+        "app/(marketing)/pricing/page.tsx",
+        "components/shared/footer.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1758438441476,
+      "lastTotalWebSearchRequests": 0
+    },
+    "/Users/nishitbariya/Github/TheBundle-AI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 4,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "modelDetails.ts",
+        "image-editor.tsx",
+        "user.action.ts",
+        "tools.ts",
+        "transaction.actions.ts"
+      ],
+      "exampleFilesGeneratedAt": 1769411879194,
+      "lastTotalWebSearchRequests": 0,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "lastCost": 0.09493249999999999,
+      "lastAPIDuration": 30539,
+      "lastAPIDurationWithoutRetries": 21779,
+      "lastToolDuration": 0,
+      "lastDuration": 25658,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 6143,
+      "lastTotalOutputTokens": 547,
+      "lastTotalCacheCreationInputTokens": 30548,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastModelUsage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 6137,
+          "outputTokens": 256,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 12569,
+          "webSearchRequests": 0,
+          "costUSD": 0.023128249999999996
+        },
+        "claude-sonnet-4-5-20250929": {
+          "inputTokens": 6,
+          "outputTokens": 291,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 17979,
+          "webSearchRequests": 0,
+          "costUSD": 0.07180425
+        }
+      },
+      "lastSessionId": "621a47ca-c0a7-4131-9e75-5465a93c46bd"
+    },
+    "/Users/nishitbariya/Github/NeonlightAI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 5,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "components/forms/ImageGenerationForm.tsx",
+        "components/forms/ModelSelector.tsx",
+        "lib/actions/generation.actions.ts",
+        "app/(root)/dashboard/text-to-image/page.tsx",
+        "types/image.ts"
+      ],
+      "exampleFilesGeneratedAt": 1760093036274
+    },
+    "/Users/nishitbariya/Github/skysparxx-ai": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 6,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "image-generator-history.tsx",
+        "navbar.tsx",
+        "pricing.tsx",
+        "layout.tsx",
+        "middleware.ts"
+      ],
+      "exampleFilesGeneratedAt": 1762957750664,
+      "lastTotalWebSearchRequests": 0
+    },
+    "/Users/nishitbariya/Desktop/ai-workflow": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "page.tsx",
+        "layout.tsx",
+        "auth-utils.ts",
+        "_app.ts",
+        "schema.prisma"
+      ],
+      "exampleFilesGeneratedAt": 1762660738273
+    },
+    "/Users/nishitbariya/Desktop/cpp": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "extract_top_posts.py",
+        "profile_stats.py",
+        "randomdownload.py",
+        "like_top_posts.py",
+        "index.py"
+      ],
+      "exampleFilesGeneratedAt": 1765298029182
+    },
+    "/Users/nishitbariya/Downloads/expense-flow-app": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/Users/nishitbariya/Downloads/ns-linkfree-main": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/Users/nishitbariya/Github/LinkIo": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "exampleFiles": [
+        "AppSidebar.tsx",
+        "AuthContext.tsx",
+        "SignIn.tsx",
+        "LinkAnalytics.tsx",
+        "useAdvancedAnalytics.ts"
+      ],
+      "exampleFilesGeneratedAt": 1767455514922
+    },
+    "/Users/nishitbariya/Github/01-AI-Projects/TheBundle-AI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "exampleFiles": [
+        "modelDetails.ts",
+        "image-editor.tsx",
+        "user.action.ts",
+        "tools.ts",
+        "transaction.actions.ts"
+      ],
+      "exampleFilesGeneratedAt": 1769437533411,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 1655162,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastModelUsage": {},
+      "lastSessionId": "06611b0e-19f7-4638-a7eb-655fd7e7cbe3"
+    },
+    "/Users/nishitbariya/Github/02-Web-Apps/ShowCart": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 10,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "exampleFiles": [
+        "MessagePartRenderer.tsx",
+        "ChatClient.tsx",
+        "route.ts",
+        "InputBar.tsx",
+        "media-agent.ts"
+      ],
+      "exampleFilesGeneratedAt": 1771048640319,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 1077570,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastModelUsage": {},
+      "lastSessionId": "6a36a090-92df-44d4-ae70-372647de7645",
+      "lastFpsAverage": 0.16,
+      "lastFpsLow1Pct": 127.11,
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 168,
+        "frame_duration_ms_min": 0.09841700000004039,
+        "frame_duration_ms_max": 7.898999999975786,
+        "frame_duration_ms_avg": 1.6294078214281282,
+        "frame_duration_ms_p50": 1.4148545000007289,
+        "frame_duration_ms_p95": 3.9496274000540783,
+        "frame_duration_ms_p99": 7.069307390013142
+      }
+    },
+    "/Users/nishitbariya/Github/06-hobby": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "lastCost": 0.08394624999999999,
+      "lastAPIDuration": 15434,
+      "lastAPIDurationWithoutRetries": 15429,
+      "lastToolDuration": 0,
+      "lastDuration": 4925412,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 453,
+      "lastTotalOutputTokens": 506,
+      "lastTotalCacheCreationInputTokens": 9049,
+      "lastTotalCacheReadInputTokens": 29230,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 0.3,
+      "lastFpsLow1Pct": 88.32,
+      "lastModelUsage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 435,
+          "outputTokens": 20,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.000535
+        },
+        "claude-opus-4-5-20251101": {
+          "inputTokens": 18,
+          "outputTokens": 486,
+          "cacheReadInputTokens": 29230,
+          "cacheCreationInputTokens": 9049,
+          "webSearchRequests": 0,
+          "costUSD": 0.08341124999999999
+        }
+      },
+      "lastSessionId": "771aa9c6-cfb0-4840-bbc3-c92c6b7073a8"
+    },
+    "/Users/nishitbariya": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [],
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 21483,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 1.56,
+      "lastFpsLow1Pct": 168.37,
+      "lastModelUsage": {},
+      "lastSessionId": "5b62dab3-5420-48e8-b4a3-0f52466d88b0",
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 32,
+        "frame_duration_ms_min": 0.6028750000004948,
+        "frame_duration_ms_max": 5.939167000000452,
+        "frame_duration_ms_avg": 1.949429687499988,
+        "frame_duration_ms_p50": 1.5829380000004676,
+        "frame_duration_ms_p95": 5.333012349999794,
+        "frame_duration_ms_p99": 5.7846059600001904
+      }
+    },
+    "/Users/nishitbariya/Github/02-Web-Apps/runagents": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {
+        "basehub_final-cms": {
+          "type": "http",
+          "url": "https://basehub.com/api/mcp",
+          "headers": {
+            "Authorization": "Bearer bshb_mcp_JY9ZObG8fJEtypRjJP3jNVw9zI6ILW8lRv4BydjTvgKXohhGPgshiirwQyYr7HkH"
+          }
+        }
+      },
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 142,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "server.ts",
+        "auth.ts",
+        "create-sandbox-dialog.tsx",
+        "sandbox.actions.ts",
+        "sandbox-detail.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1771959940471,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 5391,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 4.82,
+      "lastFpsLow1Pct": 202.71,
+      "lastModelUsage": {},
+      "lastSessionId": "7b0b847d-c718-4496-9e1c-2b14708c8302",
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 21,
+        "frame_duration_ms_min": 0.3017499999996289,
+        "frame_duration_ms_max": 4.933208000000036,
+        "frame_duration_ms_avg": 1.1375119047619093,
+        "frame_duration_ms_p50": 0.9302920000000086,
+        "frame_duration_ms_p95": 2.182042000000024,
+        "frame_duration_ms_p99": 4.382974800000035
+      }
+    },
+    "/Users/nishitbariya/Github/02-Web-Apps/mission-control": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "route.ts",
+        "migrations.ts",
+        "websocket.ts",
+        "db.ts",
+        "nav-rail.tsx"
+      ],
+      "exampleFilesGeneratedAt": 1772559851604
+    }
+  },
+  "shiftEnterKeyBindingInstalled": true,
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "2.1.42",
+  "subscriptionNoticeCount": 0,
+  "hasAvailableSubscription": false,
+  "changelogLastFetched": 1772440594281,
+  "fallbackAvailableWarningThreshold": 0.5,
+  "s1mAccessCache": {
+    "10dd93e2-ba38-425e-b394-edc672707c97": {
+      "hasAccess": false,
+      "hasAccessNotAsDefault": false,
+      "timestamp": 1770713842429
+    },
+    "4c6897b6-b191-4994-b967-1f4099ba4d5c": {
+      "hasAccess": false,
+      "hasAccessNotAsDefault": false,
+      "timestamp": 1771959939417
+    },
+    "ccacc24d-67d6-4b09-bfa3-529d5e82aa25": {
+      "hasAccess": false,
+      "hasAccessNotAsDefault": false,
+      "timestamp": 1771960686685
+    }
+  },
+  "isQualifiedForDataSharing": false,
+  "hasOpusPlanDefault": false,
+  "lastReleaseNotesSeen": "2.1.63",
+  "claudeCodeFirstTokenDate": "2025-07-10T19:09:03.540419Z",
+  "sonnet45MigrationComplete": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1760118785264
+  },
+  "lastPlanModeUse": 1770113279825,
+  "mcpServers": {
+    "posthog": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "mcp.posthog.com/sse",
+        "--header",
+        "Authorization:${POSTHOG_AUTH_HEADER}"
+      ],
+      "env": {
+        "POSTHOG_AUTH_HEADER": "Bearer phx_12JfiX0LhXXaYgzZajE2NfYUfIK73SWbyBwKuHvwH1HYS8Py"
+      }
+    },
+    "Neon": {
+      "type": "http",
+      "url": "https://mcp.neon.tech/mcp",
+      "headers": {
+        "Authorization": "Bearer napi_12jrwoaj8h11u8nupsyig52u3z5wd0xmelk8qsjpoj95abt9dxka54lz1vjnkn48"
+      }
+    }
+  },
+  "githubRepoPaths": {
+    "nishitbaria/cpp": [
+      "/Users/nishitbariya/Desktop/cpp"
+    ],
+    "nishitbaria/linkio": [
+      "/Users/nishitbariya/Github/LinkIo"
+    ],
+    "founderfeedadmin/thebundle-ai": [
+      "/Users/nishitbariya/Github/01-AI-Projects/TheBundle-AI",
+      "/Users/nishitbariya/Github/TheBundle-AI"
+    ],
+    "founderfeedadmin/showcart": [
+      "/Users/nishitbariya/Github/02-Web-Apps/ShowCart"
+    ],
+    "founderfeedadmin/runagents": [
+      "/Users/nishitbariya/Github/02-Web-Apps/runagents"
+    ],
+    "builderz-labs/mission-control": [
+      "/Users/nishitbariya/Github/02-Web-Apps/mission-control"
+    ]
+  },
+  "opus45MigrationComplete": true,
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true,
+  "thinkingMigrationComplete": true,
+  "hasShownOpus45Notice": {
+    "10dd93e2-ba38-425e-b394-edc672707c97": true,
+    "4c6897b6-b191-4994-b967-1f4099ba4d5c": true
+  },
+  "opusProMigrationComplete": true,
+  "opusProMigrationTimestamp": 1769437529355,
+  "cachedChromeExtensionInstalled": true,
+  "groveConfigCache": {
+    "d40cc973-9a17-410c-a13f-649fd142b06f": {
+      "grove_enabled": true,
+      "timestamp": 1770632817285
+    },
+    "496457ad-62ac-49e7-9a87-05018fc56a3c": {
+      "grove_enabled": true,
+      "timestamp": 1771959938787
+    },
+    "8ba62dab-607f-4183-b775-14b32ffe67c4": {
+      "grove_enabled": true,
+      "timestamp": 1772521593387
+    }
+  },
+  "autoUpdatesProtectedForNative": true,
+  "skillUsage": {
+    "ai-sdk": {
+      "usageCount": 12,
+      "lastUsedAt": 1770798943235
+    },
+    "find-skills": {
+      "usageCount": 5,
+      "lastUsedAt": 1771996110807
+    }
+  },
+  "anonymousId": "claudecode.v1.4fd93aa5-fccd-4c26-8f9c-01677bb8848d",
+  "clientDataCache": {
+    "data": {},
+    "timestamp": 1772175633974
+  },
+  "hasShownOpus46Notice": {
+    "10dd93e2-ba38-425e-b394-edc672707c97": true,
+    "4c6897b6-b191-4994-b967-1f4099ba4d5c": true,
+    "ccacc24d-67d6-4b09-bfa3-529d5e82aa25": true
+  },
+  "penguinModeOrgEnabled": false,
+  "opus46FeedSeenCount": 26,
+  "showSpinnerTree": false,
+  "oauthAccount": {
+    "accountUuid": "8ba62dab-607f-4183-b775-14b32ffe67c4",
+    "emailAddress": "dev@bundled.design",
+    "organizationUuid": "ccacc24d-67d6-4b09-bfa3-529d5e82aa25",
+    "hasExtraUsageEnabled": false,
+    "billingType": "stripe_subscription",
+    "accountCreatedAt": "2026-01-28T07:48:16.685339Z",
+    "subscriptionCreatedAt": "2026-02-11T08:23:32.381041Z",
+    "displayName": "Boss"
+  },
+  "passesEligibilityCache": {
+    "ccacc24d-67d6-4b09-bfa3-529d5e82aa25": {
+      "eligible": true,
+      "referral_code_details": {
+        "code": "i-M6J-TxKQ",
+        "campaign": "claude_code_guest_pass",
+        "referral_link": "https://claude.ai/referral/i-M6J-TxKQ"
+      },
+      "referrer_reward": null,
+      "remaining_passes": 3,
+      "timestamp": 1772557834225
+    }
+  },
+  "passesUpsellSeenCount": 4,
+  "hasVisitedPasses": false,
+  "passesLastSeenRemaining": 3,
+  "sonnet1m45MigrationComplete": true,
+  "cachedExtraUsageDisabledReason": "org_level_disabled",
+  "effortCalloutDismissed": true,
+  "toolUsage": {
+    "Bash": {
+      "usageCount": 242,
+      "lastUsedAt": 1772095046652
+    },
+    "Read": {
+      "usageCount": 215,
+      "lastUsedAt": 1772094560661
+    },
+    "Glob": {
+      "usageCount": 37,
+      "lastUsedAt": 1772094555450
+    },
+    "Grep": {
+      "usageCount": 74,
+      "lastUsedAt": 1772086513394
+    },
+    "Task": {
+      "usageCount": 8,
+      "lastUsedAt": 1772004374353
+    },
+    "ToolSearch": {
+      "usageCount": 4,
+      "lastUsedAt": 1772086332868
+    },
+    "Skill": {
+      "usageCount": 1,
+      "lastUsedAt": 1771995146334
+    },
+    "Write": {
+      "usageCount": 30,
+      "lastUsedAt": 1772088829129
+    },
+    "TaskCreate": {
+      "usageCount": 5,
+      "lastUsedAt": 1771995335400
+    },
+    "TaskUpdate": {
+      "usageCount": 8,
+      "lastUsedAt": 1771995426641
+    },
+    "Edit": {
+      "usageCount": 50,
+      "lastUsedAt": 1772092776741
+    },
+    "WebFetch": {
+      "usageCount": 8,
+      "lastUsedAt": 1772086344366
+    },
+    "WebSearch": {
+      "usageCount": 2,
+      "lastUsedAt": 1772003992039
+    }
+  }
+}

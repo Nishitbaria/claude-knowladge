@@ -1,0 +1,247 @@
+2026-02-24T19:30:41.107Z [DEBUG] MDM settings load completed in 24ms
+2026-02-24T19:30:41.174Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-24T19:30:41.174Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-24T19:30:41.174Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-24T19:30:41.174Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-24T19:30:41.179Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441179
+2026-02-24T19:30:41.179Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.179Z [DEBUG] Temp file written successfully, size: 32925 bytes
+2026-02-24T19:30:41.179Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.179Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441179 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.179Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.185Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-24T19:30:41.193Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-24T19:30:41.193Z [DEBUG] [STARTUP] Running setup()...
+2026-02-24T19:30:41.225Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[]
+2026-02-24T19:30:41.235Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Library/Application Support/ClaudeCode/managed-settings.json'
+    at Module.openSync (node:fs:555:18)
+    at Object.readSync (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:9:1291)
+    at Wj (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6487:105)
+    at qH (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6489:224)
+    at J_z (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6473:6011)
+    at nMq (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6473:5788)
+    at file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6473:4481
+    at async cMq (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6473:4857)
+    at async Object.callback (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:12569:391)
+    at async Md8.parseAsync (file:///Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/cli.js:6571:4156)
+2026-02-24T19:30:41.235Z [DEBUG] Error log sink initialized
+2026-02-24T19:30:41.246Z [DEBUG] [Claude in Chrome] Found chrome profiles: Default, Profile 1, Profile 2, Profile 3, Profile 4, Profile 5
+2026-02-24T19:30:41.246Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-24T19:30:41.253Z [DEBUG] Loaded 7 unique skills (7 unconditional, 0 conditional, managed: 0, user: 7, project: 0, additional: 0, legacy commands: 0)
+2026-02-24T19:30:41.254Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-24T19:30:41.255Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-24T19:30:41.255Z [DEBUG] Total plugin skills loaded: 0
+2026-02-24T19:30:41.255Z [DEBUG] Total plugin commands loaded: 0
+2026-02-24T19:30:41.255Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-24T19:30:41.255Z [DEBUG] getSkills returning: 7 skill dir commands, 0 plugin skills, 3 bundled skills
+2026-02-24T19:30:41.259Z [DEBUG] [STARTUP] setup() completed in 66ms
+2026-02-24T19:30:41.259Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-24T19:30:41.261Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/runagents.git
+2026-02-24T19:30:41.261Z [DEBUG] Parsed repository: github.com/FounderFeedAdmin/runagents from URL: https://github.com/FounderFeedAdmin/runagents.git
+2026-02-24T19:30:41.261Z [DEBUG] Total plugin agents loaded: 0
+2026-02-24T19:30:41.263Z [DEBUG] [STARTUP] Commands and agents loaded in 4ms
+2026-02-24T19:30:41.267Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-24T19:30:41.279Z [DEBUG] Grove: Using fresh cached config
+2026-02-24T19:30:41.294Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/runagents already tracked for repo founderfeedadmin/runagents
+2026-02-24T19:30:41.295Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-24T19:30:41.295Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-02-24T19:30:41.300Z [DEBUG] [keybindings] KeybindingSetup initialized with 103 bindings, 0 warnings
+2026-02-24T19:30:41.312Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-24T19:30:41.504Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441504
+2026-02-24T19:30:41.504Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.505Z [DEBUG] Temp file written successfully, size: 32925 bytes
+2026-02-24T19:30:41.505Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.505Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441504 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.505Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.712Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441711
+2026-02-24T19:30:41.712Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.712Z [DEBUG] Temp file written successfully, size: 32859 bytes
+2026-02-24T19:30:41.712Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.712Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441711 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.712Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.780Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441780
+2026-02-24T19:30:41.780Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.780Z [DEBUG] Temp file written successfully, size: 32891 bytes
+2026-02-24T19:30:41.780Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.780Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441780 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.780Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.781Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441781
+2026-02-24T19:30:41.781Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.781Z [DEBUG] Temp file written successfully, size: 32922 bytes
+2026-02-24T19:30:41.781Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.781Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441781 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.781Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.846Z [DEBUG] [STARTUP] showSetupScreens() completed in 579ms
+2026-02-24T19:30:41.846Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-24T19:30:41.846Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-24T19:30:41.846Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-24T19:30:41.846Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-24T19:30:41.846Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-24T19:30:41.846Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-02-24T19:30:41.847Z [DEBUG] Total LSP servers loaded: 0
+2026-02-24T19:30:41.847Z [DEBUG] [STARTUP] MCP configs loaded in 662ms
+2026-02-24T19:30:41.852Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-24T19:30:41.857Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-24T19:30:41.857Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-24T19:30:41.858Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-24T19:30:41.858Z [DEBUG] Found 0 hook matchers in settings
+2026-02-24T19:30:41.858Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-24T19:30:41.859Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-24T19:30:41.859Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-24T19:30:41.859Z [DEBUG] LSP server manager initialized successfully
+2026-02-24T19:30:41.859Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-24T19:30:41.860Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-24T19:30:41.861Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441861
+2026-02-24T19:30:41.861Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.861Z [DEBUG] Temp file written successfully, size: 32922 bytes
+2026-02-24T19:30:41.861Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.861Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441861 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.861Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.862Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-24T19:30:41.877Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441877
+2026-02-24T19:30:41.877Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.878Z [DEBUG] Temp file written successfully, size: 32959 bytes
+2026-02-24T19:30:41.878Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.878Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441877 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.878Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.890Z [DEBUG] [keybindings] KeybindingSetup initialized with 103 bindings, 0 warnings
+2026-02-24T19:30:41.923Z [DEBUG] High write ratio: blit=0, write=1281 (100.0% writes), screen=17x225
+2026-02-24T19:30:41.928Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441928
+2026-02-24T19:30:41.928Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.929Z [DEBUG] Temp file written successfully, size: 32959 bytes
+2026-02-24T19:30:41.930Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.930Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441928 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.930Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.931Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961441931
+2026-02-24T19:30:41.931Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:41.931Z [DEBUG] Temp file written successfully, size: 32959 bytes
+2026-02-24T19:30:41.931Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:41.931Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961441931 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:41.931Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:41.936Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-24T19:30:41.939Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-24T19:30:41.939Z [DEBUG] performStartupChecks called
+2026-02-24T19:30:41.940Z [DEBUG] Starting background plugin installations
+2026-02-24T19:30:41.940Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-24T19:30:42.014Z [DEBUG] No CLAUDE.md/rules files found
+2026-02-24T19:30:42.024Z [DEBUG] High write ratio: blit=18, write=1307 (98.6% writes), screen=17x225
+2026-02-24T19:30:42.036Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json...
+2026-02-24T19:30:42.038Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-02-24T19:30:42.038Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-02-24T19:30:42.045Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961442045
+2026-02-24T19:30:42.045Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:42.045Z [DEBUG] Temp file written successfully, size: 32994 bytes
+2026-02-24T19:30:42.046Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:42.046Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961442045 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:42.046Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:42.049Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-24T19:30:42.049Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-24T19:30:42.049Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-24T19:30:42.064Z [DEBUG] MCP server "Neon": Initializing HTTP transport to https://mcp.neon.tech/mcp
+2026-02-24T19:30:42.064Z [DEBUG] MCP server "Neon": Node version: v25.6.0, Platform: darwin
+2026-02-24T19:30:42.064Z [DEBUG] MCP server "Neon": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+2026-02-24T19:30:42.065Z [DEBUG] MCP server "Neon": Proxy options: default
+2026-02-24T19:30:42.065Z [DEBUG] MCP server "Neon": HTTP transport options: {"url":"https://mcp.neon.tech/mcp","headers":{"User-Agent":"claude-code/2.1.52 (cli)","Authorization":"[REDACTED]"},"hasAuthProvider":true,"timeoutMs":60000}
+2026-02-24T19:30:42.065Z [DEBUG] MCP server "Neon": HTTP transport created successfully
+2026-02-24T19:30:42.065Z [DEBUG] MCP server "Neon": Client created, setting up request handler
+2026-02-24T19:30:42.066Z [DEBUG] MCP server "Neon": Starting connection with timeout of 30000ms
+2026-02-24T19:30:42.066Z [DEBUG] MCP server "Neon": Testing basic HTTP connectivity to https://mcp.neon.tech/mcp
+2026-02-24T19:30:42.066Z [DEBUG] MCP server "Neon": Parsed URL: host=mcp.neon.tech, port=default, protocol=https:
+2026-02-24T19:30:42.066Z [DEBUG] MCP server "Neon": No token data found
+2026-02-24T19:30:42.069Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961442069
+2026-02-24T19:30:42.069Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:42.069Z [DEBUG] Temp file written successfully, size: 33032 bytes
+2026-02-24T19:30:42.069Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:42.069Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961442069 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:42.070Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:42.082Z [DEBUG] Fetching plugin security messages from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/security/security.json
+2026-02-24T19:30:42.088Z [DEBUG] [FileIndex] git ls-files (tracked) took 46ms
+2026-02-24T19:30:42.088Z [DEBUG] [FileIndex] git ls-files: 145 tracked files in 50ms
+2026-02-24T19:30:42.089Z [DEBUG] [FileIndex] using git ls-files result (145 files)
+2026-02-24T19:30:42.092Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961442092
+2026-02-24T19:30:42.092Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:42.092Z [DEBUG] Temp file written successfully, size: 33030 bytes
+2026-02-24T19:30:42.093Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:42.093Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961442092 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:42.093Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:42.094Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-24T19:30:42.094Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills...
+2026-02-24T19:30:42.127Z [DEBUG] [FileIndex] background untracked fetch: 0 files
+2026-02-24T19:30:42.162Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961442162
+2026-02-24T19:30:42.162Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:42.162Z [DEBUG] Temp file written successfully, size: 33030 bytes
+2026-02-24T19:30:42.162Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:42.162Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961442162 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:42.163Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:42.226Z [DEBUG] Security messages saved successfully
+2026-02-24T19:30:42.242Z [DEBUG] AutoUpdaterWrapper: Installation type: unknown
+2026-02-24T19:30:42.244Z [WARN] Cache corrupted or missing for marketplace claude-plugins-official, re-fetching from source: ENOENT: no such file or directory, open '/Users/nishitbariya/.claude/plugins/marketplaces/claude-plugins-official'
+2026-02-24T19:30:42.396Z [DEBUG] Org fast mode: enabled
+2026-02-24T19:30:42.428Z [DEBUG] [claudeai-mcp] Fetched 3 servers
+2026-02-24T19:30:42.437Z [DEBUG] MCP server "claude.ai Excalidraw": Initializing claude.ai proxy transport for server mcpsrv_01RoM4wL9kKcSsZ77drHqh9m
+2026-02-24T19:30:42.437Z [DEBUG] MCP server "claude.ai Excalidraw": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01RoM4wL9kKcSsZ77drHqh9m
+2026-02-24T19:30:42.437Z [DEBUG] MCP server "claude.ai Excalidraw": claude.ai proxy transport created successfully
+2026-02-24T19:30:42.438Z [DEBUG] MCP server "claude.ai Excalidraw": Starting connection with timeout of 30000ms
+2026-02-24T19:30:42.440Z [DEBUG] MCP server "claude.ai Gmail": Initializing claude.ai proxy transport for server mcpsrv_016VsVdJmoJXShWTfhqGuivV
+2026-02-24T19:30:42.440Z [DEBUG] MCP server "claude.ai Gmail": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_016VsVdJmoJXShWTfhqGuivV
+2026-02-24T19:30:42.440Z [DEBUG] MCP server "claude.ai Gmail": claude.ai proxy transport created successfully
+2026-02-24T19:30:42.441Z [DEBUG] MCP server "claude.ai Gmail": Starting connection with timeout of 30000ms
+2026-02-24T19:30:42.442Z [DEBUG] MCP server "claude.ai Google Calendar": Initializing claude.ai proxy transport for server mcpsrv_01RuATho3LxwHQGZANXSSTHu
+2026-02-24T19:30:42.442Z [DEBUG] MCP server "claude.ai Google Calendar": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01RuATho3LxwHQGZANXSSTHu
+2026-02-24T19:30:42.443Z [DEBUG] MCP server "claude.ai Google Calendar": claude.ai proxy transport created successfully
+2026-02-24T19:30:42.443Z [DEBUG] MCP server "claude.ai Google Calendar": Starting connection with timeout of 30000ms
+2026-02-24T19:30:42.513Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.npm/_npx/97540b0888a2deac/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-02-24T19:30:42.543Z [DEBUG] [FileIndex] Not in bundled mode, using Fuse.js fallback
+2026-02-24T19:30:42.544Z [DEBUG] [FileIndex] cache refresh completed in 507ms (299 files)
+2026-02-24T19:30:42.655Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.10891.1771961442655
+2026-02-24T19:30:42.655Z [DEBUG] Preserving file permissions: 100644
+2026-02-24T19:30:42.655Z [DEBUG] Temp file written successfully, size: 33084 bytes
+2026-02-24T19:30:42.655Z [DEBUG] Applied original permissions to temp file
+2026-02-24T19:30:42.655Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.10891.1771961442655 to /Users/nishitbariya/.claude.json
+2026-02-24T19:30:42.656Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-24T19:30:42.749Z [DEBUG] MCP server "Neon": No token data found
+2026-02-24T19:30:43.039Z [DEBUG] MCP server "claude.ai Gmail": claude.ai proxy connection failed after 599ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CYTT1VLXv7xvUPfcamrZQ"}
+2026-02-24T19:30:43.039Z [ERROR] MCP server "claude.ai Gmail" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CYTT1VLXv7xvUPfcamrZQ"}
+2026-02-24T19:30:43.039Z [DEBUG] MCP server "claude.ai Gmail": Authentication required for claude.ai proxy server
+2026-02-24T19:30:43.157Z [DEBUG] MCP server "Neon": No token data found
+2026-02-24T19:30:43.157Z [DEBUG] MCP server "Neon": Successfully connected to http server in 1093ms
+2026-02-24T19:30:43.157Z [DEBUG] MCP server "Neon": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"mcp-server-neon","version":"0.8.0"}}
+2026-02-24T19:30:43.157Z [DEBUG] [MCP] Server "Neon" connected with subscribe=false
+2026-02-24T19:30:43.158Z [DEBUG] MCP server "Neon": No token data found
+2026-02-24T19:30:43.158Z [DEBUG] MCP server "Neon": No token data found
+2026-02-24T19:30:43.226Z [DEBUG] MCP server "claude.ai Google Calendar": claude.ai proxy connection failed after 784ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CYTT1VGa4DUogNA3QkQqF"}
+2026-02-24T19:30:43.226Z [ERROR] MCP server "claude.ai Google Calendar" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CYTT1VGa4DUogNA3QkQqF"}
+2026-02-24T19:30:43.226Z [DEBUG] MCP server "claude.ai Google Calendar": Authentication required for claude.ai proxy server
+2026-02-24T19:30:43.612Z [DEBUG] MCP server "claude.ai Excalidraw": Successfully connected to claudeai-proxy server in 1175ms
+2026-02-24T19:30:43.612Z [DEBUG] MCP server "claude.ai Excalidraw": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"hasResourceSubscribe":false,"serverVersion":{"name":"Excalidraw","version":"1.0.0"}}
+2026-02-24T19:30:43.612Z [DEBUG] [MCP] Server "claude.ai Excalidraw" connected with subscribe=false
+2026-02-24T19:30:43.809Z [DEBUG] SSH config check: code=255 configured=false
+2026-02-24T19:30:43.809Z [INFO] SSH not configured for GitHub, using HTTPS for anthropics/claude-plugins-official
+2026-02-24T19:30:43.809Z [DEBUG] git pull: cwd=/Users/nishitbariya/.claude/plugins/marketplaces/anthropics-claude-plugins-official ref=default
+2026-02-24T19:30:43.811Z [WARN] git pull failed, will re-clone:
+2026-02-24T19:30:43.812Z [DEBUG] git clone: url=https://github.com/anthropics/claude-plugins-official.git ref=default timeout=120000ms
+2026-02-24T19:30:45.000Z [ERROR] MCP server "posthog" Server stderr: node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-65X3S4HB.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:713:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:730:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:52)
+    at #resolve (node:internal/modules/esm/loader:695:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:615:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.6.0
+2026-02-24T19:30:45.000Z [DEBUG] MCP server "posthog": Connection failed after 3151ms: MCP error -32000: Connection closed
+2026-02-24T19:30:45.000Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-24T19:30:46.508Z [DEBUG] git clone succeeded: https://github.com/anthropics/claude-plugins-official.git
+2026-02-24T19:30:46.508Z [DEBUG] Reading marketplace from /Users/nishitbariya/.claude/plugins/marketplaces/anthropics-claude-plugins-official/.claude-plugin/marketplace.json
+2026-02-24T19:30:46.521Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0

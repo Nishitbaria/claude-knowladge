@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Read replicate.ts file",
+    "status": "completed",
+    "activeForm": "Reading replicate.ts file"
+  },
+  {
+    "content": "Check TypeScript diagnostics",
+    "status": "completed",
+    "activeForm": "Checking TypeScript diagnostics"
+  },
+  {
+    "content": "Fix all TypeScript errors",
+    "status": "in_progress",
+    "activeForm": "Fixing TypeScript errors"
+  }
+]

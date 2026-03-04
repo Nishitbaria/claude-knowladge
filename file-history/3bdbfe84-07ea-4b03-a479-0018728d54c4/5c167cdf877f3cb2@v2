@@ -1,0 +1,117 @@
+"use server";
+
+import { z } from "zod";
+import { esc, getSandboxRuntime, runOrThrow } from "@/lib/e2b";
+import { orgAction } from "@/server/action-utils";
+
+// ── Spawn a sub-agent ────────────────────────────────────────────────────────
+
+export const spawnSubAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    agentId: z.string().min(1),
+    message: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    const cmd = `openclaw agent --agent ${esc(input.agentId)} --message ${esc(input.message)} --json`;
+    const result = await runOrThrow(runtime, cmd, "spawn subagent");
+    const raw = result.stdout?.trim() ?? "{}";
+    try {
+      return JSON.parse(raw) as {
+        status: string;
+        runId?: string;
+        sessionKey?: string;
+      };
+    } catch {
+      throw new Error("Invalid spawn response JSON");
+    }
+  },
+);
+
+// ── List sub-agent sessions ──────────────────────────────────────────────────
+
+export const listSubAgents = orgAction(
+  z.object({ sandboxId: z.string().min(1) }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    const result = await runOrThrow(
+      runtime,
+      `openclaw sessions --json`,
+      "list subagent sessions",
+    );
+    const raw = result.stdout?.trim() ?? "{}";
+    let parsed: { sessions?: Record<string, unknown>[] };
+    try {
+      parsed = JSON.parse(raw) as typeof parsed;
+    } catch {
+      throw new Error("Invalid sessions list JSON");
+    }
+
+    const sessions = Array.isArray(parsed.sessions) ? parsed.sessions : [];
+
+    // Filter to sub-agent sessions only (key contains ":subagent:")
+    const subagentSessions = sessions
+      .filter((s) => {
+        const key = s.key as string | undefined;
+        return key?.includes(":subagent:");
+      })
+      .map((s) => ({
+        key: s.key as string,
+        label: (s.label as string | undefined) ?? null,
+        model: (s.model as string | undefined) ?? null,
+        status: deriveStatus(s),
+        updatedAt: (s.updatedAtMs as number | undefined) ?? null,
+        tokens: parseTokens(s),
+      }));
+
+    return { sessions: subagentSessions, total: subagentSessions.length };
+  },
+);
+
+// ── Kill a sub-agent session ─────────────────────────────────────────────────
+
+export const killSubAgent = orgAction(
+  z.object({
+    sandboxId: z.string().min(1),
+    sessionKey: z.string().min(1),
+  }),
+  async ({ organizationId }, input) => {
+    const runtime = await getSandboxRuntime(input.sandboxId, organizationId);
+    await runOrThrow(
+      runtime,
+      `openclaw sessions delete ${esc(input.sessionKey)}`,
+      "kill subagent",
+    );
+    return { ok: true as const };
+  },
+);
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function deriveStatus(
+  s: Record<string, unknown>,
+): "running" | "completed" | "error" | "unknown" {
+  const status = s.status as string | undefined;
+  if (status === "running" || status === "active") return "running";
+  if (status === "completed" || status === "done" || status === "success")
+    return "completed";
+  if (status === "error" || status === "failed") return "error";
+
+  // Fallback: if there's no explicit status, check state fields
+  const endedAt = s.endedAtMs as number | undefined;
+  const error = s.error as string | undefined;
+  if (error) return "error";
+  if (endedAt) return "completed";
+  return "unknown";
+}
+
+function parseTokens(
+  s: Record<string, unknown>,
+): { input: number; output: number; total: number } | null {
+  const tokens = s.tokens as Record<string, unknown> | undefined;
+  if (!tokens) return null;
+  const input = (tokens.input as number | undefined) ?? 0;
+  const output = (tokens.output as number | undefined) ?? 0;
+  return { input, output, total: input + output };
+}

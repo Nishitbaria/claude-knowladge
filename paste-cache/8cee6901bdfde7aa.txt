@@ -1,0 +1,313 @@
+[DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+      },
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+  }
+]
+installHook.js:1 [DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+      },
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+  }
+]
+MessagePartRenderer.tsx:46 [DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+      },
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+  }
+]
+installHook.js:1 [DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "text": "Generate image of a dog in the space anime style",
+    "type": "text"
+  }
+]
+MessagePartRenderer.tsx:376 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+      },
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+  }
+]
+MessagePartRenderer.tsx:46 [DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}
+installHook.js:1 [DEBUG] MessagePartRenderer - all parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-generateImageWithPolling",
+    "input": {
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "modelName": "seedream-4.5",
+      "aspect_ratio": "1:1"
+    },
+    "state": "output-available",
+    "output": {
+      "model": "seedream-4.5",
+      "output": {
+        "provider": "replicate",
+        "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+      },
+      "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+      "status": "succeeded",
+      "credits": 8,
+      "success": true,
+      "aspect_ratio": "1:1",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+      "totalCredits": 8
+    },
+    "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+  }
+]
+installHook.js:1 [DEBUG] renderTool - part: {
+  "type": "tool-generateImageWithPolling",
+  "input": {
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "modelName": "seedream-4.5",
+    "aspect_ratio": "1:1"
+  },
+  "state": "output-available",
+  "output": {
+    "model": "seedream-4.5",
+    "output": {
+      "provider": "replicate",
+      "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm"
+    },
+    "prompt": "A majestic dog floating in outer space in vibrant anime style, cosmic background with stars and nebulae, glowing energy aura around the dog, detailed fur with shimmering highlights, expressive anime eyes, dramatic lighting, rich colors of purples, blues, and pinks, cinematic composition, high-quality anime illustration",
+    "status": "succeeded",
+    "credits": 8,
+    "success": true,
+    "aspect_ratio": "1:1",
+    "predictionId": "717mnwqmjhrmt0cw3mfbz4twrm",
+    "totalCredits": 8
+  },
+  "toolCallId": "toolu_012cqYuHpnJQr79MJAezUFac"
+}

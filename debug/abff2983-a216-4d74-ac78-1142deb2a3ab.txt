@@ -1,0 +1,229 @@
+2026-02-03T06:28:14.844Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-03T06:28:14.844Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-03T06:28:14.844Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-03T06:28:14.844Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-03T06:28:14.851Z [DEBUG] Applying permission update: Adding 3 allow rule(s) to destination 'localSettings': ["WebFetch(domain:ai-sdk.dev)","Bash(npx ultracite check:*)","Bash(npx ultracite:*)"]
+2026-02-03T06:28:14.851Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-03T06:28:14.854Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-03T06:28:14.855Z [DEBUG] [STARTUP] Running setup()...
+2026-02-03T06:28:14.855Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-03T06:28:14.855Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/nishitbariya/.claude/skills, project=[/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills]
+2026-02-03T06:28:14.864Z [DEBUG] Error log sink initialized
+2026-02-03T06:28:14.867Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-03T06:28:14.867Z [DEBUG] Total plugin skills loaded: 0
+2026-02-03T06:28:14.867Z [DEBUG] Total plugin commands loaded: 0
+2026-02-03T06:28:14.867Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-03T06:28:14.868Z [DEBUG] [STARTUP] setup() completed in 13ms
+2026-02-03T06:28:14.868Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-03T06:28:14.870Z [DEBUG] Total plugin agents loaded: 0
+2026-02-03T06:28:14.871Z [DEBUG] Loaded 8 unique skills (managed: 0, user: 4, project: 4, legacy commands: 0)
+2026-02-03T06:28:14.871Z [DEBUG] getSkills returning: 8 skill dir commands, 0 plugin skills, 1 bundled skills
+2026-02-03T06:28:14.872Z [DEBUG] [STARTUP] Commands and agents loaded in 4ms
+2026-02-03T06:28:14.872Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-03T06:28:14.872Z [DEBUG] [render] initLayout starting
+2026-02-03T06:28:14.872Z [DEBUG] Layout engine: yoga
+2026-02-03T06:28:14.875Z [DEBUG] [Claude in Chrome] Found chrome profiles: Profile 1, Default, Profile 4, Profile 3, Profile 2, Profile 5
+2026-02-03T06:28:14.876Z [DEBUG] Acquired PID lock for 2.1.29 (PID 20946)
+2026-02-03T06:28:14.876Z [DEBUG] Acquired PID lock on running version: /Users/nishitbariya/.local/share/claude/versions/2.1.29
+2026-02-03T06:28:14.879Z [DEBUG] [render] initLayout complete
+2026-02-03T06:28:14.882Z [DEBUG] [render] first ink render: 737ms since process start
+2026-02-03T06:28:14.904Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-02-03T06:28:14.907Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:28:14.939Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-03T06:28:14.940Z [DEBUG] Grove: No cache, fetching config in background (dialog skipped this session)
+2026-02-03T06:28:14.946Z [DEBUG] [STARTUP] showSetupScreens() completed in 74ms
+2026-02-03T06:28:14.946Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-03T06:28:14.946Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-03T06:28:14.946Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-03T06:28:14.946Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T06:28:14.946Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T06:28:14.971Z [DEBUG] Total LSP servers loaded: 0
+2026-02-03T06:28:14.971Z [DEBUG] [STARTUP] MCP configs loaded in 120ms
+2026-02-03T06:28:14.975Z [DEBUG] MCP server "posthog": Starting connection with timeout of 30000ms
+2026-02-03T06:28:14.989Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-03T06:28:14.992Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100094992
+2026-02-03T06:28:14.992Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:14.992Z [DEBUG] Temp file written successfully, size: 26982 bytes
+2026-02-03T06:28:14.992Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:14.992Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100094992 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:14.992Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:14.994Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-03T06:28:14.994Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-03T06:28:14.994Z [DEBUG] Loaded 0 installed plugins from /Users/nishitbariya/.claude/plugins/installed_plugins.json
+2026-02-03T06:28:14.994Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-03T06:28:14.994Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-03T06:28:14.994Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T06:28:14.994Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-03T06:28:14.994Z [DEBUG] LSP server manager initialized successfully
+2026-02-03T06:28:14.995Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-03T06:28:14.995Z [DEBUG] [render] initLayout starting
+2026-02-03T06:28:14.995Z [DEBUG] [render] initLayout complete
+2026-02-03T06:28:14.996Z [DEBUG] [render] first ink render: 850ms since process start
+2026-02-03T06:28:15.000Z [DEBUG] Watching for changes in setting files /Users/nishitbariya/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.local.json...
+2026-02-03T06:28:15.004Z [DEBUG] [keybindings] Watching for changes to /Users/nishitbariya/.claude/keybindings.json
+2026-02-03T06:28:15.006Z [DEBUG] Watching for changes in skill/command directories: /Users/nishitbariya/.claude/skills, /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/skills...
+2026-02-03T06:28:15.031Z [DEBUG] Git remote URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:28:15.031Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:28:15.031Z [DEBUG] Parsed repository: FounderFeedAdmin/ShowCart from URL: https://github.com/FounderFeedAdmin/ShowCart.git
+2026-02-03T06:28:15.031Z [DEBUG] Path /Users/nishitbariya/Github/02-Web-Apps/ShowCart already tracked for repo founderfeedadmin/showcart
+2026-02-03T06:28:15.056Z [DEBUG] [keybindings] KeybindingSetup initialized with 99 bindings, 0 warnings
+2026-02-03T06:28:15.096Z [DEBUG] High write ratio: blit=0, write=1053 (100.0% writes), screen=18x164
+2026-02-03T06:28:15.117Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-03T06:28:15.118Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-03T06:28:15.119Z [DEBUG] performStartupChecks called
+2026-02-03T06:28:15.119Z [DEBUG] Starting background plugin installations
+2026-02-03T06:28:15.119Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-03T06:28:15.265Z [DEBUG] High write ratio: blit=0, write=1104 (100.0% writes), screen=18x164
+2026-02-03T06:28:15.945Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-03T06:28:15.945Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-03T06:28:15.945Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-03T06:28:15.947Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-03T06:28:15.947Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-03T06:28:15.947Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:28:16.053Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100096053
+2026-02-03T06:28:16.053Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:16.054Z [DEBUG] Temp file written successfully, size: 27132 bytes
+2026-02-03T06:28:16.054Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:16.054Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100096053 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:16.054Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:16.091Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100096091
+2026-02-03T06:28:16.091Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:16.091Z [DEBUG] Temp file written successfully, size: 27132 bytes
+2026-02-03T06:28:16.091Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:16.091Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100096091 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:16.091Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:16.098Z [DEBUG] MCP server "ide": Starting connection with timeout of 30000ms
+2026-02-03T06:28:16.098Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-03T06:28:16.098Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-03T06:28:16.098Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-03T06:28:16.115Z [DEBUG] MCP server "ide": Successfully connected to ws-ide server in 19ms
+2026-02-03T06:28:16.115Z [DEBUG] MCP server "ide": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Claude Code Cursor MCP","version":"2.1.27"}}
+2026-02-03T06:28:16.134Z [DEBUG] High write ratio: blit=0, write=1104 (100.0% writes), screen=18x164
+2026-02-03T06:28:16.264Z [DEBUG] [claudeai-mcp] Fetch failed
+2026-02-03T06:28:16.275Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/nishitbariya/.local/share/claude/versions/2.1.29)
+2026-02-03T06:28:16.452Z [DEBUG] [claudeai-mcp] Fetch failed
+2026-02-03T06:28:16.589Z [ERROR] Error: Error: 1: Command failed with ERR_STREAM_PREMATURE_CLOSE: cursor --force --install-extension anthropic.claude-code
+Premature close 
+    at a97 (/$bunfs/root/claude:809:4029)
+    at async i97 (/$bunfs/root/claude:809:1623)
+    at processTicksAndRejections (native:7:39)
+2026-02-03T06:28:16.782Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T06:28:16.783Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T06:28:17.671Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100097671
+2026-02-03T06:28:17.672Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:17.672Z [DEBUG] Temp file written successfully, size: 27132 bytes
+2026-02-03T06:28:17.672Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:17.672Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100097671 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:17.672Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:17.727Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T06:28:18.889Z [ERROR] MCP server "posthog" Server stderr: npm warn Unknown project config "node-linker". This will stop working in the next major version of npm.
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js' imported from /Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/mcp-remote/dist/chunk-F76MHFRJ.js
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:712:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:729:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:758:52)
+    at #resolve (node:internal/modules/esm/loader:694:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:614:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/nishitbariya/.npm/_npx/1a3c4333f3a90708/node_modules/strict-url-sanitise/dist/index.js'
+}
+
+Node.js v25.4.0
+2026-02-03T06:28:18.890Z [DEBUG] MCP server "posthog": Connection failed after 3917ms: MCP error -32000: Connection closed
+2026-02-03T06:28:18.890Z [ERROR] MCP server "posthog" Connection failed: MCP error -32000: Connection closed
+2026-02-03T06:28:18.894Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T06:28:18.894Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T06:28:18.894Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T06:28:19.340Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100099340
+2026-02-03T06:28:19.340Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:19.340Z [DEBUG] Temp file written successfully, size: 27247 bytes
+2026-02-03T06:28:19.340Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:19.340Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100099340 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:19.340Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:20.960Z [DEBUG] High write ratio: blit=0, write=1101 (100.0% writes), screen=23x164
+2026-02-03T06:28:20.966Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude/todos/abff2983-a216-4d74-ac78-1142deb2a3ab-agent-abff2983-a216-4d74-ac78-1142deb2a3ab.json.tmp.20946.1770100100966
+2026-02-03T06:28:20.968Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-03T06:28:20.968Z [DEBUG] Renaming /Users/nishitbariya/.claude/todos/abff2983-a216-4d74-ac78-1142deb2a3ab-agent-abff2983-a216-4d74-ac78-1142deb2a3ab.json.tmp.20946.1770100100966 to /Users/nishitbariya/.claude/todos/abff2983-a216-4d74-ac78-1142deb2a3ab-agent-abff2983-a216-4d74-ac78-1142deb2a3ab.json
+2026-02-03T06:28:20.968Z [DEBUG] File /Users/nishitbariya/.claude/todos/abff2983-a216-4d74-ac78-1142deb2a3ab-agent-abff2983-a216-4d74-ac78-1142deb2a3ab.json written atomically
+2026-02-03T06:28:20.985Z [DEBUG] Summarizing all 10 messages (~0 tokens)
+2026-02-03T06:28:20.986Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-03T06:28:20.986Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.29.ab3; cc_entrypoint=cli;
+2026-02-03T06:28:20.987Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T06:28:20.987Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T06:28:20.987Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T06:28:20.990Z [DEBUG] Stats cache stale (2026-02-01), processing 2026-02-02 to 2026-02-02 in background
+2026-02-03T06:28:20.991Z [ERROR] Error: Error: ENOENT: no such file or directory, open '/Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json'
+    at openSync (unknown)
+    at <anonymous> (/$bunfs/root/claude:12:947)
+    at yC (/$bunfs/root/claude:11:40705)
+    at readSync (/$bunfs/root/claude:12:875)
+    at kC (/$bunfs/root/claude:5143:113)
+    at vG (/$bunfs/root/claude:5145:226)
+    at wq9 (/$bunfs/root/claude:121:1845)
+    at <anonymous> (/$bunfs/root/claude:5250:4212)
+2026-02-03T06:28:20.991Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /Users/nishitbariya/Github/02-Web-Apps/ShowCart/.claude/settings.json
+2026-02-03T06:28:21.005Z [DEBUG] Cleaned up old image cache: /Users/nishitbariya/.claude/image-cache/bc2228c0-29e0-40d4-9785-9538bde300da
+2026-02-03T06:28:21.007Z [DEBUG] Stats cache saved successfully (lastComputedDate: 2026-02-02)
+2026-02-03T06:28:21.007Z [DEBUG] Stats cache updated with 1 new sessions
+2026-02-03T06:28:22.089Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-03T06:28:22.089Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-03T06:28:22.240Z [DEBUG] Stream started - received first chunk
+2026-02-03T06:28:22.442Z [DEBUG] Generated summary for session bc2228c0-29e0-40d4-9785-9538bde300da: "AI Agent Multi-Step Streaming & Message Parts Merge Fix"
+2026-02-03T06:28:22.448Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 1 (total: 6)
+2026-02-03T06:28:26.254Z [DEBUG] High write ratio: blit=0, write=1129 (100.0% writes), screen=23x164
+2026-02-03T06:28:26.264Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T06:28:26.273Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:28:26.306Z [DEBUG] High write ratio: blit=0, write=1114 (100.0% writes), screen=21x164
+2026-02-03T06:28:26.317Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100106317
+2026-02-03T06:28:26.317Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:26.318Z [DEBUG] Temp file written successfully, size: 27247 bytes
+2026-02-03T06:28:26.318Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:26.318Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100106317 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:26.318Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:26.324Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100106324
+2026-02-03T06:28:26.325Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:26.326Z [DEBUG] Temp file written successfully, size: 27247 bytes
+2026-02-03T06:28:26.326Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:26.326Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100106324 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:26.326Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:26.334Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T06:28:26.872Z [DEBUG] Checking for native installer update to version 2.1.29
+2026-02-03T06:28:26.873Z [DEBUG] Found 2.1.29 at /Users/nishitbariya/.local/bin/claude, skipping install
+2026-02-03T06:28:29.764Z [DEBUG] Telemetry flushed successfully
+2026-02-03T06:28:29.780Z [DEBUG] High write ratio: blit=0, write=1190 (100.0% writes), screen=26x164
+2026-02-03T06:28:29.783Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-03T06:28:29.786Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2026-02-03T06:28:29.795Z [ERROR] Error: Error: Failed to delete keychain entry
+    at ol9 (/$bunfs/root/claude:187:10369)
+    at async Hi9 (/$bunfs/root/claude:188:592)
+    at async $i9 (/$bunfs/root/claude:188:496)
+    at async kKA (/$bunfs/root/claude:1733:25443)
+    at async call (/$bunfs/root/claude:1733:26084)
+    at processTicksAndRejections (native:7:39)
+2026-02-03T06:28:29.798Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100109798
+2026-02-03T06:28:29.798Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:29.798Z [DEBUG] Temp file written successfully, size: 27247 bytes
+2026-02-03T06:28:29.798Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:29.798Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100109798 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:29.799Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:29.863Z [DEBUG] Writing to temp file: /Users/nishitbariya/.claude.json.tmp.20946.1770100109863
+2026-02-03T06:28:29.863Z [DEBUG] Preserving file permissions: 100644
+2026-02-03T06:28:29.863Z [DEBUG] Temp file written successfully, size: 26868 bytes
+2026-02-03T06:28:29.863Z [DEBUG] Applied original permissions to temp file
+2026-02-03T06:28:29.863Z [DEBUG] Renaming /Users/nishitbariya/.claude.json.tmp.20946.1770100109863 to /Users/nishitbariya/.claude.json
+2026-02-03T06:28:29.864Z [DEBUG] File /Users/nishitbariya/.claude.json written atomically
+2026-02-03T06:28:29.872Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-03T06:28:30.064Z [DEBUG] Getting matching hook commands for SessionEnd with query: logout
+2026-02-03T06:28:30.064Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T06:28:30.064Z [DEBUG] Matched 0 unique hooks for query "logout" (0 before deduplication)

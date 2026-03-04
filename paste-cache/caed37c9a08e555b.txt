@@ -1,0 +1,269 @@
+]: [dde2d80a-b3ac-4d0f-8e11-042b7f362d31] Receiving JSON with objects: 4
+]: [dde2d80a-b3ac-4d0f-8e11-042b7f362d31] Video objects in request: 0
+(node:92762) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [dde2d80a-b3ac-4d0f-8e11-042b7f362d31] Returning JSON with objects: 4
+]: [dde2d80a-b3ac-4d0f-8e11-042b7f362d31] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.2s (compile: 14ms, proxy.ts: 8ms, render: 2.2s)
+(node:93396) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ POST /api/trpc/moderation.checkText?batch=1 200 in 3.2s (compile: 11ms, proxy.ts: 3ms, render: 3.2s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: '147a81de-ab82-48c4-8396-b5629ee5fd72',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '725838c9-b26e-4187-ad3f-09701c4d8fe1',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: '6hlrCSGNH9qs6u5n', parts: [ [Object] ] },
+  {
+    id: '360f8808-f75e-4143-b5e5-e30fea516594',
+    parts: [ [Object], [Object] ]
+  }
+]
+]: User message received, total messages: 3
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "text",
+    "text": "remove its backgroud"
+  },
+  {
+    "type": "file",
+    "mediaType": "image/jpeg",
+    "url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Canvas selection 1 URL: https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+  }
+]
+]: User message saved: 2Pz0OIvhDBcS6Sqr
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting Replicate generation process
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 1: Authenticating user
+]: [05c785f8-752e-4475-9429-734b55efda1c] User authenticated - ID: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 2: Parsing request payload
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 4: Validating model and credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting validation for model: background-remover, userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] Valid model confirmed: background-remover (type: extraTool)
+]: [05c785f8-752e-4475-9429-734b55efda1c] Fetching tool info and user credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] User credits: 50028, toolId: 1882fa48-514e-5833-bb1f-bfa7d71cdccf
+]: [05c785f8-752e-4475-9429-734b55efda1c] Calculating credit cost for model: background-remover
+]: [05c785f8-752e-4475-9429-734b55efda1c] Calculated credits: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] [extraTools] Credits available: 50028, Required: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] Step 5: Processing Replicate generation with credit management
+]: [05c785f8-752e-4475-9429-734b55efda1c] Starting credit deduction for Replicate generation
+]: [05c785f8-752e-4475-9429-734b55efda1c] deductCreditsWithLedger called {"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","jobId":"05c785f8-752e-4475-9429-734b55efda1c","amount":2,"options":{"modelName":"background-remover"},"reason":"TOOLS"}
+]: [05c785f8-752e-4475-9429-734b55efda1c] Transaction started
+]: [05c785f8-752e-4475-9429-734b55efda1c] Fetching user and credit information for userId: rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws
+]: [05c785f8-752e-4475-9429-734b55efda1c] User credit check - Available: 50028, Required: 2
+]: [05c785f8-752e-4475-9429-734b55efda1c] Creating successful DEBIT ledger entry
+]: [05c785f8-752e-4475-9429-734b55efda1c] DEBIT ledger entry created: 3dc88760-643b-4648-9a30-996197d51f89
+]: [05c785f8-752e-4475-9429-734b55efda1c] Updating user credit balance - deducting 2 credits
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credit balance updated - Previous: 50028, New: 50026
+]: [05c785f8-752e-4475-9429-734b55efda1c] Transaction will commit successfully
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credits deducted successfully
+]: [05c785f8-752e-4475-9429-734b55efda1c] Credits deducted successfully using ledger
+]: [05c785f8-752e-4475-9429-734b55efda1c] Creating replicate prediction
+]: [05c785f8-752e-4475-9429-734b55efda1c] Using standard /predictions endpoint
+]: [05c785f8-752e-4475-9429-734b55efda1c] Prediction payload: {"version":"bria/remove-background","input":{"image_url":"https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg","preserve_partial_alpha":true,"content_moderation":false,"extraData":{"userId":"rsKoBkoLNKFP7G1A8SJiPQRnkhyDMqws","toolId":"1882fa48-514e-5833-bb1f-bfa7d71cdccf","modelName":"background-remover","extraTool":true,"type":"image"}},"webhook":"https://ladybug-ultimate-solely.ngrok-free.app/api/webhooks/venus-9/v2","webhook_events_filter":["completed"]}
+]: [05c785f8-752e-4475-9429-734b55efda1c] Saving generation data with credit tracking
+]: More-tools generation data saved successfully for model: background-remover
+]: [05c785f8-752e-4475-9429-734b55efda1c] Replicate generation completed successfully. SpecialId: dxxeymhzqhrmw0cw3mjrna4920, Type: image
+]: [05c785f8-752e-4475-9429-734b55efda1c] Request completed successfully. SpecialId: dxxeymhzqhrmw0cw3mjrna4920, Type: image
+ POST /api/venus-9/tools/replicate 202 in 9.8s (compile: 1636ms, proxy.ts: 3ms, render: 8.2s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "tool-bgRemover",
+    "toolCallId": "toolu_01FCaVAYsTXHCe7hKKz3tZa5",
+    "state": "output-available",
+    "input": {
+      "imageUrl": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg"
+    },
+    "output": {
+      "success": true,
+      "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+      "status": "succeeded",
+      "output": {
+        "predictionId": "dxxeymhzqhrmw0cw3mjrna4920",
+        "provider": "replicate"
+      },
+      "model_name": "background-remover",
+      "image_url": "https://replicate.delivery/xezq/PFBZlm2zC6LKNltpJa8JSp7IhDuHijdqC92fuXv8RORK3vBLA/tmpuskpq52r.jpg",
+      "credits": 2,
+      "totalCredits": 2
+    }
+  }
+]
+]: Assistant message saved: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e (2 parts)
+ POST /api/agents/v1 200 in 19.0s (compile: 847ms, proxy.ts: 550ms, render: 17.6s)
+]: Model selection received: {"isAutoMode":true,"imageModel":null,"videoModel":null}
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Receiving JSON with objects: 5
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Video objects in request: 0
+(node:93835) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Fetching prediction from Replicate
+[DEBUG] loadChatMessages - dbMessages metadata: [
+  {
+    id: '147a81de-ab82-48c4-8396-b5629ee5fd72',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '725838c9-b26e-4187-ad3f-09701c4d8fe1',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: '0beb7bab-f579-4708-b1c0-0dee3ab8023d',
+    metadata: { parts: [Array] }
+  },
+  {
+    id: 'abbb04a6-039f-4388-a57e-fe7cbaccd794',
+    metadata: { parts: [Array] }
+  }
+]
+[DEBUG] loadChatMessages - converted parts: [
+  { id: '6hlrCSGNH9qs6u5n', parts: [ [Object] ] },
+  {
+    id: '360f8808-f75e-4143-b5e5-e30fea516594',
+    parts: [ [Object], [Object] ]
+  },
+  { id: '2Pz0OIvhDBcS6Sqr', parts: [ [Object], [Object], [Object] ] },
+  {
+    id: '43d448b4-6abb-4a12-ad34-f5ddc67d3b6e',
+    parts: [ [Object], [Object] ]
+  }
+]
+]: Assistant message received (auto-continuation), using 4 previous messages, continuationId: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e
+]: [Langfuse] Successfully fetched prompt: main_agent_prompt
+]: Auto mode enabled - agent will select best models
+]: [a4f9dab0-6b2d-4f38-97ac-9b0c6bb52dc6] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 2.5s (compile: 6ms, proxy.ts: 1898ms, render: 575ms)
+(node:93860) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/trpc/user.getMiniUserDetails,chat.getChats?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%2C%221%22%3A%7B%22json%22%3A%7B%22projectId%22%3A%22d7c90191-6ab2-4dd7-8737-9eb521b386b8%22%7D%7D%7D 200 in 2.2s (compile: 10ms, proxy.ts: 4ms, render: 2.2s)
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Returning JSON with objects: 5
+]: [26f322ab-cbc8-42d8-967e-5d6c44fe2a76] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 2.3s (compile: 8ms, proxy.ts: 3ms, render: 2.3s)
+]: [DEBUG] onFinish - isContinuation: false
+]: [DEBUG] onFinish - messages count: 1
+]: [DEBUG] onFinish - responseMessage.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+]: [DEBUG] onFinish - last message from messages array: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+[DEBUG] saveChatMessage - message.parts: [
+  {
+    "type": "step-start"
+  },
+  {
+    "type": "text",
+    "text": "Done! The background has been removed from your anime dog. It now has a transparent background while keeping all the cosmic energy effects intact. Check your canvas!",
+    "state": "done"
+  }
+]
+]: Assistant message saved: 43d448b4-6abb-4a12-ad34-f5ddc67d3b6e (2 parts)
+ POST /api/agents/v1 200 in 4.0s (compile: 14ms, proxy.ts: 517ms, render: 3.5s)
+ GET /api/trpc/user.getMiniUserDetails?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%2C%22v%22%3A1%7D%7D%7D 200 in 728ms (compile: 7ms, proxy.ts: 3ms, render: 719ms)
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Fetching prediction from Replicate
+(node:93925) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Receiving JSON with objects: 5
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Video objects in request: 0
+]: [bd5af6c4-443b-40c0-82f5-2bdaede906ab] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 939ms (compile: 6ms, proxy.ts: 478ms, render: 456ms)
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Returning JSON with objects: 5
+]: [6f6f40ea-c530-443d-8a41-714473c2ae33] Video objects in response: 0
+ PATCH /api/image-editor/projects/d7c90191-6ab2-4dd7-8737-9eb521b386b8 200 in 738ms (compile: 6ms, proxy.ts: 3ms, render: 730ms)
+(node:93943) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Webhook received. Processing...
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Request body parsed successfully
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] Request body parsed successfully
+]: Signature verified successfully.
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Timestamp verified successfully.
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] body.output type: string
+]: [098bcca3-d21a-4826-97e8-598c313d6e50] [POST /webhooks/replicate] Processing regular image upload with random S3 keys
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Fetching prediction for ID: dxxeymhzqhrmw0cw3mjrna4920 with provider: replicate
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Fetching prediction from Replicate
+]: [2cc80c9d-d05f-4243-bc2b-fb096ec3e370] Replicate prediction fetched successfully
+ GET /api/image/prediction/dxxeymhzqhrmw0cw3mjrna4920?provider=replicate 200 in 960ms (compile: 6ms, proxy.ts: 502ms, render: 453ms)

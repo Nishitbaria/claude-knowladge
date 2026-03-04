@@ -1,0 +1,183 @@
+"use client";
+
+import { RefreshCw, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AGENT_TEMPLATES } from "../_constants/templates";
+import { useAgentMutations, useAgentsList } from "../_hooks/use-subagents";
+import type { AgentInfo, AgentTemplate } from "./types";
+
+// ── Template card (deploy only) ──────────────────────────────────────────────
+
+function TemplateCard({
+  template,
+  onDeploy,
+  busy,
+}: {
+  template: AgentTemplate;
+  onDeploy: () => void;
+  busy: boolean;
+}) {
+  const Icon = template.icon;
+  return (
+    <article className="flex flex-col justify-between rounded-xl border bg-card p-5 shadow-sm">
+      <div className="flex items-start gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="text-sm font-medium">
+            {template.emoji} {template.name}
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            {template.description}
+          </p>
+        </div>
+      </div>
+      <Button
+        size="sm"
+        className="mt-4 w-full"
+        disabled={busy}
+        onClick={onDeploy}
+      >
+        Deploy Agent
+      </Button>
+    </article>
+  );
+}
+
+// ── Active agent row ─────────────────────────────────────────────────────────
+
+function ActiveAgentRow({
+  agent,
+  onRemove,
+  busy,
+}: {
+  agent: AgentInfo;
+  onRemove: () => void;
+  busy: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-between rounded-lg border bg-card px-4 py-3">
+      <div className="flex items-center gap-3 min-w-0">
+        {agent.emoji && <span className="text-lg shrink-0">{agent.emoji}</span>}
+        <div className="flex flex-col gap-0.5 min-w-0">
+          <span className="text-sm font-medium truncate">{agent.name}</span>
+          <span className="text-xs text-muted-foreground truncate">
+            {agent.id}
+            {agent.workspace && <> &middot; {agent.workspace}</>}
+          </span>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 shrink-0 ml-3">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-medium text-green-600">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+          Active
+        </span>
+        <Button variant="outline" size="sm" disabled={busy} onClick={onRemove}>
+          <Trash2 className="mr-1 h-3.5 w-3.5" />
+          Remove
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+// ── Main view ────────────────────────────────────────────────────────────────
+
+export function SubAgentsView({ sandboxId }: { sandboxId: string }) {
+  const { data: agentsData, isLoading, refetch } = useAgentsList(sandboxId);
+  const { create, remove, busy } = useAgentMutations(sandboxId);
+
+  const activeAgents = agentsData?.agents ?? [];
+
+  function handleDeploy(template: AgentTemplate) {
+    create.mutate({
+      sandboxId,
+      agentId: template.agentId,
+      description: template.description,
+      systemPrompt: template.systemPrompt,
+    });
+  }
+
+  function handleRemove(agentId: string) {
+    remove.mutate({ sandboxId, agentId });
+  }
+
+  return (
+    <section className="flex flex-col gap-6 p-6 md:p-8">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-xl font-semibold tracking-tight">Agents</h1>
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            Deploy named agents with their own workspace and skills. Chat via
+            Telegram.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => refetch()}
+          disabled={isLoading}
+        >
+          <RefreshCw
+            className={`mr-1.5 h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`}
+          />
+          Refresh
+        </Button>
+      </div>
+
+      {/* Template cards */}
+      <div>
+        <h2 className="mb-3 text-sm font-medium text-muted-foreground">
+          Agent Templates
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {AGENT_TEMPLATES.map((template) => (
+            <TemplateCard
+              key={template.id}
+              template={template}
+              onDeploy={() => handleDeploy(template)}
+              busy={busy}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Active agents */}
+      <div>
+        <h2 className="mb-3 text-sm font-medium text-muted-foreground">
+          Active Agents ({activeAgents.length})
+        </h2>
+        {isLoading && activeAgents.length === 0 ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <span
+                className="h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent animate-spin"
+                aria-hidden="true"
+              />
+              <span className="text-sm">Loading agents...</span>
+            </div>
+          </div>
+        ) : activeAgents.length === 0 ? (
+          <div className="flex items-center justify-center rounded-lg border border-dashed py-12">
+            <p className="text-sm text-muted-foreground">
+              No agents deployed yet. Pick a template above to get started.
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2">
+            {activeAgents.map((agent: AgentInfo) => (
+              <ActiveAgentRow
+                key={agent.id}
+                agent={agent}
+                onRemove={() => handleRemove(agent.id)}
+                busy={busy}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

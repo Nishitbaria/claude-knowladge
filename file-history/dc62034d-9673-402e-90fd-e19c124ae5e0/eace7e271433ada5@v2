@@ -1,0 +1,719 @@
+# Hierarchical Agent Architecture - ShowCart AI
+
+## Overview
+
+ShowCart implements a **hierarchical agent system** with a main orchestrator agent that delegates tasks to specialized subagents. This architecture is built using the **Vercel AI SDK v6+** with the `ToolLoopAgent` pattern.
+
+```
+User Request
+     ↓
+Super Agent (Claude Sonnet 4.5)
+     ↓
+     ├─→ Media Subagent (Claude Haiku 4.5)
+     │   ├─ generateImage
+     │   ├─ generateVideo
+     │   ├─ generateAudio
+     │   ├─ editImage
+     │   ├─ removeBackground
+     │   ├─ resizeImage
+     │   ├─ upscaleImage
+     │   └─ video tools (lipSync, trim, upscale, etc.)
+     │
+     └─→ Research Subagent (Claude Haiku 4.5)
+         └─ webSearch
+```
+
+---
+
+## Architecture Components
+
+### 1. Super Agent (Orchestrator)
+
+**File**: `src/lib/agents/master-agents.ts`
+
+The super agent is the entry point for all user requests. It analyzes the request and delegates to specialized subagents.
+
+```typescript
+export const superAgent = new ToolLoopAgent({
+  id: "super-agent",
+  model: anthropic("claude-sonnet-4-5"),  // Sonnet for better reasoning
+  tools: superAgentTools,                  // Subagent tools
+  maxOutputTokens: 10_000,
+  stopWhen: stepCountIs(15),
+  instructions: `You are an intelligent orchestrator...`,
+});
+```
+
+**Key Characteristics**:
+- Uses **Claude Sonnet 4.5** for superior routing decisions
+- Max 15 steps to prevent infinite loops
+- Two tools: `mediaGeneration` and `research`
+- Responds directly for simple questions
+
+**Routing Logic**:
+```
+Simple question? → Answer directly
+Media request? → Delegate to mediaGeneration tool
+Research needed? → Delegate to research tool
+Complex multi-step? → Call agents sequentially
+```
+
+---
+
+### 2. Subagent Tools
+
+**File**: `src/lib/agents/master-agents.ts`
+
+Subagents are exposed to the super agent as **tools**:
+
+```typescript
+export const superAgentTools = {
+  mediaGeneration: mediaSubagentTool,  // From media-agent.ts
+  research: researchSubagentTool,       // From research-agents.ts
+};
+```
+
+Each subagent tool:
+1. Wraps a specialized `ToolLoopAgent`
+2. Executes autonomously with its own context
+3. Returns a summary to the super agent
+4. Streams progress to the UI
+
+---
+
+### 3. Media Subagent
+
+**File**: `src/lib/agents/media-agent.ts`
+
+The media subagent handles all creative tasks:
+
+```typescript
+const mediaAgent = new ToolLoopAgent({
+  model: anthropic("claude-haiku-4-5"),  // Haiku for speed
+  tools: {
+    generateImage,
+    generateVideo,
+    generateAudio,
+    editImage,
+    removeBackground,
+    resizeImage,
+    upscaleImage,
+    videoLipSync,
+    videoAddAudio,
+    videoTrim,
+    videoSpeedChange,
+    videoStitch,
+    videoReframe,
+    videoUpscaler,
+  },
+  stopWhen: stepCountIs(20),
+  instructions: `You are a media generation specialist...`,
+});
+```
+
+**Exposed as a Tool**:
+```typescript
+export const mediaSubagentTool = tool({
+  description: 'Create, edit, or transform media content...',
+  inputSchema: z.object({
+    task: z.string().describe('The media task to complete'),
+  }),
+  execute: async function* ({ task }, { abortSignal }) {
+    const result = await mediaAgent.stream({
+      prompt: task,
+      abortSignal,
+    });
+
+    // Stream progress to UI
+    for await (const message of readUIMessageStream({
+      stream: result.toUIMessageStream(),
+    })) {
+      yield message;
+    }
+  },
+  // Control what super agent sees (summary only)
+  toModelOutput: ({ output: message }) => {
+    const lastTextPart = message?.parts.findLast(p => p.type === 'text');
+    return {
+      type: 'text',
+      value: lastTextPart?.text ?? 'Media generation completed.',
+    };
+  },
+});
+```
+
+**Key Features**:
+- **Streaming Progress**: Uses `async function*` generator to yield updates
+- **Context Isolation**: Super agent only sees final summary
+- **UI Transparency**: Users see full subagent execution
+
+---
+
+### 4. Research Subagent
+
+**File**: `src/lib/agents/research-agents.ts`
+
+The research subagent handles information gathering:
+
+```typescript
+const researchAgent = new ToolLoopAgent({
+  model: anthropic("claude-haiku-4-5"),
+  tools: {
+    webSearch: exa_webSearch,  // Exa API for web search
+  },
+  stopWhen: stepCountIs(10),
+  instructions: `You are a research specialist...`,
+});
+```
+
+**Similar pattern** to media subagent:
+- Wraps the agent in a tool
+- Streams progress
+- Returns summary to super agent
+
+---
+
+## Request Flow
+
+### Step-by-Step Execution
+
+**Example**: User asks "Create a sunset beach image"
+
+```
+1. User sends message
+   ↓
+2. ChatClient.tsx → useChat hook
+   ↓
+3. POST /api/agents/v1/route.ts
+   ↓
+4. superAgent receives message
+   ↓
+5. superAgent decides: "This is a media task"
+   ↓
+6. superAgent calls mediaGeneration tool
+   ↓
+7. mediaSubagentTool executes mediaAgent
+   ↓
+8. mediaAgent calls generateImage tool
+   ↓
+9. Image generation starts (streaming status updates)
+   ↓
+10. mediaAgent returns summary: "Generated sunset beach image"
+    ↓
+11. superAgent sees: "Media generation completed."
+    ↓
+12. superAgent responds: "I created a beautiful sunset beach image for you!"
+    ↓
+13. Client receives final message
+    ↓
+14. ChatClient.tsx adds image to canvas
+```
+
+---
+
+## Key Files & Responsibilities
+
+### Backend
+
+| File | Purpose |
+|------|---------|
+| `src/lib/agents/master-agents.ts` | Super agent definition and tools export |
+| `src/lib/agents/media-agent.ts` | Media subagent + mediaSubagentTool |
+| `src/lib/agents/research-agents.ts` | Research subagent + researchSubagentTool |
+| `src/app/api/agents/v1/route.ts` | API endpoint using `createAgentUIStreamResponse` |
+| `src/lib/agents/tools/*` | Individual tool definitions |
+
+### Frontend
+
+| File | Purpose |
+|------|---------|
+| `src/components/product/editor/agent/ChatClient.tsx` | Main chat client with `useChat` hook |
+| `src/components/product/editor/agent/ChatMessagesPanel.tsx` | Messages display panel |
+| `src/components/product/editor/agent/MessagePartRenderer.tsx` | Renders message parts (text, tools, subagents) |
+| `src/components/product/editor/agent/CustomToolOutput.tsx` | Renders tool outputs with polling |
+
+---
+
+## API Route Implementation
+
+**File**: `src/app/api/agents/v1/route.ts`
+
+```typescript
+export const POST = observe(async (req: NextRequest) => {
+  // 1. Authenticate user
+  const { id: userId } = await authenticateUser(requestId);
+
+  // 2. Extract request body
+  const { message, id: projectId, chatId, globalSystemInstructions } = await req.json();
+
+  // 3. Verify project ownership
+  const project = await findProjectByIdForUser({ projectId, userId });
+
+  // 4. Resolve or create chat
+  let chat = await getChatById({ chatId, userId });
+  if (!chat) {
+    chat = await createChat({ id: chatId, projectId, userId, title: "New Chat" });
+  }
+
+  // 5. Load previous messages
+  const previousMessages = await loadChatMessages(chat.id, userId);
+
+  // 6. Build messages array
+  let messages = [...previousMessages, message];
+
+  // 7. Validate messages against tool schemas
+  const validatedMessages = await validateUIMessages({
+    messages,
+    tools: superAgentTools,  // Important: validates against super agent tools
+  });
+
+  // 8. Save user message
+  if (message.role === "user") {
+    await saveChatMessage({ message, chatId: chat.id, userId });
+  }
+
+  // 9. Return streaming response
+  return await createAgentUIStreamResponse({
+    agent: superAgent,  // Always uses super agent
+    uiMessages: validatedMessages,
+    onFinish: async ({ responseMessage }) => {
+      // Save assistant message
+      await saveChatMessage({ message: responseMessage, chatId: chat.id, userId });
+    },
+  });
+});
+```
+
+**Key Points**:
+- Always uses `superAgent` (never calls subagents directly)
+- Validates messages against `superAgentTools`
+- Saves messages to PostgreSQL via `saveChatMessage`
+- Uses Langfuse for tracing
+
+---
+
+## Client-Side Implementation
+
+### ChatClient.tsx
+
+```typescript
+const { messages, sendMessage, status, setMessages, stop } = useChat({
+  id: projectId,
+  transport: new DefaultChatTransport({
+    api: "/api/agents/v1",
+    body: () => ({
+      globalSystemInstructions,
+      chatId: activeChatIdRef.current,
+      selection: selectionRef.current,
+    }),
+  }),
+  sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+  onFinish({ message }) {
+    // Refresh credits
+    refreshCredits();
+
+    // Extract media from tool outputs
+    for (const part of message.parts) {
+      if (part.type.startsWith("tool-") && part.state === "output-available") {
+        // Extract images/videos and add to canvas
+        const media = extractMediaUrls(part.output);
+        if (media) {
+          executeCommand({ type: "add", url: media.urls[0], mediaType: media.type });
+        }
+      }
+    }
+  },
+});
+```
+
+**Key Features**:
+- `sendAutomaticallyWhen`: Enables multi-step tool execution
+- `onFinish`: Adds generated media to canvas
+- Uses refs for fresh values in transport callbacks
+
+---
+
+## Message Part Rendering
+
+### MessagePartRenderer.tsx
+
+Handles rendering of different message part types:
+
+#### 1. Subagent Indicator
+
+```typescript
+const renderSubagentIndicator = (part: MessagePart, index: number) => {
+  const meta = SUBAGENT_META[part.type];  // { icon, name }
+  const state = part.state || "input-available";
+  const isWorking = state === "input-streaming" || state === "input-available";
+
+  return (
+    <Agent>
+      <AgentHeader name={`${meta.icon} ${meta.name}`} />
+      {task && <div>"{task}"</div>}
+      <span>
+        {isWorking ? "⏳ Working..." : "✅ Completed"}
+      </span>
+    </Agent>
+  );
+};
+```
+
+**Part Types**:
+- `tool-mediaGeneration` → Shows "🎨 Media Agent" card
+- `tool-research` → Shows "🔍 Research Agent" card
+
+#### 2. Regular Tools
+
+```typescript
+const renderTool = (part: MessagePart, index: number, debugToolUi: boolean) => {
+  // Show status (Preparing → Processing → Completed)
+  const message = getSimpleToolMessage(part.type, part.state);
+
+  // Show credits deducted (for media tools)
+  const showCredits = part.output?.totalCredits !== undefined;
+
+  return (
+    <>
+      <MessageContent>{message}</MessageContent>
+      {showCredits && <MessageContent>Deducted {totalCredits} credits</MessageContent>}
+      {part.output && <CustomToolOutput output={part.output} />}
+    </>
+  );
+};
+```
+
+**Supported Tools**:
+- `tool-generateImage`
+- `tool-generateVideo`
+- `tool-removeBackground`
+- `tool-upscaleImage`
+- And all other media tools
+
+#### 3. Message Part Types
+
+```typescript
+switch (part.type) {
+  case "text":
+    return <Response>{part.text}</Response>;
+
+  case "error":
+    return <ErrorCard />;
+
+  case "file":
+    return <FileAttachment />;
+
+  case "tool-mediaGeneration":
+  case "tool-research":
+    return renderSubagentIndicator(part, index);
+
+  case "tool-generateImage":
+  case "tool-generateVideo":
+  // ... other tools
+    return renderTool(part, index, debugToolUi);
+}
+```
+
+---
+
+## Type Safety
+
+### Inferred Message Types
+
+```typescript
+// Export type for client-side use
+export type SuperAgentUIMessage = InferAgentUIMessage<typeof superAgent>;
+
+// Use in ChatClient
+const { messages } = useChat<SuperAgentUIMessage>();
+```
+
+This provides full type safety for:
+- Message parts
+- Tool inputs/outputs
+- Subagent responses
+
+---
+
+## Context Management
+
+### Super Agent Context
+
+The super agent maintains the **main conversation history**:
+- User messages
+- Super agent responses
+- Subagent summaries (via `toModelOutput`)
+
+**Example Context**:
+```
+User: Create a sunset beach image
+Assistant: [calls mediaGeneration tool]
+Tool Result: "Media generation completed."  ← Only the summary
+Assistant: I created a beautiful sunset beach image!
+```
+
+### Subagent Context
+
+Each subagent has **isolated context**:
+- Receives only the task
+- Uses its own tools independently
+- Returns full execution to UI but summary to super agent
+
+**Subagent sees**:
+```
+User: Create a sunset beach image
+[Calls generateImage]
+[Image generated]
+Assistant: Generated a stunning sunset beach image with warm colors...
+```
+
+**Super agent sees**:
+```
+Tool Result: "Media generation completed."
+```
+
+---
+
+## Benefits of This Architecture
+
+### 1. **Context Efficiency**
+- Subagents can use 100K+ tokens exploring
+- Super agent only consumes summary (~100 tokens)
+- Main conversation stays clean
+
+### 2. **Specialization**
+- Each agent focuses on its domain
+- Media agent knows creative tools
+- Research agent knows information gathering
+
+### 3. **Scalability**
+- Easy to add new subagents
+- Just create new tool wrapping new agent
+- Add to `superAgentTools`
+
+### 4. **User Transparency**
+- UI shows full subagent work
+- Users see every step
+- Super agent orchestrates behind scenes
+
+### 5. **Cost Optimization**
+- Super agent: Sonnet (smart routing)
+- Subagents: Haiku (fast execution)
+- Best model for each task
+
+---
+
+## Adding a New Subagent
+
+**Example**: Add a "Code Agent" for coding tasks
+
+### 1. Create the subagent
+
+```typescript
+// src/lib/agents/code-agent.ts
+const codeAgent = new ToolLoopAgent({
+  model: anthropic("claude-haiku-4-5"),
+  tools: {
+    writeFile,
+    readFile,
+    runTests,
+  },
+  instructions: `You are a coding specialist...`,
+});
+
+export const codeSubagentTool = tool({
+  description: 'Write, edit, or test code',
+  inputSchema: z.object({
+    task: z.string(),
+  }),
+  execute: async function* ({ task }, { abortSignal }) {
+    const result = await codeAgent.stream({ prompt: task, abortSignal });
+    for await (const message of readUIMessageStream({ stream: result.toUIMessageStream() })) {
+      yield message;
+    }
+  },
+  toModelOutput: ({ output: message }) => {
+    const lastTextPart = message?.parts.findLast(p => p.type === 'text');
+    return { type: 'text', value: lastTextPart?.text ?? 'Code task completed.' };
+  },
+});
+```
+
+### 2. Add to super agent
+
+```typescript
+// src/lib/agents/master-agents.ts
+export const superAgentTools = {
+  mediaGeneration: mediaSubagentTool,
+  research: researchSubagentTool,
+  coding: codeSubagentTool,  // ← Add here
+};
+
+export const superAgent = new ToolLoopAgent({
+  // ... existing config
+  instructions: `...
+- coding: For writing, editing, or testing code.
+  `,
+});
+```
+
+### 3. Add UI rendering
+
+```typescript
+// src/components/product/editor/agent/MessagePartRenderer.tsx
+case "tool-coding":
+  return renderSubagentIndicator(part, index);
+```
+
+### 4. Add metadata
+
+```typescript
+// src/components/product/editor/agent/constants.ts
+export const SUBAGENT_META = {
+  "tool-mediaGeneration": { icon: "🎨", name: "Media Agent" },
+  "tool-research": { icon: "🔍", name: "Research Agent" },
+  "tool-coding": { icon: "💻", name: "Code Agent" },  // ← Add here
+};
+```
+
+---
+
+## Known Patterns
+
+### 1. Sequential Subagent Calls
+
+Super agent can call subagents in sequence:
+
+```
+User: Research AI trends and create an image summarizing them
+
+Flow:
+1. Super agent calls research tool
+2. Research agent searches web
+3. Returns findings to super agent
+4. Super agent calls mediaGeneration tool
+5. Media agent creates image
+6. Returns result to super agent
+7. Super agent responds with complete answer
+```
+
+### 2. Parallel Subagent Calls
+
+Currently sequential, but can be parallelized:
+
+```typescript
+// Future enhancement
+const [researchResult, mediaResult] = await Promise.all([
+  researchSubagent.generate({ prompt: researchTask }),
+  mediaAgent.generate({ prompt: mediaTask }),
+]);
+```
+
+### 3. Nested Tools
+
+Subagents can have many tools:
+- Media agent has 15+ tools
+- Each tool is specialized (generateImage, generateVideo, etc.)
+- Subagent routes to correct tool
+
+---
+
+## Debugging
+
+### Enable Debug Logs
+
+```typescript
+// In MessagePartRenderer.tsx
+console.log("[DEBUG] parts:", JSON.stringify(parts, null, 2));
+
+// In route.ts
+logger.info(`Messages: ${JSON.stringify(messages, null, 2)}`);
+```
+
+### Check Tool Call IDs
+
+```typescript
+// In onFinish callback
+console.log("Tool calls:", message.parts.filter(p => p.type.startsWith("tool-")));
+```
+
+### Verify Subagent Execution
+
+```typescript
+// In mediaSubagentTool execute
+console.log("Subagent task:", task);
+console.log("Subagent result:", result.text);
+```
+
+---
+
+## Performance Considerations
+
+### 1. Model Selection
+- **Super Agent**: Sonnet 4.5 (better routing, ~2x cost)
+- **Subagents**: Haiku 4.5 (faster, cheaper)
+
+### 2. Token Usage
+- Super agent sees only summaries
+- Full subagent context isolated
+- Conversation history stays manageable
+
+### 3. Streaming
+- All subagents stream progress
+- UI updates in real-time
+- Better UX for long operations
+
+---
+
+## Security Notes
+
+### 1. Context Isolation
+- Subagents don't inherit main conversation
+- Each invocation starts fresh
+- Prevents context pollution
+
+### 2. Tool Access Control
+- Each agent only has tools it needs
+- Media agent can't search web
+- Research agent can't generate media
+
+### 3. User Authentication
+- All requests authenticated at route level
+- Project ownership verified
+- Chat access controlled
+
+---
+
+## Future Enhancements
+
+### 1. Dynamic Tool Loading
+- Load tools based on user plan
+- Enable/disable subagents per user
+
+### 2. Subagent Composition
+- Subagents calling other subagents
+- Deeper hierarchy if needed
+
+### 3. Parallel Execution
+- Run independent subagents in parallel
+- Faster for multi-step tasks
+
+### 4. Caching
+- Cache subagent responses
+- Reduce repeated work
+
+---
+
+## Summary
+
+ShowCart's hierarchical agent architecture provides:
+
+✅ **Intelligent Routing** - Super agent delegates to specialists
+✅ **Context Efficiency** - Isolated subagent contexts
+✅ **User Transparency** - Full execution visible in UI
+✅ **Specialization** - Each agent focuses on domain
+✅ **Scalability** - Easy to add new subagents
+✅ **Type Safety** - End-to-end TypeScript types
+✅ **Cost Optimization** - Right model for each task
+
+The pattern follows AI SDK best practices and enables complex multi-step workflows while maintaining clean, manageable code.

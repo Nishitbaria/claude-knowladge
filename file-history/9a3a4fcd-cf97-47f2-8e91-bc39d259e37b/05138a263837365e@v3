@@ -1,0 +1,57 @@
+"use client";
+
+import { AuthUIProvider } from "@daveyplate/better-auth-ui";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { ThemeProvider } from "next-themes";
+import { type ReactNode, useState } from "react";
+import { Toaster } from "@/components/ui/sonner";
+import { authClient } from "@/lib/auth-client";
+
+const LIGHT_ONLY_ROUTES = [
+  "/",
+  "/sign-in",
+  "/sign-up",
+  "/forgot-password",
+  "/reset-password",
+  "/email-verification",
+];
+
+export function Providers({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [queryClient] = useState(() => new QueryClient());
+
+  const isLightOnly = LIGHT_ONLY_ROUTES.includes(pathname ?? "");
+
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+      forcedTheme={isLightOnly ? "light" : undefined}
+    >
+      <QueryClientProvider client={queryClient}>
+        <AuthUIProvider
+          authClient={authClient}
+          basePath=""
+          Link={Link as any}
+          navigate={(url) => router.push(url as any)}
+          onSessionChange={() => {
+            router.refresh();
+          }}
+          replace={(url) => router.replace(url as any)}
+          emailVerification={true}
+          social={{
+            providers: ["google"],
+          }}
+        >
+          {children}
+          <Toaster />
+        </AuthUIProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
+  );
+}

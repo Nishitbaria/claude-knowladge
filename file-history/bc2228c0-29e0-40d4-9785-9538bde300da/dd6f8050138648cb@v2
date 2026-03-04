@@ -1,0 +1,130 @@
+import type { UIMessage } from "ai";
+import { and, asc, eq } from "drizzle-orm";
+
+import { db } from "@/server/database/postgresql/drizzle";
+import {
+  chatMessages,
+  type NewChatMessage,
+} from "@/server/database/postgresql/schema";
+import { updateChatLastUsed } from "@/server/database/repo/postgress-repo-functions/chat.repo";
+
+// ============================================================================
+// Chat Message Queries
+// ============================================================================
+
+/**
+ * Load all messages for a specific chat
+ * Returns messages in UIMessage format ready for AI SDK
+ * Sorted by createdAt ascending (oldest first)
+ */
+export const loadChatMessages = async (
+  chatId: string,
+  userId: string,
+): Promise<UIMessage[]> => {
+  const dbMessages = await db
+    .select()
+    .from(chatMessages)
+    .where(
+      and(eq(chatMessages.chatId, chatId), eq(chatMessages.userId, userId)),
+    )
+    .orderBy(asc(chatMessages.createdAt));
+
+  // DEBUG: Log raw messages from database
+  console.log("[DEBUG] loadChatMessages - dbMessages metadata:",
+    dbMessages.map(m => ({ id: m.id, metadata: m.metadata }))
+  );
+
+  // Convert database messages to UIMessage format
+  // Use clientMessageId if available (matches client's original ID), otherwise use DB UUID
+  const result = dbMessages.map((msg) => ({
+    id: msg.clientMessageId || msg.id,
+    role: msg.role as "user" | "assistant" | "system",
+    parts: (msg.metadata as { parts?: unknown[] })?.parts || [
+      {
+        type: "text",
+        text: msg.content,
+      },
+    ],
+    createdAt: msg.createdAt,
+  })) as UIMessage[];
+
+  // DEBUG: Log converted messages
+  console.log("[DEBUG] loadChatMessages - converted parts:",
+    result.map(m => ({ id: m.id, parts: m.parts }))
+  );
+
+  return result;
+};
+
+// ============================================================================
+// Chat Message Saving
+// ============================================================================
+
+/**
+ * Extract text content from message parts
+ */
+const extractTextFromParts = (
+  parts: Array<{ type: string; text?: string }>,
+): string => {
+  return (
+    parts
+      .filter((part) => part.type === "text" && part.text)
+      .map((part) => part.text)
+      .join("\n") || ""
+  );
+};
+
+// Extended UIMessage type with optional createdAt
+type UIMessageWithCreatedAt = UIMessage & { createdAt?: Date | string };
+
+/**
+ * Save a single chat message to the database using upsert
+ * If a message with the same clientMessageId + chatId exists, update it
+ * This prevents duplicate messages when tool calls trigger multiple saves
+ */
+export const saveChatMessage = async ({
+  message,
+  chatId,
+  userId,
+}: {
+  message: UIMessageWithCreatedAt;
+  chatId: string;
+  userId: string;
+}): Promise<void> => {
+  // DEBUG: Log message being saved
+  console.log("[DEBUG] saveChatMessage - message.parts:", JSON.stringify(message.parts, null, 2));
+
+  const content = extractTextFromParts(
+    message.parts as Array<{ type: string; text?: string }>,
+  );
+  const metadata = { parts: message.parts };
+  const createdAt = message.createdAt
+    ? new Date(message.createdAt)
+    : new Date();
+
+  const newMessage: NewChatMessage = {
+    chatId,
+    userId,
+    clientMessageId: message.id,
+    role: message.role,
+    content,
+    metadata,
+    createdAt,
+  };
+
+  // Upsert: Insert if not exists, update if exists
+  // Target matches unique constraint order: clientMessageId, then chatId
+  await db
+    .insert(chatMessages)
+    .values(newMessage)
+    .onConflictDoUpdate({
+      target: [chatMessages.clientMessageId, chatMessages.chatId],
+      set: {
+        content,
+        metadata,
+        // updatedAt is auto-updated by $onUpdate() in schema
+      },
+    });
+
+  await updateChatLastUsed(chatId);
+};

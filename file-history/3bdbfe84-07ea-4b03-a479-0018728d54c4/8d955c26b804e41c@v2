@@ -1,0 +1,9 @@
+"use client";
+
+import { useParams } from "next/navigation";
+import { SubAgentsView } from "./_components/subagents-view";
+
+export default function SubAgentsPage() {
+  const { id } = useParams<{ id: string }>();
+  return <SubAgentsView sandboxId={id} />;
+}

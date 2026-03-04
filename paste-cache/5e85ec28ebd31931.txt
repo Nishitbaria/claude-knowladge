@@ -1,0 +1,140 @@
+user@e2b:~/.openclaw$ cat openclaw.json
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.2",
+    "lastTouchedAt": "2026-03-03T05:47:33.195Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-03T05:13:32.163Z",
+    "lastRunVersion": "2026.2.24",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
+      },
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6"
+      },
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "alias": "claude-sonnet-4-6"
+        }
+      },
+      "workspace": "/home/user/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8,
+        "maxSpawnDepth": 2
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "subagents": {
+          "allowAgents": [
+            "content-writer",
+            "marketing"
+          ]
+        }
+      },
+      {
+        "id": "content-writer",
+        "name": "content-writer",
+        "workspace": "/home/user/.openclaw/workspace-content-writer",
+        "agentDir": "/home/user/.openclaw/agents/content-writer/agent",
+        "identity": {
+          "name": "Content Writer",
+          "emoji": "✏️"
+        }
+      },
+      {
+        "id": "marketing",
+        "name": "marketing",
+        "workspace": "/home/user/.openclaw/workspace-marketing",
+        "agentDir": "/home/user/.openclaw/agents/marketing/agent"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "content-writer",
+      "match": {
+        "channel": "telegram",
+        "accountId": "ops"
+      }
+    },
+    {
+      "agentId": "content-writer",
+      "match": {
+        "channel": "telegram"
+      }
+    }
+  ],
+  "mees": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8792681970:AAF45pxFFVlB9Sxm5yntAP6nG8Z-5kQerj0",
+      "groupPolicy": "allowlist",
+      "streaming": "off",
+      "webhookUrl": "https://ladybug-ultimate-solely.ngrok-free.app/api/telegram/23df1bff-701b-4356-a6ed-69265f0dfefd",
+      "webhookSecret": "62c6f6d3-e828-49a2-88c7-491af97df1c7"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "81738088b4260bff75db6902be1c97d1e30efa7e91cdd5ef"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
+user@e2b:~/.openclaw$ 

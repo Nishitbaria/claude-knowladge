@@ -1,0 +1,19 @@
+import type { LucideIcon } from "lucide-react";
+
+export interface SubAgentTemplate {
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  agentId: string;
+  systemPrompt: string;
+}
+
+export interface SubAgentSession {
+  key: string;
+  label: string | null;
+  model: string | null;
+  status: "running" | "completed" | "error" | "unknown";
+  updatedAt: number | null;
+  tokens: { input: number; output: number; total: number } | null;
+}

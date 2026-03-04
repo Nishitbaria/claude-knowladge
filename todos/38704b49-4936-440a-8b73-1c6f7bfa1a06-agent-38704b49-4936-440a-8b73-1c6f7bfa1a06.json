@@ -1,0 +1,57 @@
+[
+  {
+    "content": "Install PostHog packages (posthog-js and posthog-node)",
+    "status": "in_progress",
+    "activeForm": "Installing PostHog packages"
+  },
+  {
+    "content": "Create PostHog provider component for client-side tracking",
+    "status": "pending",
+    "activeForm": "Creating PostHog provider component"
+  },
+  {
+    "content": "Create PostHog server utility for server-side tracking",
+    "status": "pending",
+    "activeForm": "Creating PostHog server utility"
+  },
+  {
+    "content": "Integrate PostHog provider in root layout",
+    "status": "pending",
+    "activeForm": "Integrating PostHog provider in root layout"
+  },
+  {
+    "content": "Add event tracking to pricing page and checkout flow",
+    "status": "pending",
+    "activeForm": "Adding event tracking to pricing and checkout"
+  },
+  {
+    "content": "Add event tracking to image generation API routes",
+    "status": "pending",
+    "activeForm": "Adding event tracking to image generation"
+  },
+  {
+    "content": "Add event tracking to video generation API routes",
+    "status": "pending",
+    "activeForm": "Adding event tracking to video generation"
+  },
+  {
+    "content": "Add event tracking to image upscale API route",
+    "status": "pending",
+    "activeForm": "Adding event tracking to image upscale"
+  },
+  {
+    "content": "Add event tracking to payment webhooks",
+    "status": "pending",
+    "activeForm": "Adding event tracking to payment webhooks"
+  },
+  {
+    "content": "Add user identification in auth components",
+    "status": "pending",
+    "activeForm": "Adding user identification in auth"
+  },
+  {
+    "content": "Add error tracking across API routes",
+    "status": "pending",
+    "activeForm": "Adding error tracking"
+  }
+]

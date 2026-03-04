@@ -1,0 +1,50 @@
+"use server";
+
+import { basehubClient } from "@/lib/basehub";
+import { PostFragment, PostMetaFragment } from "@/lib/basehub.fragment";
+
+export async function getAllBlogPosts() {
+  const { blog } = await basehubClient.query({
+    blog: {
+      posts: {
+        items: PostMetaFragment,
+      },
+    },
+  });
+
+  return blog.posts.items
+    .filter((post) => post.isvisible)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export async function getBlogPost(slug: string) {
+  const { blog } = await basehubClient.query({
+    blog: {
+      posts: {
+        __args: { first: 1, filter: { _sys_slug: { eq: slug } } },
+        items: PostFragment,
+      },
+    },
+  });
+
+  const [post] = blog.posts.items;
+  if (!post?.isvisible) return null;
+  return post;
+}
+
+export async function getAllBlogSlugs() {
+  const { blog } = await basehubClient.query({
+    blog: {
+      posts: {
+        items: {
+          _slug: true,
+          isvisible: true,
+        },
+      },
+    },
+  });
+
+  return blog.posts.items
+    .filter((post) => post.isvisible)
+    .map((post) => ({ slug: post._slug }));
+}
