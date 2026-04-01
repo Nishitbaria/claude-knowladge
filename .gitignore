@@ -1,0 +1,19 @@
+# Sensitive / session data
+history.jsonl
+sessions/
+session-env/
+ide/
+mcp-needs-auth-cache.json
+stats-cache.json
+projects/
+
+# Cache & temporary files
+cache/
+paste-cache/
+shell-snapshots/
+file-history/
+downloads/
+backups/
+
+# Embedded repos
+plugins/marketplaces/
